@@ -86,17 +86,14 @@
 %
 % ----- copyright and title pages
 %
-\Title{The Suitability of the \LaTeX\ Text Formatter\\
-  for Thesis Preparation by Technical and\\
-  Non-technical Degree Candidates}
-\Author{Jim Fox}
+\Title{My Thesis}
+\Author{Janet Matsen}
 \Year{2016}
-\Program{IT Infrastructure}
+\Program{Chemical Engineering}
 
-\Chair{Name of Chairperson}{Title of Chair}{Department of Chair}
-\Signature{First committee member}
-\Signature{Next committee member}
-\Signature{etc}
+\Chair{Mary Lidstrom}{Title of Chair}{Chemical Engineering, Microbiology}
+\Signature{David Baker}
+\Signature{François Baneyx}
 
 \copyrightpage
 
@@ -114,25 +111,9 @@
 
 \setcounter{page}{-1}
 \abstract{%
-This sample dissertation is an aid to students who are attempting
-to format their theses with \LaTeX, a sophisticated
-text formatter widely used by mathematicians and scientists everywhere.
- 
-\begin{itemize}
-\item It describes the use of a specialized
-macro package developed specifically for thesis production
-at the University.
-The macros customize \LaTeX\ for the correct thesis style,
-allowing the student to concentrate on the substance of
-his or her text.%
-\footnote{See Appendix A to obtain the source to this
- thesis and the class file.}
-\item It demonstrates the solutions to a variety of
-formatting challenges found in thesis production.
-\item It serves as a template for a real dissertation.
-\end{itemize}
-}
- 
+
+Abstract.
+}  
 %
 % ----- contents & etc.
 %
@@ -150,13 +131,6 @@ formatting challenges found in thesis production.
 \begin{glossary}
 \item[argument] replacement text which customizes a \LaTeX\ macro for
 each particular usage.
-\item[back-up] a copy of a file to be used when catastrophe strikes
-the original.  People who make no back-ups deserve
-no sympathy.
-\item[control sequence] the normal form of a command to \LaTeX.
-\item[delimiter] something, often a character, that indicates
-the beginning and ending of an argument.
-More generally, a delimiter is a field separator.
 \item[document class] a file of macros that tailors \LaTeX\ for
 a particular document.  The macros described by this thesis
 constitute a document class.
@@ -164,22 +138,10 @@ constitute a document class.
 that further modifies \LaTeX\ for
 a particular document.  The option {\tt[chapternotes]}
 constitutes a document option.
-\item[figure] illustrated material, including graphs,
-diagrams, drawings and photographs.
-\item[font] a character set (the alphabet plus digits
-and special symbols) of a particular size and style.  A couple of fonts
-used in this thesis are twelve point roman and {\sl twelve point roman
-slanted}.
-\item[footnote] a note placed at the bottom of a page, end of a chapter,
-or end of a thesis that comments on or cites a reference
-for a designated part of the text.
 \item[formatter] (as opposed to a word-processor) arranges printed
 material according to instructions embedded in the text.
 A word-processor, on the other hand, is normally controlled
 by keyboard strokes that move text about on a display.
-\item[\LaTeX] simply the ultimate in computerized typesetting.
-\item[macro]  a complex control sequence composed of 
-other control sequences.
 \item[pica] an archaic unit of length.  One pica is twelve points and
 six picas is about an inch.
 \item[point] a unit of length.  72.27 points equals one inch.
@@ -187,11 +149,6 @@ six picas is about an inch.
 the decorations on the ends of letter strokes.
 This thesis is set in roman type.
 \item[rule] a straight printed line; e.g., \hrulefill.
-\item[serif] the decoration at the ends of letter strokes.
-\item[table] information placed in a columnar arrangement.
-\item[thesis] either a master's thesis or a doctoral dissertation.
-This document also refers to itself as a thesis, although it
-really is not one.
  
 \end{glossary}
  
@@ -200,17 +157,14 @@ really is not one.
 %
 \acknowledgments{% \vskip2pc
   % {\narrower\noindent
-  The author wishes to express sincere appreciation to
-  University of Washington, where he has had the opportunity
-  to work with the \TeX\ formatting system,
-  and to the author of \TeX, Donald Knuth, {\it il miglior fabbro}.
+  Bina Bina.
   % \par}
 }
 
 %
 % ----- dedication
 %
-\dedication{\begin{center}to my dear wife, Joanna\end{center}}
+\dedication{\begin{center}to my amazing husband, Erick\end{center}}
 
 %
 % end of the preliminary pages
@@ -225,66 +179,7 @@ really is not one.
  
 % ========== Chapter 1
  
-\chapter {Introduction}
- 
-The utility of a clean, professionally prepared thesis is well
-documented%
-\footnote{See, for example,
-  W.~Shakespeare\cite{Hamlet} for a recent discussion.}
-and, even if you never intend to actually print your thesis,
-you still ought to format it as if that were your intention.
- 
-\TeX\ facilitates that. It is a flexible,
-complete and professional typesetting system.
-It will produce {\bf pdf} output as required by the Graduate School.
 
-\section{The Purpose of This Sample Thesis}
- 
-This sample is both a demonstration of the quality and
-propriety of a \LaTeX formatted thesis and  
-documentation for its preparation.
-It has made extensive use of a custom class file
-developed specifically for this purpose
-at the University of Washington.  Chapter~II discusses
-\TeX\ and \LaTeX.
-Chapter III describes the additional macros and functions
-provided by the custom thesis class file.  Finally, Chapter IV hopes to tie things up.
- 
-It is 
-impossible to predict all the formatting problems one will encounter
-and there will be problems that are best handled
-by a specialist.  
-The Graduate School may be able to help you find help.
-Some departments may also be able to provide \LaTeX\ assistance.
- 
- 
-\section{Conventions and Notations}
- 
-In this thesis the typist
-refers to the user of \LaTeX---the one who
-makes formatting decisions and chooses the appropriate
-formatting commands.
-He or she will most often be the degree candidate.
- 
-This document deals with \LaTeX\ typesetting commands and their
-functions.  Wherever possible the conventions used to display
-text entered by the typist and the resulting formatted output
-are the same as those used by the \TeX books.
-Therefore, {\tt typewriter type} is used to indicate text
-as typed by the computer
-or entered by the typist.
-It is quite the opposite of {\it italics,} which indicates
-a category rather than exact text.  For example,
-{\tt alpha} and {\tt beta} might each be an example of a {\it label}.
- 
- 
-\section{Nota bene}
- 
-This sample thesis was produced by the \LaTeX\ document class it describes
-and its format is consonant with the Graduate School's electronic dissertation guidelines,
-as of November, 2014, at least.
-However, use of this package does not guarantee acceptability
-of a particular thesis.
  
  
 % ========== Chapter 2
@@ -384,34 +279,6 @@ The {\it\TeX book}\cite{book}, {\it \LaTeX\ User's Guide}\cite{Lbook},
 and {\it The \LaTeX\ Companion}\cite{companion}
 thoroughly cover this topic.
  
- 
-\section{Languages other than English}
- 
-Most \LaTeX\ implementations at the University are tailored
-for the English language.  However, \LaTeX\ will format many
-other languages.  Unfortunately, this author has never been successful in 
-learning more than a smattering of anything other than English.
-Consult your department or the Tex Users Group.
-\smallskip
-\begin{center}
-{\tt http://tug.org/},
-\end{center}
-\smallskip
-for assistance with non-English formatting.
-
-Unusual characters can be defined via the
-font maker \hbox{\mffont METAFONT} (documented by Knuth\cite{Metafont}).
-The definitions are not trivial.
-Students who attempt to print a thesis with
-custom fonts may soon proclaim,
- 
-% Note.  This is not the ideal way to print Greek
-\medskip
-\begin{center}
-``$\mathaccent"7027\alpha\pi o\kern1pt\theta\alpha\nu\epsilon\hat\iota\nu$
-\ $\theta\acute\epsilon\lambda\omega$.''
- 
-\end{center}
  
 % ========== Chapter 3
  
