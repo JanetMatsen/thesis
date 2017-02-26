@@ -49,10 +49,25 @@
 % \def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}}
 
 \setcounter{tocdepth}{1}  % Print the chapter and sections to the toc
- 
+
+
 
 % ==========   Local defs and mods
 %
+
+%----- Janet additions
+\usepackage[colorlinks = true, linkcolor = black, urlcolor  = blue, citecolor = black, anchorcolor = black]{hyperref} % for hyperlinks. 
+\usepackage{longtable} % for multi-page tables.  Used for glossary. http://stackoverflow.com/questions/2896833/how-to-stretch-a-table-over-multiple-pages
+\usepackage{seqsplit} % to wrap AA sequences. See RFP sequence. % http://tex.stackexchange.com/questions/100391/how-to-wrap-a-word-in-line-without-hyphen
+
+\usepackage{palatino} % Erick's favorite font
+\usepackage{textgreek} % allows for mu, etc.    $\mu$ is my fav, but there is \textmu \textmugreek
+% to get reaction arrows, use mhchem.  From http://tex.stackexchange.com/questions/142865/arrows-chemical-equations
+\usepackage[version=3]{mhchem} % http://bay.uchicago.edu/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf
+	% Ammonium sulphate is \ce{(NH4)2SO4}
+
+\hyphenpenalty=5000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
+\tolerance=1000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
 
 % --- sample stuff only -----
 % These format the sample code in this document
@@ -113,7 +128,6 @@
 % ----- abstract
 %
 
-
 \setcounter{page}{-1}
 \abstract{%
 
@@ -129,60 +143,39 @@ Abstract.
 %
 % ----- glossary 
 %
-\chapter*{Glossary}      % starred form omits the `chapter x'
-\addcontentsline{toc}{chapter}{Glossary}
-\thispagestyle{plain}
-%
-\begin{glossary}
-\item[argument] replacement text which customizes a \LaTeX\ macro for
-each particular usage.
-\item[document class] a file of macros that tailors \LaTeX\ for
-a particular document.  The macros described by this thesis
-constitute a document class.
-\item[document option] a macro or file of macros
-that further modifies \LaTeX\ for
-a particular document.  The option {\tt[chapternotes]}
-constitutes a document option.
-\item[formatter] (as opposed to a word-processor) arranges printed
-material according to instructions embedded in the text.
-A word-processor, on the other hand, is normally controlled
-by keyboard strokes that move text about on a display.
-\item[pica] an archaic unit of length.  One pica is twelve points and
-six picas is about an inch.
-\item[point] a unit of length.  72.27 points equals one inch.
-\item[roman]  a conventional printing typestyle using serifs.
-the decorations on the ends of letter strokes.
-This thesis is set in roman type.
-\item[rule] a straight printed line; e.g., \hrulefill.
- 
-\end{glossary}
- 
+\include{./tex/glossary} 
+\include{./tex/glossary_general_exam} 
 %
 % ----- acknowledgments
 %
 \acknowledgments{% \vskip2pc
   % {\narrower\noindent
-  Bina Bina.
-  % \par}
-}
 
-Dave Beck
+Overwhelming gratitude for Mary Lidstrom, who taught me biology, metabolic engineering, and supported my transition to computational biology and data science. 
 
-David Baker
+David Beck, who mentored me throughout my PhD, encouraged me to complete the Advanced Data Science Option, and worked with me intensely in my last year. 
 
-Song Yang (for metabolomics)
+Many people who worked with me on wet-lab projects, most of which are not described in this document: Amanda Smith, Song Yang, Adam W, Justin Siegel,  
+
+My committee: Francois, David Baker, and Barry Stoddard. 
 
 Internship companies. 
+
+Grandparents and parents support of education. 
+
+  % \par}
+}
 
 %
 % ----- dedication
 %
-\dedication{\begin{center}to my amazing husband, Erick\end{center}}
+\dedication{\begin{center}
+
+Erick.  Inspired the journey, kept the whole thing fun, worked by my side every day of the entire process. 
+Look forward to enjoying the years of increased happiness afforded by the possiblities opened through this process. \end{center}}
 
 %
 % end of the preliminary pages
- 
- 
  
 %
 % ==========      Text pages
@@ -192,13 +185,15 @@ Internship companies.
  
 % ========== Chapter 1
  
- \include{./tex/omics_in_methanotrophs}
- 
+\include{./tex/chapter1/pure_culture_omics}
+  
 % ========== Chapter 2
 
- \include{./tex/CCA}
+\include{./tex/chapter2/community_analysis}
  
-  
+ % ========== Chapter 3
+ 
+\include{./tex/chapter3/ml}
 
 \printendnotes
 

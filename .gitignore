@@ -1,3 +1,7 @@
+*.swp
+
+Amanda_Yanfen_Bo/*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
