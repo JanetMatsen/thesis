@@ -31,7 +31,7 @@
 %
 %    To help you ignore the unusual things I do with this sample document
 %    I try to use the notation
-%       
+%
 %    % --- sample stuff only -----
 %    special stuff for my document, but you don't need it in your thesis
 %    % --- end-of-sample-stuff ---
@@ -39,11 +39,11 @@
 
 %    Printed in twoside style now that that's allowed
 %
- 
+
 \documentclass [11pt, proquest] {uwthesis}[2016/11/22]
- 
+
 %
-% The following line would print the thesis in a postscript font 
+% The following line would print the thesis in a postscript font
 
 % \usepackage{natbib}
 % \def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}}
@@ -56,7 +56,7 @@
 %
 
 %----- Janet additions
-\usepackage[colorlinks = true, linkcolor = black, urlcolor  = blue, citecolor = black, anchorcolor = black]{hyperref} % for hyperlinks. 
+\usepackage[colorlinks = true, linkcolor = black, urlcolor  = blue, citecolor = black, anchorcolor = black]{hyperref} % for hyperlinks.
 \usepackage{longtable} % for multi-page tables.  Used for glossary. http://stackoverflow.com/questions/2896833/how-to-stretch-a-table-over-multiple-pages
 \usepackage{seqsplit} % to wrap AA sequences. See RFP sequence. % http://tex.stackexchange.com/questions/100391/how-to-wrap-a-word-in-line-without-hyphen
 
@@ -72,36 +72,36 @@
 % --- sample stuff only -----
 % These format the sample code in this document
 
-\usepackage{alltt}  % 
+\usepackage{alltt}  %
 \newenvironment{demo}
   {\begin{alltt}\leftskip3em
      \def\\{\ttfamily\char`\\}%
      \def\{{\ttfamily\char`\{}%
      \def\}{\ttfamily\char`\}}}
   {\end{alltt}}
- 
+
 % metafont font.  If logo not available, use the second form
 %
 % \font\mffont=logosl10 scaled\magstep1
 \let\mffont=\sf
 % --- end-of-sample-stuff ---
- 
+
 % ---- Formatting Info ----
 % Preparing Your Manuscript for Submission : http://grad.uw.edu/wordpress/wp-content/uploads/Preparing-Your-Manuscript-for-Submission-Revised-31jul2015.pdf
-% Pro-Quest FAQ:  http://www.etdadmin.com/cgi-bin/main/faq?siteId=0 
+% Pro-Quest FAQ:  http://www.etdadmin.com/cgi-bin/main/faq?siteId=0
 % Jim Fox page: https://staff.washington.edu/fox/tex/uwthesis.shtml
 % http://grad.uw.edu/for-students-and-post-docs/thesisdissertation/
 
 
 \begin{document}
- 
+
 % ==========   Preliminary pages
 %
 % ( revised 2012 for electronic submission )
 %
 
 \prelimpages
- 
+
 %
 % ----- copyright and title pages
 %
@@ -117,9 +117,9 @@
 
 \copyrightpage
 
-\titlepage  
+\titlepage
 
- 
+
 %
 % ----- signature and quoteslip are gone
 %
@@ -132,36 +132,49 @@
 \abstract{%
 
 Abstract.
-}  
+}
 %
 % ----- contents & etc.
 %
 \tableofcontents
 \listoffigures
 %\listoftables  % I have no tables
- 
+
 %
-% ----- glossary 
+% ----- glossary
 %
-\include{./tex/glossary} 
-\include{./tex/glossary_general_exam} 
+%\include{./tex/glossary}
+\include{./tex/glossary_general_exam}
 %
 % ----- acknowledgments
 %
 \acknowledgments{% \vskip2pc
   % {\narrower\noindent
 
-Overwhelming gratitude for Mary Lidstrom, who taught me biology, metabolic engineering, and supported my transition to computational biology and data science. 
+I feel incredible gratitude for Mary Lidstrom, who taught me biology, metabolic engineering, and supported my transition to computational biology and data science.
+It was clear that my and other lab members' best interests for scientific and professional development were always her top priority.
+She will forever remain one of my top leadership role models.
 
-David Beck, who mentored me throughout my PhD, encouraged me to complete the Advanced Data Science Option, and worked with me intensely in my last year. 
+I also  would like to thank David Beck for his computational mentorship over the years, especially the last few when we worked so closely.
+His incredible knowledge breadth, and eagerness to share it with students is unparalleled.
+It was Dave's enthusiasm for data science and support of knowledge-expanding coursework that led me to complete the Advanced Data Science Option.
+I am so grateful to have had the opportunity to absorb so much data science knowledge before leaving the University of Washington.
 
-Many people who worked with me on wet-lab projects, most of which are not described in this document: Amanda Smith, Song Yang, Adam W, Justin Siegel,  
+Thanks to the dozens of people who helped me and collaborated with me on wet lab adventures, most of which are not described in this thesis.
+I thank the Formolase project team, particularly Amanda Smith, David Baker, Adam W, Justin Siegel.
+I thank the numerous Lidstrom Lab members; it was a pleasure to develop lab skills alongside you.
+I thank Marina K. for initial mentorship in experimental biology, and Ludmila C. for years of consultation about methylotrophic metabolism.
 
-My committee: Francois, David Baker, and Barry Stoddard. 
+I thank my family for leading me toward engineering, and the support through these 25 years of education.
 
-Internship companies. 
+I also thank the community around the Data Science Studio and Advanced Data Science program at UW.
+The impact of these programs on my training and career trajectory are substantial.
 
-Grandparents and parents support of education. 
+Finally, I thank my committee members for support throughout a very diverse PhD experience.
+
+%My committee: Francois, David Baker, and Barry Stoddard.
+% Internship companies.
+% Grandparents and parents support of education.
 
   % \par}
 }
@@ -171,28 +184,31 @@ Grandparents and parents support of education.
 %
 \dedication{\begin{center}
 
-Erick.  Inspired the journey, kept the whole thing fun, worked by my side every day of the entire process. 
-Look forward to enjoying the years of increased happiness afforded by the possiblities opened through this process. \end{center}}
+I dedicate this to my miracle husband, Erick.
+You inspired me to embark on this journey, worked by my side every day, and contributed greatly to my happiness throughout.
+ \end{center}}
 
 %
 % end of the preliminary pages
- 
+
 %
 % ==========      Text pages
 %
 
 \textpages
- 
+
+\include{./tex/chapter0/intro_glue}
+
 % ========== Chapter 1
- 
+
 \include{./tex/chapter1/pure_culture_omics}
-  
+
 % ========== Chapter 2
 
 \include{./tex/chapter2/community_analysis}
- 
+
  % ========== Chapter 3
- 
+
 \include{./tex/chapter3/ml}
 
 \printendnotes
@@ -208,10 +224,10 @@ Look forward to enjoying the years of increased happiness afforded by the possib
 %
 \appendix
 \raggedbottom\sloppy
- 
+
 % ========== Appendix A
- 
+
 \chapter{Test Appendix}
-Appendix, yes, appendix. 
+Appendix, yes, appendix.
 
 \end{document}
