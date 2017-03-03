@@ -2,6 +2,7 @@
 *.swp
 
 Amanda_Yanfen_Bo/*
+tex/OLDglossary.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

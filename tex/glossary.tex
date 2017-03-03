@@ -1,28 +1,18 @@
-\chapter*{Glossary}      % starred form omits the `chapter x'
-\addcontentsline{toc}{chapter}{Glossary}
-\thispagestyle{plain}
-%
-\begin{glossary}
-\item[argument] replacement text which customizes a \LaTeX\ macro for
-each particular usage.
-\item[document class] a file of macros that tailors \LaTeX\ for
-a particular document.  The macros described by this thesis
-constitute a document class.
-\item[document option] a macro or file of macros
-that further modifies \LaTeX\ for
-a particular document.  The option {\tt[chapternotes]}
-constitutes a document option.
-\item[formatter] (as opposed to a word-processor) arranges printed
-material according to instructions embedded in the text.
-A word-processor, on the other hand, is normally controlled
-by keyboard strokes that move text about on a display.
-\item[pica] an archaic unit of length.  One pica is twelve points and
-six picas is about an inch.
-\item[point] a unit of length.  72.27 points equals one inch.
-\item[roman]  a conventional printing typestyle using serifs.
-the decorations on the ends of letter strokes.
-This thesis is set in roman type.
-\item[rule] a straight printed line; e.g., \hrulefill.
- 
-\end{glossary}
+\chapter*{Glossary} % \chapter*{Glossary} <-- the star turns off the chapter numbering and removes it from the index.
+\renewcommand*{\arraystretch}{1.4} % space between entries % http://tex.stackexchange.com/questions/135593/adding-row-spacing-to-a-longtable
+\begin{longtable}{ p{.25\textwidth}  p{.75\textwidth} } 
+\textbf{asselmbly} &  \\
+\textbf{AWS} & Amazon Web Services, the leading cloud computing platform \\
+\textbf{contig} & A contiguous DNA sequence.  In this case, they are the longer DNA stretches identified from assembling Illumina reads. \\
+\textbf{C1} & Single-carbon compounds such as methanol, \ce{CO_2}, or formate \\
+\textbf{Elviz} &  \\
+\textbf{genome bin} & a collection of contigs used to approximate a single organism's genome.  Often referred to as "bin". \\
+\textbf{graph} &  \\
+\textbf{machine learning} &  \\
+\textbf{methanotroph} &  \\
+\textbf{methylotroph} &  \\
+\textbf{partial correlation} &  \\
+\textbf{read} & a single short DNA sequence of a larger high-throughput sequencing data set. \\
+\textbf{regularization} &  \\
+\end{longtable}
 
