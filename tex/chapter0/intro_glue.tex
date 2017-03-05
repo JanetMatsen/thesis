@@ -1,11 +1,87 @@
 \chapter{Introduction}
 
-\section{Overview of Studies}
-I came to UW to...
+I came to the Lidstrom Lab eager to learn the art of engineering microbes, with understanding that the future of sustainable chemical production will feature such processes.
+During my PhD, I had the opportunity to do significant amounts of challenging wet-lab biology, much of which is not included in the scope of this dissertation.
+During this training in strain design, engineering, enzyme design, enzyme evolution, and fermentation, it became clear to me that our ability to achieve the potentential of our field relies on robotics, high-throughput screening, and advanced analytics.
+With Mary's incredible support, I redirected my focus to computational biology and data science.
+Along the way, I completed the coursework and was granted the first Advanced Data Science certificate from the University of Washington.
+Again with Mary's generous support, I was able to do two computational internships at two leading biotech startups in our field.
+I am so grateful for the biological knowledge and understanding of biological experiments that has informed my computational biology and data science PhD work.
+This thesis focuses on genomic and transcriptomic studies of pure cultures and mixed microbial populations, as both an experimentalist (Chapter \ref{chapter:A}), and fully computational data scientist (Chapters \ref{chapter:B}, \ref{chapter:C}).
+For information about the wet-lab work regarding the Formolase pathway (cite), development of SIP3-4 as a model organism, and development of a high-throughput formaldehyde-production enzyme screen, please see my general exam (put on GitHub?).
 
-\section{Thesis Roadmap}
+\section{Methylotrophy and Methanotrophy}
+The focus of the Lidstrom lab is understanding and manipulating methylotrophs, which are microorganisms that grow on reduced single-carbon compunds such as methane, methanol, methylamine and formate as sole carbon source and energy source (cite).
+Methanotrophs are methylotrophs that have extra metabolic modules enabling them to enzymatically convert methane to methanol.
+The energetics of activating these highly reduced single carbon compounds and the unique challenge of assimilating the activated products requires special metabolic pathway not present in other microbes.
+Furthermore, understanding of both methylotrophs and methanotrophs is increasingly important given their role in mittigating these greenhouse gases, and their biotechnological potential for converting inexpensive single-carbon compoiunds to multicarbon compounds
 
-Pure, meta, ML.
+\section{Tools for Metabolism Studies}
+The Lidstrom lab uses many approaches to gain understanding of and to manipulate methylotrophic metabolism to gain greater understanding of the complex network and the ability to perturb it for human good.
+Metabolism can be observed at many levels; at each level there are distinct sets of techniques to quantitate molecular concentrations.
+The most commonly quantified are DNA pools, RNA pools, metabolite concentrations, metabolite flux.
+DNA is used to identify metabolic potential of a single organism or population, in terms of what genes are available.
+RNA is used to identify which of these genes microbes actually express, and under which conditions.
+Metabolite concentrations and flux measurements indicate the effects of gene expression on the chemical environment of the cell.
+Omics
+
+Each type of study corresponds to a different scientific disclipine of "`omics": the collective characterization and quantification of pools of biological molecules.
+The study of genomes (DNA sequences) is called "genomics", while the study of transcripts (RNA) is called "transcriptomics".
+While our lab combines all of these tools, this paper focuses on genomic and transcriptomic datasets obtained via high-throughput sequencing.
+There will be some mention of a metabolite study ("metabolomics") in Chapter Chapter \ref{chapter:A} that complements the discussed transcriptomic study.
+High-throughput sequencing (HTS)
+
+Genomics and transcriptomics can futher be classified by whether they address a single organism's nucleic acids or those from a collection of organisms.
+When genomics and transcriptomics are used to study populations rather than single organism (pure) cultures, the prefix "meta" is added, yielding "metagenomics" and "metatranscriptomics".
+Metagenomics can imply different types of sequencing, which can be coarsely divided into deeper sequencing of only 16S ribosomal DNA to profile taxa abundance, or more broad sequencing of the entire DNA pool in a community.
+This dissertation will focus entirely on the latter, termed "shotgun" metagenomics to clarify that specific type of DNA sequences aren't target for sequencing.
+This allows discovery of the genes available to the population of organisms, and the potential to identify genomes of un-cultured organisms.
+
+\section{Machine Learning}
+'Omics studies usually stop after tabulating and describing the measurements made.
+For megagenomics, and transcriptomics this corresponds to descriptions of the genetic material present and the expression level of the predicted genes.
+There can, however, be much richer descriptions of datasets if explored with the appropriate computational tehchniques.
+This thesis takes that extra step, and applies machine learning techniques to extract experimentally testable hypotheses from complex meta-'omics data.
+The aim is to generate experimentally testably hypotheses for future studies.
+Road map for rest of thesis: Unifying themes
+The broad theme of this dissertation is use of high-throughput sequencing to understand microbial metabolism.
+It begins with the simplest and most traditional type of study, using a lab isolate, and transitions to the increased biological and analytical complexity of natural sediment communities.
+For both systems, it aims to identify which metabolic pathways organism use, given species-level and community-level metabolic redundancy.
+For the case of complex communities, additional computational and machine learning techniques are used to extract higher-order function from the communities.
+
+\section{Road Map for Thesis} %: Unifying themes
+The broad theme of this dissertation is use of high-throughput sequencing to understand microbial metabolism.
+It begins with the simplest and most traditional type of study, using a lab isolate, and transitions to the increased biological and analytical complexity of natural sediment communities.
+For both systems, it aims to identify which metabolic pathways organism use, given species-level and community-level metabolic redundancy.
+For the case of complex communities, additional computational and machine learning techniques are used to extract higher-order function from the communities.
+
+Chapter \ref{chapter:A} describes how carbon flows through the metabolic network of a model methanotroph.
+Pure cultures allow high-confidence elucidation of metabolic pathways, but pure cultures may not represent the often un-cultivatable wild relatives.
+This thesis focuses on the the transcriptomics half (cite) of a two-part study including metabolomics (cite) of the same culture.
+
+Chapter \ref{chapter:B} increases the complexity in that it explores metabolism in species-rich methanotroph-enriched natural communities.
+It aims to clarify how diverse populations of methanotrophs and auxillary microbes oxidize methane in nature.
+Uses both metagenomic and metatranscriptomic sequencing data for an 88-sample data set.
+Which metabolic pathways do individual microbes use?
+What metabolic interactions occur between species in nature?
+Does the presence of other microbes influence which subset of the network each utilizes?
+This work is part of a rapidly developing field of community `omics.
+The newness of the field and corresponding lack of standards, combined with a pluthera of tools to navigate requires thoughtful method selection, custom definitions of efficacy, and consideration of trade-offs between seemingly redundant tools.
+For this thesis, special attention is paid to monitoring how well the results reflect the ground-truth raw sequences representing each sample.
+Results preview
+
+Chapter \ref{chapter:B}  shows rarefication of the natural community into a smaller number of higher-abundance microbes over the 14 week experiment.
+Approximations of "who is there" are reported, as much as was possible given the sequences at hand.
+The importance of oxygen availability, a key environmental variable, is clarified by observing differences in the dominant methanotrophs and partner microbes under high and low oxygen concentrations, as well as differences in the genes expressed for each condition.
+%Insight into community rarefication and abundance stochasticity is illustrated by having four biological replicates at each condition, and 11 samples in each series.
+Differences in how wild strains metabolized compared to their potentially domesticated lab-isolate relatives are revealed.
+
+TODO: EXPAND Application of machine learning on these data to generate testable hypotheses about between-species interactions.
+Chapter \ref{chapter:C} addresses the potential to uncover additional, more complicated results from the data produced in Chapter \ref{chapter:B}.
+Though sorting, enumerating, and describing of reads provides a rich basis for understanding the samples at hand, there is great potential for machine learning to uncover higher-order and perhaps nonlinear signatures of interesting biology.
+This chapter explores the potential to apply machine learning techniques, which typically involve less noisy data and orders of magnitude more samples.
+It is the hope that the critical eye used to tune methinds in Chapter \ref{chapter:B} yield sufficiently clean data for algorithms to identify the underlying structure of the data.
+
 
 
 
