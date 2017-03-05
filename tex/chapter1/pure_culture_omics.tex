@@ -11,7 +11,7 @@ PEP-pyruvate-oxaloacetate interconversions may have a function in regulation and
 A set of transaminases may contribute to carbon partitioning between the pathways.
 Metabolic pathways for acquisition and/or assimilation of nitrogen and iron are discussed.
 
-Note: this chapter is published as an article \cite{matsenOB3b}, alongside a complementary metabolomics article \cite{yangOB3b}. 
+Note: this chapter is published as an article \cite{matsenOB3b}, alongside a complementary metabolomics article \cite{yangOB3b}.
 
 \section{Introduction}
 Aerobic methanotrophic bacteria (methanotrophs) are a highly specialized group of microbes utilizing methane as a sole source of carbon and energy (Hanson and Hanson, 1996; Murrell and Jetten, 2009).
@@ -59,10 +59,18 @@ Among those are key subunits of succinate dehydrogenase (sdhABCD), 2-oxoglutarat
 The de novo transcriptome assembly provides additional information for highly expressed genes and it was used for verification of some metabolic functions that were predicted by enzymatic studies but were not detected in the draft genome assembly (see below).
 
 In addition, the reads obtained from RNA-seq were aligned to the reference genome in order to identify transcription boundaries and transcription start sites for the most highly expressed genes, including the pmoCAB operons, mxaFJGI operon, fae1, pqqA, and key genes of the serine cycle (Table S2 in Supplementary Material, see description below).
-Gene expression data were used to reconstruct central metabolic pathways in M. trichosporium OB3b (Table 2; Figure 1; Table S2 in Supplementary Material).
+Gene expression data were used to reconstruct central metabolic pathways in M. trichosporium OB3b (Table 2; \ref{fig:A_metabolic_map}; Table S2 in Supplementary Material).
 Core functions are described below.
 
-%# TODO: insert Figure 2. Predicted structure (A) and alignment of the putative pqqA peptide (B) from M. trichosporium OB3b and pqqA peptides from Methylobacterium sp. GXF4, M. extorquens AM1, Hyphomicrobium denitrificans ATCC51888, K. pneumoniae, and A. calcoaceticus. (C) Mapping.
+
+\begin{figure}[H]
+\centering
+     \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/figure1.png}
+     \caption{Central metabolism of Methylosinus trichosporium OB3b grown on methane as sole source of energy and carbon as
+        deduced from the genome sequences and transcriptomic studies.
+        Font size of the gene name indicates the expression level.}
+     \label{fig:A_metabolic_map}
+\end{figure}
 
 
 \subsection{\ce{C1}-Oxidation: Methane-To-Methanol}
@@ -125,9 +133,20 @@ A total of six pqq genes appear to be present in the M. trichosporium OB3b genom
 Moderate expression of both clusters was observed (Table 2).
 No gene for the small PQQ precursor (PqqA) is predicted in the current version of the genome.
 Our manual review of the sequences revealed a fragment within the METTOv1\_110055 – METTOv1\_110057 gene locus (positions 1424678 – 1424755 of current version of the genome) with high sequence identity [83\% nucleic acid (NA) identity and 96\% amino acid (AA) similarity] to the pqqA sequence from Methylobacterium spp (Figures 2A,B).
-Transcript mapping data indicated that only the pqqA-like region of the locus is highly expressed (Figure 2C).
+Transcript mapping data indicated that only the pqqA-like region of the locus is highly expressed (\ref{fig:B_pqqA}C).
 The relative expression of the putative PQQ precursor gene is comparable to the high expression of the mxaFI genes.
 The rest of the genes involved in PQQ biosynthesis showed modest to low expression (Figure S2B in Supplementary Material).
+
+\begin{figure}[H]
+\centering
+     \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/figure2.png}
+     \caption{Predicted structure
+        (A) and alignment of the putative pqqA peptide
+        (B) from M. trichosporium OB3b and pqqA peptides from Methylobacterium sp. GXF4, M. extorquens AM1,
+            Hyphomicrobium denitrificans ATCC51888, K. pneumoniae, and A. calcoaceticus.
+        (C) Mapping.}
+     \label{fig:B_pqqA}
+\end{figure}
 
 
 \subsection{\ce{C1}-Oxidation: Formaldehyde-To-Formate}
@@ -182,7 +201,7 @@ In addition to the serine-glyoxylate aminotransferase (sga), a key aminotransfer
 
 The genome of M. trichosporium OB3b encodes two copies of phosphoenolpyruvate (PEP) carboxylase (ppc1 and ppc2).
 The two enzymes are only distantly related to each other and share 33\% identity at the amino acid level.
-One of them, Ppc1, clusters with PEP carboxylases usually found in bacteria possessing the serine cycle for \ce{C1}-assimilation (Figure 3).
+One of them, Ppc1, clusters with PEP carboxylases usually found in bacteria possessing the serine cycle for \ce{C1}-assimilation (\ref{fig:C_pep}).
 Serine cycle Ppcs belong to a “non-regulated” group of PEP carboxylases (Anthony, 1982).
 The activity of these enzymes is not controlled by intermediates of the TCA cycle or glycolysis/gluconeogenesis (Newaz and Hersh, 1975).
 The second homolog of Ppc (ppc2) clusters with anaplerotic “regulated” PEP carboxylases, which are controlled by a variety of metabolic effectors (Takahashi et al., 1993; Kai et al., 2003).
@@ -201,14 +220,21 @@ The flux is never completely blocked, due to the insensitivity of Ppc1 to the me
 Increases in the intracellular levels of acetyl-CoA, aspartate, or malate (as a result of saturation of the downstream EMC pathway and the TCA cycle) can reduce the flux through the PEP-oxaloacetate presumably twofold via allosteric inhibition and lack of activation of Ppc2 activity.
 In this case, \ce{C1}-carbon assimilated via the serine cycle is re-directed to gluconeogenesis or converted into pyruvate.
 
-%# TODO: insert Figure 3. Phylogenetic tree of phosphoenolpyruvate carboxylases.
+\begin{figure}[H]
+\centering
+     \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/figure3.png}
+     \caption{Phylogenetic tree of phosphoenolpyruvate carboxylases.
+        Sequence identifiers follow the source organism label. Sequences were aligned with MUSCLE v3.8.31 (Edgar, 2004) and
+        the tree created with ClustalW2 2.0.12 (Larkin et al., 2007) and rendered with iTOL (Letunic and Bork, 2007).}
+     \label{fig:B_pep}
+\end{figure}
 
 Regeneration of glyoxylate is an essential part of the serine cycle (Anthony, 1982, 2011; Peyraud et al., 2009).
 Like other obligate methanotrophic bacteria, M. trichosporium OB3b lacks isocitrate lyase, a key enzyme of the glyoxylate shunt (Trotsenko and Murrell, 2008).
 Homologs of enzymes involved in the ethylmalonyl-CoA (EMC) pathway, an alternative route for glyoxylate regeneration (Peyraud et al., 2009), were identified in the draft genomes of M. trichosporium OB3b and another obligate methanotroph Methylocystis sp. (Stein et al., 2010, 2011).
 However, a functional EMC pathway has not yet been demonstrated in methanotrophs.
 Furthermore, the recent investigation of PHB-metabolism in Methylocysctis parvus OBBP, an alphaproteobacterial methanotroph, suggested that this metabolic module can not supply C2 (glyoxylate) units for biosynthesis (Pieja et al., 2011).
-As the initial steps of the EMC pathway are shared with PHB biosynthesis [acetyl-CoA acetyltransferase (phaA) and acetoacetyl-CoA reductase (phaB), see Figure 1] in context with the data presented by Pieja et al. (2011) call into question the operation of the EMC pathway in methanotrophs.
+As the initial steps of the EMC pathway are shared with PHB biosynthesis [acetyl-CoA acetyltransferase (phaA) and acetoacetyl-CoA reductase (phaB), see \ref{fig:A_metabolic_map}] in context with the data presented by Pieja et al. (2011) call into question the operation of the EMC pathway in methanotrophs.
 
 We found that genes encoding the initial steps of the PHB-synthesis (phaA/phaB) show moderate levels of expression.
 As could be expected for cells in early-mid exponential growth, the expression of the gene encoding PHB synthase (phaC) was low.
@@ -227,7 +253,7 @@ It has been suggested that the main role of the TCA cycle in the methanotrophs i
 However, labeling studies on acetate and pyruvate utilization have predicted the presence of a catabolic TCA cycle in type II methanotrophs (Wadzink and Ribbons, 1975; reviewed in Higgins et al., 1981).
 In silico genome analysis indicates that M. trichosporium OB3b contains predicted genes for all key enzymes of the TCA cycle and pyruvate dehydrogenase (pdh).
 All of these genes were expressed (Table 2).
-These steps of the TCA cycle are shared between the EMC pathway and the serine cycle (Figure 1).
+These steps of the TCA cycle are shared between the EMC pathway and the serine cycle (\ref{fig:A_metabolic_map}).
 De novo transcriptome assembly indicated that M. trichosporium OB3b possesses an additional homolog of succinate:ubiquinone oxidoreductase (sucABCD, Table S1 in Supplementary Material).
 Genes encoding the succinate:ubiquinone oxidoreductase and succinyl-CoA synthase (sucCD) are among the most highly expressed TCA cycle functions.
 The reductive branch of the pathway (including genes for citrate synthase, aconitase, isocitrate dehydrogenase, and 2-ketoglutarate dehydrogenase) displays moderate-to-low expression.
@@ -306,7 +332,7 @@ Unfortunately, the pvd genes are represented in fragments in the current genome 
 \section{Conclusion}
 
 In this work we performed genomic- and transcriptomic-based reconstruction of the central metabolic pathways in Methylosinus trichosporium OB3b grown on methane as a sole source of carbon and energy.
-The overview of the methane metabolism is summarized in Figure 1.
+The overview of the methane metabolism is summarized in \ref{fig:A_metabolic_map}.
 While some metabolic functions correlate well with previous enzymatic and genetic studies, several novel functions were detected and characterized.
 The major outcomes of our work are listed below:
 
@@ -385,7 +411,7 @@ The final merged assembly from the pipeline tool was stripped down to the highes
 The high confidence assembled transcripts were aligned to the M. trichosporium OB3b scaffolds using BLASTn.
 Transcripts without significant matches were aligned with BLASTx to the protein non-redundant database, as retrieved on January 13, 2012.
 
-\section*{Acknowledgments}
-This project was funded by the DOE (DE-SC0005154).
-Authors are very grateful to Mary E. Lidstrom, Ludmila Chistoserdova, and Valentina N. Khmelenina for many insightful suggestions on the manuscript.
+%\section*{Acknowledgments}
+%This project was funded by the DOE (DE-SC0005154).
+%Authors are very grateful to Mary E. Lidstrom, Ludmila Chistoserdova, and Valentina N. Khmelenina for many insightful suggestions on the manuscript.
 
