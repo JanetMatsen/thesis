@@ -44,8 +44,8 @@ The methane consumption rate during the period of maximum growth rate was 8.95 m
 All experiments were performed with at least two biological replicates.
 RNA samples were prepared as described in the Section “Materials and Methods.”
 Illumina sequencing for two biological replicates (BR1 and BR2) returned 28 and 29 million 36-bp reads.
-The Burrows–Wheeler Aligner (BWA, Li and Durbin, 2009) aligned 98\% of the reads to the M. trichosporium OB3b genome annotated by MaGE1 using the default parameters for small genomes.
-Reads per kilobase of coding sequence per million (reads) mapped (RPKM) (Mortazavi et al., 2008) was calculated to compare gene expression within and across replicates, and no further normalization (other than RPKM) was applied.
+The Burrows–Wheeler Aligner (BWA, \cite{li2009}) aligned 98\% of the reads to the M. trichosporium OB3b genome annotated by MaGe \cite{vallenet2006} using the default parameters for small genomes.
+Reads per kilobase of coding sequence per million (reads) mapped (RPKM) \cite{mortazavi2008} was calculated to compare gene expression within and across replicates, and no further normalization (other than RPKM) was applied.
 The samples were in good agreement with each other, with per gene coding sequence RPKM correlations of 0.959 and 0.989 for the Pearson and Spearman correlations, respectively.
 In total, 4,762 of 4,812 ORFs (CDS, tRNA, and rRNA predicted from the draft genome) were detected.
 Based on relative expression, genes (omitting rRNAs) could be grouped into six major expression categories (Table 1): very high (RPKM ≥ 15,000), high (RPKM ≥ 1,500), moderate (1,500 $>$ RPKM ≥ 500), modest (500 $>$ RPKM ≥ 250), low (250 $>$ RPKM ≥ 150) very low (150 $>$ RPKM ≥ 15), and not expressed (RPKM < 15).
@@ -79,8 +79,8 @@ Core functions are described below.
 \subsection{\ce{C1}-Oxidation: Methane-To-Methanol}
 It has been previously demonstrated that M. trichosporium OB3b possesses two types of methane oxidation enzymes: pMMO and sMMO.
 The expression of the enzymes is determined by copper availability; sMMO is dominant in copper-limited environments while pMMO dominates under copper sufficiency \cite{hakemian2007, semrau2010}.
-Structures of both enzymes are available (Elango et al., 1997; Hakemian et al., 2008).
-In this study, M. trichosporium OB3b was grown at a copper concentration that has been shown to be sufficient to suppress the expression of sMMO (Park et al., 1991; Phelps et al., 1992; Nielsen et al., 1997; Lloyd et al., 1999; Murrell et al., 2000).
+Structures of both enzymes are available \cite{elango1997, hakemian2008}.
+In this study, M. trichosporium OB3b was grown at a copper concentration that has been shown to be sufficient to suppress the expression of sMMO (\cite{park1991}; Phelps et al., 1992; Nielsen et al., 1997; Lloyd et al., 1999; Murrell et al., 2000).
 Indeed, virtually no expression of the sMMO gene cluster (mmoXYBZC) was observed.
 In contrast, the pmoCAB genes were the most highly expressed in the transcriptome, representing about 14\% of all reads mapped to the coding regions (Table 2).
 It has previously been shown that PMMO in M. trichosporium OB3b is encoded by two copies of the pmoCAB operon that appear to be identical (Gilbert et al., 2000).
@@ -236,12 +236,12 @@ In this case, \ce{C1}-carbon assimilated via the serine cycle is re-directed to 
      \label{fig:B_pep}
 \end{figure}
 
-Regeneration of glyoxylate is an essential part of the serine cycle \cite{anthony1982}, 2011; Peyraud et al., 2009).
+Regeneration of glyoxylate is an essential part of the serine cycle \cite{anthony1982, anthony2011, peyraud2009}.
 Like other obligate methanotrophic bacteria, M. trichosporium OB3b lacks isocitrate lyase, a key enzyme of the glyoxylate shunt \cite{trotsenko2008}.
-Homologs of enzymes involved in the ethylmalonyl-CoA (EMC) pathway, an alternative route for glyoxylate regeneration (Peyraud et al., 2009), were identified in the draft genomes of M. trichosporium OB3b and another obligate methanotroph Methylocystis sp. \cite{stein2010, stein2011}.
+Homologs of enzymes involved in the ethylmalonyl-CoA (EMC) pathway, an alternative route for glyoxylate regeneration \cite{peyraud2009}, were identified in the draft genomes of M. trichosporium OB3b and another obligate methanotroph Methylocystis sp. \cite{stein2010, stein2011}.
 However, a functional EMC pathway has not yet been demonstrated in methanotrophs.
-Furthermore, the recent investigation of PHB-metabolism in Methylocysctis parvus OBBP, an alphaproteobacterial methanotroph, suggested that this metabolic module can not supply C2 (glyoxylate) units for biosynthesis (Pieja et al., 2011).
-As the initial steps of the EMC pathway are shared with PHB biosynthesis [acetyl-CoA acetyltransferase (phaA) and acetoacetyl-CoA reductase (phaB), see \ref{fig:A_metabolic_map}] in context with the data presented by Pieja et al. (2011) call into question the operation of the EMC pathway in methanotrophs.
+Furthermore, the recent investigation of PHB-metabolism in Methylocysctis parvus OBBP, an alphaproteobacterial methanotroph, suggested that this metabolic module can not supply C2 (glyoxylate) units for biosynthesis \cite{pieja2011}.
+As the initial steps of the EMC pathway are shared with PHB biosynthesis [acetyl-CoA acetyltransferase (phaA) and acetoacetyl-CoA reductase (phaB), see \ref{fig:A_metabolic_map}] in context with the data presented by Pieja et al. (\cite{pieja2011}) call into question the operation of the EMC pathway in methanotrophs.
 
 We found that genes encoding the initial steps of the PHB-synthesis (phaA/phaB) show moderate levels of expression.
 As could be expected for cells in early-mid exponential growth, the expression of the gene encoding PHB synthase (phaC) was low.
@@ -256,7 +256,7 @@ Thus, the transcriptional profile of M. trichosporium OB3b indicates the methano
 \subsection{\ce{C1}-Assimilation: TCA Cycle and Anaplerotic \ce{CO2}-Fixation}
 All previous enzymatic studies predict that the tricarboxylic acid cycle (TCA cycle) in alphaproteobacterial methanotrophs is complete \cite{trotsenko2008}.
 However, the functional role of this metabolic pathway in methanotrophs is not fully understood.
-It has been suggested that the main role of the TCA cycle in the methanotrophs is carbon assimilation rather than energy production, due to low enzyme activity and lack of pyruvate dehydrogenase (Trotsenko, 1976; \cite{anthony1982}; Shishkina and Trotsenko, 1982; \cite{trotsenko2008}.
+It has been suggested that the main role of the TCA cycle in the methanotrophs is carbon assimilation rather than energy production, due to low enzyme activity and lack of pyruvate dehydrogenase \cite{trotsenko1976, anthony1982, shishkina1982, trotsenko2008}.
 However, labeling studies on acetate and pyruvate utilization have predicted the presence of a catabolic TCA cycle in type II methanotrophs (Wadzink and Ribbons, 1975; reviewed in Higgins et al., 1981).
 In silico genome analysis indicates that M. trichosporium OB3b contains predicted genes for all key enzymes of the TCA cycle and pyruvate dehydrogenase (pdh).
 All of these genes were expressed (Table 2).
@@ -264,11 +264,11 @@ These steps of the TCA cycle are shared between the EMC pathway and the serine c
 De novo transcriptome assembly indicated that M. trichosporium OB3b possesses an additional homolog of succinate:ubiquinone oxidoreductase (sucABCD, Table S1 in Supplementary Material).
 Genes encoding the succinate:ubiquinone oxidoreductase and succinyl-CoA synthase (sucCD) are among the most highly expressed TCA cycle functions.
 The reductive branch of the pathway (including genes for citrate synthase, aconitase, isocitrate dehydrogenase, and 2-ketoglutarate dehydrogenase) displays moderate-to-low expression.
-Low expression of pdh genes is consistent with the previous enzymatic studies that show low/no activity of pyruvate dehydrogenase (Trotsenko, 1976).
+Low expression of pdh genes is consistent with the previous enzymatic studies that show low/no activity of pyruvate dehydrogenase \cite{trotsenko1976}.
 
-It has been shown that the \ce{CO2}-fixation potential is maximal during early stages of logarithmic growth (Park et al., 1991, 1992).
+It has been shown that the \ce{CO2}-fixation potential is maximal during early stages of logarithmic growth \cite{park1991, park1992}.
 However, data on carboxylation system(s) in M. trichosporium OB3b are controversial.
-Most previous enzymatic studies predict that the PEP carboxylase (Ppc), a key enzyme of the serine cycle, is the major entry point for \ce{CO2} in alphaproteobacterial methanotrophs (Shishkina and Trotsenko, 1982).
+Most previous enzymatic studies predict that the PEP carboxylase (Ppc), a key enzyme of the serine cycle, is the major entry point for \ce{CO2} in alphaproteobacterial methanotrophs \cite{shishkina1982}.
 On the other hand Naguib (1979) has shown that M. trichosporium OB3b possesses different carboxylation systems, including membrane bound and cytoplasmic enzymes.
 It could be predicted that the EMC pathway also contributes to \ce{CO2} assimilation.
 In silico analysis of the genome sequence also revealed that in addition to the \ce{CO2}-fixing functions described above, genes for NAD(P)-dependent malic enzyme (mae), acetyl-CoA carboxylase (accABD), phosphoribosyl aminoimidazole carboxylase, pyruvate carboxylase (pcx), and a putative 2-oxoacid ferredoxin oxidoreductase are all present.
@@ -403,7 +403,7 @@ In addition, chimeric contigs from the assembly and low quality gene calls were 
 The summary of RNA-seq (Illumina) reads can be found in Table S4 in Supplementary Material.
 The METTOv1 genome did not have a complete pmoCAB cluster suitable for alignment.
 In order to include pmoCAB, a separate alignment run was performed with the previously published sequence of this gene cluster (Holmes et al., 1995).
-After the alignment with BWA, SAM tools was used to generate a pileup file that was loaded into a MySQL database for normalization from Reads Per Kilobase of gene per Million mapped reads (RPKM) to coding sequences (Mortazavi et al., 2008).
+After the alignment with BWA, SAM tools was used to generate a pileup file that was loaded into a MySQL database for normalization from Reads Per Kilobase of gene per Million mapped reads (RPKM) to coding sequences \cite{mortazavi2008}.
 
 \subsection{Transcription Site Mapping and Transcriptome Based Gene Assembly}
 The reads mapped at each base position in the genomic scaffolds generated from the pileup were manually examined to identify putative transcription starts and stops.
