@@ -3,7 +3,7 @@ tex/todo.txt
 *.swo
 *.swp
 
-Amanda_Yanfen_Bo/*
+documents/*
 tex/OLDglossary.tex
 
 ## Core latex/pdflatex auxiliary files:
