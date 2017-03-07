@@ -80,37 +80,37 @@ Core functions are described below.
 It has been previously demonstrated that M. trichosporium OB3b possesses two types of methane oxidation enzymes: pMMO and sMMO.
 The expression of the enzymes is determined by copper availability; sMMO is dominant in copper-limited environments while pMMO dominates under copper sufficiency \cite{hakemian2007, semrau2010}.
 Structures of both enzymes are available \cite{elango1997, hakemian2008}.
-In this study, M. trichosporium OB3b was grown at a copper concentration that has been shown to be sufficient to suppress the expression of sMMO (\cite{park1991}; Phelps et al., 1992; Nielsen et al., 1997; Lloyd et al., 1999; Murrell et al., 2000).
+In this study, M. trichosporium OB3b was grown at a copper concentration that has been shown to be sufficient to suppress the expression of sMMO \cite{park1991, phelps1992, nielsen1997, lloyd1999, murrell2000}.
 Indeed, virtually no expression of the sMMO gene cluster (mmoXYBZC) was observed.
 In contrast, the pmoCAB genes were the most highly expressed in the transcriptome, representing about 14\% of all reads mapped to the coding regions (Table 2).
-It has previously been shown that PMMO in M. trichosporium OB3b is encoded by two copies of the pmoCAB operon that appear to be identical (Gilbert et al., 2000).
+It has previously been shown that PMMO in M. trichosporium OB3b is encoded by two copies of the pmoCAB operon that appear to be identical \cite{gilbert2000}.
 The current genome assembly failed to resolve these closely related duplicated regions.
 The pmoCAB genes were found within one relatively short contig, which includes 320 bp upstream from pmoC, and about 66 bp downstream from pmoB.
 It is possible that in the genome assembly, the pmo contig represents only those parts of the duplicated regions that are highly similar.
 Thus, it was not possible to determine relative expression of the two operons with the transcriptomic data.
 
-Previous attempts to identify transcriptional starts of the pmoCAB operons in M. trichosporium OB3b using a conventional primer extension approach were not successful (Gilbert et al., 2000).
+Previous attempts to identify transcriptional starts of the pmoCAB operons in M. trichosporium OB3b using a conventional primer extension approach were not successful \cite{gilbert2000}.
 The RNA-seq data were used for identification of transcriptional starts for the pmoCAB operons.
-Because the published METTOv1 genome did not contain a complete pmoCAB cluster, a separate alignment run was performed using a previously published sequence as the scaffold (Holmes et al., 1995).
+Because the published METTOv1 genome did not contain a complete pmoCAB cluster, a separate alignment run was performed using a previously published sequence as the scaffold \cite{holmes1995}.
 For this sequence, two possible transcriptional start sites were identified.
 It is not known whether these reflect the same start sites of both operons, different start sites for each, or expression of only one operon with two start sites.
 The position -274nt (A) from the translational start of the pmoC gene was predicted as the most prominent start of transcription of the operon (Figure S1 in Supplementary Material).
 Putative $\sigma_{70}$-like -10 and -35 regions could be identified upstream of the predicted start (Table S3 in Supplementary Material).
-The structure of the putative promoter region from M. trichosporium OB3b shows significant similarity to a pmoCAB promoter region previously identified in Methylocystis sp. M (Gilbert et al., 2000).
+The structure of the putative promoter region from M. trichosporium OB3b shows significant similarity to a pmoCAB promoter region previously identified in Methylocystis sp. M \cite{gilbert2000}.
 Another potential transcriptional start is at position -324 from the translational start of the pmoC gene.
 It should be noted that the region between the two predicted start sites was also covered with relatively high count (region between -324 and -274nt with respect to the translational start of pmoC).
 No putative promoter sequences were found upstream of position 324.
 
 The genome predicts an additional copy of the pmoC gene by itself (pmoC2, METTOv1\_310040), which can be distinguished from the other pmoC genes in the transcriptomics data due to sequence divergence.
-It has previously been demonstrated that additional copies of pmoC are essential for methanotrophic growth in other strains (Stolyar et al., 1999; Dam et al., 2012a).
-It has also been shown that the homologous amoC (additional lone copy of amoC in ammonia-oxidizing bacterium Nitrosomonas europaea) plays role in cell recovery from ammonium starvation (Berube and Stahl, 2012).
+It has previously been demonstrated that additional copies of pmoC are essential for methanotrophic growth in other strains \cite{stolyar1999, dam2012a}.
+It has also been shown that the homologous amoC (additional lone copy of amoC in ammonia-oxidizing bacterium Nitrosomonas europaea) plays role in cell recovery from ammonium starvation \cite{berube2012}.
 However the functional role of PmoC is not known.
 The relative expression of pmoC2 was approximately 450-fold less than the expression of the two pmoC genes from the pmo-operons (Table 2).
 Low relative expression of the pmoC homolog may suggest a role in regulation or sensing rather than catalytic activity.
 
 \subsection{\ce{C1}-Oxidation: Methanol-To-Formaldehyde}
-The product of methane oxidation (i.e., methanol) is converted to formaldehyde by a PQQ-dependent methanol dehydrogenase (MDH) \cite{anthony1982}, 2002; Yamada et al., 1991; \cite{anthony1994}.
-The enzyme has been previously purified from M. trichosporium OB3b and well characterized (Yamada et al., 1991).
+The product of methane oxidation (i.e., methanol) is converted to formaldehyde by a PQQ-dependent methanol dehydrogenase (MDH) \cite{anthony1982, anthony2002, yamada1992, anthony1994}. % Yamada really is 1992.
+The enzyme has been previously purified from M. trichosporium OB3b and well characterized \cite{yamada1992}.  % Yamada really is 1992.
 MDH is a hetero-tetrameric enzyme encoded by mxaF and mxaI.
 The activity of the enzyme in vivo requires cytochrome cL (mxaG) and a number of chaperones, regulators, and enzymes, including genes required for \ce{Ca^{2+}} insertion \cite{anthony1994, anthony2002}.
 Most of the genes essential for this methanol conversion step in M. trichosporium OB3b are organized in one large operon in an order similar to that found in other methylotrophs (Figure S2A in Supplementary Material).
@@ -126,12 +126,12 @@ The genome of M. trichosporium OB3b contains the following three homologs of the
 Relative expression of all xoxF-homologs is very low.
 The most highly expressed xox-homolog (xoxF1) showed only about 2\% of the mxaF expression.
 The function of the xox-gene products has not been studied in M. trichosporium OB3b.
-In the non-methanotrophic methylotroph Methylobacterium extorquens AM1, it has been shown that xoxF may display methanol-oxidizing activity (Schmidt et al., 2010), and can contribute to the complex regulation of mxa-genes (Skovran et al., 2011).
-Furthermore, there are suggestions that xoxF may play a role in formaldehyde oxidation (Wilson et al., 2008).
+In the non-methanotrophic methylotroph Methylobacterium extorquens AM1, it has been shown that xoxF may display methanol-oxidizing activity \cite{schmidt2010}, and can contribute to the complex regulation of mxa-genes \cite{skovran2011}.
+Furthermore, there are suggestions that xoxF may play a role in formaldehyde oxidation \cite{wilson2008}.
 The low expression of all xoxF-homologs in M. trichosporium OB3b compared to mxaFI or \ce{H4}MTP-linked pathway genes suggests that xox-genes may have no or a minor contribution to methanol oxidation in M. trichosporium OB3b under the tested growth conditions.
 However, our data do not rule out the possibility that one or more of the xoxF gene products are involved in regulation, either of methanol or formaldehyde oxidation.
 
-Pyrroloquinoline quinone (PQQ) biosynthesis is another function essential for operation of the primary methanol oxidation system (Toyama et al., 1997; \cite{anthony2002}.
+Pyrroloquinoline quinone (PQQ) biosynthesis is another function essential for operation of the primary methanol oxidation system \cite{toyama1997, anthony2002}.
 A total of six pqq genes appear to be present in the M. trichosporium OB3b genome in two clusters: pqqBCDE and pqqFG.
 Moderate expression of both clusters was observed (Table 2).
 No gene for the small PQQ precursor (PqqA) is predicted in the current version of the genome.
@@ -155,7 +155,7 @@ The rest of the genes involved in PQQ biosynthesis showed modest to low expressi
 
 
 \subsection{\ce{C1}-Oxidation: Formaldehyde-To-Formate}
-Previous enzymatic studies predict three possible pathways for formaldehyde oxidation: (1) direct oxidation through dye-linked heme-containing formaldehyde dehydrogenase (Patel et al., 1980), (2) \ce{H4}folate-, and (3) \ce{H4}MTP-mediated \ce{C1} transfers (Vorholt et al., 1999; \cite{doronina2008}.
+Previous enzymatic studies predict three possible pathways for formaldehyde oxidation: (1) direct oxidation through dye-linked heme-containing formaldehyde dehydrogenase \cite{patel1980}, (2) \ce{H4}folate-, and (3) \ce{H4}MTP-mediated \ce{C1} transfers \cite{vorholt1999, doronina2008}.
 Contrary to enzymatic studies, BLAST searches of the draft genome of M. trichosporium OB3b did not reveal any obvious system that could be attributed to heme-containing formaldehyde oxidation.
 Three broad-specificity aldehyde-detoxification systems, including two NAD-dependent aldehyde dehydrogenases (Aldh-F7 METTOv1\_100046 and Aldh, METTOv1\_610028) and one aldehyde oxidase (Aor, METTOv1\_290006) were predicted in the genome.
 Two of them, aldh and aor show low expression (Table 2), while aldh-F7 was barely detected in the transcriptome.
@@ -402,7 +402,7 @@ The single large pseudo scaffold distributed by MaGE was split into 187 separate
 In addition, chimeric contigs from the assembly and low quality gene calls were removed (Table S5 in Supplementary Material).
 The summary of RNA-seq (Illumina) reads can be found in Table S4 in Supplementary Material.
 The METTOv1 genome did not have a complete pmoCAB cluster suitable for alignment.
-In order to include pmoCAB, a separate alignment run was performed with the previously published sequence of this gene cluster (Holmes et al., 1995).
+In order to include pmoCAB, a separate alignment run was performed with the previously published sequence of this gene cluster \cite{holmes1995}.
 After the alignment with BWA, SAM tools was used to generate a pileup file that was loaded into a MySQL database for normalization from Reads Per Kilobase of gene per Million mapped reads (RPKM) to coding sequences \cite{mortazavi2008}.
 
 \subsection{Transcription Site Mapping and Transcriptome Based Gene Assembly}
