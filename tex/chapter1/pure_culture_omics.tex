@@ -423,9 +423,9 @@ The MICROBExpress$^{\texttrademark}$ (Ambion$^{\textregistered}$; Austin, TX, US
 The sample quality was monitored with three techniques: (1) by electrophoresis in TAE buffer in 1\% agarose gels (2) using an Agilent 2100 Bioanalyzer with Agilent RNA 6000 Nano-kit as suggested by the manufacturer, and (3) by real-time reverse-transcriptase PCR (RT-RT PCR) with 16S rRNA (27F/536R) and pmoA-specific \cite{auman2001} primers.
 
 \subsection{Transcript Sequencing, Alignment, and Mapping}
-Enriched RNA samples (i.e., two biological replicates) were submitted to the University of Washington’s High-Throughput Sequencing Solutions Center on dry ice for single-read Illumina$^{\textregistered}$ sequencing (Department of Genome Sciences, University of Washington2).
-The replicates were aligned to the reference genome using BWA under default parameters (Li and Durbin, 2009).
-The “METTOv1” genome sequence was downloaded from MaGE (Vallenet et al., 2006).
+Enriched RNA samples (i.e., two biological replicates) were submitted to the University of Washington’s High-Throughput Sequencing Solutions Center on dry ice for single-read Illumina$^{\textregistered}$ sequencing (Department of Genome Sciences, University of Washington).
+The replicates were aligned to the reference genome using BWA under default parameters \cite{li2009}.
+The “METTOv1” genome sequence was downloaded from MaGE \cite{vallenet2006}.
 The single large pseudo scaffold distributed by MaGE was split into 187 separate contigs at each stretch of N bases.
 In addition, chimeric contigs from the assembly and low quality gene calls were removed (Table S5 in Supplementary Material).
 The summary of RNA-seq (Illumina) reads can be found in Table S4 in Supplementary Material.
@@ -440,7 +440,7 @@ The boundary of a rapid transition from near zero reads mapped to 10, 100 RPKM o
 Stops were similarly identified as a rapid transition to low numbers of reads mapped downstream of a gene termination codon.
 
 Given the fragmented nature of the M. trichosporium OB3b genome, we performed de novo assembly of the RNA-Seq reads, in an attempt to identify transcripts whose genomic sequences were incomplete.
-The assembly was performed with Velvet 1.2.06 (Zerbino and Birney, 2008) and Oases 0.2.08 (Schulz et al., 2012).
+The assembly was performed with Velvet 1.2.06 \cite{zerbino2008} and Oases 0.2.08 \cite{schulz2012}.
 The oases pipeline tool distributed with Oases was used to survey assemblies across the range of odd k-mers from 17 to 35 where the minimum fragment length was set to 100 bp.
 The final merged assembly from the pipeline tool was stripped down to the highest confidence transcript for each locus with confidence ties resolved by taking the longest sequence.
 The high confidence assembled transcripts were aligned to the M. trichosporium OB3b scaffolds using BLASTn.
