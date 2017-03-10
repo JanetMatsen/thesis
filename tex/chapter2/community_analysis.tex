@@ -1,14 +1,113 @@
 \chapter{Microbial Community Analysis: Metagenomics and Metatranscriptomics}
 \label{chapter:B}
 
-\section{this is a section level heading}
-testing 1, 2, 3.
+\section{Introduction}
+\subsection{Lake Washington Methane Cycling Studies}
 
-\subsection{a subsection}
+The Lidstrom Lab has studied methanotrophic methane oxidation in Lake Washington sediment for decades.
+Methanotrophs are concentrated at the transition from aerobic to anaerobic soil.
+This interface corresponds to both availability of methane, which rises from below, and oxygen from above \cite{lidstrom1984gradients, kuivilal1988gradients,auman2000gradients}. %, which is required because methane is more reduced than biomass.
+This microenvironment is rich in methanotrophs, methylothrophs, and other species.
+When natural sediment samples are incubated in the lab with methane as the only food source, a high abundance of non-methanotrophs is often supported (cite).
+Some of the abundant non-methanotrophs are methylotrophs, presumably consuming methanol, a by-product of methane metabolism.
+There are also many species which can only eat multi-carbon compounds, which must therefore consume excreted organic multi-carbon compounds, or cell biomass.
+The compoisition of microbes that flourishes in these sediment incubations can have varying methanotroph and methylotroph compositions (cite).
+Some species pairs appear to occur more than others \cite{oshkin2015LW}.
+Understanding the metabollic diversity of methanotrophs and methylotrophs in the sediment will advance understanding of why certain partnerships tend to occur, as well as un derstanding of a significant natural greenhouse gas mittigation system.
+Isolates first, but now new tools
+Early studies addressed these questions by isolating strains from the natuaral ecosystem (Chapter \ref{chapter:A}, \cite{auman2000gradients}).
+As understanding has developed, significant laboratory efforts were used to isolate representatives of microbes known to thrive in nature, but which have eluded capture in past decades (cite: 55, cite, cite).  % TODO: cite
+Transcriptomics and other tools can be used to gain high-confidence insight into metabolism of such individual species (e.g. Chapter \ref{chapter:A}).
+% (doesn't fit!) These strains can also be used as reference DNA for aligning shotgun sequencing reads.
+Furthermore, mixtures of small number of these pre-defined strains can be used to probe the potential of different partnerships and the underlying biology.
+meta
+Awareness that not all microbes can be isolated \cite{kaeberlein2002}, and that microbes probably behave differently when growing in communities due to influence of other microbes motivates study of these microbes in their natural community compositions.
+The same type of transcriptomic data can be used to assess the behavior of individual organisms in these mixed cultures, though analysis becomes much more challenging.
+When transcriptomics are used to study a mixed population of organisms, the prefix "meta" is applied, resulting in the term "metatranscriptomics".
+Correspondingly the term "metageomics" is used to describe sequencing the DNA of the community to allow inference of the abundant taxa and their genetic composition.
+Having the paired metagenomic and transcriptomic data allows estimation of gene expression for those microbes, by mapping sequences to the refernce DNA isentified from the metagenomes.
 
-\subsubsection{a subsubsection}
+% --- Previous work TODO: still need to process papers.  Discuss some w/ Dave(?)
 
-\section{a 2nd section}
+TODO: insert a tree showing taxonomy.  Maybe or maybe not on 16S.
+
+These methanotrophs provide substrates for non-methanotrophic methylotrophs to grow \cite{beck2013LW}.
+The particular methanotroph species and methylotroph species that dominate the sample is known to be influenced by oxygen availability (cite).
+In previous studies, it was noted that low \ce{O2} tensions select for Methylobacter/Methylotenera partnerships whereas high \ce{O2} tensions select for Methylosarcina/Methylophilus partnerships.
+There is also a revolving cast of non-methylotrops including Burkholderiales and Bacteroidetes (cite).
+Better understanding of the metabolic roles that each of these species play, and why certain partnerships tend to form would provide insight into this greenhouse-gas mittigating microbial community.
+
+\subsubsection{Goals of this study}
+This study aims to identify the major methanotrophic, methylotrophic, and other microbial species that together enable methane consumption in Lake Washington, and deduce each taxa's contribution to the community metabolism.
+Identification of which methanotrophs dominate in natural communities provides insights into how good past isolate studies reflect the true drivers of methane oxidation.
+Identification of which metabolic pathways are expressed by these methanotrophs and the accompanying non-methanotrophs informs the mechanism of methane oxidation in this natural system.
+Understanding what each microbe is doing also allows hypotheses about genetic factors in methanotroph/methylotroph partnerships.
+For example, this study also aims to address the relative importance of two functionally redundant methanol dehydrogenase enzymes: Xox-MDH and Mxa-MDH. (cite).
+TODO: write more about this if I get results in the area.
+TODO: Some methylotrophs only have Xox.  So they are using it, or absent.
+
+% --- How this dataset is poised to address these questions:    Experimental design: (don't make it too methodsy!)
+The experimental design chosen to answer these questions is showin in Figure XX
+
+TODO: FIGURE: bottles for experimental design.   was thawed from -80oC
+Sediment from Lake Washington, which had been stored in XX\% DMSO, was thawed from -80oC and cultured in 8 different bottles, half of which were treated with low oxygen, and half of which were at high oxygen (see methods).  Bottles were serially transfered for a total of 14 weeks.  The last four bottles in each series are at the opposite oxygen condition of the original experimental design.
+
+This relatively simple experimental design, including high degree of replication for studies of this type, was chosen to provide statistical power despite differences across replicates and measurement noise.
+Variation across replicates can arise from stochasticity as communities rarefy, and are compounded by the noise-generating steps of nucleic acid extraction, ribosomal RNA removal (in the case of metatranscriptomics), library prep, and the sequencing process.
+The most important environmental variable identified so far, the oxygen availability, was modulated while holding all other variables constant.
+Availability of sequenced isolate strains (cite) from the very ecosystem enhance exploration of the dataset by providing some ground-truth of similar strains, and can be used as positive controls for many of the computational methods.
+
+% --- Data sets like this are rare and special.
+Though sequencing has become routine in most biological domains, this dataset is exceptional for several reasons.
+Having 4 replicates for each experimental condition is much greater than typical metagenomic studies.
+Furthermore, most metagenomics/metatranscriptomics studies are single timepoint snapshots, rather than time-series.
+Having 11 samples in each series leads to a total of 88 samples.
+For each of the 88 samples, untargeted metagenomes and metatranscriptomes were gathered.
+These pairs allow exploration of the community without the restriction of referencing cultured strains' genomes.
+RNA was depleted, so the majority of our sequencing information is about expressed genes.
+In all, it's 9TB of sequencing data.  TODO: Table: metagenome and metatranscriptome (XX reads, XX gigabases).
+
+
+% --- Insights into what's challenging
+Despite the size and replication of this dataset, answering the questions outlined above proved challenging.
+There are many additional challenges in moving from pure-culture 'omics to meta-'omics, and these challenges were amplified by the large size of the data.
+First, the study aims to answer who is there, without the luxury of using reference DNA to align sequencing data to.
+Thus, the first task is to assemble reference DNA from the vast number of short sequences provided.
+This DNA then becomes the basis for answering both "who is there", and "what are they doing".
+Ideally, the assembly yields a small number of long sequences.
+More often than not, however, under-sampling of DNA or lack of punctuation in well-sampled (highly abundant) strains leads to fragmented reference DNA.
+This fractured reference DNA carries uncertainty and information loss through the rest of the analysis, so care must be taken to interpret all downstream results (discussed in Figure XX).
+
+% -- Tool selection & evaluation is challenging.
+Furthermore, tool selection and evaluation is challenging.
+As discussed in the introduction, metagenomics and metatranscriptomics of natural microbial communities is a rapidly developing field laiden with methodological challenges.
+For each step of inference, there are numerous tools utilizing different approaches one must choose from.
+Given that tools perform so differently on different data sets, several tools are usually tried for each step.
+For each tool, there are numerous tuning knobs the author encourages exploring, leading to a combinatiorial explosion of potential outcomes for each inference step.
+Review papers cannot keep up with the rapid rate of progress; the popular set of tools turns over quicker than every 5 years.
+Benchmark studies comparing tools are rare and may be optimizing a different objective than the study at hand.
+Tool evaluation is not standardized.
+
+% --- Lack of standards in field
+The field also lacks standards for assessing the efficacy of each inference step.
+This is in part due to differences in goals across metagenomics/metatranscriptomics studies: some aim for high confidence inference about a specific sub-population such as a novel taxa, whereas others aim to describe the sample more broadly.
+Many tools provide only limited insight into their efficacy on your particular dataset.
+Care must be taken by the investigators to select the right tools, connect them properly, and evaluate results critically.
+Often the trade-offs between tools are not evident until they are tested, and the data is explored with a critical eye.
+Success in this field requires iteration as these insights are developed.
+
+% --- So Big!
+Furthermore, the size of this dataset is both a blessing and a curse
+Yes, the high degree of replication and number of samples per series is essential for identifying hypotheses in messy data.
+However, many computational tools are not designed to scale to input data of our size, and fail when used on larger datasets than they were developed for.
+While some fail quickly and with clear messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
+For some goals, the data can be broken into subsets, processed separately, and re-joined upon completion.
+However, not every tool can operate on portions of the data, and extra care is required when stitching together results such that the next tool downstream is blind to such manipulations.
+Despite the challenges, this thesis lays out preliminary results addressing both what microbes are present, and what they contribute metabolically.
+
+
+\section{Metagenomics and Metatranscriptomics}
+
 
 
 
