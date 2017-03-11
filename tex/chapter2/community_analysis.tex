@@ -4,7 +4,7 @@
 \section{Introduction}
 \subsection{Lake Washington Methane Cycling Studies}
 
-The Lidstrom Lab has studied methanotrophic methane oxidation in Lake Washington sediment for decades.
+The Lidstrom Lab has studied methanotrophic oxidation of methane in Lake Washington sediment for decades.
 Methanotrophs are concentrated at the transition from aerobic to anaerobic soil.
 This interface corresponds to both availability of methane, which rises from below, and oxygen from above \cite{lidstrom1984gradients, kuivilal1988, auman2000gradients}. %, which is required because methane is more reduced than biomass.
 This microenvironment is rich in methanotrophs, methylothrophs, and other species.
@@ -13,53 +13,77 @@ Many of the abundant non-methanotrophs are methylotrophs, presumably consuming m
 There are also many species which can only eat multi-carbon compounds, which must therefore consume excreted organic multi-carbon compounds, or cell biomass.
 Trends in the types of communities that form in these sediment incubations have been observed  \cite{oshkin2015LW}.
 Some species pairs appear to occur more than others.
-Understanding the metabollic diversity of methanotrophs and methylotrophs in the sediment will advance understanding of why certain partnerships tend to occur, as well as un derstanding of a significant natural greenhouse gas mittigation system.
+Understanding the metabolic diversity of methanotrophs and methylotrophs in the sediment will advance understanding of why certain partnerships tend to occur, as well as understanding of a significant natural greenhouse gas mitigation system.
 
 %Isolates first, but now new tools
 % good resource: Methylotrophy in a Lake: from Metagenomics to Single-Organism Physiology https://www-ncbi-nlm-nih-gov.offcampus.lib.washington.edu/pmc/articles/PMC3147377/#B20
 Early studies addressed these questions by sampling specific types of DNA from Lake Washington sediments (e.g. \cite{auman2002, costello2002, nercessian2005}), and studying isolates for which genome sequences were not available \cite{auman2000gradients, kalyuzhnaya2005Methylosarcina, kalyuzhnaya2006methylotenera}.
-Later, significant laboratory efforts were used to isolate and sequence more species known to thrive in Lake Washington for more in-depth understanding
-    \cite{kalyuzhnaya2011isolates, beck2015isolates, mctaggart2015, kalyuzhnaya2015}.
-These single species' metabolism can be further studied with transcriptomics and other tools (e.g. Chapter \ref{chapter:A}).
+Later, significant laboratory efforts were used to isolate and sequence more species known to thrive in Lake Washington
+    \cite{kalyuzhnaya2011isolates, beck2015isolates, mctaggart2015, kalyuzhnaya2015} to better understand these communities.
+%These single species' metabolism can be further studied with transcriptomics and other tools (e.g. Chapter \ref{chapter:A}).
 % (doesn't fit!) These strains can also be used as reference DNA for aligning shotgun sequencing reads.
 %Furthermore, mixtures of small number of these pre-defined strains can be used to probe the potential of different partnerships and the underlying biology \cite{yu2016synthetic}.
 
 % meta
-Awareness that not all microbes can be isolated \cite{kaeberlein2002, stewart2012}, and that microbes probably behave differently when growing in communities due to influence of other microbes motivates study of these microbes in their natural community compositions.
-The same type of transcriptomic data can be used to assess the behavior of individual organisms in these mixed cultures, though analysis becomes much more challenging.
-When transcriptomics are used to study a mixed population of organisms, the prefix "meta" is applied, resulting in the term "metatranscriptomics".
-Correspondingly the term "metageomics" is used to describe sequencing the DNA of the community to allow inference of the abundant taxa and their genetic composition.
-Having the paired metagenomic and transcriptomic data allows estimation of gene expression for those microbes, by mapping sequences to the refernce DNA isentified from the metagenomes.
+Awareness that not all microbes can be isolated \cite{kaeberlein2002, stewart2012}, and that microbes probably behave differently when growing in communities due to influence of other microbes \cite{yu2016synthetic} motivates study of these microbes in their natural community compositions.
+The omics studies used on single cultures (e.g. Chapter \ref{chapter:A}) can be applied to communities, though analysis becomes much more challenging.
+When omics methods are applied to mixed populations of organisms, the prefix "meta" is applied, resulting in the terms such as  "metatranscriptomics".
+Correspondingly the term "metagenomics" is used to describe sequencing the DNA of the community to allow inference of the abundant taxa and their genetic composition.
+Having the paired metagenomic and transcriptomic data allows estimation of gene expression for those microbes, by mapping sequences to the reference DNA identified from the metagenomes.
 
-% --- Previous work TODO: still need to process papers.  Discuss some w/ Dave(?)
+\begin{figure}[H]
+\centering
+     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170311_taxonomy_overview.pdf}
+     \begin{singlespace}
+     \caption[Taxonomy of microbes known to factor into methane oxidation in Lake Washington sediment.]{
+        Taxonomy of microbes that often appear in methane incubations of Lake Washington sediment.
+        The family Methylococcaceae is methanotrophic.
+        The family Methylococcaceae includes non-methanotrophic methylotrophs.
+        Burkholderiales grow on multi-carbon compounds, but in addition, some are methylotrophs.}
+     \label{fig:taxonomy}
+     \end{singlespace}
+\end{figure}
 
-TODO: insert a tree showing taxonomy.  Maybe or maybe not on 16S.
-
+Previous metagenomics and metatranscriptomics studies of Lake Washington sediment have highlighted dominance of the methanotrophic family Methylococcaceae \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW}.
 These methanotrophs provide substrates for non-methanotrophic methylotrophs to grow \cite{beck2013LW}.
-The particular methanotroph species and methylotroph species that dominate the sample is known to be influenced by oxygen availability (cite).
-In previous studies, it was noted that low \ce{O2} tensions select for Methylobacter/Methylotenera partnerships whereas high \ce{O2} tensions select for Methylosarcina/Methylophilus partnerships.
-There is also a revolving cast of non-methylotrops including Burkholderiales and Bacteroidetes (cite).
-Better understanding of the metabolic roles that each of these species play, and why certain partnerships tend to form would provide insight into this greenhouse-gas mittigating microbial community.
+The particular methanotroph species and methylotroph species that dominate the sample is known to be influenced by oxygen availability \cite{hernandez2015LW}.
+In previous studies, it was noted that low \ce{O2} tensions select for Methylotenera/Methylobacter partnerships whereas high \ce{O2} tensions select for Methylophilus/Methylosarcina partnerships \cite{hernandez2015LW}.
+There is also a revolving cast of non-methylotrops including Burkholderiales and Bacteroidetes \cite{kalyuzhnaya2008Burkholderiales, beck2014LW}.
+Better understanding of the metabolic roles that each of these species play, and why certain partnerships tend to form would provide insight into this greenhouse-gas mitigating microbial community.
 
 \subsubsection{Goals of this study}
 This study aims to identify the major methanotrophic, methylotrophic, and other microbial species that together enable methane consumption in Lake Washington, and deduce each taxa's contribution to the community metabolism.
 Identification of which methanotrophs dominate in natural communities provides insights into how good past isolate studies reflect the true drivers of methane oxidation.
 Identification of which metabolic pathways are expressed by these methanotrophs and the accompanying non-methanotrophs informs the mechanism of methane oxidation in this natural system.
-Understanding what each microbe is doing also allows hypotheses about genetic factors in methanotroph/methylotroph partnerships.
-For example, this study also aims to address the relative importance of two functionally redundant methanol dehydrogenase enzymes: Xox-MDH and Mxa-MDH. (cite).
-TODO: write more about this if I get results in the area.
-TODO: Some methylotrophs only have Xox.  So they are using it, or absent.
+Understanding each microbes contribution to the community metabolism allows hypotheses about genetic factors in methanotroph/methylotroph partnerships.
+
+%For example, this study also aims to address the relative importance of two functionally redundant methanol dehydrogenase enzymes: Xox-MDH and Mxa-MDH. (cite).
+%TODO: write more about this if I get results in the area.
+%TODO: Some methylotrophs only have Xox.  So they are using it, or absent.
 
 % --- How this dataset is poised to address these questions:    Experimental design: (don't make it too methodsy!)
-The experimental design chosen to answer these questions is showin in Figure XX
+The experimental design chosen to answer these questions is show in in Figure \ref{fig:experimental_design}.
 
-TODO: FIGURE: bottles for experimental design.   was thawed from -80oC
-Sediment from Lake Washington, which had been stored in XX\% DMSO, was thawed from -80oC and cultured in 8 different bottles, half of which were treated with low oxygen, and half of which were at high oxygen (see methods).  Bottles were serially transfered for a total of 14 weeks.  The last four bottles in each series are at the opposite oxygen condition of the original experimental design.
+\begin{figure}[H]
+\centering
+     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170311_experimental_design_meta4--2_colors.png}
+     \begin{singlespace}
+     \caption[Experimental design.]{
+        Sediment from Lake Washington, which had been thawed from -80$^o$C and cultured in 8 different bottles,
+			half of which were treated with low oxygen, and half of which were at high oxygen (see methods).
+		Bottles were serially transferred for a total of 14 weeks.
+		The last four bottles in each series are at the opposite oxygen condition of the original experimental design (indicated by bottle number color switch).
+		Metagenomes and metatranscriptomes were obtained for weeks 4-14, resulting in 88 metagenomes and 88 metatranscriptomes.
+		}
+     \label{fig:experimental_design}
+     \end{singlespace}
+\end{figure}
 
 This relatively simple experimental design, including high degree of replication for studies of this type, was chosen to provide statistical power despite differences across replicates and measurement noise.
 Variation across replicates can arise from stochasticity as communities rarefy, and are compounded by the noise-generating steps of nucleic acid extraction, ribosomal RNA removal (in the case of metatranscriptomics), library prep, and the sequencing process.
 The most important environmental variable identified so far, the oxygen availability, was modulated while holding all other variables constant.
-Availability of sequenced isolate strains (cite) from the very ecosystem enhance exploration of the dataset by providing some ground-truth of similar strains, and can be used as positive controls for many of the computational methods.
+Availability of sequenced isolate strains from the very ecosystem enhance exploration of the dataset by providing some ground-truth biological facts.
+Lake Washington isolates can also be integrated into positive controls for many of the computational methods.
 
 % --- Data sets like this are rare and special.
 Though sequencing has become routine in most biological domains, this dataset is exceptional for several reasons.
@@ -69,8 +93,21 @@ Having 11 samples in each series leads to a total of 88 samples.
 For each of the 88 samples, untargeted metagenomes and metatranscriptomes were gathered.
 These pairs allow exploration of the community without the restriction of referencing cultured strains' genomes.
 RNA was depleted, so the majority of our sequencing information is about expressed genes.
-In all, it's 9TB of sequencing data.  TODO: Table: metagenome and metatranscriptome (XX reads, XX gigabases).
+In all the dataset totals to 9TB, with approximately XX reads per sample.
 
+\begin{table}[H]
+\centering
+\begin{tabular}{l | cc}
+ %\toprule
+        & average \# reads per sample & total \# reads \\
+\midrule
+	metagenomes & XX & XX \\
+	metatranscriptomes & XX & XX \\
+%\bottomrule
+\end{tabular}
+\caption{Total number of un-filtered reads.}
+\label{table:sample_read_sizes}
+\end{table}
 
 % --- Insights into what's challenging
 Despite the size and replication of this dataset, answering the questions outlined above proved challenging.
