@@ -42,10 +42,12 @@
 %    Printed in twoside style now that that's allowed
 %
 
+% Packages added by Janet
 \documentclass [11pt, proquest] {uwthesis}[2016/11/22]
 \usepackage{setspace}  % sometimes single spacing (J)
 \usepackage{float} % [H] figure placements   (J)
 \usepackage{pdfpages} % necessary for [width=1.0\textwidth] type args (J)
+\usepackage{booktabs} % for table \toprule, \midrule, \bottomrule  (J)
 
 %
 % The following line would print the thesis in a postscript font
@@ -70,6 +72,7 @@
 % to get reaction arrows, use mhchem.  From http://tex.stackexchange.com/questions/142865/arrows-chemical-equations
 \usepackage[version=3]{mhchem} % http://bay.uchicago.edu/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf
 	% Ammonium sulphate is \ce{(NH4)2SO4}
+
 
 \hyphenpenalty=5000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
 \tolerance=1000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
@@ -153,47 +156,11 @@ Abstract.
 %
 % ----- acknowledgments
 %
-\acknowledgments{% \vskip2pc
-  % {\narrower\noindent
-
-\begin{singlespace}
-I feel incredible gratitude for Mary Lidstrom, who taught me biology, metabolic engineering, and supported my transition to computational biology and data science.
-It was clear that my and other lab members' best interests for scientific and professional development were always her top priority.
-She will forever remain one of my top leadership role models.
-
-I also  would like to thank David Beck for his computational mentorship over the years, especially the last few when we worked so closely.
-His incredible knowledge breadth, and eagerness to share it with students is unparalleled.
-It was Dave's enthusiasm for data science and support of knowledge-expanding coursework that led me to complete the Advanced Data Science Option.
-I am so grateful to have had the opportunity to absorb so much data science knowledge before leaving the University of Washington.
-
-Thanks to the dozens of people who helped me and collaborated with me on wet lab adventures, most of which are not described in this thesis.
-I thank the Formolase project team, particularly Amanda Smith, David Baker, Adam W, Justin Siegel.
-I thank the numerous Lidstrom Lab members; it was a pleasure to develop lab skills alongside you.
-I thank Marina K. for initial mentorship in experimental biology, and Ludmila C. for years of consultation about methylotrophic metabolism.
-
-I thank my family for guiding me toward engineering at a young age, and the support through these 25 years of education.
-
-I also thank the community around the Data Science Studio and Advanced Data Science program at UW.
-The impact of these programs on my training and career trajectory are substantial.
-
-Finally, I thank my committee members for support throughout a very diverse PhD experience.
-
-\end{singlespace}
-% Internship companies.
-}
-
+\include{./tex/acknowledgements}
 %
 % ----- dedication
 %
-\dedication{\begin{center}
-\begin{singlespace}
-
-I dedicate this to my miracle husband, Erick.
-You inspired me to embark on this journey, worked by my side every day, and contributed so greatly to my happiness throughout.
-
-\end{singlespace}
-\end{center}}
-
+\include{./tex/dedication}
 %
 % end of the preliminary pages
 
@@ -202,7 +169,6 @@ You inspired me to embark on this journey, worked by my side every day, and cont
 %
 
 \textpages
-
 \include{./tex/chapter0/intro_glue}
 
 % ========== Chapter 1
