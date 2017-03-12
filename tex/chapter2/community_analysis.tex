@@ -72,7 +72,8 @@ The experimental design chosen to answer these questions is show in in Figure \r
         Sediment from Lake Washington, which had been thawed from -80$^o$C and cultured in 8 different bottles,
 			half of which were treated with low oxygen, and half of which were at high oxygen (see methods).
 		Bottles were serially transferred for a total of 14 weeks.
-		The last four bottles in each series are at the opposite oxygen condition of the original experimental design (indicated by bottle number color switch).
+		The last four bottles in each series are at the opposite oxygen condition of the original experimental design
+			(indicated by bottle label color switch).
 		Metagenomes and metatranscriptomes were obtained for weeks 4-14, resulting in 88 metagenomes and 88 metatranscriptomes.
 		}
      \label{fig:experimental_design}
@@ -81,7 +82,7 @@ The experimental design chosen to answer these questions is show in in Figure \r
 
 This relatively simple experimental design, including high degree of replication for studies of this type, was chosen to provide statistical power despite differences across replicates and measurement noise.
 Variation across replicates can arise from stochasticity as communities rarefy, and are compounded by the noise-generating steps of nucleic acid extraction, ribosomal RNA removal (in the case of metatranscriptomics), library prep, and the sequencing process.
-The most important environmental variable identified so far, the oxygen availability, was modulated while holding all other variables constant.
+The most important environmental variable identified so in previous studies, the oxygen availability, was modulated while holding all other variables constant.
 Availability of sequenced isolate strains from the very ecosystem enhance exploration of the dataset by providing some ground-truth biological facts.
 Lake Washington isolates can also be integrated into positive controls for many of the computational methods.
 
@@ -111,7 +112,7 @@ In all the dataset totals to 9TB, with approximately XX reads per sample.
 
 % --- Insights into what's challenging
 Despite the size and replication of this dataset, answering the questions outlined above proved challenging.
-There are many additional challenges in moving from pure-culture 'omics to meta-'omics, and these challenges were amplified by the large size of the data.
+%There are many additional challenges in moving from pure-culture 'omics to meta-'omics, and these challenges were amplified by the large size of the data.
 First, the study aims to answer who is there, without the luxury of using reference DNA to align sequencing data to.
 Thus, the first task is to assemble reference DNA from the vast number of short sequences provided.
 This DNA then becomes the basis for answering both "who is there", and "what are they doing".
@@ -123,11 +124,11 @@ This fractured reference DNA carries uncertainty and information loss through th
 Furthermore, tool selection and evaluation is challenging.
 As discussed in the introduction, metagenomics and metatranscriptomics of natural microbial communities is a rapidly developing field laiden with methodological challenges.
 For each step of inference, there are numerous tools utilizing different approaches one must choose from.
-Given that tools perform so differently on different data sets, several tools are usually tried for each step.
+Given that each tool has different efficacy on different data sets, several tools are usually tried for each step.
 For each tool, there are numerous tuning knobs the author encourages exploring, leading to a combinatiorial explosion of potential outcomes for each inference step.
-Review papers cannot keep up with the rapid rate of progress; the popular set of tools turns over quicker than every 5 years.
-Benchmark studies comparing tools are rare and may be optimizing a different objective than the study at hand.
-Tool evaluation is not standardized.
+The nearly complete turnover of tools approximately every 5 years leads to very few benchmarking studies, and review papers that are out date upon publication.
+Benchmark studies comparing tools are rare and specific to a small number of data sets that may not behave like your own data set.
+%Methods and metrics for tool evaluation are not standardized. repeated below
 
 % --- Lack of standards in field
 The field also lacks standards for assessing the efficacy of each inference step.
@@ -139,16 +140,181 @@ Success in this field requires iteration as these insights are developed.
 
 % --- So Big!
 Furthermore, the size of this dataset is both a blessing and a curse
-Yes, the high degree of replication and number of samples per series is essential for identifying hypotheses in messy data.
+Yes, the high degree of replication and number of samples per series is essential for identifying hypotheses in noisy data.
 However, many computational tools are not designed to scale to input data of our size, and fail when used on larger datasets than they were developed for.
-While some fail quickly and with clear messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
+While some fail quickly and with informative messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
 For some goals, the data can be broken into subsets, processed separately, and re-joined upon completion.
-However, not every tool can operate on portions of the data, and extra care is required when stitching together results such that the next tool downstream is blind to such manipulations.
+However, not every tool can operate on segments of the data, and extra care is required when stitching together results such that the next tool downstream is blind to such manipulations.
 Despite the challenges, this thesis lays out preliminary results addressing both what microbes are present, and what they contribute metabolically.
 
 
+%==========================================================================================================================================
 \section{Metagenomics and Metatranscriptomics}
 
+\subsection{Introduction to Metagenomics and Metatranscriptomic Inference}
+Metagenomics and metatranscriptomics are umbrella terms for any project that uses sequencing of mixed populations of organisms.
+It implies untargeted sampling of the samples' entire DNA or RNA pool, rather than selecting for specific types of sequences.
+This is in contrast to 16S surveys, which amplify DNA from a segment of the conserved bacterial 16S ribosome \cite{kunin2008}.
+Such sequences are used as a molecular clocks for large timescales, and allow for inference of the bacterial taxa present in samples.
+16S studies do not allow the possibility to determine what genes each organism has available.
+Sometimes two organisms are nearly identical at the 16S level, but have substantial metabolic differences due to insertions, deletions, and transposons.  % todo (cite) (tried for 20 min).
+The term "metagenomics" is typically reserved for the un-targeted sampling of the entire community DNA pool.
+Metagenomics affords the possibility of identifying the genetic composition of individual microbes, albeit after much greater analysis efforts.
+Prior studies of Lake Washington painted the coarse 16S-based perspective of who is present in Lake Washington's sediment \cite{beck2013LW, hernandez2015LW, oshkin2015LW}, and did preliminary untargeted metagenomics \cite{beck2013LW, oshkin2015LW}.
+This work focuses solely on untargeted metagenomics, to address the more challenging questions of microbial genetic composition, and to provide a basis for expression analysis.
 
+%---- Isolates vs de-novo reference-free assemblies.
+Once shotgun metagenomic samples are in hand, there are many possible ways to infer which organisms are present and what they express.
+One approach is to assess how the samples relate to isolate organisms, by mapping to the reads to the isolates' genomes.
+High mapping rates to an isolate genome suggests the sample contained a large abundance of a similar organism.
+If their genomes are similar, mapping of RNA can inform the expression patterns of that organism in the sample.
+This can afford an excellent benchmark for analysis of metagenomes or transcriptomes, but only if the isolate genomes accurately represent the strains and diversity of strains in the community sample.
+However, isolates may often poor proxies for natural microbes given that the vast majority of isolates are not currently culturable \cite{kaeberlein2002, stewart2012}.
+Even if the isolates are perfect proxies for some organisms, the set may be missing whole categories of other organisms.
+This project did a preliminary study using isolate genomes as a reference for mapping metatranscriptome reads (Section XX), but discovered that a small fraction of the RNA mapped to the genes in the isolate genomes.
+The project quickly pivoted to reference-genome-free workflows, whereby the metagenomic reads were assembled into contigs that collectively represent the DNA present in the dominant and semi-abundant microbes.
+These contigs can be annotated to identify genes, and organised into genome bins intended to represent single strains or groups of highly similar strains.
+
+\begin{figure}[H]
+\centering
+     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170312_metagenomics_metatranscriptomics_overview.pdf}
+     \begin{singlespace}
+     \caption[Overview of metagenomics/metatranscriptomics workflow.]{
+        Graphical introduction to basic vocabulary and inference steps of metagenomics and metatranscriptomics workflows.
+		Colored lines = single reads, long colored lines = contigs,
+		gray arrows on colored lines = gene calls, wiggly lines above contigs = coverage of alignment.}
+     \label{fig:meta_workflow}
+     \end{singlespace}
+\end{figure}
+
+The high-level representation of steps common to most shotgun metagenomics papers is shown in Figure \ref{fig:meta_workflow}.
+The first step of reference-free metagenomics is assembly, wherein contigs are aligned and fragments are merged to infer the sequence from which the reads originated.
+Binning aims to identify contigs that in aggregate represent single organisms, or groups of highly related organisms \cite{kunin2008}.
+Genes can be called on the contigs, either before or after binning, to reveal the genetic potential of the parent organism.
+
+The flow of information through metagenomics workflows can be thought of as liquid flow through piping with leaks.
+Each software step can be though of as a pipe.
+Flow (read accountability) can be measured at the input and exit of pipes (represented by flow gauges), allowing identification of how well output data reflects the original samples, and at which step(s) information was lost.
+
+
+\begin{figure}[H]
+\centering
+     \includegraphics[width=0.8\textwidth]{./tex/chapter2/figures/170312_pipe_leaks.pdf}
+     \begin{singlespace}
+     \caption[Framework for assessing information loss in workflow steps.]{
+       	Cartoon representing the ability to deduce information loss at different steps of the metagenome/metatranscriptome workflow.}
+     \label{fig:pipe_leaks}
+     \end{singlespace}
+\end{figure}
+
+%---- Pipe description
+A simplified cartoon of the framework used to assess efficacy of each tool in the workflow is illustrated by Figure \ref{fig:pipe_leaks}.
+For papers where the goal is to describe one or several novel organism(s) with high confidence (cite), the loss of information (reads) along the way may not be a significant concern.
+Often papers in this category do not clearly report an estimate of that organisms abundance in the natural community.
+% Don't trash other papers \cite{evans2015} , or obscure absolute abundances by using relative abundances \cite{daly2016}.
+Other papers try to describe a more holistic description of the community \cite{kantor2017} by describing the diversity of organisms found in bins from the sample.
+In this case, it is crucial to quantify what fraction of the original sample is described by the output of your analysis.
+These statistics are usually not stated clearly, allowing readers to over-estimate the importance of the described taxa in the real ecosystem.
+% At this stage, or research is in this camp, and the result section will highlight how this frame of mind guided selection of tools.
+The pipe analysis framework illustrates the approach of this paper: use multiple monitoring methods to determine which pipeline steps are associated with information loss.
+These statistics are reported throughout to prevent misinterpretation of claims about the community compositions and expression patterns.
+%This thesis aims to describe the community holistically, and thus strives to clearly report assembly, binning, and read mapping effacy so as to not overstate claims or exaggerate community simplicity.
+% Many literature studies report small and incomplete descriptions about efficacy of their assembly and binning, which obfuscates leaks in the analysis pipeline and corresponds to over-simplified descriptions of the environment under study.  % Don't cite: hard to be ceratin I read carefully enough to call out papers by name.  It's also not nice!
+
+%----- There is no road map!
+Each arrow can be executed by several or sometimes dozens of competing software packages \cite{sangwan2016,thomas2012}.
+Each tool can report basic statistics about efficacy based on inputs and outputs, but it it up to the researcher with larger-scope understanding of the project goals to write scripts to critically assess efficacy of the tools in aggregate.
+Results from one software package can give you better insight about how to evaluate the other packages' results, so an iterative process with various somewhat-equivalent tools can maximize the accuracy of your results.
+Finally, more data is great for software tools trying to extract information from uncertain data, but many tools are not designed to work on sequencing data as large as this one.
+%Tools choke.  Just don't complete.
+Sometimes the parameters can be altered, sometimes you can break up a dataset and feed it to a tool in pieces, but sometimes the size is a deal breaker.
+It is the role of the computational biologist to learn enough about the competing tools to select a handful to try, develop metrics and priorities for the trade-offs of each tool, project complex data into summary graphs, and decide which tool is the best fit for the research goals.
+
+\subsubsection{Assembly}
+%---- Why assemble
+Analysis of metagenomic and metatranscriptomic data usually beings with assembling metagenome reads into contigs (Fig \ref{fig:meta_workflow}), which are contiguous length of genomic sequence in which the order of bases is known to a high confidence level. %(JGI)
+The metagenomes can be aligned to these contigs to infer the abundance of organisms.
+The transcriptomes can be aligned to these same contigs to infer what genes are expressed.
+In principle, metagenomes and metatranscriptomes can be aligned to isolate genomes rather than contigs, however, in practice meta-omics experiments are used precisely when the isolates available are known to be incomplete representatives of the microbial community under study.
+Even if a similar organism has been isolated, the investigation may be probing the diversity of similar organisms, or the influence of less abundant microbes on the community's function.
+
+%---- Not all assemblies are created equal
+The challenge of assembly scales with the complexity of the microbial community.
+High species diversity and strain-level heterogeneity add challenge to assembly \cite{kunin2008, thomas2012}.
+Communities with a small number of well-delineated species tend to assemble better, yielding shorter numbers of long contigs.
+In contrast, complex communities' high diversity can lead to assemblies with fewer long contigs and more short contigs \cite{kunin2008}.
+These shorter contigs are more challenging to analyze and can lead to an incomplete portrait of a community.
+Short contigs' are more difficult to call genes on, and are also more difficult to bin because measures like GC and differential abundance are noisier for short contigs than long ones \cite{sangwan2016}.
+The most common measures of assembly efficacy are characteristics of the contigs themselves.  How many are there?  What is the length of the median contig (termed "N50")?
+This thesis advocates for an additional measure not seen in other published work: the fraction of the original reads that map to the assembled contigs.   % todo: "seldom seen" instead of "not seen"?
+% Dont' talk about restricting to contigs > 1.5kb.
+
+\subsection{Elviz Assemblies}
+%---- JGI assemblies
+Many sequencing projects including this one are done by the Joint Genome Institute (JGI), which provides some bioinformatics processing in addition to providing un-processed reads.
+The software they run assembles contigs for each sample individually, predicts genes, and calls taxonomy for contigs. (cite)
+They also report the number of reads and average coverage for each contig.
+These measures are a great starting point for answering "who's there" in terms of taxa abundance, but does neglect information about reads that did not assemble well and thus must be used with caution.
+
+%---- Not assembled together
+The contigs JGI provides are assembled for each sample, individually.
+Thus the contigs are not shared across samples, and comparison across samples is hindered.
+For example, it is difficult to infer whether a particular gene is expressed differently in two samples if the contigs used as reference DNA are not the same across samples.
+More powerful analyses can be done when the DNA from all metagenomic samples are assembled at once.
+This makes it possible to get a table of gene expression that is comparable across samples.
+Such an assembly also leads to more powerful binning (discussed below) by providing extra features to cluster with: the differential abundances of each contig across the n samples \cite{albertsen2013}.
+Since the number of reads originating from a particular organism should be proportional to its abundance, the DNA coverage for a set of contigs originating from an organism should be similar in a particular sample, and correlated across samples.
+The per-sample nature of the JGI contigs drove the types of analyses that data was used for, and motivated generation of co-assembled contigs to represent the entirety of the dataset as discussed below.
+
+\subsubsection{Binning}
+%---- Definition & Why
+Desire for understanding at organism-level often leads investigators to approximate genomes as best they can from a set of metagenomic contigs.
+The phrase "genome bin", often called simply "bin", is used to describe a collection of contigs used to approximate a single organism's genome.
+"Bin" implies the collection is expected to be somewhat incomplete and potentially contaminated by DNA of other strains or species.
+Bins allow inference of which metabolic pathways are available, and can be used as a reference to map RNA to for quantification of how these genes are expressed.
+Higher confidence claims would be possible upon isolation of the organism represented by the genome bin, but laboratory isolates are often not obtainable either due to obligate partnerships with other organisms, or a variety of intolerances to laboratory conditions \cite{stewart2012}.
+Binning can be done before or after annotating genes on the contigs, as very few methods use gene calls in the binning process (cite?).
+
+%---- Overview of binning tools' strategies
+The most common features used to bin contigs include contig GC content, tetranucleotide frequency, other oligonucleotide frequencies, and differential abundance across samples \cite{sangwan2016}.
+Most aim to be effective without needing reference genomes to align to.
+% can't find citation for using an isolate as a binning reference.  Only for assembly.  Drop??
+
+%---- Rarefaction, species heterogeneity
+The ability to get clean genome bins varies wildly from project to project.
+As with assembly, more rarefied samples with low levels of strain heterogeneity are more amenable to binning \cite{kunin2008, thomas2012}, as the contigs are more likely to be long and few in number.
+Longer contigs have reduced noise for measurements of GC ratio, tetranucleotide freq, and differential abundance \cite{sangwan2016}.
+This in turn leads to less ambiguity when sorting contigs into respective bins.
+
+%---- Bin assessment
+The quality of bins can be determined by combining metrics of completeness, contamination, and efficacy of representing the sample.
+Completeness and contamination checks can be automated by use of CheckM \cite{parks2015}, which uses the presence of marker genes in each bin as the basis for its approximations.
+The marker genes used by CheckM are different based on the approximate taxonomy CheckM approximates for the bins.
+While this is certainly more effective than one set of genes used for all microbes, the reference sets available may not be good fits for the particular microbes under study.
+Furthermore, the choice of reference gene set might be poor for messy bins that  contain contigs from wildly different taxa.
+Some papers determine completeness and contamination by manual inspection using domain-specific marker gene sets (cite).
+For papers published before CheckM, this was the best option, however CheckM does allow the possibility of adding custom marker gene sets to their analysis pipeline.
+
+%---- Binning tools
+The three tools used herein combine sequence composition and coverage across multiple samples as inputs to machine learning algorithms to automatically cluster contigs into genomes.
+The differences in their algorithms are only vaguely described in the literature and, differences in their output characteristics are seldomly reported \cite{sangwan2016}.
+Metabat \cite{metabat2015} uses k-medoid clustering of a distance measure composed of tetranucleotide frequency and abundance.
+% ** doesn't use marker genes **
+MyCC \cite{mycc2016} uses affinity propagation to cluster contigs, and uses the presence of marker genes to correct clusters.
+%"an automated binning tool that combines genomic signatures, marker genes and optional contig coverages within one or multiple samples"
+%"FetchMG extracts 40 universal phylogenetic marker genes"
+%"AP-generated clusters were finally corrected based on the sequences harboring marker genes"
+CONCOCT \cite{concoct2014} uses a Gaussian mixture model fit with a variational Bayesian approximation, on features thinned out via principle components analysis (PCA).
+% This says it uses marker genes, but the original paper doesn't mention it.
+% Manual curation
+Almost every high-quality bin published in high-profile papers has used tools such as these, but is subsequently refined by manual curation, with methods only vaguely described.
+
+\subsubsection{Mapping RNA}
+Metatranscriptomes can be mapped to contigs or bins.
+A key variable to consider is what you want to happen with reads that map to multiple places.
+If a read maps equally well to two different contigs in a bin, should it be randomly assigned to one locus, or thrown away?
+If the study is aiming for differential expression type analysis, than the latter is better.
+Discarding ambiguous reads is the default of most alignment and counting tools.
+If the study aims instead to describe a holistic picture of expression in a sample, it may be worth guessing the source of the DNA, which will certainly be wrong some of the time.
 
 
