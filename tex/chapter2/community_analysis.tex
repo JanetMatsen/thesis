@@ -96,20 +96,6 @@ These pairs allow exploration of the community without the restriction of refere
 RNA was depleted, so the majority of our sequencing information is about expressed genes.
 In all the dataset totals to 9TB, with approximately XX reads per sample.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{l | cc}
- %\toprule
-        & average \# reads per sample & total \# reads \\
-\midrule
-	metagenomes & XX & XX \\
-	metatranscriptomes & XX & XX \\
-%\bottomrule
-\end{tabular}
-\caption{Total number of un-filtered reads.}
-\label{table:sample_read_sizes}
-\end{table}
-
 % --- Insights into what's challenging
 Despite the size and replication of this dataset, answering the questions outlined above proved challenging.
 %There are many additional challenges in moving from pure-culture 'omics to meta-'omics, and these challenges were amplified by the large size of the data.
@@ -148,6 +134,8 @@ However, not every tool can operate on segments of the data, and extra care is r
 Despite the challenges, this thesis lays out preliminary results addressing both what microbes are present, and what they contribute metabolically.
 
 
+%==========================================================================================================================================
+%==========================================================================================================================================
 %==========================================================================================================================================
 \section{Metagenomics and Metatranscriptomics}
 
@@ -252,7 +240,7 @@ This thesis advocates for an additional measure not seen in other published work
 \subsection{Elviz Assemblies}
 %---- JGI assemblies
 Many sequencing projects including this one are done by the Joint Genome Institute (JGI), which provides some bioinformatics processing in addition to providing un-processed reads.
-The software they run assembles contigs for each sample individually, predicts genes, and calls taxonomy for contigs. (cite)
+The software they run assembles contigs for each sample individually, predicts genes, and calls taxonomy for contigs \cite{cantor2015}.
 They also report the number of reads and average coverage for each contig.
 These measures are a great starting point for answering "who's there" in terms of taxa abundance, but does neglect information about reads that did not assemble well and thus must be used with caution.
 
@@ -318,3 +306,164 @@ Discarding ambiguous reads is the default of most alignment and counting tools.
 If the study aims instead to describe a holistic picture of expression in a sample, it may be worth guessing the source of the DNA, which will certainly be wrong some of the time.
 
 
+%==========================================================================================================================================
+%==========================================================================================================================================
+%==========================================================================================================================================
+\section{Methods}
+
+\subsubsection{Experimental}  % Note that work was done previously, so I'm not implying I did it.
+The culturing and sample preparation was done by Maria Hernandez, a visiting scholar.
+Sediment stored in DMSO on previous sampling trip was thawed from -80$^o$C and distributed into 250 mL bottles containing 50mL of NMS medium \ref{fig:experimental_design}.
+Samples started with XX amt of methane (XX mL), and either low oxygen (XX amt) or high oxygen (XX).
+Bottles were serially transfered for 14 weeks.
+The bottles were kept sealed (air-tight) between serial transfers; the gaseous compositions for the days between transfers were not measured.
+Bottles were shakedn at XX RPM and held at XX degrees.
+Metagenomes and metatranscriptomes were obtained for all samples corresponding to weeks 4-14.
+Earlier weeks were omitted due to potential effects of residual DMSO, and interest in prioritizing sequencing of later, more-rarefied samples.
+The oxygen conditions (low/high) were switched for the last 4 bottles in each series (see Figure \ref{fig:experimental_design}).
+
+\subsubsection{Sequencing}
+This large dataset was made possible by a Joint Genome Institute sequencing grant (cite the \#? XX).
+JGI sequenced all samples on an Illumina platform to produce the 88 metagenomes and 88 metatranscriptomes.
+Ribosomal RNA was removed before sequencing the metatranscriptomes.
+%~ XX (?? Paired ended?) reads per sample, for both metagenomes and metatranscriptomes (??).
+
+\subsubsection{Elviz Analysis}
+Along with raw sequencing outputs (fastq.gz files) for each sample, Elviz data was provided \cite{cantor2015}.
+These data included one assembly per metagenome, corresponding contig statistics, and transcriptome alignment statistics.
+In addition, they provide taxonomy for each contig, to some degree of certainty: some contigs' taxonomy stops at family, while others are specified to the genus level.
+The taxonomy, contig lengths, and number of reads mapped to each contig were used to infer the distribution of taxa in each sample.
+The metric used was the fraction of reads assigned to contigs with the specified taxonomy (\url{https://github.com/JanetMatsen/elvizAnalysis/blob/master/abundance_utils.py}).
+Length of contigs was not normalized out, or the abundance of short contigs would dominate the results.
+The code checks that each samples' abundance summed to 1.
+
+Tools were written to aggregate (a) based on taxonomy level, or (b) everything below a taxonomy level.
+Contigs with taxonomy not desired to the specified level were grouped into "other".
+This framework was also used to summarize abundances at mixed taxonomy level (e.g. phylum Bacteroidetes, order Burkholderiales, family Methylococcales, and family Methylophilales) \url{https://github.com/JanetMatsen/elvizAnalysis/blob/master/abundance_plot_utils.py}.
+
+Statistics for the 88 samples were merged with information about the oxygen, replicate, and week values corresponding to each sample using Python and Pandas.
+Plotting was done with seaborn.
+
+\subsubsection{Computational resources}
+This computationally-intensive research was supported by research grant, which included \$XX and expert consulting on how to best utilize the vast services offered.
+AWS allows per-hour rental of machines with different specifications, that the user can choose based on algorithm needs.
+Furthermore, the ability to share machine images greatly facilitates the potential reproducibility of research.
+Upon project completion, we will provide access to an AMI and allow others to re-run our analyses.
+
+The machine ("instance") type used in all methods to follow was an AWS c4.8xlarge instance, which has 36 cores, and 60GB memory.
+This was sufficient for all work, other than the memory-intensive assembly step, as noted below.
+Instances could be turned on and off as needed, reducing compute cost.
+This is in contrast to sharing a similar machine with the entire Beck Lab, which would have slowed down analysis and caused conflicts when certain computations used all of the compute resources, sometimes causing computer failure.
+
+Each instance obtained data and wrote results to a shared file system
+The 9 TB of data, scripts, and results were stored using the AWS Elastic File System (EFS).
+EFS is AWS's most versatile and highest performance (most expensive) file storage, which allows you to have multiple instances reading/writing to the same directory.
+This shared nature of the files allows the user to spin up a second computer instance as needed, and read/write the exact same set of files.
+
+%---- Computation parallelization
+Parallelization of compute tasks was done by splitting jobs across a single large computer, or across separate EC2 instances.
+When tasks were parallelized across one powerful computer was done with Gnu parallel or Python's pool.map.
+When parallelizing across more, often weaker, computers, an AMI was made that mounts the EFS-stored data.
+These instances were usually started by hand through the console, though proof of principle studies using the Amazon Command Line Interface (CLI),
+    and an Autoscaling/SQS service pair were explored to set the foundation of future work (see repository XX) for the templates developed.
+
+\subsubsection{Map to isolate genomes}
+As a preliminary study, the metatranscriptomes were mapped to 55 genomes isolated from Lake Washington by the Lidstrom lab.
+The sequences were downloaded from NCBI, and concatenated together before mapping.
+Mapping to the multi-fasta rather than the individual genomes prevents double-counting of reads that map well to multiple loci.
+BWA-mem \cite{li2009} with default settings was used to map each transcriptome to the multi-fasta, and htseq-count \cite{anders2014} was used to tabulate expression estimates.
+Samtools \cite{li2009samtools} was used to evaluate mappings by BWA.
+Note: the default of BWA is to flag reads that map equally well to two or more loci as having quality score 0; these reads are then not included in the tabulated results by gene-name.
+This is the best-practice approach when doing differential abundance analysis, but does lead to under-estimation of gene expression levels and lower accountability of the original fastq reads. % TODO: cite
+
+\subsubsection{Assembly} % (Dave)
+Assembly to produce contigs was done on pooled quality-trimmed metagenome reads via Megahit \cite{li2015}.
+This memory-intensive computation was done on an AWS instance with 1 TB of memory.
+Assembling of multiple samples simultaneously provides a shared set of contigs to use when mapping DNA reads or RNA-seq reads from any of the 88 samples.
+This in turn allows for comparison of gene expression across samples.
+The fraction of reads represented by the assembly, in aggregate, were measured to verify assembly efficacy.
+%Tune knobs until …
+%Followed protocol ...
+
+\subsubsection{Gene calls}
+Genes were called on contigs with length greater than or equal to 1.5kb using Prokka \cite{seemann2014}.
+This was cutoff was selected because shorter contigs are not recommended for inclusion by most binning tools documentation.
+Additionally, shorter contigs are less likely to have genes identified on them, as genes are more likely to be incomplete due to the edges.
+Prokka did not tolerate an input size of the scale, so the input fasta was broken into 5 of approximately equal size.
+These were processed in parallel, using Python's pool.map function.
+A \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/prokka/contigs/glue_together_gffs.py}{script} was written to merge the resulting annotated general feature format files (.gff files) into one representing all contigs $\geq$ 5kb.
+
+\subsubsection{Checking contigs' ability to represent each metagenome}
+The loss of information resulting from omitting short contigs was assessed by counting the number of reads that map to contigs $geq$ 1.5kb, and comparing that to the total number in the raw metagenome fastq.gz files.
+This represents an upper bound in information content for the assembly step.
+Again, this used BWA \cite{li2009}, and a \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{script} written to count raw fastq reads.
+Pandas (Python) was used to merge results together.
+
+\subsection{RNA-seq: mapping to contigs $\geq$ 1.5 kb}
+Like all other mappings, transcriptomes were mapped with BWA-mem (default settings), and per-gene results were summarized with htseq-count.
+Contigs $\geq$ 1.5kb were used as reference DNA.
+Metatranscriptomes were mapped to these contigs all at once, rather than to each bin individually in order to reduce over-counting.
+This does result in reads mapping identically well to two places being thrown out, as mentioned earlier.
+Results from each sample were merged using a 60GB RAM AWS instance, rather than SQL.
+The fraction of transcriptome reads was compared to the total number in the input fastq files as a metric of information loss.
+
+\subsubsection{Binning}
+
+Binning of contigs into genome-like bins was explored using three different packages.
+MetaBAT was used with default settings on contigs $\geq$ 1.5kb.
+As promised by the documentation, it scaled well to large datasets and completed within about a day.
+
+MyCC was used, but did not scale to data of our size well.
+The large memory requirement of the underlying affinity propagation algorithm led to failures on our dataset, when default settings were used.
+At one time, it wrote so many small files that the machine crashed due to running out of inodes.
+Iteration of settings suggested by the authors was required to get MyCC to complete on our big data.
+Adjustment of the algorithm settings and the minimum contig length cutoff were iteratively tuned until results were obtained.
+In the end, the largest data it could handle was using settings 56mer, lt 0.4, st 50, on contigs $\geq 2.5$ kb.
+
+Concoct was tried initially, but bins were never obtained.
+This tool reports multiple potential clusters per conitg.
+The solution for assigning contigs to bins was not developed in the time frame of this project.
+
+\subsubsection{Average Nucleotide Identity}
+Average nucleotide identity (ANI) was used to compare bins.
+The underlying tool used was written by JGI. % TODO: cite.
+Their tool calculates two-way global ANI measures, and reports the fraction of each genome that aligned.
+They suggest removal of ribosomal RNA genes, which can have high ANI even for divergent organisms.
+They do not, however, provide options or suggest a tool for this step.
+Given that the ANI calculations intended only to give a rough idea of similarity between bins or bins and isolates, this step was not performed.
+The tool was used to assessed ANI between all pairs of isolate genomes and MetaBAT bins.
+
+\subsubsection{Additional bin characterization}
+
+Completeness and contamination were checked with CheckM \cite{parks2015}.
+CheckM uses marker genes from what it determines to be an evolutionarily similar microbe.
+The tool was benchmarked on isolates, to ensure it performed well on the key methylotrophic taxa under study.
+Custom marker genes specific to methylotrophs were not added, however, this is suggested as a possible future direction to assess bins.
+
+Taxonomy was approximated using PhyloPhlan \cite{segata2013}, and by ANI similarity with isolate genomes.
+
+\subsubsection{Code}
+The code described is synced with GitHub:
+\begin{itemize}
+    \item \textbf{ElvizAnalysis}: \url{https://github.com/JanetMatsen/elvizAnalysis}
+    \item \textbf{meta4} (assembly, binning, etc.): \url{https://github.com/BeckResearchLab/meta4}
+\end{itemize}
+
+%==========================================================================================================================================
+%==========================================================================================================================================
+%==========================================================================================================================================
+\section{Results and Discussion}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l | cc}
+ %\toprule
+        & average \# reads per sample & total \# reads \\
+\midrule
+	metagenomes & XX & XX \\
+	metatranscriptomes & XX & XX \\
+%\bottomrule
+\end{tabular}
+\caption{Total number of un-filtered reads.}
+\label{table:sample_read_sizes}
+\end{table}
