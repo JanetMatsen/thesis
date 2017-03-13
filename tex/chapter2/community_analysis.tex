@@ -33,15 +33,15 @@ Having the paired metagenomic and transcriptomic data allows estimation of gene 
 
 \begin{figure}[H]
 \centering
-     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170311_taxonomy_overview.pdf}
-     \begin{singlespace}
-     \caption[Taxonomy of microbes known to factor into methane oxidation in Lake Washington sediment.]{
-        Taxonomy of microbes that often appear in methane incubations of Lake Washington sediment.
-        The family Methylococcaceae is methanotrophic.
-        The family Methylococcaceae includes non-methanotrophic methylotrophs.
-        Burkholderiales grow on multi-carbon compounds, but in addition, some are methylotrophs.}
-     \label{fig:taxonomy}
-     \end{singlespace}
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170311_taxonomy_overview.pdf}
+    \begin{singlespace}
+    \caption[Taxonomy of microbes known to factor into methane oxidation in Lake Washington sediment.]{
+       Taxonomy of microbes that often appear in methane incubations of Lake Washington sediment.
+       The family Methylococcaceae is methanotrophic.
+       The family Methylococcaceae includes non-methanotrophic methylotrophs.
+       Burkholderiales grow on multi-carbon compounds, but in addition, some are methylotrophs.}
+    \label{fig:taxonomy}
+    \end{singlespace}
 \end{figure}
 
 Previous metagenomics and metatranscriptomics studies of Lake Washington sediment have highlighted dominance of the methanotrophic family Methylococcaceae \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW}.
@@ -66,18 +66,18 @@ The experimental design chosen to answer these questions is show in in Figure \r
 
 \begin{figure}[H]
 \centering
-     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170311_experimental_design_meta4--2_colors.png}
-     \begin{singlespace}
-     \caption[Experimental design.]{
-        Sediment from Lake Washington, which had been thawed from -80$^o$C and cultured in 8 different bottles,
-			half of which were treated with low oxygen, and half of which were at high oxygen (see methods).
-		Bottles were serially transferred for a total of 14 weeks.
-		The last four bottles in each series are at the opposite oxygen condition of the original experimental design
-			(indicated by bottle label color switch).
-		Metagenomes and metatranscriptomes were obtained for weeks 4-14, resulting in 88 metagenomes and 88 metatranscriptomes.
-		}
-     \label{fig:experimental_design}
-     \end{singlespace}
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170311_experimental_design_meta4--2_colors.png}
+    \begin{singlespace}
+    \caption[Experimental design.]{
+       Sediment from Lake Washington, which had been thawed from -80$^o$C and cultured in 8 different bottles,
+        half of which were treated with low oxygen, and half of which were at high oxygen (see methods).
+	   Bottles were serially transferred for a total of 14 weeks.
+	   The last four bottles in each series are at the opposite oxygen condition of the original experimental design
+        (indicated by bottle label color switch).
+	   Metagenomes and metatranscriptomes were obtained for weeks 4-14, resulting in 88 metagenomes and 88 metatranscriptomes.
+	   }
+    \label{fig:experimental_design}
+    \end{singlespace}
 \end{figure}
 
 This relatively simple experimental design, including high degree of replication for studies of this type, was chosen to provide statistical power despite differences across replicates and measurement noise.
@@ -165,14 +165,14 @@ These contigs can be annotated to identify genes, and organised into genome bins
 
 \begin{figure}[H]
 \centering
-     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170312_metagenomics_metatranscriptomics_overview.pdf}
-     \begin{singlespace}
-     \caption[Overview of metagenomics/metatranscriptomics workflow.]{
-        Graphical introduction to basic vocabulary and inference steps of metagenomics and metatranscriptomics workflows.
-		Colored lines = single reads, long colored lines = contigs,
-		gray arrows on colored lines = gene calls, wiggly lines above contigs = coverage of alignment.}
-     \label{fig:meta_workflow}
-     \end{singlespace}
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170312_metagenomics_metatranscriptomics_overview.pdf}
+    \begin{singlespace}
+    \caption[Overview of metagenomics/metatranscriptomics workflow.]{
+       Graphical introduction to basic vocabulary and inference steps of metagenomics and metatranscriptomics workflows.
+	   Colored lines = single reads, long colored lines = contigs,
+	   gray arrows on colored lines = gene calls, wiggly lines above contigs = coverage of alignment.}
+    \label{fig:meta_workflow}
+    \end{singlespace}
 \end{figure}
 
 The high-level representation of steps common to most shotgun metagenomics papers is shown in Figure \ref{fig:meta_workflow}.
@@ -184,15 +184,14 @@ The flow of information through metagenomics workflows can be thought of as liqu
 Each software step can be though of as a pipe.
 Flow (read accountability) can be measured at the input and exit of pipes (represented by flow gauges), allowing identification of how well output data reflects the original samples, and at which step(s) information was lost.
 
-
 \begin{figure}[H]
 \centering
-     \includegraphics[width=0.8\textwidth]{./tex/chapter2/figures/170312_pipe_leaks.pdf}
-     \begin{singlespace}
-     \caption[Framework for assessing information loss in workflow steps.]{
-       	Cartoon representing the ability to deduce information loss at different steps of the metagenome/metatranscriptome workflow.}
-     \label{fig:pipe_leaks}
-     \end{singlespace}
+    \includegraphics[width=0.8\textwidth]{./tex/chapter2/figures/170312_pipe_leaks.pdf}
+    \begin{singlespace}
+    \caption[Framework for assessing information loss in workflow steps.]{
+        Cartoon representing the ability to deduce information loss at different steps of the metagenome/metatranscriptome workflow.}
+    \label{fig:pipe_leaks}
+    \end{singlespace}
 \end{figure}
 
 %---- Pipe description
@@ -389,7 +388,7 @@ The fraction of reads represented by the assembly, in aggregate, were measured t
 Genes were called on contigs with length greater than or equal to 1.5kb using Prokka \cite{seemann2014}.
 This was cutoff was selected because shorter contigs are not recommended for inclusion by most binning tools documentation.
 Additionally, shorter contigs are less likely to have genes identified on them, as genes are more likely to be incomplete due to the edges.
-Prokka did not tolerate an input size of the scale, so the input fasta was broken into 5 of approximately equal size.
+Prokka did not tolerate an input size of the scale, so the input fasta was broken into 5 files of approximately equal size.
 These were processed in parallel, using Python's pool.map function.
 A \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/prokka/contigs/glue_together_gffs.py}{script} was written to merge the resulting annotated general feature format files (.gff files) into one representing all contigs $\geq$ 5kb.
 
@@ -418,7 +417,7 @@ The large memory requirement of the underlying affinity propagation algorithm le
 At one time, it wrote so many small files that the machine crashed due to running out of inodes.
 Iteration of settings suggested by the authors was required to get MyCC to complete on our big data.
 Adjustment of the algorithm settings and the minimum contig length cutoff were iteratively tuned until results were obtained.
-In the end, the largest data it could handle was using settings 56mer, lt 0.4, st 50, on contigs $\geq 2.5$ kb.
+In the end, the largest data it could handle was using settings \texttt{56mer, lt 0.4, st 50}, on contigs $\geq 2.5$ kb.
 
 Concoct was tried initially, but bins were never obtained.
 This tool reports multiple potential clusters per conitg.
@@ -454,6 +453,7 @@ The code described is synced with GitHub:
 %==========================================================================================================================================
 \section{Results and Discussion}
 
+
 \begin{table}[H]
 \centering
 \begin{tabular}{l | cc}
@@ -467,3 +467,27 @@ The code described is synced with GitHub:
 \caption{Total number of un-filtered reads.}
 \label{table:sample_read_sizes}
 \end{table}
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/elvizAnalysis/ipython_notebooks/plots/
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170413_4_main_groups.pdf}  % ElvizAnalysis
+    \begin{singlespace}
+    \caption[Four major taxonomic groups in Lake Washington sediment incubations]{
+        The abundance of the four major taxonomic groups in Lake Washington sediment incubations:
+	Phylum Bacteroidetes, Orders Methylococcales (methylotrophs), Methylophilales (non-methanotrophic methylotrophs), Burkholderiales.}
+    \label{fig:dominant_genera}
+    \end{singlespace}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/elvizAnalysis/ipython_notebooks/plots/170313_methanotroph_methylotroph_taxa--portrait.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170313_methanotroph_methylotroph_taxa--portrait.pdf}  % ElvizAnalysis
+    \begin{singlespace}
+    \caption[Dominant methanotrophic and methylotrophic Genera.]{
+        Dominant methanotrophic (purples) and methylotrophic (greens) Genera.}
+    \label{fig:dominant_genera}
+    \end{singlespace}
+\end{figure}
+
