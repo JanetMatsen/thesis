@@ -58,7 +58,7 @@ About 14\% of genes displayed \textit{moderate}/\textit{modest} expression and o
      \includegraphics[width=0.7\textwidth]{./tex/chapter1/figures/matsen_OB3b_table1_page--cropped.pdf}
      \begin{singlespace}
      %\caption{}  If you don't put a caption, LaTeX doesn't number that figure.  Woot!
-     \label{table:OB3b_1}
+     \label{table:OB3b_1} % label before \end{singlespace} or references break.
      \end{singlespace}
 \end{figure}
 
@@ -68,7 +68,7 @@ Among those are key subunits of succinate dehydrogenase (\textit{sdhABCD}), 2-ox
 The \textit{de novo} transcriptome assembly provides additional information for highly expressed genes and it was used for verification of some metabolic functions that were predicted by enzymatic studies but were not detected in the draft genome assembly (see below).
 
 In addition, the reads obtained from RNA-seq were aligned to the reference genome in order to identify transcription boundaries and transcription start sites for the most highly expressed genes, including the \textit{pmoCAB} operons, \textit{mxaFJGI} operon, \textit{fae1}, \textit{pqqA}, and key genes of the serine cycle (Table S2 in Supplementary Material, see description below).
-Gene expression data were used to reconstruct central metabolic pathways in \textit{M. trichosporium} OB3b (Table 2; \ref{fig:A_metabolic_map}; Table S2 in Supplementary Material).
+Gene expression data were used to reconstruct central metabolic pathways in \textit{M. trichosporium} OB3b (Table 2; Figure \ref{fig:A_metabolic_map}; Table S2 in Supplementary Material).
 Core functions are described below.
 
 
@@ -80,7 +80,7 @@ Core functions are described below.
         Central metabolism of \textit{Methylosinus trichosporium} OB3b grown on methane as sole source of energy and carbon as
         deduced from the genome sequences and transcriptomic studies.
         Font size of the gene name indicates the expression level.}
-     \label{fig:A_metabolic_map}
+     \label{fig:A_metabolic_map}  % label before \end{singlespace} or references break.
      \end{singlespace}
 \end{figure}
 
@@ -116,7 +116,7 @@ In contrast, the \textit{pmoCAB} genes were the most highly expressed in the tra
 It has previously been shown that PMMO in \textit{M. trichosporium} OB3b is encoded by two copies of the \textit{pmoCAB} operon that appear to be identical \cite{gilbert2000}.
 The current genome assembly failed to resolve these closely related duplicated regions.
 The \textit{pmoCAB} genes were found within one relatively short contig, which includes 320 bp upstream from \textit{pmoC}, and about 66 bp downstream from \textit{pmoB}.
-It is possible that in the genome assembly, the pmo contig represents only those parts of the duplicated regions that are highly similar.
+It is possible that in the genome assembly, the \textit{pmo} contig represents only those parts of the duplicated regions that are highly similar.
 Thus, it was not possible to determine relative expression of the two operons with the transcriptomic data.
 
 Previous attempts to identify transcriptional starts of the \textit{pmoCAB} operons in \textit{M. trichosporium} OB3b using a conventional primer extension approach were not successful \cite{gilbert2000}.
@@ -165,8 +165,8 @@ Pyrroloquinoline quinone (PQQ) biosynthesis is another function essential for op
 A total of six \textit{pqq} genes appear to be present in the \textit{M. trichosporium} OB3b genome in two clusters: \textit{pqqBCDE} and \textit{pqqFG}.
 Moderate expression of both clusters was observed (Table 2).
 No gene for the small PQQ precursor (PqqA) is predicted in the current version of the genome.
-Our manual review of the sequences revealed a fragment within the METTOv1\_110055 – METTOv1\_110057 gene locus (positions 1424678 – 1424755 of current version of the genome) with high sequence identity [83\% nucleic acid (NA) identity and 96\% amino acid (AA) similarity] to the \textit{pqqA} sequence from \textit{Methylobacterium} spp (Figures \ref{fig:B_pqqA}A,B).
-Transcript mapping data indicated that only the \textit{pqqA}-like region of the locus is highly expressed (\ref{fig:B_pqqA}C).
+Our manual review of the sequences revealed a fragment within the METTOv1\_110055 - METTOv1\_110057 gene locus (positions 1424678 - 1424755 of current version of the genome) with high sequence identity [83\% nucleic acid (NA) identity and 96\% amino acid (AA) similarity] to the \textit{pqqA} sequence from \textit{Methylobacterium} spp (Figures \ref{fig:B_pqqA}A,B).
+Transcript mapping data indicated that only the \textit{pqqA}-like region of the locus is highly expressed (Figure \ref{fig:B_pqqA}C).
 The relative expression of the putative PQQ precursor gene is comparable to the high expression of the \textit{mxaFI} genes.
 The rest of the genes involved in PQQ biosynthesis showed modest to low expression (Figure \ref{fig:S2}B in Supplementary Material).
 
@@ -180,8 +180,8 @@ The rest of the genes involved in PQQ biosynthesis showed modest to low expressi
         (B) from \textit{M. trichosporium} OB3b and \textit{pqqA} peptides from Methylobacterium sp. GXF4, \textit{M. extorquens} AM1,
             \textit{Hyphomicrobium denitrificans} ATCC51888, \textit{K. pneumoniae}, and \textit{A. calcoaceticus}.
         (C) Mapping.}
+     \label{fig:B_pqqA}  % LABEL INSIDE of {singlespace}, or the numbering gets funny.
      \end{singlespace}
-     \label{fig:B_pqqA}
 \end{figure}
 
 
@@ -264,8 +264,8 @@ In this case, \ce{C1}-carbon assimilated via the serine cycle is re-directed to 
         Phylogenetic tree of phosphoenolpyruvate carboxylases.
         Sequence identifiers follow the source organism label. Sequences were aligned with MUSCLE v3.8.31 \cite{edgar2004} and
         the tree created with ClustalW2 2.0.12 \cite{larkin2007} and rendered with iTOL \cite{letunic2007}.}
-     \end{singlespace}
      \label{fig:B_pep}
+     \end{singlespace}
 \end{figure}
 
 Regeneration of glyoxylate is an essential part of the serine cycle \cite{anthony1982, anthony2011, peyraud2009}.
@@ -273,7 +273,7 @@ Like other obligate methanotrophic bacteria, \textit{M. trichosporium} OB3b lack
 Homologs of enzymes involved in the ethylmalonyl-CoA (EMC) pathway, an alternative route for glyoxylate regeneration \cite{peyraud2009}, were identified in the draft genomes of \textit{M. trichosporium} OB3b and another obligate methanotroph \textit{Methylocystis} sp. \cite{stein2010, stein2011}.
 However, a functional EMC pathway has not yet been demonstrated in methanotrophs.
 Furthermore, the recent investigation of PHB-metabolism in \textit{Methylocysctis parvus} OBBP, an alphaproteobacterial methanotroph, suggested that this metabolic module can not supply C2 (glyoxylate) units for biosynthesis \cite{pieja2011}.
-As the initial steps of the EMC pathway are shared with PHB biosynthesis [acetyl-CoA acetyltransferase (\textit{phaA}) and acetoacetyl-CoA reductase (\textit{phaB}), see \ref{fig:A_metabolic_map}] in context with the data presented by Pieja et al. (\cite{pieja2011}) call into question the operation of the EMC pathway in methanotrophs.
+As the initial steps of the EMC pathway are shared with PHB biosynthesis [acetyl-CoA acetyltransferase (\textit{phaA}) and acetoacetyl-CoA reductase (\textit{phaB}), see Figure \ref{fig:A_metabolic_map}] in context with the data presented by Pieja et al. \cite{pieja2011} call into question the operation of the EMC pathway in methanotrophs.
 
 We found that genes encoding the initial steps of the PHB-synthesis (\textit{phaA}/\textit{phaB}) show moderate levels of expression.
 As could be expected for cells in early-mid exponential growth, the expression of the gene encoding PHB synthase (phaC) was low.
@@ -292,7 +292,7 @@ It has been suggested that the main role of the TCA cycle in the methanotrophs i
 However, labeling studies on acetate and pyruvate utilization have predicted the presence of a catabolic TCA cycle in type II methanotrophs \cite{wadzinski1975, higgins1981}.
 In silico genome analysis indicates that \textit{M. trichosporium} OB3b contains predicted genes for all key enzymes of the TCA cycle and pyruvate dehydrogenase (\textit{pdh}).
 All of these genes were expressed (Table 2).
-These steps of the TCA cycle are shared between the EMC pathway and the serine cycle (\ref{fig:A_metabolic_map}).
+These steps of the TCA cycle are shared between the EMC pathway and the serine cycle (Figure \ref{fig:A_metabolic_map}).
 De novo transcriptome assembly indicated that \textit{M. trichosporium} OB3b possesses an additional homolog of succinate:ubiquinone oxidoreductase (\textit{sucABCD}, Table S1 in Supplementary Material).
 Genes encoding the succinate:ubiquinone oxidoreductase and succinyl-CoA synthase (\textit{sucCD}) are among the most highly expressed TCA cycle functions.
 The reductive branch of the pathway (including genes for citrate synthase, aconitase, isocitrate dehydrogenase, and 2-ketoglutarate dehydrogenase) displays moderate-to-low expression.
@@ -371,7 +371,7 @@ Unfortunately, the \textit{pvd} genes are represented in fragments in the curren
 \section{Conclusion}
 
 In this work we performed genomic- and transcriptomic-based reconstruction of the central metabolic pathways in \textit{Methylosinus trichosporium} OB3b grown on methane as a sole source of carbon and energy.
-The overview of the methane metabolism is summarized in \ref{fig:A_metabolic_map}.
+The overview of the methane metabolism is summarized in Figure \ref{fig:A_metabolic_map}.
 While some metabolic functions correlate well with previous enzymatic and genetic studies, several novel functions were detected and characterized.
 The major outcomes of our work are listed below:
 
@@ -379,7 +379,7 @@ The major outcomes of our work are listed below:
 
 2. We propose that \textit{M. trichosporium} OB3b uses the EMC variant of the serine cycle for carbon assimilation.
 In addition to carbon fixing reactions of the EMC-serine cycle, a number of carboxylation reactions are predicted.
-The role of \ce{CO2} fixation during methanotrophic growth has further been explored by Yang et al \cite{yang2013}.
+The role of \ce{CO2} fixation during methanotrophic growth has further been explored by Yang et al \cite{yangOB3b}.
 
 3. The diversity of predicted reactions at the PEP-pyruvate-oxaloacetate node suggests that metabolic interconversions may play an important role in the distribution of carbon flux between the serine cycle, EMC pathway, and TCA cycle.
 In \textit{M. trichosporium} OB3b the PEP-oxaloacetate conversion is predicted to be performed by two enzymatic systems under different metabolic control.
