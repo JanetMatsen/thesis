@@ -412,21 +412,21 @@ Concentrations were deduced from standard curves.
 OD$_{600}$ was measured on a Beckman DU$^{\textregistered}$ 640B spectrophotometer in plastic 1.5 mL cuvettes with a 1 cm path length.
 
 \subsection{RNA-seq}
-Two replicate cultures were grown to mid exponential phase (OD$_{600}$ 0.29 $\pm$ 0.01) for approximately 24 h, then collected by pouring 45 mL of culture into 50 mL tubes containing 5 mL of stop solution comprised of 5\% water-equilibrated phenol, pH 6.6 (Sigma; St. Louis, MO, USA), and 95\% ethanol (200 Proof; Deacon Labs, Inc., King of Prussia, PA, USA).
-The cells were collected by centrifugation at 4,300 $\times$ g at 4$^o$C for 10 min.
+Two replicate cultures were grown to mid exponential phase (OD$_{600}$ 0.29 $\pm$ 0.01) for approximately 24 h, then collected by pouring 45 mL of culture into 50 mL tubes containing 5 mL of \textit{stop solution} comprised of 5\% water-equilibrated phenol, pH 6.6 (Sigma; St. Louis, MO, USA), and 95\% ethanol (200 Proof; Deacon Labs, Inc., King of Prussia, PA, USA).
+The cells were collected by centrifugation at 4,300 $\times$\textit{g} at 4$^o$C for 10 min.
 The resultant pellet was re-suspended in 0.75 mL of extraction buffer [2.5\% CTAB (Sigma; St. Louis, MO, USA), 0.7 M NaCl, and 0.075 M pH 7.6 phosphate buffer] and transferred to a 2 mL sterilized screw-cap tube containing 0.75 mL of phenol:chloroform:isoamylic alcohol with a volume ratio of 25:24:1 (Ambion$^{\textregistered}$; Austin, TX, USA), 0.5 g of 0.1 mm silica beads (Biospec products; Bartlesville, OK, USA), 0.2\% SDS (Ambion$^{\textregistered}$; Austin, TX, USA), and 0.2\% lauryl sarkosine (Sigma; St. Louis, MO, USA).
 The mixtures were homogenized in a bead beater (Mini-Beadbeater; Biospec Products; Bartlesville, OK, USA) for 2 min (75\% of the maximum power).
-The resulting slurry was centrifuged for 5 min at 4$^o$C and 20,800$\times$g.
-The aqueous layer was transferred to a fresh tube containing 0.75 mL of chloroform:isoamylic alcohol with a volumetric ratio of 24:1 (Sigma; St. Louis, MO, USA) and centrifuged again for 5 min at 4$^o$C and 20,800$\times$g to remove dissolved phenol.
+The resulting slurry was centrifuged for 5 min at 4$^o$C and 20,800$\times$\textit{g}.
+The aqueous layer was transferred to a fresh tube containing 0.75 mL of chloroform:isoamylic alcohol with a volumetric ratio of 24:1 (Sigma; St. Louis, MO, USA) and centrifuged again for 5 min at 4$^o$C and 20,800$\times$\textit{g} to remove dissolved phenol.
 The aqueous phase was transferred to a new tube. \ce{MgCl2} (final concentration 3 mM), sodium acetate (10 mM, pH 5.5), and 0.8 mL icecold isopropanol were added.
 Nucleic acids were transferred to -80$^o$C for overnight precipitation.
-Precipitated samples were centrifuged for 45 min at 4$^o$C and 14,000 RPM (20,800$\times$g), washed with 0.5 mL of 75\% ethanol (made from 200 proof; Deacon Labs, Inc., King of Prussia, PA, USA), and dried for 15 min at room temperature.
+Precipitated samples were centrifuged for 45 min at 4$^o$C and 14,000 RPM (20,800$\times$\textit{g}), washed with 0.5 mL of 75\% ethanol (made from 200 proof; Deacon Labs, Inc., King of Prussia, PA, USA), and dried for 15 min at room temperature.
 
-An RNeasy Mini Kit (Qiagen; Venlo, Netherlands) with two types of DNA digestions was used to isolate the mRNA. Initially, the DNA/RNA pellet was re-suspended in 80 mL of a DNase I (RNase-free) mixture (Ambion$^{\textregistered}$; Austin, TX, USA) and incubated for 30 min at 37$^o$C.
+An RNeasy Mini Kit (Qiagen\textcopyright; Venlo, Netherlands) with two types of DNA digestions was used to isolate the mRNA. Initially, the DNA/RNA pellet was re-suspended in 80 mL of a DNase I (RNase-free) mixture (Ambion$^{\textregistered}$; Austin, TX, USA) and incubated for 30 min at 37$^o$C.
 Then, the samples were purified on RNeasy Mini Kit columns as described in the RNA cleanup section of the manual, including the optional on-column DNAse digestion.
 The MICROBExpress$^{\texttrademark}$ (Ambion$^{\textregistered}$; Austin, TX, USA) kit was applied to each sample to reduce the rRNA concentration and increase the mRNA sequencing depth.
 
-The sample quality was monitored with three techniques: (1) by electrophoresis in TAE buffer in 1\% agarose gels (2) using an Agilent 2100 Bioanalyzer with Agilent RNA 6000 Nano-kit as suggested by the manufacturer, and (3) by real-time reverse-transcriptase PCR (RT-RT PCR) with 16S rRNA (27F/536R) and pmoA-specific \cite{auman2001} primers.
+The sample quality was monitored with three techniques: (1) by electrophoresis in TAE buffer in 1\% agarose gels (2) using an Agilent 2100 Bioanalyzer with Agilent RNA 6000 Nano-kit as suggested by the manufacturer, and (3) by real-time reverse-transcriptase PCR (RT-RT PCR) with 16S rRNA (27F/536R) and \textit{pmoA}-specific \cite{auman2001} primers.
 
 \subsection{Transcript Sequencing, Alignment, and Mapping}
 Enriched RNA samples (i.e., two biological replicates) were submitted to the University of Washington’s High-Throughput Sequencing Solutions Center on dry ice for single-read Illumina$^{\textregistered}$ sequencing (Department of Genome Sciences, University of Washington).
@@ -437,10 +437,10 @@ In addition, chimeric contigs from the assembly and low quality gene calls were 
 The summary of RNA-seq (Illumina) reads can be found in Table S4 in Supplementary Material.
 The METTOv1 genome did not have a complete \textit{pmoCAB} cluster suitable for alignment.
 In order to include \textit{pmoCAB}, a separate alignment run was performed with the previously published sequence of this gene cluster \cite{holmes1995}.
-After the alignment with BWA, SAM tools was used to generate a pileup file that was loaded into a MySQL database for normalization from Reads Per Kilobase of gene per Million mapped reads (RPKM) to coding sequences \cite{mortazavi2008}.
+After the alignment with BWA, SAM tools was used to generate a \textit{pileup} file that was loaded into a MySQL database for normalization from Reads Per Kilobase of gene per Million mapped reads (RPKM) to coding sequences \cite{mortazavi2008}.
 
 \subsection{Transcription Site Mapping and Transcriptome Based Gene Assembly}
-The reads mapped at each base position in the genomic scaffolds generated from the pileup were manually examined to identify putative transcription starts and stops.
+The reads mapped at each base position in the genomic scaffolds generated from the \textit{pileup} were manually examined to identify putative transcription starts and stops.
 Briefly, reads mapped per base data for the two replicates were plotted on a log scale.
 The boundary of a rapid transition from near zero reads mapped to 10, 100 RPKM or more that was upstream of a gene start was designated a transcription start.
 Stops were similarly identified as a rapid transition to low numbers of reads mapped downstream of a gene termination codon.
