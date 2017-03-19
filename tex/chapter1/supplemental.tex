@@ -1,4 +1,4 @@
-\section{Supplemental}
+\chapter{Supplemental}
 %\counterwithin{figure}{section}
 %\beginsupplement
 
@@ -118,10 +118,16 @@
 
 %----- Supplementary Tables (as images)
 
-\begin{figure}[H]
-\centering
-    \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS1a.pdf}
-\end{figure}
+\begin{table}[H]
+\caption{Transcripts detected by \textit{de novo} assembly RNA-seq data.}
+\label{table:ChA_S1}
+\includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS1a.pdf}
+\end{table}
+
+%\begin{figure}[H]
+%\centering
+%    \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS1a.pdf}
+%\end{figure}
 \begin{figure}[H]
 \centering
     \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS1b.pdf}
@@ -148,27 +154,49 @@
 \end{figure}
 
 
-Table S2. Gene expression profile in methane-grown cells of M. trichosporium OB3b. Values represent reads per kilobase of coding sequence per million (reads) mapped (RPKM).
-
-
+\begin{table}[H]
+\begin{singlespace}
+\caption[Methane-grown \textit{M. trichosporium OB3b} gene expression table (RPKM)]{
+	Gene expression profile in methane-grown cells of \textit{M. trichosporium OB3b}.
+	Values represent reads per kilobase of coding sequence per million (reads) mapped (RPKM).
+	For the full 4,812-row data set, see attached file.}
+\label{table:ChA_S2}
+\includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS2a.pdf}
+\end{singlespace}
+\end{table}
+%---
 \begin{figure}[H]
 \centering
-    \begin{singlespace}
-    \includegraphics[width=0.9\textwidth]{./tex/chapter1/figures/supplemental/TableS3.pdf}
-    \end{singlespace}
+    \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS2b.pdf}
 \end{figure}
-
 \begin{figure}[H]
 \centering
-    \begin{singlespace}
-    \includegraphics[width=0.8\textwidth]{./tex/chapter1/figures/supplemental/TableS4.pdf}
-    \end{singlespace}
+    \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS2c.pdf}
 \end{figure}
-
 \begin{figure}[H]
 \centering
-    \begin{singlespace}
-    \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS5.pdf}
-    \end{singlespace}
+    \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS2d.pdf}
 \end{figure}
+
+
+\begin{table}[H]
+\caption{Summary of putative transcription site mapping
+	%(Note that the published sequences need references added).
+	}
+\label{table:ChA_S3}
+\includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/supplemental/TableS3.pdf}
+\end{table}
+
+\begin{table}[H]
+\caption{Summary of RNA-seq (Illumina) reads.}
+\label{table:ChA_S4}
+\includegraphics[width=0.8\textwidth]{./tex/chapter1/figures/supplemental/TableS4.pdf}
+\end{table}
+
+\begin{table}[H]
+\caption{Genes removed from reference scaffold before alignment.}
+\label{table:ChA_S5}
+\includegraphics[width=0.75\textwidth]{./tex/chapter1/figures/supplemental/TableS5.pdf}
+\end{table}
+
 

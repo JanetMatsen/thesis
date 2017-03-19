@@ -1,4 +1,4 @@
-\chapter{Transcriptomics of A Pure Methanotrophic Culture}
+\chapter{Global molecular analyses of methane metabolism in methanotrophic alphaproteobacterium, \textit{Methylosinus trichosporium} OB3b. Part I: transcriptomic study}
 \label{chapter:A}
 
 
@@ -49,26 +49,28 @@ The Burrows-Wheeler Aligner (BWA, \cite{li2009}) aligned 98\% of the reads to th
 Reads per kilobase of coding sequence per million (reads) mapped (RPKM) \cite{mortazavi2008} was calculated to compare gene expression within and across replicates, and no further normalization (other than RPKM) was applied.
 The samples were in good agreement with each other, with per gene coding sequence RPKM correlations of 0.959 and 0.989 for the Pearson and Spearman correlations, respectively.
 In total, 4,762 of 4,812 ORFs (CDS, tRNA, and rRNA predicted from the draft genome) were detected.
-Based on relative expression, genes (omitting rRNAs) could be grouped into six major expression categories (Table 1): \textit{very high} (RPKM $\geq$ 15,000), \textit{high} (RPKM $\geq$ 1,500), \textit{moderate} (1,500 $>$ RPKM $\geq$ 500), \textit{modest} (500 $>$ RPKM $\geq$ 250), \textit{low} (250 $>$ RPKM $\geq$ 150) \textit{very low} (150 $>$ RPKM $\geq$ 15), and \textit{not expressed} (RPKM $<$ 15).
+Based on relative expression, genes (omitting rRNAs) could be grouped into six major expression categories (Table \ref{table:OB3b_1}): \textit{very high} (RPKM $\geq$ 15,000), \textit{high} (RPKM $\geq$ 1,500), \textit{moderate} (1,500 $>$ RPKM $\geq$ 500), \textit{modest} (500 $>$ RPKM $\geq$ 250), \textit{low} (250 $>$ RPKM $\geq$ 150) \textit{very low} (150 $>$ RPKM $\geq$ 15), and \textit{not expressed} (RPKM $<$ 15).
 The majority of genes fell into \textit{low}/\textit{very low} expression categories (74\%).
 About 14\% of genes displayed \textit{moderate}/\textit{modest} expression and only a small fraction of the genome showed \textit{very high}/\textit{high} expression (2.7\%).
 
-\begin{figure}[H]
-\centering
-     \includegraphics[width=0.7\textwidth]{./tex/chapter1/figures/matsen_OB3b_table1_page--cropped.pdf}
+\begin{table}[H]
+    \caption{Classification of gene expression level based on replicate averaged RPKMs.}
+    \centering
+     \includegraphics[width=0.7\textwidth]{./tex/chapter1/figures/matsen_OB3b_table1--no_header.pdf}
+     \label{table:OB3b_1} % label before \end{singlespace} or references break.
      \begin{singlespace}
      %\caption{}  If you don't put a caption, LaTeX doesn't number that figure.  Woot!
-     \label{table:OB3b_1} % label before \end{singlespace} or references break.
      \end{singlespace}
-\end{figure}
+\end{table}
+
 
 In order to determine whether the draft genome of the strain is missing some functional genes, we performed \textit{de novo} assembly of the transcriptome.
 Using this approach, a total of 173 genes that are not present in the genome sequence, but have homologs in the non-redundant database were detected.
-Among those are key subunits of succinate dehydrogenase (\textit{sdhABCD}), 2-oxoglutarate dehydrogenase (E2), and nitric oxide reductase (\textit{norB}) (Table S1 in Supplementary Material).
+Among those are key subunits of succinate dehydrogenase (\textit{sdhABCD}), 2-oxoglutarate dehydrogenase (E2), and nitric oxide reductase (\textit{norB}) (Table \ref{table:ChA_S1}).
 The \textit{de novo} transcriptome assembly provides additional information for highly expressed genes and it was used for verification of some metabolic functions that were predicted by enzymatic studies but were not detected in the draft genome assembly (see below).
 
-In addition, the reads obtained from RNA-seq were aligned to the reference genome in order to identify transcription boundaries and transcription start sites for the most highly expressed genes, including the \textit{pmoCAB} operons, \textit{mxaFJGI} operon, \textit{fae1}, \textit{pqqA}, and key genes of the serine cycle (Table S2 in Supplementary Material, see description below).
-Gene expression data were used to reconstruct central metabolic pathways in \textit{M. trichosporium} OB3b (Table 2; Figure \ref{fig:A_metabolic_map}; Table S2 in Supplementary Material).
+In addition, the reads obtained from RNA-seq were aligned to the reference genome in order to identify transcription boundaries and transcription start sites for the most highly expressed genes, including the \textit{pmoCAB} operons, \textit{mxaFJGI} operon, \textit{fae1}, \textit{pqqA}, and key genes of the serine cycle (Table \ref{table:ChA_S2}).
+Gene expression data were used to reconstruct central metabolic pathways in \textit{M. trichosporium} OB3b (Table \ref{table:OB3b_2}; Figure \ref{fig:A_metabolic_map}; Table \ref{table:ChA_S2}).
 Core functions are described below.
 
 
@@ -84,10 +86,12 @@ Core functions are described below.
      \end{singlespace}
 \end{figure}
 
-\begin{figure}[H]
+\begin{table}[H]
+\caption{Gene expression profile in methane-grown cells of \textit{M. trichosporium} OB3b}
 \centering
-     \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/matsen_OB3b_table2_piece1--cropped.pdf}
-\end{figure}
+     \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/matsen_OB3b_table2_piece1--cropped--no_header.pdf}
+\label{table:OB3b_2}
+\end{table}
 
 \begin{figure}[H]
 \centering
@@ -111,7 +115,7 @@ The expression of the enzymes is determined by copper availability; sMMO is domi
 Structures of both enzymes are available \cite{elango1997, hakemian2008}.
 In this study, \textit{M. trichosporium} OB3b was grown at a copper concentration that has been shown to be sufficient to suppress the expression of sMMO \cite{park1991, phelps1992, nielsen1997, lloyd1999, murrell2000}.
 Indeed, virtually no expression of the sMMO gene cluster (\textit{mmoXYBZC}) was observed.
-In contrast, the \textit{pmoCAB} genes were the most highly expressed in the transcriptome, representing about 14\% of all reads mapped to the coding regions (Table 2).
+In contrast, the \textit{pmoCAB} genes were the most highly expressed in the transcriptome, representing about 14\% of all reads mapped to the coding regions (Table \ref{table:OB3b_2}).
 % the PMMO, not pMMO when talking about the protein.  Swtich back to original PMMO.
 It has previously been shown that PMMO in \textit{M. trichosporium} OB3b is encoded by two copies of the \textit{pmoCAB} operon that appear to be identical \cite{gilbert2000}.
 The current genome assembly failed to resolve these closely related duplicated regions.
@@ -124,8 +128,8 @@ The RNA-seq data were used for identification of transcriptional starts for the 
 Because the published METTOv1 genome did not contain a complete \textit{pmoCAB} cluster, a separate alignment run was performed using a previously published sequence as the scaffold \cite{holmes1995}.
 For this sequence, two possible transcriptional start sites were identified.
 It is not known whether these reflect the same start sites of both operons, different start sites for each, or expression of only one operon with two start sites.
-The position -274nt (A) from the translational start of the \textit{pmoC} gene was predicted as the most prominent start of transcription of the operon (Figure \ref{fig:S1} in Supplementary Material).
-Putative $\sigma^{70}$-like -10 and -35 regions could be identified upstream of the predicted start (Table S3 in Supplementary Material).
+The position -274nt (A) from the translational start of the \textit{pmoC} gene was predicted as the most prominent start of transcription of the operon (Figure \ref{fig:S1}).
+Putative $\sigma^{70}$-like -10 and -35 regions could be identified upstream of the predicted start (Table \ref{table:ChA_S3}).
 The structure of the putative promoter region from \textit{M. trichosporium} OB3b shows significant similarity to a \textit{pmoCAB} promoter region previously identified in \textit{Methylocystis} sp. M \cite{gilbert2000}.
 Another potential transcriptional start is at position -324 from the translational start of the \textit{pmoC} gene.
 It should be noted that the region between the two predicted start sites was also covered with relatively high count (region between -324 and -274nt with respect to the translational start of \textit{pmoC}).
@@ -136,7 +140,7 @@ It has previously been demonstrated that additional copies of \textit{pmoC} are 
 % First amoC in this sentence is not capitalized in the original.
 It has also been shown that the homologous \textit{amoC} (additional lone copy of \textit{amoC} in ammonia-oxidizing bacterium \textit{Nitrosomonas europaea}) plays role in cell recovery from ammonium starvation \cite{berube2012}.
 However the functional role of PmoC is not known.
-The relative expression of \textit{pmoC2} was approximately 450-fold less than the expression of the two \textit{pmoC} genes from the \textit{pmo-}operons (Table 2).
+The relative expression of \textit{pmoC2} was approximately 450-fold less than the expression of the two \textit{pmoC} genes from the \textit{pmo-}operons (Table \ref{table:OB3b_2}).
 Low relative expression of the \textit{pmoC} homolog may suggest a role in regulation or sensing rather than catalytic activity.
 
 \subsection{\ce{C1}-Oxidation: Methanol-To-Formaldehyde}
@@ -144,14 +148,14 @@ The product of methane oxidation (i.e., methanol) is converted to formaldehyde b
 The enzyme has been previously purified from \textit{M. trichosporium} OB3b and well characterized \cite{yamada1992}.  % Yamada really is 1992.
 MDH is a hetero-tetrameric enzyme encoded by \textit{mxaF} and \textit{mxaI}.
 The activity of the enzyme \textit{in vivo} requires cytochrome {${\text c_{\text L}}$} (\textit{mxaG}) and a number of chaperones, regulators, and enzymes, including genes required for \ce{Ca^{2+}} insertion \cite{anthony1994, anthony2002}.
-Most of the genes essential for this methanol conversion step in \textit{M. trichosporium} OB3b are organized in one large operon in an order similar to that found in other methylotrophs (Figure \ref{fig:S2}A in Supplementary Material).
+Most of the genes essential for this methanol conversion step in \textit{M. trichosporium} OB3b are organized in one large operon in an order similar to that found in other methylotrophs (Figure \ref{fig:S2}A).
 The first four genes of the operon (\textit{mxaFJGI}), encoding the two subunits of the MDH, the associated cytochrome, and a gene of unknown function (\textit{mxaJ}) were detected at relatively high RPKM counts.
-The relative expression of genes downstream from \textit{mxaI}, including those for chaperones, regulators, and \ce{Ca^{2+}} insertion functions drops by 10- to 50-fold (Table 2).
+The relative expression of genes downstream from \textit{mxaI}, including those for chaperones, regulators, and \ce{Ca^{2+}} insertion functions drops by 10- to 50-fold (Table \ref{table:OB3b_2}).
 The overall mapping pattern of the \textit{mxa-}cluster is as follows: \textit{mxaFJGI} (highly expressed), \textit{mxaD} (moderate expression), \textit{mxaRSACKL}, \textit{mxaB} (low expression), and \textit{mxaY} (very low expression).
 It remains to be elucidated if the \textit{mxaRSACKL} transcripts arise from the same start as \textit{mxaF} and are attenuated by some transcriptional or post-transcriptional mechanism, or whether separate, lower expression promoter(s) is/are present.
-Orientations and/or the expression patterns of \textit{mxaD}, \textit{mxaB}, and \textit{mxaY}, suggest that they are not part of the major \textit{mxaF}-operon (Figure \ref{fig:S2}A in Supplementary Material) and most likely have independent regulatory/promoter regions.
-According to RNA-seq mapping data, a putative transcriptional start of the \textit{mxaFJGI} operon is predicted at position -164 from the predicted translational start (Figure \ref{fig:S3} in Supplementary Material).
-Just upstream from the predicted transcriptional start, putative $\sigma^{70}$-like -10 and -35 sequences were identified (Table S3 in Supplementary Material).
+Orientations and/or the expression patterns of \textit{mxaD}, \textit{mxaB}, and \textit{mxaY}, suggest that they are not part of the major \textit{mxaF}-operon (Figure \ref{fig:S2}A) and most likely have independent regulatory/promoter regions.
+According to RNA-seq mapping data, a putative transcriptional start of the \textit{mxaFJGI} operon is predicted at position -164 from the predicted translational start (Figure \ref{fig:S3}).
+Just upstream from the predicted transcriptional start, putative $\sigma^{70}$-like -10 and -35 sequences were identified (Table \ref{table:ChA_S3}).
 
 The genome of \textit{M. trichosporium} OB3b contains the following three homologs of the large subunit of the MDH: \textit{xoxF1}, \textit{xoxF2}, and \textit{xoxF3}.
 Relative expression of all \textit{xoxF}-homologs is very low.
@@ -164,12 +168,12 @@ However, our data do not rule out the possibility that one or more of the \texti
 
 Pyrroloquinoline quinone (PQQ) biosynthesis is another function essential for operation of the primary methanol oxidation system \cite{toyama1997, anthony2002}.
 A total of six \textit{pqq} genes appear to be present in the \textit{M. trichosporium} OB3b genome in two clusters: \textit{pqqBCDE} and \textit{pqqFG}.
-Moderate expression of both clusters was observed (Table 2).
+Moderate expression of both clusters was observed (Table \ref{table:OB3b_2}).
 No gene for the small PQQ precursor (PqqA) is predicted in the current version of the genome.
 Our manual review of the sequences revealed a fragment within the METTOv1\_110055 - METTOv1\_110057 gene locus (positions 1424678 - 1424755 of current version of the genome) with high sequence identity [83\% nucleic acid (NA) identity and 96\% amino acid (AA) similarity] to the \textit{pqqA} sequence from \textit{Methylobacterium} spp (Figures \ref{fig:B_pqqA}A,B).
 Transcript mapping data indicated that only the \textit{pqqA}-like region of the locus is highly expressed (Figure \ref{fig:B_pqqA}C).
 The relative expression of the putative PQQ precursor gene is comparable to the high expression of the \textit{mxaFI} genes.
-The rest of the genes involved in PQQ biosynthesis showed modest to low expression (Figure \ref{fig:S2}B in Supplementary Material).
+The rest of the genes involved in PQQ biosynthesis showed modest to low expression (Figure \ref{fig:S2}B).
 
 \begin{figure}[H]
 \centering
@@ -190,30 +194,30 @@ The rest of the genes involved in PQQ biosynthesis showed modest to low expressi
 Previous enzymatic studies predict three possible pathways for formaldehyde oxidation: (1) direct oxidation through dye-linked heme-containing formaldehyde dehydrogenase \cite{patel1980}, (2) \ce{H4}folate-, and (3) \ce{H4}MTP-mediated \ce{C1} transfers \cite{vorholt1999, doronina2008}.
 Contrary to enzymatic studies, BLAST searches of the draft genome of \textit{M. trichosporium} OB3b did not reveal any obvious system that could be attributed to heme-containing formaldehyde oxidation.
 Three broad-specificity aldehyde-detoxification systems, including two NAD-dependent aldehyde dehydrogenases (Aldh-F7 METTOv1\_100046 and Aldh, METTOv1\_610028) and one aldehyde oxidase (Aor, METTOv1\_290006) were predicted in the genome.
-Two of them, \textit{aldh} and \textit{aor} show low expression (Table 2), while \textit{aldh-F7} was barely detected in the transcriptome.
+Two of them, \textit{aldh} and \textit{aor} show low expression (Table \ref{table:OB3b_2}), while \textit{aldh-F7} was barely detected in the transcriptome.
 None of the putative genes identified by \textit{de novo} transcriptome assembly could be readily attributed to any dye-linked aldehyde dehydrogenases \cite{schwartz2004}.
 Thus, even if the enzyme is present in the genome, its expression during growth of the strain on methane must be low.
 
 For years it has been assumed that methylene \ce{H4F} is formed as a result of the spontaneous (non-enzymatic) condensation of formaldehyde with \ce{H4F} \cite{large1963}.
 It has recently been demonstrated that formate, rather than formaldehyde serves as an entry substrate for assimilation in serine cycle methylotrophs \cite{crowther2008}.
 With this metabolic arrangement, the \ce{H4}Folate \ce{C1} transfer could be considered as a part of the assimilatory network that converts formate into methylene \ce{H4}F.
-In \textit{M. trichosporium} OB3b genes encoding all three steps of the \ce{H4}Folate pathway converting methylene-\ce{H4}F to formate (formyl-\ce{H4}F ligase, \textit{ftfL}, methenyl-\ce{H4}F cyclohydrolase, \textit{fch}, and methylene-\ce{H4}F dehydrogenase \textit{mtdA}) were co-localized and co-transcribed with genes encoding the serine cycle enzymes (Figure \ref{fig:S4} in Supplementary Material).
+In \textit{M. trichosporium} OB3b genes encoding all three steps of the \ce{H4}Folate pathway converting methylene-\ce{H4}F to formate (formyl-\ce{H4}F ligase, \textit{ftfL}, methenyl-\ce{H4}F cyclohydrolase, \textit{fch}, and methylene-\ce{H4}F dehydrogenase \textit{mtdA}) were co-localized and co-transcribed with genes encoding the serine cycle enzymes (Figure \ref{fig:S4}).
 While the assimilatory function of the pathway is more apparent, it is still possible that key enzymes of the pathway contribute to formaldehyde oxidation in \textit{M. trichosporium} OB3b.
 
 The tetrahydromethanopterin (\ce{H4}MTP) pathway was proposed to be the key pathway for formaldehyde oxidation/detoxification in alphaproteobacterial methylotrophs \cite{chistoserdova1998}.
 It was speculated that this pathway contributes to formaldehyde oxidation in methane utilizing proteobacteria \cite{vorholt1999}.
 Nineteen genes encoding enzymes and genes for tetrahydromethanopterin biosynthesis were identified in the \textit{M. trichosporium} OB3b genome.
-These genes were not clustered together in the genome, but formed five different gene islands: (1) \textit{mch-orf5-orf7-fae1/1-fae1/2-orf17} (Figure \ref{fig:S2}C in Supplementary Material); (2) \textit{orf19-orf20-afpA-orf21-orf22}; (3) \textit{fhcCDAB}; (4) \textit{orf9-mtdB}; and (5) \textit{pcbD-mptG}.
+These genes were not clustered together in the genome, but formed five different gene islands: (1) \textit{mch-orf5-orf7-fae1/1-fae1/2-orf17} (Figure \ref{fig:S2}C); (2) \textit{orf19-orf20-afpA-orf21-orf22}; (3) \textit{fhcCDAB}; (4) \textit{orf9-mtdB}; and (5) \textit{pcbD-mptG}.
 No homologs of \textit{orfY}, \textit{dmrA}, and \textit{pabB} genes, which are commonly associated with tetrahydromethanopterin biosynthesis in methylotrophs \cite{caccamo2004, rasche2004, chistoserdova2005, kalyuzhnaya2005}, were found in the genome or detected in transcriptome.
 
 % Used to read "which has been shown".  I liked "and"
 Formaldehyde activating enzyme (FAE) is the first enzyme of the \ce{H4}MTP-pathway, and has been shown to catalyze the condensation of formaldehyde and \ce{H4}MPT to form methylene-\ce{H4}MPT \cite{vorholt2000}.
-The draft genome of \textit{M. trichosporium} OB3b predicts three homologs of Fae; two of them (\textit{fae1/1} and \textit{fae1/2}) share a high degree of identity (NA 82.2\%) and are co-localized in the genome (Figure \ref{fig:S2}C in Supplementary Material).
+The draft genome of \textit{M. trichosporium} OB3b predicts three homologs of Fae; two of them (\textit{fae1/1} and \textit{fae1/2}) share a high degree of identity (NA 82.2\%) and are co-localized in the genome (Figure \ref{fig:S2}C).
 Though both \textit{fae} genes are clustered with four other genes involved in the \ce{H4}MTP-pathway, they are expressed in dramatically different patterns.
-The abundance of \textit{fae1-1} transcripts was almost 40-fold higher than the abundance of any other gene in the cluster, except \textit{fae1-2} (Table 2; Figure \ref{fig:S2}C in Supplementary Material).
+The abundance of \textit{fae1-1} transcripts was almost 40-fold higher than the abundance of any other gene in the cluster, except \textit{fae1-2} (Table \ref{table:OB3b_2}; Figure \ref{fig:S2}C).
 The relative abundance of the second homolog (\textit{fae1-2}) was one fifth of that observed for \textit{fae1-1}, and \textit{fae1-2} was the second highest expressed gene in the pathway.
-Mapping data indicate that \textit{fae1-1} and \textit{fae1-2} are most likely co-transcribed (Figure \ref{fig:S5} in Supplementary Material).
-RNA-Seq mapping data suggest two putative transcriptional starts at the positions -215 (with $\sigma^{70}$-like -10 and -35 sequences upstream) and -105 (with a conserved ``AATGGTT'' sequence in the -35 region) upstream from the \textit{fae1-1} translational start (Figure \ref{fig:S5} in Supplementary Material; Table S3 in Supplementary Material).
+Mapping data indicate that \textit{fae1-1} and \textit{fae1-2} are most likely co-transcribed (Figure \ref{fig:S5}).
+RNA-Seq mapping data suggest two putative transcriptional starts at the positions -215 (with $\sigma^{70}$-like -10 and -35 sequences upstream) and -105 (with a conserved ``AATGGTT'' sequence in the -35 region) upstream from the \textit{fae1-1} translational start (Figure \ref{fig:S5}; Table \ref{table:ChA_S3}).
 
 The third homolog of Fae (\textit{fae2}) demonstrates moderate expression.
 The rest of the genes encoding key enzymes of the pathway (\textit{mtdB}, methylene-\ce{H4}MPT dehydrogenase; \textit{mch}, methenyl-\ce{H4}MPT cyclohydrolase; \textit{fhcABCD}, formyltransferase/hydrolase) have a similarly moderate expression.
@@ -228,14 +232,14 @@ NAD-dependent formate dehydrogenase from \textit{M. trichosporium} OB3b has been
 The enzyme is composed of four subunit types and contained flavin, iron, and molybdenum \cite{jollie1991}.
 The genome of \textit{M. trichosporium} OB3b predicts one NAD-dependent molybdenum-containing formate dehydrogenase encoded by \textit{fdsABGCD} and an additional single copy of the alpha subunit (\textit{fdhA}).
 The two genes \textit{fdsA} and \textit{fdhA} share 81\% identity.
-Only one of them, \textit{fdsA} as well as the rest of the \textit{fds} cluster genes were expressed in the transcriptome (Table 2).
+Only one of them, \textit{fdsA} as well as the rest of the \textit{fds} cluster genes were expressed in the transcriptome (Table \ref{table:OB3b_2}).
 
 \subsection{\ce{C1}-Assimilation: Serine Cycle}
 It has been previously suggested that the serine cycle is the major pathway for \ce{C1}-assimilation in \textit{M. trichosporium} OB3b \cite{strom1974}.
 All genetic elements essential for operation of the cycle were predicted in the genome and cluster together \cite{stein2010}.
-However, genes of the pathway show deferent levels of expression (Table 2).
-While \textit{sga}, \textit{glyA}, and \textit{mclA} have high expression levels, the rest of the genes involved in the pathway show modest expression (Table 2; Figure \ref{fig:S4} in Supplementary Material).
-In addition to the serine-glyoxylate aminotransferase (\textit{sga}), a key aminotransferase in the central metabolism of serine cycle microbes, moderate levels of expression were observed for two other aminotransferases, phosphoserine aminotransferase, and aspartate aminotransferase (Table 2).
+However, genes of the pathway show deferent levels of expression (Table \ref{table:OB3b_2}).
+While \textit{sga}, \textit{glyA}, and \textit{mclA} have high expression levels, the rest of the genes involved in the pathway show modest expression (Table \ref{table:OB3b_2}; Figure \ref{fig:S4}).
+In addition to the serine-glyoxylate aminotransferase (\textit{sga}), a key aminotransferase in the central metabolism of serine cycle microbes, moderate levels of expression were observed for two other aminotransferases, phosphoserine aminotransferase, and aspartate aminotransferase (Table \ref{table:OB3b_2}).
 
 The genome of \textit{M. trichosporium} OB3b encodes two copies of phosphoenolpyruvate (PEP) carboxylase (\textit{ppc1} and \textit{ppc2}).
 The two enzymes are only distantly related to each other and share 33\% identity at the amino acid level.
@@ -243,7 +247,7 @@ One of them, Ppc1, clusters with PEP carboxylases usually found in bacteria poss
 Serine cycle Ppcs belong to a ``\textit{non-regulated}" group of PEP carboxylases \cite{anthony1982}.
 The activity of these enzymes is not controlled by intermediates of the TCA cycle or glycolysis/gluconeogenesis \cite{newaz1975}.
 The second homolog of Ppc (\textit{ppc2}) clusters with anaplerotic ``\textit{regulated}" PEP carboxylases, which are controlled by a variety of metabolic effectors \cite{takahashi1993, kai2003}.
-Both \textit{ppc1} and \textit{ppc2} transcripts demonstrate comparable levels of abundance in this study (Table 2).
+Both \textit{ppc1} and \textit{ppc2} transcripts demonstrate comparable levels of abundance in this study (Table \ref{table:OB3b_2}).
 The sequences of the two genes were further investigated in an attempt to better understand the rationale for the enzymatic redundancy at the PEP to oxaloacetate conversion step.
 We used multiple sequence alignments of Ppc1, Ppc2, and other characterized PEP carboxylases and homology models (not shown) built from tensed and relaxed state crystal structures \cite{matsumura2002} to investigate the predicted allosteric regulation sites of these two enzymes.
 The alignment shows that only the catalytic elements, such as PEP-binding-site residues, are conserved in both proteins (Ppc1 and Ppc2). %, Figure S6 in Supplementary Material).
@@ -262,7 +266,7 @@ In this case, \ce{C1}-carbon assimilated via the serine cycle is re-directed to 
 \centering
      \includegraphics[width=1.0\textwidth]{./tex/chapter1/figures/figure3.png}
      \begin{singlespace}
-     \caption[Phylogenetic tree of phosphoenolpyruvate carboxylases.]{
+     \caption[Phylogenetic tree of phosphoenolpyruvate carboxylases]{
         Phylogenetic tree of phosphoenolpyruvate carboxylases.
         Sequence identifiers follow the source organism label. Sequences were aligned with MUSCLE v3.8.31 \cite{edgar2004} and
         the tree created with ClustalW2 2.0.12 \cite{larkin2007} and rendered with iTOL \cite{letunic2007}.}
@@ -280,9 +284,9 @@ As the initial steps of the EMC pathway are shared with PHB biosynthesis [acetyl
 We found that genes encoding the initial steps of the PHB-synthesis (\textit{phaA}/\textit{phaB}) show moderate levels of expression.
 As could be expected for cells in early-mid exponential growth, the expression of the gene encoding PHB synthase (\textit{phaC}) was low.
 The data are consistent with previous observations of high activity of PhaA and PhaB and low activity of PHB synthase (PhaC) in exponentially grown cells of \textit{M. trichosporium} OB3b \cite{williams1998, doronina2008}.
-The PHB-degradation pathway genes, including 3-hydroxybutyrate dehydrogenase, acetoacetate decarboxylase, and acetoacetyl-coenzymeA synthetase, show modest expression levels (Table 2).
+The PHB-degradation pathway genes, including 3-hydroxybutyrate dehydrogenase, acetoacetate decarboxylase, and acetoacetyl-coenzymeA synthetase, show modest expression levels (Table \ref{table:OB3b_2}).
 
-All homologs of the EMC pathway enzymes were expressed in \textit{M. trichosporium} OB3b during growth on methane (Table 2).
+All homologs of the EMC pathway enzymes were expressed in \textit{M. trichosporium} OB3b during growth on methane (Table \ref{table:OB3b_2}).
 Several putative acetyl/propionyl-CoA carboxylases are predicted in the genome, however only METTOv1\_200020 (putative \textit{ppcA}) and METTOv1\_220035 (putative \textit{ppcB}) were expressed.
 Furthermore, the PpcAB and crotonyl-CoA reductase (\textit{ccr}) genes display the highest level of expression among all \ce{CO2}-fixing enzymes in the \textit{M. trichosporium} OB3b transcriptome.
 Thus, the transcriptional profile of \textit{M. trichosporium} OB3b indicates the methanotroph may possess an active EMC pathway.
@@ -293,9 +297,9 @@ However, the functional role of this metabolic pathway in methanotrophs is not f
 It has been suggested that the main role of the TCA cycle in the methanotrophs is carbon assimilation rather than energy production, due to low enzyme activity and lack of pyruvate dehydrogenase \cite{trotsenko1976, anthony1982, shishkina1982, trotsenko2008}.
 However, labeling studies on acetate and pyruvate utilization have predicted the presence of a catabolic TCA cycle in type II methanotrophs \cite{wadzinski1975, higgins1981}.
 \textit{In silico} genome analysis indicates that \textit{M. trichosporium} OB3b contains predicted genes for all key enzymes of the TCA cycle and pyruvate dehydrogenase (\textit{pdh}).
-All of these genes were expressed (Table 2).
+All of these genes were expressed (Table \ref{table:OB3b_2}).
 These steps of the TCA cycle are shared between the EMC pathway and the serine cycle (Figure \ref{fig:A_metabolic_map}).
-\textit{De novo} transcriptome assembly indicated that \textit{M. trichosporium} OB3b possesses an additional homolog of succinate:ubiquinone oxidoreductase (\textit{sucABCD}, Table S1 in Supplementary Material).
+\textit{De novo} transcriptome assembly indicated that \textit{M. trichosporium} OB3b possesses an additional homolog of succinate:ubiquinone oxidoreductase (\textit{sucABCD}, Table \ref{table:ChA_S1}).
 Genes encoding the succinate:ubiquinone oxidoreductase and succinyl-CoA synthase (\textit{sucCD}) are among the most highly expressed TCA cycle functions.
 The reductive branch of the pathway (including genes for citrate synthase, aconitase, isocitrate dehydrogenase, and 2-ketoglutarate dehydrogenase) displays moderate-to-low expression.
 Low expression of \textit{pdh} genes is consistent with the previous enzymatic studies that show low/no activity of pyruvate dehydrogenase \cite{trotsenko1976}.
@@ -306,21 +310,21 @@ Most previous enzymatic studies predict that the PEP carboxylase (Ppc), a key en
 On the other hand Naguib (\cite{naguib1979}, 1979) has shown that \textit{M. trichosporium} OB3b possesses different carboxylation systems, including membrane bound and cytoplasmic enzymes.
 It could be predicted that the EMC pathway also contributes to \ce{CO2} assimilation.
 \textit{In silico} analysis of the genome sequence also revealed that in addition to the \ce{CO2}-fixing functions described above, genes for NAD(P)-dependent malic enzyme (\textit{mae}), acetyl-CoA carboxylase (\textit{accABD}), phosphoribosyl aminoimidazole carboxylase, pyruvate carboxylase (\textit{pcx}), and a putative 2-oxoacid ferredoxin oxidoreductase are all present.
-All of these genes were expressed (Table 2).
+All of these genes were expressed (Table \ref{table:OB3b_2}).
 
 \subsection{Glycolysis/Gluconeogenesis and Pentose-Phosphate Pathways}
 The absence of enzymatic activity for the initial steps of the gluconeogenic pathway including pyruvate-PEP or oxaloacetate-PEP conversions was one of the most common explanations for the inability of alphaproteobacterial methanotrophic bacteria to grow on poly-carbon compounds such as pyruvate or acetate \cite{patel1979, shishkina1982}.
 No homolog of PEP-carboxykinase was found in the \textit{M. trichosporium} OB3b genome.
 However, contrary to expectations based on enzymatic inferences, a set of pyruvate-acetyl-CoA, pyruvate-PEP, and pyruvate-malate interconversions could be predicted from the genome annotation.
 Homologs of PEP synthase (\textit{pps}), pyruvate kinase (\textit{pyk1} and \textit{pyk2}), and pyruvate phosphate dikinase were detected.
-The relative abundances of \textit{pyk1}, \textit{pps}, and \textit{pdk} transcripts were low, but a second pyruvate kinase (\textit{pyk2}) displayed modest expression (Table 2).
+The relative abundances of \textit{pyk1}, \textit{pps}, and \textit{pdk} transcripts were low, but a second pyruvate kinase (\textit{pyk2}) displayed modest expression (Table \ref{table:OB3b_2}).
 
 During growth on \ce{C1} compounds (methane or methanol), gluconeogenesis starts with conversion of 2-phosphoglycerate into 3-phosphoglycerate by phosphoglycerate mutase (\textit{pgm}).
 This metabolic step represents the main branch point of the serine cycle.
 Four homologs of \textit{pgm} were identified in the \textit{M. trichosporium} OB3b genome.
 Three of them (METTOv1\_10180, METTOv1\_100061, and METTOv1\_680013) were expressed at tested conditions.
 Homologs of the genes for the rest of the enzymes in the pathway were detected in the genome, mostly in single copies.
-All gene transcripts were observed in the RNA-Seq data (Table 2).
+All gene transcripts were observed in the RNA-Seq data (Table \ref{table:OB3b_2}).
 
 The genome analysis suggests that the pentose-phosphate pathway (PPP) is incomplete in \textit{M. trichosporium} OB3b.
 Glucose-6-phosphate dehydrogenase, gluconolactonase and phosphogluconate dehydrogenase (oxidative PPP), and transaldolase or sedoheptulose bisphosphatase (non-oxidative PPP), are missing in the genome.
@@ -334,7 +338,7 @@ It is possible that Pfk contributes to sedoheptulose-1,7-bisphosphate conversion
 \subsection{Lipid Metabolism}
 Methane oxidation via particulate methane monooxygenase is linked to formation of extensive intracellular membranes.
 It has been shown that lipid/biomass content of \textit{M. trichosporium} OB3b cells grown on methane is 9.2\% and that phospholipids represent a significant fraction of membrane lipids (83.4\%) \cite{weaver1975, guckert1991}.
-Concurrent with previous observation, genes essential for biosynthesis of major fatty acids (stearic, oleic, and palmitoleic acids) and phospholipids (including phosphotidylcholine, phosphatidylglycerol, phosphatidylserine, and phosphatidylethanolamine) show moderate level of expression (Table S2 in Supplementary Material).
+Concurrent with previous observation, genes essential for biosynthesis of major fatty acids (stearic, oleic, and palmitoleic acids) and phospholipids (including phosphotidylcholine, phosphatidylglycerol, phosphatidylserine, and phosphatidylethanolamine) show moderate level of expression (Table \ref{table:ChA_S2}).
 
 \subsection{Nitrogen, Copper, and Iron Metabolism}
 The pathways of nitrogen assimilation have been studied in a number of obligate methanotrophic species including \textit{M. trichosporium} OB3b.
@@ -344,11 +348,11 @@ It has been concluded that ammonia was assimilated exclusively via the glutamine
 
 In this study, cells of \textit{M. trichosporium} OB3b were grown using nitrate as the N-source.
 Despite the presence of an exogenous source of nitrogen, some (very low) expression of the nitrogenase gene cluster was observed.
-Relative expression of nitrogenase structural genes (\textit{nifHDK}) was about four to five times higher than expression of the chaperone and cofactor biosynthesis genes (Table S2 in Supplementary Material).
+Relative expression of nitrogenase structural genes (\textit{nifHDK}) was about four to five times higher than expression of the chaperone and cofactor biosynthesis genes (Table \ref{table:ChA_S2}).
 High expression of genes involved in assimilatory nitrate reduction, including the nitrate transporter (\textit{nrtA}), nitrate reductase (\textit{nasA}), and nitrite reductase (\textit{nasDE}) was detected.
-Interestingly, moderate expression of a putative ammonium transporter (METTOv1\_130049) was detected, although a gene cluster with putative involvement in hydroxylamine detoxification (METTOv1\_230076-78), which should only be needed under conditions of high ammonium concentration, showed low expression (Table 2).
+Interestingly, moderate expression of a putative ammonium transporter (METTOv1\_130049) was detected, although a gene cluster with putative involvement in hydroxylamine detoxification (METTOv1\_230076-78), which should only be needed under conditions of high ammonium concentration, showed low expression (Table \ref{table:OB3b_2}).
 The gene encoding cytochrome c'-alpha (METTOv1\_560023), a protein implicated in NOx detoxification, was moderately expressed.
-Homologs of alanine dehydrogenase (METTOv1\_280018) and glutamate dehydrogenase (METTOv1\_190023) were identified; however, neither gene was expressed (Table 2).
+Homologs of alanine dehydrogenase (METTOv1\_280018) and glutamate dehydrogenase (METTOv1\_190023) were identified; however, neither gene was expressed (Table \ref{table:OB3b_2}).
 High expression of glutamate synthase (both NADH and Fd-dependent), glutamate-ammonia ligase (METTOv1\_200046), and Type I glutamine synthetase (METTOv1\_200048) was observed.
 Based on these transcriptomic studies and genome analysis, the only pathway for alanine biosynthesis is transamination of pyruvate.
 The most likely enzymatic system for this conversion is the serine-glyoxylate aminotransferase (Sga), which is known to catalyze serine-pyruvate transamination \cite{liepman2001}.
@@ -359,14 +363,14 @@ Methanotrophic bacteria synthetize methanobactin (Mb), a copper-chelating compou
 It has been suggested that Mb provides copper for the regulation and activity of methane oxidation machinery in methanotrophs \cite{balasubramanian2010, semrau2010}.
 It has been shown that Mb is a peptide-derived molecule.
 A gene encoding the Mb precursor in \textit{M. trichosporium} OB3b has recently been identified \cite{krentz2010}.
-We found that the Mb-gene is among the top 5\% most abundant transcripts despite the fact that the culture in our experiments was grown with sufficient Cu (Table 2).
+We found that the Mb-gene is among the top 5\% most abundant transcripts despite the fact that the culture in our experiments was grown with sufficient Cu (Table \ref{table:OB3b_2}).
 It is not known how Mb is synthesized or cleaved, however it has been suggested that genes downstream of \textit{mb} are involved \cite{krentz2010}.
 These genes were also expressed, but the expression level was low.
 
 Iron is another essential metal in \ce{C1}-metabolism.
 It has been previously observed that \textit{M. trichosporium} OB3b can produce a Fe-chelating compound \cite{yoon2010}; however the siderophore structure and pathways for its biosynthesis remain to be discovered.
 The production of a fluorescent compound was observed on plates at tested growth conditions (data not shown).
-Our transcriptomic studies revealed relatively high expression of genes homologous to those involved in pyoverdine (\textit{pvd}) I biosynthesis, excretion, uptake, and regulation (Table 2), making this a possibility for a siderophore.
+Our transcriptomic studies revealed relatively high expression of genes homologous to those involved in pyoverdine (\textit{pvd}) I biosynthesis, excretion, uptake, and regulation (Table \ref{table:OB3b_2}), making this a possibility for a siderophore.
 All four essential non-ribosomal peptide synthetases (\textit{pvdLIJD}) were identified.
 Unfortunately, the \textit{pvd} genes are represented in fragments in the current genome assembly, making it impossible to predict the order of the amino acids in the peptide product.
 
@@ -433,8 +437,8 @@ Enriched RNA samples (i.e., two biological replicates) were submitted to the Uni
 The replicates were aligned to the reference genome using BWA under default parameters \cite{li2009}.
 The ``METTOv1" genome sequence was downloaded from MaGE \cite{vallenet2006}.
 The single large pseudo scaffold distributed by MaGE was split into 187 separate contigs at each stretch of N bases.
-In addition, chimeric contigs from the assembly and low quality gene calls were removed (Table S5 in Supplementary Material).
-The summary of RNA-seq (Illumina) reads can be found in Table S4 in Supplementary Material.
+In addition, chimeric contigs from the assembly and low quality gene calls were removed (Table \ref{table:ChA_S5}).
+The summary of RNA-seq (Illumina) reads can be found in Table \ref{table:ChA_S4}.
 The METTOv1 genome did not have a complete \textit{pmoCAB} cluster suitable for alignment.
 In order to include \textit{pmoCAB}, a separate alignment run was performed with the previously published sequence of this gene cluster \cite{holmes1995}.
 After the alignment with BWA, SAM tools was used to generate a \textit{pileup} file that was loaded into a MySQL database for normalization from Reads Per Kilobase of gene per Million mapped reads (RPKM) to coding sequences \cite{mortazavi2008}.

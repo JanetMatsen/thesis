@@ -65,6 +65,7 @@
 %----- Janet additions
 \usepackage[colorlinks = true, linkcolor = black, urlcolor  = blue, citecolor = black, anchorcolor = black]{hyperref} % for hyperlinks.
 \usepackage{longtable} % for multi-page tables.  Used for glossary. http://stackoverflow.com/questions/2896833/how-to-stretch-a-table-over-multiple-pages
+\usepackage{datatool}  % http://tex.stackexchange.com/questions/242315/using-csvreader-to-read-from-csv-giving-invalid-output
 \usepackage{seqsplit} % to wrap AA sequences. See RFP sequence. % http://tex.stackexchange.com/questions/100391/how-to-wrap-a-word-in-line-without-hyphen
 
 \usepackage{palatino} % Erick's favorite font
@@ -113,15 +114,16 @@
 %
 % ----- copyright and title pages
 %
-\Title{My Thesis}
+\Title{Genomics, Transcriptomics, and Machine Learning to Enhance Understanding of Methanotrophic Metabolism in Isolates and Communities.}
 \Author{Janet Matsen}
 \Year{2017}
 \Program{Chemical Engineering}
 
 \Chair{Mary Lidstrom}{Professor}{Chemical Engineering, Microbiology}
-\Signature{David Beck}
+\Chair{David Beck}{Research Assistant Professor}{Chemical Engineering}
+%\Signature{David Beck}
 \Signature{David Baker}
-\Signature{François Baneyx}
+\Signature{Fran\c{c}ois Baneyx}
 
 \copyrightpage
 
@@ -146,13 +148,12 @@ Abstract.
 %
 \tableofcontents
 \listoffigures
-%\listoftables  % I have no tables
+\listoftables
 
 %
 % ----- glossary
 %
-%\include{./tex/glossary}
-\include{./tex/glossary}
+%\include{./tex/glossary} TODO: turn on
 %
 % ----- acknowledgments
 %
@@ -173,23 +174,23 @@ Abstract.
 
 % ========== Chapter 1
 
-%\include{./tex/chapter1/pure_culture_omics}    TODO: turn on
-%\include{./tex/chapter1/supplemental}   TODO: turn on
+\include{./tex/chapter1/pure_culture_omics}
+%\include{./tex/chapter1/supplemental}
 
 % ========== Chapter 2
 
-\include{./tex/chapter2/community_analysis}
+%\include{./tex/chapter2/community_analysis}
 
  % ========== Chapter 3
 
-\include{./tex/chapter3/ml}
+%\include{./tex/chapter3/ml}
 
 \printendnotes
 
 %
 % ==========   Bibliography
 %
-\nocite{*}   % include everything in the uwthesis.bib file
+%\nocite{*}   % include everything in the uwthesis.bib file
 \bibliographystyle{unsrt}
 \bibliography{uwthesis,./tex/chapter1/chapter1,./tex/chapter2/chapter2,./tex/chapter3/chapter3}
 %
@@ -200,7 +201,21 @@ Abstract.
 
 % ========== Appendix A
 
-\chapter{Test Appendix}
-Appendix, yes, appendix.
+
+\include{./tex/chapter1/supplemental}
+
+\chapter{(Test) 2nd Appendix}
+
+\begin{figure}[H]
+\centering
+     \includegraphics[width=0.6\textwidth]{/Users/janet/Downloads/skunks.jpg}
+     \begin{singlespace}
+     \caption{
+        (testing) 2nd supplemental figure for another chapter.
+        }
+     \label{fig:skunks}
+     \end{singlespace}
+\end{figure}
+
 
 \end{document}
