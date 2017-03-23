@@ -460,18 +460,10 @@ The code described was developed with Git version control, and the full history 
 
 
 %-------- Elviz Analysis
-\subsection{Elviz Analysis}
+\subsection{Raw Reads}
 
-The best measure of which taxa dominate the samples comes from the Elviz \cite{cantor2015} data.
-As described in the Methods section, the measure used sum of read counts across contigs with the taxonomy of interest.
-Traditional metrics like RPKM \cite{mortazavi2008} and TPM \cite{wagner2012} are excellent for comparing coverage or expression across features or samples, but could not be used due to the need to sum values across contigs.
-In particular, a contig with length 10kb should contribute nearly identically to a measure of abundance as an identically expressed second 10kb stretch of DNA that for technical reasons was assembled into two 5kb stretches rather than one 10kb one.
-% For example, if you had a 10kb contig with 2 arbitrary units of coverage, you do not want your estimate of abundance to double upon splitting that contig into two 5kb contigs, each with 2 units of coverage.
-Any scheme that controlled for contig length or was weighted by each contig's statistic would skew the aggregated number down for metagenomic datasets such of this with many short, low-coverage contigs.
-The fact that these assemblies are dominated by short contigs means that RPKM and TPM would bias the statistics toward the statistics of the shorter and less reliable contigs.
-Similarly, median coverage was not used or the unreliable coverage numbers associated with short contigs would dominate the measure.
-
-
+The cumulative number of raw and un-filtered reads is shown below.
+This collection of reads was used for all inferences described in this chapter.
 
 \begin{table}[H]
 \centering
@@ -486,6 +478,31 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
 \caption{Total number of un-filtered reads.}
 \label{table:sample_read_sizes}
 \end{table}
+
+
+
+%-------- Elviz Analysis
+\subsection{Elviz Analysis}
+
+The best measure of which taxa dominate the samples comes from the Elviz \cite{cantor2015} data.
+As described in the Methods section, the measure used sum of read counts across contigs with the taxonomy of interest.
+Traditional metrics like RPKM \cite{mortazavi2008} and TPM \cite{wagner2012} are excellent for comparing coverage or expression across features or samples, but could not be used due to the need to sum values across contigs.
+In particular, a contig with length 10kb should contribute nearly identically to a measure of abundance as an identically expressed second 10kb stretch of DNA that for technical reasons was assembled into two 5kb stretches rather than one 10kb one.
+Any scheme that controlled for contig length or was weighted by each contig's statistic would skew the aggregated number down for metagenomic datasets such of this with many short, low-coverage contigs.
+The fact that these assemblies are dominated by short contigs means that RPKM and TPM would bias the statistics toward the statistics of the shorter and less reliable contigs.
+Similarly, median coverage was not used or the unreliable coverage numbers associated with short contigs would dominate the measure.
+
+Figure \ref{fig:4dominant_groups} shows abundances of the four major taxonomic groups, Methylococcales, Methylophilales, Bacteroidetes, and Burkholderiales, according to the Elviz taxonomy calls for each contig.
+(Recall introductory Figure \ref{fig:taxonomy} for a hierarchical visualization of these taxonomies.)
+Their dominance is consistent with pervious studies \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW, kalyuzhnaya2008Burkholderiales}.
+Figure \ref{fig:dominant_genera} show the breakdown of the methanotrophic and methylotrophic taxa in Figure \ref{fig:4dominant_groups}.
+Notably, the path to rarefaction is not particularly consistent across samples.
+Like previous studies, dominance the dominant methanotrophic Order/Genus was Methylococcales/\textit{Methylococcaceae} and the dominant non-methanotrophic methylotrophic Order/Genus was Methylophilales/\textit{Methylophilaceae}.
+Low oxygen was associated with a higher abundance of methanotrophs, and lower proportion of methylotrophs than the high-oxygen samples.
+\textit{Methylosarcina} is often found in high-oxygen samples, but rarely in low-oxygen samples.
+Two high oxygen samples are dominated by \textit{Methylobacter}, but the others are not.
+The last four samples in each series are more similar to the previous samples in the series than samples at the opposite oxygen tension.
+
 
 \begin{figure}[H]
 \centering
@@ -521,6 +538,15 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
 
 \subsubsection{Binning Potential: Elviz Contigs}
 
+%Genomic-scale resolution drove investigation of the potential for sorting these contigs into genome bins.
+The goal of this study is a comprehensive description of the samples, ideally in terms of genome bins.
+The potential for these Elviz contigs to paint a comprehensive picture of the microbial community was measured by summing all reads assigned to contigs long enough to bin, namely contigs $\geq$ 1.5kb.
+Figure \ref{fig:isolate_RNAseq} shows that while the entire set of contigs represents the samples well, the subset of contigs that are candidates for binning explain less than 20\% of the reads obtained for many low oxygen samples.
+Another complication of binning these contigs, is that binning the contigs for each sample individually would lead to many redundant bins that need to be thinned.
+This process is prone to human bias, and can lead researchers to over-fit their bins to their quality measures and thus over-state the quality of their bins.
+Nonetheless, if a particular sample is enriched in an organism of interest, use of the contigs from that sample should be conisdered for future binning efforts.
+
+
 \begin{figure}[H]
 \centering
     % /Users/janet/Dropbox/meta4_bins_data_and_files/1703014_is_Elviz-_junk_revised/results
@@ -539,6 +565,15 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
 % ----- Map to Isolate Genomes ------
 \subsection{Map to Isolate Genomes}
 
+The next simplest approach of identifying which microbes are active in the samples, and what they express is to map the reads to the 55+ isolate genomes at hand (cite XX).
+The potential efficacy of these results can be measured by quantifying the fraction of metagenomic and metatranscriptomic reads that align to these genomes (recall the pipe diagram, Figure \ref{fig:pipe_leaks}).
+Figure \ref{fig:isolate_RNAseq} shows the fraction of the metatranscriptomes that can be explained using these reference genomes.
+The low accountability (mostly $<$15\%) guarantees an incomplete portrait of the activity in these samples, so the data was not pursued further.
+Despite heroic Lidstrom Lab efforts to isolate strains, the set obtained thus far do not cover the complexity seen in real samples.
+This indicates missing taxa and/or dissimilarity between the isolated strains and the ones that dominate in nature.
+While this method of describing gene expression was not pursued father, it provides a baseline fraction of RNA mapped for any subsequent metagenomic methods to beat.
+
+
 \begin{figure}[H]
 \centering
     % /Users/janet/Dropbox/thesis/tex/chapter2/figures/170208_fraction_of_transcriptome_reads_mapped_to_isolates.pdf
@@ -552,17 +587,18 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
     \end{singlespace}
 \end{figure}
 
+% ----- ASSEMBLY ------
+\subsection{Assembly}
 
-% ----- ANNOTATION ------
-\subsection{Annotation}
+Given that the Elviz contigs and isolate genomes were not effective reference DNA for answering the questions of this study, a better set of contigs was sought out.
+One approach for explaining a set of metagenomic samples is co-assembly of metagenome reads, calling genes on the resulting contigs, mapping the transcriptomes to these contigs, and tabulating the expression levels.
+Accordingly, the metagenomes from almost every sample were pooled and assembled into one set of contigs shared by all samples.
 
+Assemblies which produce long contigs are desired, as longer contigs are easier to call genes on and cluster by similarity during binning.
+Communities with extremely low complexity (just a few microbes co-existing) can yield long contigs that can be sorted into high-confidence genome bins that are often described by authors as genomes, rather than bins.
+As complexity increases, lessened sequencing depth and homologous regions between organisms inhibit the ability to get long contigs.
+The distribution of contigs obtained (Figure \ref{fig:contig_lengths}) do not indicate a simple community.
 
-% ----- TRANSCRIPTOME ANALYSIS ------
-\subsection{Transcriptome Analysis}
-
-
-% ----- BINNING ------
-\subsection{Binning of Co-assembled Contigs}
 
 \begin{figure}[H]
 \centering
@@ -575,6 +611,91 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
     \end{singlespace}
 \end{figure}
 
+
+
+% ----- ANNOTATION ------
+\subsection{Annotation}
+
+Genes were called on contigs with length $\geq$ 1.5kb, in preparation for metatranscriptome studies.
+Prokka identified XXX distinct genes, encoding XXX differently named proteins (Table XX).
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l | c}
+ %\toprule
+        & statistic  \\
+\midrule
+	total \# of genes & \texttt{XXXX} \\ % /work/jmatsen/170308_assess_Elviz_read_attraction_frac
+	number of distinctly name genes & XX \\
+%\bottomrule
+\end{tabular}
+\caption[]{}
+\label{table:annotation}
+\end{table}
+
+
+% ?? Xox?
+Prokka was able to identify the key methanotrophy/methylotrophy genes such as XXX.
+Some proteins were mis-annotated, as is typically observed when using automated annotation tools on methylotrophs.
+For example, many of the glucose dehydrogenases identified are in fact methane monooxygenases, and Xox-MDHs are listed as XXX.
+
+% ?? TODO: make a plot that shows the gene density is lower on short contigs?
+
+
+% ----- TRANSCRIPTOME ANALYSIS ------
+\subsection{Transcriptome Analysis}
+
+% Intro
+Mappings of the 88 transcriptomes to the annotated contigs revealed which of the 0.7XX million genes were strongly expressed.
+Table XX shows the gene names associated with the highest total of reads mapped, and how many copies of these genes contribute to that sum.
+See supplemental file XX for the full set.
+The presence of key methanotrophy and methylotrophy genes agrees with the Elviz portrait of methanotroph/methylotroph dominance in every sample.
+Other highly expressed genes allow speculation for metabolic roles of other microbes.
+%Phage.
+
+%?? Get isolate stats?? We hoped to beat the benchmark of mapping to the isolates:  median XX %.
+
+Figure \ref{fig:rna_mapping_bars} shows how well the called genes account for the transcripts seen in the raw sequence data.
+The green bars represent a high degree of certainty.
+Gray bars correspond to "no feature", which is likely correlated to short contigs for which gene calls are less likely.
+Pink bars are labeled as having low alignment quality, but recall that BWA-MEM sets the quality score to zero when a read maps equally well to two different spots.
+It may be possible to improve (shrink) the gray bars via re-assembly.
+Similarly, recovery of reads that map equally well to different places can be brought out of the pink bars if htseq-count's parameters are altered to allow low quality reads to be counted.
+While this alteration would help with describing holistically which genes are expressed, it reduces certainty of read mappings and is not desired for Chapter \ref{chapter:C}.
+
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/1703016_frac_RNA-seq_mapped/figures/170316_fracs_mapped_unmapped_etc.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170316_fracs_mapped_unmapped_etc.pdf}
+    \begin{singlespace}
+    \caption[Efficacy of mapping RNA-seq to MEGAHIT contigs]{
+        Efficacy of mapping RNA-seq to MEGAHIT contigs.}
+    \label{fig:rna_mapping_bars}
+    \end{singlespace}
+\end{figure}
+
+\subsubsection{Highest Expressed Proteins}
+% TODO: add table of highest expressed proteins, and describe.
+
+\subsubsection{Expression of Genes by Locus}
+
+Which copes are expressed, and under which conditions?
+Breaking down the expression of these genes by locus and sample reveals which copies dominate.
+Many of the patterns appear to be oxygen-dependent.
+% TODO: figure of expression.  Include more in appendix.
+% FIGURE: pmo subunit A.
+
+For example, the top \textit{pmoC} copies are strongly correlated to the oxygen tension in each sample.
+Identifying which taxa are associated with these oxygen-dependent patterns in gene expression can shed light onto how oxygen influences community composition.
+For example, this \textit{pmoC} trend was XXXX. %TODO
+
+
+% ----- BINNING ------
+\subsection{Binning of Co-assembled Contigs}
+
+Contigs of length $\geq$ 1.5kb were binned by MetaBAT and MyCC, two leading binning tools.
+As mentioned, MyCC does not scale well to large data, so the full dataset including contigs as short as 1.5kb did not complete, even with a high performance AWS instance.
 
 \begin{table}[H]
 \centering
@@ -591,16 +712,10 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
 \label{table:sample_read_sizes}
 \end{table}
 
-\begin{figure}[H]
-\centering
-    % /Users/janet/Dropbox/meta4_bins_data_and_files/1703016_frac_RNA-seq_mapped/figures/170316_fracs_mapped_unmapped_etc.pdf
-    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170316_fracs_mapped_unmapped_etc.pdf}
-    \begin{singlespace}
-    \caption[Efficacy of mapping RNA-seq to MEGAHIT contigs]{
-        Efficacy of mapping RNA-seq to MEGAHIT contigs.}
-    \label{fig:rna_mapping_bars}
-    \end{singlespace}
-\end{figure}
+%MetaBAT suffers from low binning rates, MyCC suffers from too aggressive of binning.
+Figure \ref{fig:binning_frac_reads_mapped} shows this the fraction of the metagenomes that are accounted for by the bins, as a measure of how effectively the bins describe the composition of organisms.
+The two sets of lines for the MetaBAT plots measure how well the bins did in total (dashed lines), and how well they did on contigs longer than 2.5kb (to better compare with the MyCC results).
+
 
 \begin{figure}[H]
 \centering
@@ -614,9 +729,13 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
         The dashed MetaBAT lines represent the full fraction of reads accounted for by the MetaBAT results including contigs as short as 1.5kb.
         The arrow after week 10 indicates that all subsequent samples were treated with the opposite oxygen tension as the label indicates.
     }
-    \label{fig:mycc_contamination}
+    \label{fig:binning_frac_reads_mapped}
     \end{singlespace}
 \end{figure}
+
+MetaBAT with default settings produced bins with low sample accountability, whereas the MyCC bins represented a high fraction of the raw sample reads.
+Figure \ref{fig:mycc_binned_more_contigs} shows this the fraction of the metagenomes that are accounted for by the bins, as a measure of how effectively the bins describe the composition of organisms.
+The two sets of lines for the MetaBAT plots measure how well the bins did in total (dashed lines), and how well they did on contigs longer than 2.5kb (to better compare with the MyCC results).
 
 
 \begin{figure}[H]
@@ -630,6 +749,21 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
     \end{singlespace}
 \end{figure}
 
+% MetaBAT comments
+One striking trend in the MetaBAT results is the difference in the fraction of reads associated with binned contigs between low oxygen replicates 1/2 and 3/4.
+This is explained by differences in the proportion of high-abundance contigs across replicates (Supplemental Figure \ref{fig:contig_dist}).
+The poorly represented samples are biased more toward short contigs.
+While noting that the last 4 data points in each series have the opposite oxygen condition as the series label, see that the high oxygen samples are better reflected by MetaBAT bins.
+This source of this conundrum has not yet been resolved, but could be due to a smear of organisms for which assembly performed poorly.
+BLAST could be used to identify the taxa for the contigs which are binning well, though high-throughput techniques would be prudent given the number of contigs.
+
+Figure \ref{fig:mycc_binned_more_contigs} also shows MyCC's increased efficacy at representing the raw sequencing reads.
+Upon further investigation, it was revealed that MyCC binned $>$99\% of all contigs supplied, including the shorter ($\approx$ 2.5kb) contigs which carry greater uncertainty. %(Figure \ref{fig:mycc_binned_more_contigs}).
+Aggressive binning is associated with low specificity, binning of contigs that do not belong with the others in the bin.
+Figure \ref{fig:mycc_contamination} reveals the consequence of this: high contamination scores according to CheckM.
+CheckM's efficacy to analyze methylotrophs was confirmed by applying it to the 55 genomes used in the isolate studies.
+The statistics it returned for these positive controls were nearly perfect, indicating that good bins for these samples should have nearly 100\% completeness and less than a few percent contamination (Appendix XXX).
+% high sensitivity, low specificity.
 
 \begin{figure}[H]
 \centering
@@ -642,12 +776,33 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
     \end{singlespace}
 \end{figure}
 
+Given the small fraction of the metagenomes explained by MetaBAT (Figure \cite{fig:mycc_contamination}), and high contamination scores of the MyCC bins (Figure \ref{fig:mycc_contamination}), binning has been placed on hold.
+See Section \ref{chA_future_steps} below for suggested next steps in the binning workflow.
+
+As a measure of the best-case scenario for binning given the assembly, the fraction of reads attracted to contigs shorter than 1.5kb were quantified (Figure XX).
+If future work with these data aim to explore more than $\approx$ XXX\% of the data, other assembly strategies may be considered.
+One possibility is to explore more parameters using the same MEGAHIT algorithm.
+If the fraction of reads associated with short contigs does not improve, more laborious strategies can be considered.
+For example, it is possible to take reads associated with long contigs out of the data, and re-assemble the leftovers.
+A similar binning approach could be useful: removal of contigs that are in high-confidence bins, and assembling the leftovers.
+
+% TODO: insert figure of upper-bound for binning potential of these metagenomes.
+
+
 % ----- BIN TAXONOMY ------
 \subsection{Bin Taxonomy}
 
+Once final bins are in hand, taxonomic labels need to be assigned.
+This can be done by aggregating information from several sources: the CheckM marker gene set (coarse label), PhyloPhlAn results (maximally specific), and average nucleotide identity (ANI, below).
+PhyloPhlAn produced taxonomic labels for the MetaBAT bins.
+These did not agree particularly well with the CheckM labels, increasing evidence that the current bins are not sufficient for holistic community descriptions.
+% TODO: show data on this?  Put in Appendix?
 
 % ----- ANI ------
 \subsection{ANI}
+
+ANI can also support taxonomic labels, especially in cases such as this project when there are many environmental isolates from the exact ecosystem to use as references.
+The JGI ANI tool was used on all pairs of MetaBAT bins and isolate genomes, producing a large matrix of ANI values, a subset of which is shown in Figure \ref{fig:ANIs}.
 
 \begin{figure}[H]
 \centering
@@ -659,14 +814,13 @@ Similarly, median coverage was not used or the unreliable coverage numbers assoc
         ANIs between all pairs of bins, and all isolate/bin pairs was computed, tabulated, and plotted to identify taxonomy of genome bins.
         This strategy, in conjunction with taxonomy calls by PhyloPhlAn \cite{segata2013} are recommended for taxonomic assignments when the final bins are identified.
         Plot produced by Seaborn clustermap.}
-    \label{fig:mycc_contamination}
+    \label{fig:ANIs}
     \end{singlespace}
 \end{figure}
 
-
-
 % ------ FUTURE STEPS
 \section{Future Steps}
+\label{chA_future_steps}
 
 
 
