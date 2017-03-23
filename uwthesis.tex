@@ -78,31 +78,10 @@
 \hyphenpenalty=5000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
 \tolerance=1000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
 
-% --- sample stuff only -----
-% These format the sample code in this document
-
-\usepackage{alltt}  %
-\newenvironment{demo}
-  {\begin{alltt}\leftskip3em
-     \def\\{\ttfamily\char`\\}%
-     \def\{{\ttfamily\char`\{}%
-     \def\}{\ttfamily\char`\}}}
-  {\end{alltt}}
-
-% metafont font.  If logo not available, use the second form
-%
-% \font\mffont=logosl10 scaled\magstep1
-\let\mffont=\sf
-% --- end-of-sample-stuff ---
-
-% ---- Formatting Info ----
-% Preparing Your Manuscript for Submission : http://grad.uw.edu/wordpress/wp-content/uploads/Preparing-Your-Manuscript-for-Submission-Revised-31jul2015.pdf
-% Pro-Quest FAQ:  http://www.etdadmin.com/cgi-bin/main/faq?siteId=0
-% Jim Fox page: https://staff.washington.edu/fox/tex/uwthesis.shtml
-% http://grad.uw.edu/for-students-and-post-docs/thesisdissertation/
 
 
 \begin{document}
+
 
 % ==========   Preliminary pages
 %
@@ -170,25 +149,30 @@ Abstract.
 %
 
 \textpages
-\include{./tex/chapter0/intro_glue} 
+%\include{./tex/chapter0/intro_glue}
 
 % ========== Chapter 1
 
 \chapter{Global molecular analyses of methane metabolism in methanotrophic alphaproteobacterium, \textit{Methylosinus trichosporium} OB3b. Part I: transcriptomic study}
 \label{chapter:A}
 \include{./tex/chapter1/pure_culture_omics}
-%\include{./tex/chapter1/supplemental}
 
 % ========== Chapter 2
 
 \chapter{Microbial Community Analysis: Metagenomics and Metatranscriptomics}
 \label{chapter:B}
-%\include{./tex/chapter2/community_analysis}
+\include{./tex/chapter2/community_analysis}
 
  % ========== Chapter 3
 
 \chapter{Machine Learning for Metagenomics and Metatranscriptomics}
 \label{chapter:C}
+%\include{./tex/chapter3/ml}
+
+ % ========== Chapter: closing
+
+\chapter{Closing Remarks}
+\label{chapter:closing}
 %\include{./tex/chapter3/ml}
 
 \printendnotes
@@ -207,8 +191,8 @@ Abstract.
 
 % ========== Appendix A
 
-
 \include{./tex/chapter1/supplemental}
+\include{./tex/chapter2/supplemental}
 
 \chapter{(Test) 2nd Appendix}
 
