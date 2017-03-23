@@ -1,5 +1,5 @@
-\chapter{Microbial Community Analysis: Metagenomics and Metatranscriptomics}
-\label{chapter:B}
+%\chapter{Microbial Community Analysis: Metagenomics and Metatranscriptomics}
+%\label{chapter:B}
 
 \section{Introduction}
 \subsection{Lake Washington Methane Cycling Studies}
@@ -458,9 +458,9 @@ The code described is synced with GitHub:
 \centering
 \begin{tabular}{l | cc}
  %\toprule
-        & average \# reads per sample & total \# reads \\
+        & mean \# reads per sample & total \# reads \\
 \midrule
-	metagenomes & XX & XX \\
+	metagenomes & \texttt{3.28e+07} $\pm$ \texttt{7.24e+06} & \texttt{2.89e+09} \\ % /work/jmatsen/170308_assess_Elviz_read_attraction_frac
 	metatranscriptomes & XX & XX \\
 %\bottomrule
 \end{tabular}
@@ -474,9 +474,11 @@ The code described is synced with GitHub:
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170413_4_main_groups.pdf}  % ElvizAnalysis
     \begin{singlespace}
     \caption[Four major taxonomic groups in Lake Washington sediment incubations]{
-        The abundance of the four major taxonomic groups in Lake Washington sediment incubations:
-	Phylum Bacteroidetes, Orders Methylococcales (methylotrophs), Methylophilales (non-methanotrophic methylotrophs), Burkholderiales.}
-    \label{fig:dominant_genera}
+        Fractional abundances of DNA from the four major taxonomic groups in Lake Washington sediment incubations:
+	    Phylum Bacteroidetes, Orders Methylococcales (methylotrophs), Methylophilales (non-methanotrophic methylotrophs), Burkholderiales.
+        Vertical gray line indicates the week the oxygen conditions were reversed.
+        }
+    \label{fig:4dominant_groups}
     \end{singlespace}
 \end{figure}
 
@@ -486,9 +488,147 @@ The code described is synced with GitHub:
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170313_methanotroph_methylotroph_taxa--portrait.pdf}  % ElvizAnalysis
     \begin{singlespace}
     \caption[Dominant methanotrophic and methylotrophic Genera.]{
-        Dominant methanotrophic (purples) and methylotrophic (greens) Genera.
-        See Figure \ref{fig:taxonomy} for taxonomy reference.}
+        Fractional abundance of DNA from dominant methylotrophic Genera.
+        Purple bars are methanotrophs of Order Methylococcales, Family Methylococcaceae
+            (represents major taxa in blue bars of Figure \ref{fig:4dominant_groups}).
+        Green bars are non-methanotrophic methylotrophs of Order Methylophilales, Family Methylophilaceae
+            (represents major taxa in yellow bars of Figure \ref{fig:4dominant_groups}).
+        See Figure \ref{fig:taxonomy} for taxonomy reference.
+        Vertical gray line indicates the week the oxygen conditions were reversed.
+        }
     \label{fig:dominant_genera}
     \end{singlespace}
 \end{figure}
+
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/1703014_is_Elviz-_junk_revised/results
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170314_Elviz_is_not_for_binning--landscape.pdf}  % ElvizAnalysis
+    \begin{singlespace}
+    \caption[Upper-bound limit on success of binning Elviz contigs.]{
+        The upper-bound limit on success in binning Elviz contigs, as measured by the fraction of reads mapped to contigs.
+        Lines are colored by replicate.
+        Solid lines represent the fraction of reads in the raw .fastq file that map to contigs on any length.
+        Dashed lines represent the fraction of reads in the raw .fastq file that map to contigs $\geq$ 1.5kb in length.
+        Less than 20\% of the fastq would be explained by aggressive binning of most low oxygen samples.}
+    \label{fig:dont_bin_Elviz}
+    \end{singlespace}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/thesis/tex/chapter2/figures/170208_fraction_of_transcriptome_reads_mapped_to_isolates.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170208_fraction_of_transcriptome_reads_mapped_to_isolates.pdf}
+    \begin{singlespace}
+    \caption[Measure of isolate genomes' ability to account for RNA-seq reads.]{
+        Measure of isolate genomes' ability to account for RNA-seq reads.
+        Each dot represents the total fraction of raw reads assigned to genes when mapped to a concatenation of 55 isolate genomes.
+        }
+    \label{fig:isolate_RNAseq}
+    \end{singlespace}
+\end{figure}
+
+
+% ----- BINNING ------
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l | cc}
+ %\toprule
+            & \# bins & \% min contig size \\  % consider fraction of contigs binned?
+\midrule
+	MetaBAT & XX   & XX \\
+	MyCC    & XX   & XX \\
+%\bottomrule
+\end{tabular}
+\caption{Total number of un-filtered reads.}
+\label{table:sample_read_sizes}
+\end{table}
+
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170124_current_metabat_analysis_figures/170123_frac_reads_binned_at_different_contig_lengths_and_total.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170123_frac_reads_binned_at_different_contig_lengths_and_total--INKSCAPED.pdf}
+    \begin{singlespace}
+    \caption[Distribution of contig sizes]{
+        Distribution of assembled contig sizes.
+        2,617,225 in total.}
+    \label{fig:contig_lengths}
+    \end{singlespace}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/1703016_frac_RNA-seq_mapped/figures/170316_fracs_mapped_unmapped_etc.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170316_fracs_mapped_unmapped_etc.pdf}
+    \begin{singlespace}
+    \caption[Efficacy of mapping RNA-seq to MEGAHIT contigs]{
+        Efficacy of mapping RNA-seq to MEGAHIT contigs.}
+    \label{fig:rna_mapping_bars}
+    \end{singlespace}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170201_MyCC_read_accountability_figures/170201_comparable_read_coverage_for_metabat_and_mycc_3kb.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170201_comparable_read_coverage_for_metabat_and_mycc_3kb--INKSCAPED.pdf}
+    \begin{singlespace}
+    \caption[Fraction of reads accounted for by MetaBAT and MyCC bins.]{
+        Fraction of reads accounted for by bins generated via MetaBAT (min contig size = 1.5kb) and MyCC (min contig size = 2.5kb).
+        Points represent the fraction of reads binned for each sample.
+        The solid MetaBAT lines represent the fraction of reads associated with contigs of length $\geq$ 2.5kb, as an appropriate comparison to the MyCC run.
+        The dashed MetaBAT lines represent the full fraction of reads accounted for by the MetaBAT results including contigs as short as 1.5kb.
+        The arrow after week 10 indicates that all subsequent samples were treated with the opposite oxygen tension as the label indicates.
+    }
+    \label{fig:mycc_contamination}
+    \end{singlespace}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170202_comparing_MyCC_to_metabat/170206_improved_fracs_of_contigs_binned_by_MyCC.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170206_improved_fracs_of_contigs_binned_by_MyCC.pdf}
+    \begin{singlespace}
+    \caption[MyCC binned contigs more aggressively than MetaBAT.]{
+        MyCC binned contigs more aggressively than MetaBAT.}
+    \label{fig:mycc_binned_more_contigs}
+    \end{singlespace}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170202_comparing_MyCC_to_metabat/170202_MyCC_has_higher_contamination.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170202_MyCC_has_higher_contamination.pdf}
+    \begin{singlespace}
+    \caption[MyCC has higher contamination than MetaBAT.]{
+        MyCC has higher contamination than MetaBAT.}
+    \label{fig:mycc_contamination}
+    \end{singlespace}
+\end{figure}
+
+
+
+
+% ------ APPENDIX
+
+\section{Supplemental Figures}
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170124_current_metabat_analysis_figures/170124_bad_low_o2_samples_have_more_reads_on_short_contigs--binning_not_considered.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170124_bad_low_o2_samples_have_more_reads_on_short_contigs--binning_not_considered.pdf}
+    \begin{singlespace}
+    \caption[Samples best explained by bins have more reads drawn to longer contigs.]{
+        Samples with metagenomes that are well represented by MetaBAT bins have more reads drawn to longer contigs.}
+    \label{fig:contig_dist}
+    \end{singlespace}
+\end{figure}
+
+
+
 
