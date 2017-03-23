@@ -462,6 +462,17 @@ The code described was developed with Git version control, and the full history 
 %-------- Elviz Analysis
 \subsection{Elviz Analysis}
 
+The best measure of which taxa dominate the samples comes from the Elviz \cite{cantor2015} data.
+As described in the Methods section, the measure used sum of read counts across contigs with the taxonomy of interest.
+Traditional metrics like RPKM \cite{mortazavi2008} and TPM \cite{wagner2012} are excellent for comparing coverage or expression across features or samples, but could not be used due to the need to sum values across contigs.
+In particular, a contig with length 10kb should contribute nearly identically to a measure of abundance as an identically expressed second 10kb stretch of DNA that for technical reasons was assembled into two 5kb stretches rather than one 10kb one.
+% For example, if you had a 10kb contig with 2 arbitrary units of coverage, you do not want your estimate of abundance to double upon splitting that contig into two 5kb contigs, each with 2 units of coverage.
+Any scheme that controlled for contig length or was weighted by each contig's statistic would skew the aggregated number down for metagenomic datasets such of this with many short, low-coverage contigs.
+The fact that these assemblies are dominated by short contigs means that RPKM and TPM would bias the statistics toward the statistics of the shorter and less reliable contigs.
+Similarly, median coverage was not used or the unreliable coverage numbers associated with short contigs would dominate the measure.
+
+
+
 \begin{table}[H]
 \centering
 \begin{tabular}{l | cc}

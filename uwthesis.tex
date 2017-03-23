@@ -78,7 +78,9 @@
 \hyphenpenalty=5000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
 \tolerance=1000 % from http://sei.pku.edu.cn/~yaoguo/latex.htm
 
-
+\DeclareRobustCommand*{\refchA}{\ref*{chapter:A}}
+\DeclareRobustCommand*{\refchB}{\ref*{chapter:B}}
+\DeclareRobustCommand*{\refchC}{\ref*{chapter:C}}
 
 \begin{document}
 
@@ -193,19 +195,5 @@ Abstract.
 
 \include{./tex/chapter1/supplemental}
 \include{./tex/chapter2/supplemental}
-
-\chapter{(Test) 2nd Appendix}
-
-\begin{figure}[H]
-\centering
-     \includegraphics[width=0.6\textwidth]{/Users/janet/Downloads/skunks.jpg}
-     \begin{singlespace}
-     \caption[(testing) 2nd supplemental figure for another chapter]{
-        (testing) 2nd supplemental figure for another chapter.
-        }
-     \label{fig:skunks}
-     \end{singlespace}
-\end{figure}
-
 
 \end{document}
