@@ -1,6 +1,17 @@
 %\chapter{Microbial Community Analysis: Metagenomics and Metatranscriptomics}
 %\label{chapter:B}
 
+\section{Abstract}
+
+Methane is one of the most potent and common greenhouse gases.
+In nature, specialized bacteria called methanotrophs are able to consume methane as their only carbon and energy source.
+Deeper understanding of these microbes sheds light on a significant remediator of naturally produced greenhouse gases.
+Lake Washington's sediment has served as a model ecosystem for methanotrophy studies for several decades.
+Recent advances in high-throughput sequencing technology provided opportunities to observe the complex communities supported by methanotrophic methane oxidation in a more natural state than has been possible.
+This study analyses serial propagations of Lake Washington sediment, from both a metagenomics and metatranscriptomics perspective.
+Inference of which microbes dominate the samples, and what metabolic functions are active are discovered.
+The importance of oxygen for community composition and function is highlighted.
+
 \section{Introduction}
 \subsection{Lake Washington Methane Cycling Studies}
 
@@ -277,6 +288,9 @@ The ability to get clean genome bins varies greatly from project to project.
 As with assembly, more rarefied samples with low levels of strain heterogeneity are more amenable to binning \cite{kunin2008, thomas2012}, as the contigs are more likely to be long and few in number.
 Longer contigs have reduced noise for measurements of GC ratio, tetranucleotide freq, and differential abundance \cite{sangwan2016}.
 This in turn leads to less ambiguity when sorting contigs into respective bins.
+Notably, most binning tools are demonstrated on simple communities such as the premature infant gut \cite{sharon2013}.
+Thus, the assembly quality statistics noted in binning method papers is not likely to be reflected in analysis of these high-complexity samples.
+% In fact, most binning methods were demonstrated using relatively simple communities (e.g., premature infant gut datasets of Sharon et al.
 
 %---- Bin assessment
 The quality of bins can be determined by combining metrics of completeness, contamination, and efficacy of representing the sample.
@@ -553,7 +567,7 @@ Nonetheless, if a particular sample is enriched in an organism of interest, use 
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170314_Elviz_is_not_for_binning--landscape.pdf}  % ElvizAnalysis
     \begin{singlespace}
     \caption[Upper-bound limit on success of binning Elviz contigs]{
-        The upper-bound limit on success in binning Elviz contigs, as measured by the fraction of reads mapped to contigs.
+        The upper-bound limit on success in binning Elviz contigs, as measured by the fraction of metagenome reads mapped to contigs.
         Lines are colored by replicate.
         Solid lines represent the fraction of reads in the raw .fastq file that map to contigs on any length.
         Dashed lines represent the fraction of reads in the raw .fastq file that map to contigs $\geq$ 1.5kb in length.
@@ -776,7 +790,7 @@ The statistics it returned for these positive controls were nearly perfect, indi
     \end{singlespace}
 \end{figure}
 
-Given the small fraction of the metagenomes explained by MetaBAT (Figure \cite{fig:mycc_contamination}), and high contamination scores of the MyCC bins (Figure \ref{fig:mycc_contamination}), binning has been placed on hold.
+Given the small fraction of the metagenomes explained by MetaBAT (Figure \ref{fig:mycc_contamination}), and high contamination scores of the MyCC bins (Figure \ref{fig:mycc_contamination}), binning has been placed on hold.
 See Section \ref{chA_future_steps} below for suggested next steps in the binning workflow.
 
 As a measure of the best-case scenario for binning given the assembly, the fraction of reads attracted to contigs shorter than 1.5kb were quantified (Figure XX).
@@ -823,8 +837,73 @@ The JGI ANI tool was used on all pairs of MetaBAT bins and isolate genomes, prod
 \label{chA_future_steps}
 
 
+%Big picture
+The goal of this analysis was to describe a wholistic picture of the microbes in the mixtures, and assess how gene expression supports methane oxidation.
+This thesis identified the key trends, but more certain understanding can be gained by diving deeper into many topics described.
+Insights gained by iterating through this pipeline have revealed possibilities to improving the analysis by modifying each step, as described in the following sections.
+
+% ----- ASSEMBLY NEXT STEPS ------
+\subsection{Assembly: Next Steps}
+
+Like all steps of metagenomics, assembly in itself is an art.
+Given a single data set, different assemblies could be better depending on the exact question to be asked.
+For this thesis, the goal was a holistic portrait of which organisms are present in natural communities.
+While the assembly used throughout this chapter was appropriate for that question, future explorations of the findings based on these contigs may reveal interesting organisms for which different binning strategies may identify better.
+
+%Re-assemble to find rare ones
+New assemblies could be done with the aim of making contigs that bin a particular organism well.
+The enumerations of the taxa present in each sample, and the gene expression profiles and trends will be explored to identify uncultivated taxa to target.
+For example, it is hypothesized that there is a "smear" of similar \textit{Methylobacters} for which we don't have isolates.
+If genes thought to be associated with different \textit{Methylobacters} are found in particular samples, those could be re-assembled separately to get longer \textit{Methylobacter} contigs and thus better bins.
+Perhaps there are some rare heterotrophs of interest; these too could be identified by gene expression patterns and assemblies could be done with the hope of contigs more amenable to binning those species.
+Sequential binning and read removal.
+Another possibility is to iteratively bin, remove reads that map to those bins, and re-assemble the leftovers.
+This is a computationally expensive and likely laborious path to holistic community descriptions, but is possible.
+
+% ----- BINNING NEXT STEPS ------
+\subsection{Binning: Next Steps}
+
+The analysis shown in this chapter highlights great opportunity to improve the bins and potentially allow for holistic descriptions of the communities.
+The easiest step is to iteratively test MetaBAT's performance with different binning parameters as the authors suggest.
+The resulting bins can be assessed, again by (a) CheckM completeness and contamination scores, (b) fraction of metagenomes that are attracted to bins, and (c) the fraction of transcriptomes that are attracted to them.
+Special care can be taken to isolate different methylobacters.
+
+In addition, there are many tools which have not yet been tried.
+One promising tool from the Banfield Lab \cite{sieber2017} just appeared on the Biology preprint server, bioRxiv.
+This tool is an ensemble tool that combines multiple binning algorithms (MetaBAT\cite{metabat2015}, MaxBin \cite{wu2015}, CONCOCT \cite{concoct2014} and tetraESOMs \cite{dick2009}), a generally advantageous strategy for machine learning.
+It counts the number of single-copy marker genes in candidate bins, removes good looking bins, and re-bins the remaining contigs.
+
+
+% ----- BIOLOGY NEXT STEPS ------
+\subsection{Biology: Next Steps}
+
+The dataset prepared in this analysis allows investigation of many biological questions.
+Many of these questions are best answered with genome bins.
+For example, one topic of excitement is understanding of two alternative methanol dehydrogenase systems.
+Recently it has been discovered that some organisms prefer to use Lanthanum-dependent \textit{xox} methanol dehydrogenases, rather than the classically studied \textit{mdh} methanol dehydrogenases. %TODO: cite
+Though Lanthanum was not intentionally supplied to these organisms, its possible that it was present in trace amounts.
+Identification of expression levels of these two methanol dehydrogenase alternatives in these samples will be done soon.
+
+Not all questions, however, require genome bins.
+Building taxonomic trees of the various methane monooxygenase genes, and weighting them by observed abundance can give higher resolution insight into community composition than Figures \ref{fig:4dominant_groups}, \ref{fig:dominant_genera} shows.
+There is also potential to explore signatures of phage in the existing contigs.
+
 
 % ------ CONCLUSIONS
 \section{Conclusions}
+
+In conclusion, this 88-metagenome, 88-metatranscriptome data set was designed to allow discovery of dominant taxa in a rich microbial community.
+The Elviz data was aggregated on taxonomic label to illustrate the fractions of the metagenomes attributed to different taxa.
+These data were not appropriate for comparison across samples, or assembling into contigs, so an assembly was done with nearly all of the metagenomes.
+These contigs were binned into a draft set of bins, which highlighted the challenge of getting enough good bins to illustrate an entire population's dynamics.
+% TODO: suggest quality checks so we know how good the set is.
+
+The contigs were annotated and the genetic content was explored.
+In total, XXX genes were identified, encoding XXX different proteins.
+Oxygen-dependent trends in locus expression were identified, supporting evidence that oxygen is an important and only somewhat understood factor in community composition and function.
+
+The biology inferred in this preliminary round of studies drove new ideas for iterating through the pipeline again, with new goals and refinement strategies in mind.
+While the samples may have too complex of a community structure for current binning tools to explain, targeting particular taxa for binning will allow observation of community dynamics for the major players.
+In addition, the ability to extract more information about community structure and dynamics is explored in Chapter \ref{chapter:B}.
 
 
