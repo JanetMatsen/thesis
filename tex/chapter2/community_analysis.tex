@@ -398,12 +398,80 @@ These instances were usually started by hand through the console, though proof o
     and an Autoscaling/SQS service pair were explored to set the foundation of future work (see repository \url{https://github.com/JanetMatsen/AWS_parallel_Cowsay}) for the templates developed.
 
 \subsubsection{Map to isolate genomes}
-As a preliminary study, the metatranscriptomes were mapped to 55 genomes isolated from Lake Washington by the Lidstrom Lab.
+As a preliminary study, the metatranscriptomes were mapped to 55 genomes (Table \ref{table:55genomes}) isolated from Lake Washington by the Lidstrom Lab.
 The sequences were downloaded from NCBI, and concatenated together before mapping.
 Mapping to the multi-fasta rather than the individual genomes prevents double-counting of reads that map well to multiple loci.
 BWA-MEM \cite{li2009} with default settings was used to map each transcriptome to the multi-fasta, and htseq-count \cite{anders2014} was used to tabulate expression estimates.
 Samtools \cite{li2009samtools} was used to evaluate mappings by BWA.
 Note: the default of BWA-MEM is to flag reads that map equally well to two or more loci as having quality score 0; htseq-count by default omits these counts from the table of reads per gene (discussed later).
+
+\begin{singlespace}
+\begin{longtable}{p{.50\textwidth}}
+\caption[The 55 isolate genomes used]
+	{The 55 isolate genomes used.}
+\label{table:55genomes}
+\endfirsthead
+\endhead
+\midrule
+               \textit{Ancylobacter} sp. FA202 \\
+                 \textit{Arthrobacter} sp. 31Y \\
+                 \textit{Arthrobacter} sp. 35W \\
+               \textit{Arthrobacter} sp. MA-N2 \\
+                    \textit{Bacillus} sp. 37MA \\
+                      \textit{Bacillus} sp. 72 \\
+                        \textit{Bosea} sp. 117 \\
+                \textit{Flavobacterium} sp. 83 \\
+                \textit{Flavobacterium} sp. Fl \\
+                      \textit{Hoeflea} sp. 108 \\
+               \textit{Hyphomicrobium} sp. 802 \\
+                \textit{Hyphomicrobium} sp. 99 \\
+           \textit{Janthinobacterium} sp. RA13 \\
+    \textit{Methylobacter tundripaludum} 21/22 \\
+    \textit{Methylobacter tundripaludum} 31/32 \\
+              \textit{Methylobacterium} sp. 10 \\
+              \textit{Methylobacterium} sp. 77 \\
+             \textit{Methylobacterium} sp. 88A \\
+                \textit{Methylocystis} sp. LW5 \\
+                 \textit{Methylomonas} sp. 11b \\
+                \textit{Methylomonas} sp. LW13 \\
+                 \textit{Methylomonas} sp. MK1 \\
+        \textit{Methylophilaceae bacterium} 11 \\
+                 \textit{Methylophilus} sp. \#1 \\
+                 \textit{Methylophilus} sp. 42 \\
+                  \textit{Methylophilus} sp. 5 \\
+                 \textit{Methylophilus} sp. Q8 \\
+                  \textit{Methylopila} sp. 73B \\
+                 \textit{Methylopila} sp. M107 \\
+            \textit{Methylosarcina lacus} LW14 \\
+                 \textit{Methylosinus} sp. LW3 \\
+                 \textit{Methylosinus} sp. LW4 \\
+                 \textit{Methylosinus} sp. PW1 \\
+            \textit{Methylotenera mobilis} \#13 \\
+           \textit{Methylotenera mobilis} JLW8 \\
+               \textit{Methylotenera} sp. 1P/1 \\
+                \textit{Methylotenera} sp. 73s \\
+                \textit{Methylotenera} sp. G11 \\
+               \textit{Methylotenera} sp. L2L1 \\
+                \textit{Methylotenera} sp. N17 \\
+          \textit{Methylotenera versatilis} \#7 \\
+        \textit{Methylotenera versatilis} 301, \\
+          \textit{Methylotenera versatilis} 79 \\
+           \textit{Methyloversatilis} sp. FAM1 \\
+       \textit{Methyloversatilis} sp. RZ18-153 \\
+   \textit{Methyloversatilis universalis} FAM5 \\
+ \textit{Methyloversatilis universalis} Fam500 \\
+   \textit{Methylovorus glucosetrophus} SIP3-4 \\
+                \textit{Mycobacterium} sp. 141 \\
+                \textit{Mycobacterium} sp. 155 \\
+                    \textit{Paracoccus} sp. N5 \\
+               \textit{Pseudomonas} sp. 11/12A \\
+                 \textit{Xanthobacter} sp. 126 \\
+                  \textit{Xanthobacter} sp. 91 \\
+     \textit{Xanthobacteraceae bacterium} 501b \\
+\midrule
+\end{longtable}
+\end{singlespace}
+
 
 \subsubsection{Assembly} % (Dave)
 Assembly to produce contigs was done on pooled quality-trimmed metagenome reads via Megahit \cite{li2015}.
@@ -514,17 +582,18 @@ This collection of reads was used for all inferences described in this chapter.
 \subsection{Elviz Analysis}
 
 The best measure of which taxa dominate the samples comes from the Elviz \cite{cantor2015} data.
-As described in the Methods section, the measure used sum of read counts across contigs with the taxonomy of interest.
+As described in the Methods section, the abundance measure was the sum of read counts across contigs with the taxonomy of interest.
 Traditional metrics like RPKM \cite{mortazavi2008} and TPM \cite{wagner2012} are excellent for comparing coverage or expression across features or samples, but could not be used due to the need to sum values across contigs.
-In particular, a contig with length 10kb should contribute nearly identically to a measure of abundance as an identically expressed second 10kb stretch of DNA that for technical reasons was assembled into two 5kb stretches rather than one 10kb one.
-Any scheme that controlled for contig length or was weighted by each contig's statistic would skew the aggregated number down for metagenomic datasets such of this with many short, low-coverage contigs.
-The fact that these assemblies are dominated by short contigs means that RPKM and TPM would bias the statistics toward the statistics of the shorter and less reliable contigs.
+To illustrate why length of contig could not factor into the abundance measure, consider this:
+a contig with length 10kb should contribute nearly identically to an equally expressed second 10kb stretch of DNA that for technical reasons was assembled into two 5kb stretches rather than one 10kb contig.
+Any scheme that controlled for contig length or was weighted by each contig's statistic would skew the aggregated number down for metagenomic datasets such as this with many short, low-coverage contigs.
+The fact that these assemblies are dominated by short contigs means that RPKM and TPM would bias the aggregate statistics toward the statistics of the shorter and less reliable contigs.
 Similarly, median coverage was not used or the unreliable coverage numbers associated with short contigs would dominate the measure.
 
-Figure \ref{fig:4dominant_groups} shows abundances of the four major taxonomic groups, Methylococcales, Methylophilales, Bacteroidetes, and Burkholderiales, according to the Elviz taxonomy calls for each contig.
+Figure \ref{fig:4dominant_groups} shows abundances of the four major taxonomic groups, Methylococcales, Methylophilales, Bacteroidetes, and Burkholderiales, according to the Elviz taxonomy calls for each contig. % Methylococcales, Methylophilales are Orders (not italics)
 (Recall introductory Figure \ref{fig:taxonomy} for a hierarchical visualization of these taxonomies.)
 Their dominance is consistent with pervious studies \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW, kalyuzhnaya2008Burkholderiales}.
-Figure \ref{fig:dominant_genera} show the breakdown of the methanotrophic and methylotrophic taxa in Figure \ref{fig:4dominant_groups}.
+Figure \ref{fig:dominant_genera} show the breakdown of the methanotrophic and non-methanotrophic methylotroph taxa in Figure \ref{fig:4dominant_groups}.
 Notably, the path to rarefaction is not particularly consistent across samples.
 Like previous studies, dominance the dominant methanotrophic Order/Genus was Methylococcales/\textit{Methylococcaceae} and the dominant non-methanotrophic methylotrophic Order/Genus was Methylophilales/\textit{Methylophilaceae}.
 Low oxygen was associated with a higher abundance of methanotrophs, and lower proportion of methylotrophs than the high-oxygen samples.
@@ -540,8 +609,8 @@ The last four samples in each series are more similar to the previous samples in
     \begin{singlespace}
     \caption[Four major taxonomic groups in Lake Washington sediment incubations]{
         Fractional abundances of DNA from the four major taxonomic groups in Lake Washington sediment incubations:
-	    Phylum Bacteroidetes, Orders Methylococcales (methylotrophs), Methylophilales (non-methanotrophic methylotrophs), Burkholderiales.
-        Vertical gray line indicates the week the oxygen conditions were reversed.
+	    phylum Bacteroidetes, orders Methylococcales (methylotrophs), Methylophilales (non-methanotrophic methylotrophs), Burkholderiales.
+        The vertical gray line indicates the week the oxygen conditions were reversed.
         }
     \label{fig:4dominant_groups}
     \end{singlespace}
@@ -558,7 +627,7 @@ The last four samples in each series are more similar to the previous samples in
             (represents major taxa in blue bars of Figure \ref{fig:4dominant_groups}).
         Green bars are non-methanotrophic methylotrophs of Order Methylophilales, Family \textit{Methylophilaceae}
             (represents major taxa in yellow bars of Figure \ref{fig:4dominant_groups}).
-        See Figure \ref{fig:taxonomy} for taxonomy reference.
+        See Figure \ref{fig:taxonomy} for hierarchical taxonomy reference.
         Vertical gray line indicates the week the oxygen conditions were reversed.
         }  % Italics are used for bacterial and viral taxa at the level of family and below.  https://wwwnc.cdc.gov/eid/page/scientific-nomenclature
     \label{fig:dominant_genera}
@@ -571,7 +640,7 @@ The last four samples in each series are more similar to the previous samples in
 The goal of this study is a comprehensive description of the samples, ideally in terms of genome bins.
 The potential for these Elviz contigs to paint a comprehensive picture of the microbial community was measured by summing all reads assigned to contigs long enough to bin, namely contigs $\geq$ 1.5kb.
 Figure \ref{fig:isolate_RNAseq} shows that while the entire set of contigs represents the samples well, the subset of contigs that are candidates for binning explain less than 20\% of the reads obtained for many low oxygen samples.
-Another complication of binning these contigs, is that binning the contigs for each sample individually would lead to many redundant bins that need to be thinned.
+Another complication of binning these Elviz contigs, is that binning the contigs for each sample individually would lead to many redundant bins that need to be thinned.
 This process is prone to human bias, and can lead researchers to over-fit their bins to their quality measures and thus over-state the quality of their bins.
 Nonetheless, if a particular sample is enriched in an organism of interest, use of the contigs from that sample should be conisdered for future binning efforts.
 
@@ -584,8 +653,8 @@ Nonetheless, if a particular sample is enriched in an organism of interest, use 
     \caption[Upper-bound limit on success of binning Elviz contigs]{
         The upper-bound limit on success in binning Elviz contigs, as measured by the fraction of metagenome reads mapped to contigs.
         Lines are colored by replicate.
-        Solid lines represent the fraction of reads in the raw .fastq file that map to contigs on any length.
-        Dashed lines represent the fraction of reads in the raw .fastq file that map to contigs $\geq$ 1.5kb in length.
+        Solid lines represent the fraction of reads in the raw .fastq file that map to contigs of any length.
+        Dashed lines represent the fraction of reads in the raw .fastq file that map to contigs with length $\geq$ 1.5kb.
         Less than 20\% of the fastq would be explained by aggressive binning of most low oxygen samples.}
     \label{fig:dont_bin_Elviz}
     \end{singlespace}
