@@ -8,14 +8,14 @@ In nature, specialized bacteria called methanotrophs are able to consume methane
 Deeper understanding of these microbes sheds light on a significant natural green house gas remediation system.
 Lake Washington's sediment has served as a model ecosystem for methanotrophy studies for decades \cite{auman2002, kalyuzhnaya2004, costello2002, kalyuzhnaya2011isolates, mctaggart2015, kalyuzhnaya2015}.
 Recent advances in high-throughput sequencing technology provided opportunities to observe the complex communities supported by methanotrophic methane oxidation in a more natural state than has been possible.
-This study analyses serial propagations of Lake Washington sediment, from both a metagenomics and metatranscriptomics perspective.
+This study analyzes serial propagations of Lake Washington sediment incubated with methane as the only carbon and energy source, from both a metagenomics and metatranscriptomics perspective.
 Inference of which microbes dominate the samples, and what metabolic functions are active are discovered.
-The importance of oxygen for community composition and function is highlighted.
+The importance of oxygen as a factor in community composition and function is highlighted.
 
 \section{Introduction}
 \subsection{Lake Washington Methane Cycling Studies}
 
-The Lidstrom Lab has studied methanotrophic oxidation of methane in Lake Washington sediment for decades.
+%The Lidstrom Lab has studied methanotrophic oxidation of methane in Lake Washington sediment for decades.
 Methanotrophs are concentrated at the transition from aerobic to anaerobic soil.
 This interface corresponds to both availability of methane, which rises from below, and oxygen from above \cite{lidstrom1984gradients, kuivilal1988, auman2000gradients}. %, which is required because methane is more reduced than biomass.
 This microenvironment is rich in methanotrophs, methylothrophs, and other species.
@@ -29,7 +29,7 @@ Understanding the metabolic diversity of methanotrophs and methylotrophs in the 
 %Isolates first, but now new tools
 % good resource: Methylotrophy in a Lake: from Metagenomics to Single-Organism Physiology https://www-ncbi-nlm-nih-gov.offcampus.lib.washington.edu/pmc/articles/PMC3147377/#B20
 Early studies addressed these questions by sampling specific types of DNA from Lake Washington sediment (e.g. \cite{auman2002, costello2002, nercessian2005}), and studying isolates for which genome sequences were not available \cite{auman2000gradients, kalyuzhnaya2005Methylosarcina, kalyuzhnaya2006methylotenera}.
-Later, significant laboratory efforts were used to isolate and sequence more species known to thrive in Lake Washington
+Later, significant effort was put toward isolation and sequencing of more species known to thrive in Lake Washington
     \cite{kalyuzhnaya2011isolates, beck2015isolates, mctaggart2015, kalyuzhnaya2015} to better understand these communities.
 %These single species' metabolism can be further studied with transcriptomics and other tools (e.g. Chapter \ref{chapter:A}).
 % (doesn't fit!) These strains can also be used as reference DNA for aligning shotgun sequencing reads.
@@ -40,13 +40,13 @@ Awareness that not all microbes can be isolated \cite{kaeberlein2002, stewart201
 The omics studies used on single cultures (e.g. Chapter \ref{chapter:A}) can be applied to communities, though analysis becomes much more challenging.
 When omics methods are applied to mixed populations of organisms, the prefix "meta" is applied, resulting in the terms such as  "metatranscriptomics".
 Correspondingly the term "metagenomics" is used to describe sequencing the DNA of the community to allow inference of the abundant taxa and their genetic composition.
-Having the paired metagenomic and transcriptomic data allows estimation of gene expression for those microbes, by mapping sequences to the reference DNA identified from the metagenomes.
+Having the paired metagenomic and metatranscriptomic data allows estimation of gene expression for those microbes, by mapping sequences to the reference DNA identified from the metagenomes.
 
-Previous metagenomics and metatranscriptomics studies of Lake Washington sediment have highlighted dominance of the methanotrophic family Methylococcaceae \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW} (Figure \ref{fig:taxonomy}).
+Previous metagenomics and metatranscriptomics studies of Lake Washington sediment have highlighted dominance of the methanotrophic family \textit{Methylococcaceae} \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW} (Figure \ref{fig:taxonomy}).
 These methanotrophs provide substrates for non-methanotrophic methylotrophs to grow \cite{beck2013LW}.
 The particular methanotroph species and methylotroph species that dominate the sample is known to be influenced by oxygen availability \cite{hernandez2015LW}.
-In previous studies, it was noted that low \ce{O2} tensions select for \mbox{Methylotenera/Methylobacter} partnerships whereas high \ce{O2} tensions select for  \mbox{Methylophilus/Methylosarcina} partnerships \cite{hernandez2015LW}.
-There is also a revolving cast of non-methylotrops including Burkholderiales and Bacteroidetes \cite{kalyuzhnaya2008Burkholderiales, beck2014LW}.
+In previous studies, it was noted that low \ce{O2} tensions select for \mbox{\textit{Methylotenera/Methylobacter}} partnerships whereas high \ce{O2} tensions select for  \mbox{\textit{Methylophilus/Methylosarcina}} partnerships \cite{hernandez2015LW}.
+There is also a revolving cast of (mostly) non-methylotrops including Burkholderiales and Bacteroidetes \cite{kalyuzhnaya2008Burkholderiales, beck2014LW}.  % Burkholderiales is an order (not italics).  Bacteroidetes is a Phylum.
 Better understanding of the metabolic roles that each of these species play, and why certain partnerships tend to form would provide insight into this greenhouse-gas mitigating microbial community.
 
 \begin{figure}[H]
@@ -55,8 +55,8 @@ Better understanding of the metabolic roles that each of these species play, and
     \begin{singlespace}
     \caption[Taxonomy of microbes known to factor into methane oxidation in Lake Washington sediment]{
        Taxonomy of microbes that often appear in methane incubations of Lake Washington sediment.
-       The family Methylococcaceae is methanotrophic.
-       The family Methylococcaceae includes non-methanotrophic methylotrophs.
+       The family \textit{Methylococcaceae} is methanotrophic.
+       The family \textit{Methylophilaceae} includes non-methanotrophic methylotrophs.
        Burkholderiales grow on multi-carbon compounds, but in addition, some are methylotrophs.}
     \label{fig:taxonomy}
     \end{singlespace}
@@ -66,7 +66,7 @@ Better understanding of the metabolic roles that each of these species play, and
 This study aims to identify the major methanotrophic, methylotrophic, and other microbial species that together enable methane consumption in Lake Washington, and deduce each taxa's contribution to the community metabolism.
 Identification of which methanotrophs dominate in natural communities provides insights into how good past isolate studies reflect the true drivers of methane oxidation.
 Identification of which metabolic pathways are expressed by these methanotrophs and the accompanying non-methanotrophs informs the mechanism of methane oxidation in this natural system.
-Understanding each microbes contribution to the community metabolism allows hypotheses about genetic factors in methanotroph/methylotroph partnerships.
+Understanding the contribution of each microbe to the community metabolism allows hypotheses about genetic factors in methanotroph/methylotroph partnerships.
 
 %For example, this study also aims to address the relative importance of two functionally redundant methanol dehydrogenase enzymes: Xox-MDH and Mxa-MDH. (cite).
 %TODO: write more about this if I get results in the area.
@@ -79,9 +79,10 @@ The experimental design chosen to answer these questions is show in in Figure \r
 \centering
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170311_experimental_design_meta4--2_colors.png}
     \begin{singlespace}
-    \caption[Experimental design]{
-       Sediment from Lake Washington, which had been thawed from -80$^o$C and cultured in 8 different bottles,
-        half of which were treated with low oxygen, and half of which were at high oxygen (see methods).
+    \caption[Experimental design for the data underlying Chapters \ref{chapter:A}, \ref{chapter:B}]{
+	Experimental design of biology described in Chapters \ref{chapter:A}, \ref{chapter:B}
+	Sediment from Lake Washington, which had been thawed from -80$^o$C and cultured in 8 different bottles,
+        half of which were provided with low oxygen, and half of which were provided with high oxygen (see methods).
 	   Bottles were serially transferred for a total of 14 weeks.
 	   The last four bottles in each series are at the opposite oxygen condition of the original experimental design
         (indicated by bottle label color switch).
@@ -94,13 +95,13 @@ The experimental design chosen to answer these questions is show in in Figure \r
 This relatively simple experimental design, including high degree of replication for studies of this type, was chosen to provide statistical power despite differences across replicates and measurement noise.
 Variation across replicates can arise from stochasticity as communities rarefy, and are compounded by the noise-generating steps of nucleic acid extraction, ribosomal RNA removal (in the case of metatranscriptomics), library prep, and the sequencing process.
 The most important environmental variable identified so in previous studies, the oxygen availability, was modulated while holding all other variables constant.
-Availability of sequenced isolate strains from the very ecosystem enhance exploration of the dataset by providing some ground-truth biological facts.
+Availability of sequenced isolate strains from the very ecosystem enhance exploration of the dataset by providing some ground-truth.
 Lake Washington isolates can also be integrated into positive controls for many of the computational methods.
 
 % --- Data sets like this are rare and special.
 Though sequencing has become routine in most biological domains, this dataset is exceptional for several reasons.
 Having four replicates for each experimental condition is much greater than typical metagenomic studies.
-Furthermore, most metagenomics/metatranscriptomics studies are single timepoint snapshots, rather than time-series.
+Furthermore, most metagenomics/metatranscriptomics studies are single time point snapshots, rather than time-series.
 Having 11 samples in each series leads to a total of 88 samples.
 For each of the 88 samples, untargeted metagenomes and metatranscriptomes were gathered.
 These pairs allow exploration of the community without the restriction of referencing cultured strains' genomes.
@@ -109,7 +110,6 @@ In all the dataset totals to 9TB.
 
 % --- Insights into what's challenging
 Despite the size and replication of this dataset, answering the questions outlined above proved challenging.
-%There are many additional challenges in moving from pure-culture 'omics to meta-'omics, and these challenges were amplified by the large size of the data.
 First, the study aims to answer who is there, without the luxury of using reference DNA to align sequencing data to.
 Thus, the first task is to assemble reference DNA from the vast number of short sequences provided.
 This DNA then becomes the basis for answering both "who is there", and the reference for "what are they doing".
@@ -118,13 +118,13 @@ More often than not, however, under-sampling of DNA or lack of punctuation in we
 This fractured reference DNA carries uncertainty and information loss through the rest of the analysis, so care must be taken to interpret all downstream results (discussed in Figure \ref{fig:pipe_leaks}).
 
 % -- Tool selection & evaluation is challenging.
-Furthermore, tool selection and evaluation is challenging.
-As discussed in the introduction, metagenomics and metatranscriptomics of natural microbial communities is a rapidly developing field laiden with methodological challenges.
+Tool selection and evaluation is also challenging.
+As discussed in the introduction, metagenomics and metatranscriptomics of natural microbial communities is a rapidly developing field laden with methodological challenges.
 For each step of inference, there are numerous tools utilizing different approaches one must choose from.
 Given that each tool has different efficacy for different data sets, several tools are usually tried for each step.
-For each tool, there are numerous tuning knobs the author encourages exploring, leading to a combinatiorial explosion of potential outcomes for each inference step.
+For each tool, there are numerous tuning knobs the author encourages exploring, leading to a combinatorial explosion of potential outcomes for each inference step.
 The nearly complete turnover of tools approximately every 5 years leads to very few benchmarking studies, and review papers that are out date within months of publication.
-Benchmark studies comparing tools are rare and specific to a small number of data sets that may not behave like your own data set.
+Furthermore, benchmark studies comparing tools use a small number of data sets that may not behave like your own data set.
 %Methods and metrics for tool evaluation are not standardized. repeated below
 
 % --- Lack of standards in field
@@ -139,10 +139,10 @@ Success in this field requires iteration as these insights are developed.
 Furthermore, the size of this dataset is both luxurious and challenging.
 Yes, the high degree of replication and number of samples per series is essential for identifying hypotheses in noisy data.
 However, many computational tools are not designed to scale to input data of our size, and fail when used on larger datasets than they were developed for.
-While some fail quickly and with informative messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
-For some goals, the data can be broken into subsets, processed separately, and re-joined upon completion.
-However, not every tool can operate on segments of the data, and extra care is required when stitching together results such that the next tool downstream is blind to such manipulations.
-Despite the challenges, this thesis provides a coarse description of which microbes are present, and what they contribute metabolically.
+%While some fail quickly and with informative messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
+%For some goals, the data can be broken into subsets, processed separately, and re-joined upon completion.
+%However, not every tool can operate on segments of the data, and extra care is required when stitching together results such that the next tool downstream is blind to such manipulations.
+Despite the challenges, this chapter provides a coarse description of which microbes are present, and what they contribute metabolically.
 Steps to zoom in on particular microbes to tell more detailed stories about a subset of the population are outlined as future directions.
 
 
@@ -155,7 +155,7 @@ Steps to zoom in on particular microbes to tell more detailed stories about a su
 Metagenomics and metatranscriptomics are umbrella terms for any project that uses sequencing of mixed populations of organisms.
 It implies untargeted sampling of the samples' entire DNA or RNA pool, rather than selecting for specific types of sequences.
 This is in contrast to 16S surveys, which amplify DNA from a segment of the conserved bacterial 16S ribosome \cite{kunin2008}.
-Such sequences are used as a molecular clocks for large timescales, and allow for inference of the bacterial taxa present in samples.
+16S DNA sequences are used as a molecular clocks for large timescales, and allow for inference of the bacterial taxa present in samples.
 16S studies do not allow the possibility to determine what genes each organism has available.
 Sometimes two organisms are nearly identical at the 16S level, but have substantial metabolic differences due to insertions, deletions, and transposons.  % todo (cite) (tried for 20 min).
 The term "metagenomics" is typically reserved for the un-targeted sampling of the entire community DNA pool.
@@ -167,9 +167,10 @@ This work focuses solely on untargeted metagenomics, to address the more challen
 Once shotgun metagenomic samples are in hand, there are many possible ways to infer which organisms are present and what they express.
 One approach is to assess how the samples relate to isolate organisms, by mapping to the reads to the isolates' genomes.
 High mapping rates to an isolate genome suggests the sample contained a large abundance of a similar organism.
-If their genomes are similar, mapping of RNA can inform the expression patterns of that organism in the sample.
-This can afford an excellent benchmark for analysis of metagenomes or transcriptomes, but only if the isolate genomes accurately represent the strains and diversity of strains in the community sample.
-However, isolates may often poor proxies for natural microbes given that the vast majority of isolates are not currently culturable \cite{kaeberlein2002, stewart2012}.
+If their genomes are similar, mapping of DNA and RNA reads to these genomes can inform the abundances and expression patterns for organism in the samples.
+This strategy is only effective if the isolate genomes accurately represent strains in the community.
+%This can afford an excellent benchmark for analysis of metagenomes or transcriptomes, but only if the isolate genomes accurately represent the strains and diversity of strains in the community sample.
+Isolates are often poor proxies for natural microbes given that the vast majority of isolates are not currently culturable \cite{kaeberlein2002, stewart2012}.
 Even if the isolates are perfect proxies for some organisms, the set may be missing whole categories of other organisms.
 This project did a preliminary study using isolate genomes as a reference for mapping metatranscriptome reads, but discovered that a small fraction of the RNA mapped to the genes in the isolate genomes (Figure \ref{fig:isolate_RNAseq}).
 The project quickly pivoted to reference-genome-free workflows, whereby the metagenomic reads were assembled into contigs that collectively represent the DNA present in the dominant and semi-abundant microbes.
@@ -187,7 +188,7 @@ These contigs can be annotated to identify genes, and organised into genome bins
     \end{singlespace}
 \end{figure}
 
-The high-level representation of steps common to most shotgun metagenomics papers is shown in Figure \ref{fig:meta_workflow}.
+A simplified representation of steps common to most shotgun metagenomics papers is depicted by Figure \ref{fig:meta_workflow}.
 The first step of reference-free metagenomics is assembly, wherein contigs are aligned and fragments are merged to infer the sequence from which the reads originated.
 Binning aims to identify contigs that in aggregate represent single organisms, or groups of highly related organisms \cite{kunin2008}.
 Genes can be called on the contigs, either before or after binning, to reveal the genetic potential of the parent organism.
@@ -201,13 +202,13 @@ Flow (read accountability) can be measured at the input and exit of pipes (repre
     \includegraphics[width=0.8\textwidth]{./tex/chapter2/figures/170312_pipe_leaks.pdf}
     \begin{singlespace}
     \caption[Framework for assessing information loss in workflow steps]{
-        Cartoon representing the ability to deduce information loss at different steps of the metagenome/metatranscriptome workflow.}
+        Cartoon representing the ability to deduce information loss at different steps of the metagenome/metatranscriptome work flow.}
     \label{fig:pipe_leaks}
     \end{singlespace}
 \end{figure}
 
 %---- Pipe description
-A simplified cartoon of the framework used to assess efficacy of each tool in the workflow is illustrated by Figure \ref{fig:pipe_leaks}.
+%A simplified cartoon of the framework used to assess efficacy of each tool in the work flow is illustrated by Figure \ref{fig:pipe_leaks}.
 For papers where the goal is to describe one or several novel organism(s) with high confidence, the loss of information (reads) along the way may not be a significant concern.
 Often papers in this category do not clearly report an estimate of that organisms abundance in the natural community.
 % Don't trash other papers \cite{evans2015} , or obscure absolute abundances by using relative abundances \cite{daly2016}.
@@ -217,8 +218,8 @@ These statistics are usually not stated clearly, allowing readers to over-estima
 % At this stage, or research is in this camp, and the result section will highlight how this frame of mind guided selection of tools.
 The pipe analysis framework illustrates the approach of this paper: use multiple monitoring methods to determine which pipeline steps are associated with information loss.
 These statistics are reported throughout to prevent misinterpretation of claims about the community compositions and expression patterns.
-%This thesis aims to describe the community holistically, and thus strives to clearly report assembly, binning, and read mapping effacy so as to not overstate claims or exaggerate community simplicity.
-% Many literature studies report small and incomplete descriptions about efficacy of their assembly and binning, which obfuscates leaks in the analysis pipeline and corresponds to over-simplified descriptions of the environment under study.  % Don't cite: hard to be ceratin I read carefully enough to call out papers by name.  It's also not nice!
+%This thesis aims to describe the community holistically, and thus strives to clearly report assembly, binning, and read mapping efficacy so as to not overstate claims or exaggerate community simplicity.
+% Many literature studies report small and incomplete descriptions about efficacy of their assembly and binning, which obfuscates leaks in the analysis pipeline and corresponds to over-simplified descriptions of the environment under study.  % Don't cite: hard to be certain I read carefully enough to call out papers by name.  It's also not nice!
 
 %----- There is no road map!
 Each arrow can be executed by several or sometimes dozens of competing software packages \cite{sangwan2016,thomas2012}.
@@ -227,8 +228,12 @@ Results from one software package can give you better insight about how to evalu
 
 Another challenge of projects of this scope is the size of the data.
 While more data is great for software tools trying to extract information from uncertain data, many tools are not designed to work on sequencing data as large as this one.
+While some tools fail quickly and with informative messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
+For some goals, the data can be broken into subsets, processed separately, and re-joined upon completion.
+However, not every tool can operate on segments of the data, and extra care is required when stitching together results such that the next tool downstream is blind to such manipulations.
+
 %Tools choke.  Just don't complete.
-Sometimes the parameters can be altered, sometimes you can break up a dataset and feed it to a tool in pieces, but sometimes the size is a deal breaker.
+%Sometimes the parameters can be altered, sometimes you can break up a dataset and feed it to a tool in pieces, but sometimes the size is a deal breaker.
 
 It is the role of the computational biologist to learn enough about the competing tools to select a handful to try, develop metrics and priorities for the trade-offs of each tool, project complex data into summary graphs, and decide which tool is the best fit for the research goals.
 
@@ -237,18 +242,18 @@ It is the role of the computational biologist to learn enough about the competin
 Analysis of metagenomic and metatranscriptomic data usually beings with assembling metagenome reads into contigs (Fig \ref{fig:meta_workflow}), which are contiguous stretches of genomic sequence in which the order of bases is known to a high confidence level. %(JGI)
 The metagenomes can be aligned to these contigs to infer the abundance of organisms.
 The transcriptomes can be aligned to these same contigs to infer what genes are expressed.
-In principle, metagenomes and metatranscriptomes can be aligned to isolate genomes rather than contigs, however, in practice meta-omics experiments are used precisely when the isolates available are known to be incomplete representatives of the microbial community under study.
+In principle, metagenomes and metatranscriptomes can be aligned to isolate genomes rather than contigs, however, in practice meta-omics experiments are usually used precisely when the isolates available are known to be incomplete representatives of the microbial community under study.
 Even if a similar organism has been isolated, the investigation may be probing the diversity of similar organisms, or the influence of less abundant microbes on the community's function.
 
 %---- Not all assemblies are created equal
 The challenge of assembly scales with the complexity of the microbial community.
 High species diversity and strain-level heterogeneity add challenge to assembly \cite{kunin2008, thomas2012}.
 Communities with a small number of well-delineated species tend to assemble better, yielding shorter numbers of long contigs.
-In contrast, complex communities' high diversity can lead to assemblies with fewer long contigs and more short contigs \cite{kunin2008}.
+In contrast, complex communities' high diversity can lead to fragmented assemblies, having fewer long contigs and more short contigs \cite{kunin2008}.
 These shorter contigs are more challenging to analyze and can lead to an incomplete portrait of a community.
 Short contigs are more difficult to call genes on, and are also more difficult to bin because measures like GC and differential abundance are noisier for short contigs than long ones \cite{sangwan2016}.
 The most common measures of assembly efficacy are characteristics of the contigs themselves.  How many are there?  What is the length of the contig that divides the length-sorted contigs into a pair of equal lengths (termed "N50")?
-This thesis advocates for an additional measure not seen in other published work: the fraction of the original reads that map to the assembled contigs.   % todo: "seldom seen" instead of "not seen"?
+This thesis advocates for additional measures that are rarely reported: the fraction of the total (un filtered/trimmed) original reads that map to the assembled contigs, and genome bins.   % todo: "seldom seen" instead of "not seen"?
 % Dont' talk about restricting to contigs > 1.5kb.
 
 \subsection{Elviz Assemblies}
@@ -264,8 +269,8 @@ For this project, that means there are 88 separate assemblies.
 Thus the contigs are not shared across samples, and comparison across samples is hindered.
 For example, it is difficult to infer whether a particular gene is differentially expressed across two samples if the contigs used as reference DNA are not the same across samples.
 More powerful analyses can be done when the DNA from all metagenomic samples are assembled at once.
-This makes it possible to get a table of gene expression that is comparable across samples.
-Such an assembly also leads to more powerful binning (discussed below) by providing extra features to cluster with: the differential abundances of each contig across the n samples \cite{albertsen2013}.
+This makes it possible to map to this shared DNA and thus to tabulate gene expression across samples.
+Such an assembly also leads to more powerful binning (discussed below) by providing extra features to cluster with: the differential abundances of each contig across the samples \cite{albertsen2013}.
 Since the number of reads originating from a particular organism should be proportional to its abundance, the DNA coverage for a set of contigs originating from an organism should be similar in a particular sample, and correlated across samples.
 The per-sample nature of the JGI contigs restricted the types of analyses that data was used for, and motivated generation of co-assembled contigs to represent the entirety of the dataset as discussed below.
 
@@ -286,7 +291,7 @@ Most aim to be effective without needing reference genomes to align to.
 %---- Rarefaction, species heterogeneity
 The ability to get clean genome bins varies greatly from project to project.
 As with assembly, more rarefied samples with low levels of strain heterogeneity are more amenable to binning \cite{kunin2008, thomas2012}, as the contigs are more likely to be long and few in number.
-Longer contigs have reduced noise for measurements of GC ratio, tetranucleotide freq, and differential abundance \cite{sangwan2016}.
+Longer contigs have reduced noise for measurements of GC ratio, tetranucleotide frequency, and differential abundance \cite{sangwan2016}.
 This in turn leads to less ambiguity when sorting contigs into respective bins.
 Notably, most binning tools are demonstrated on simple communities such as the premature infant gut \cite{sharon2013}.
 Thus, the assembly quality statistics noted in binning method papers is not likely to be reflected in analysis of these high-complexity samples.
@@ -298,8 +303,10 @@ Completeness and contamination checks can be automated by use of CheckM \cite{pa
 The marker genes used by CheckM are different based on the approximate taxonomy CheckM approximates for the bins.
 While this is certainly more effective than one set of genes used for all microbes, the reference sets available may not be good fits for the particular microbes under study.
 Furthermore, the choice of reference gene set might be poor for messy bins that  contain contigs from wildly different taxa.
-Some papers determine completeness and contamination by manual inspection using domain-specific marker gene sets (cite).
-For papers published before CheckM, this was the best option, however CheckM does allow the possibility of adding custom marker gene sets to their analysis pipeline.
+Some papers determine completeness and contamination by manual inspection using domain-specific marker gene sets. % (cite)
+For papers published before CheckM, this manual check was the best option.
+Now CheckM is used in the majority of papers.
+It even allows the possibility of adding custom marker gene sets to their analysis pipeline.
 
 %---- Binning tools
 The binning tools used herein combine sequence composition and coverage across multiple samples as inputs to machine learning algorithms to automatically cluster contigs into genomes.
@@ -331,17 +338,22 @@ If the study aims instead to describe a holistic picture of expression in a samp
 
 \subsubsection{Experimental}  % Note that work was done previously, so I'm not implying I did it.
 The culturing and sample preparation was done by Maria Hernandez, a visiting scholar.
-Sediment stored in DMSO on previous sampling trip was thawed from -80$^o$C and distributed into 250 mL bottles containing 50mL of NMS medium \ref{fig:experimental_design}.
-Samples started with XX amt of methane (XX mL), and either low oxygen (XX amt) or high oxygen (XX).
-Bottles were serially transfered for 14 weeks.
-The bottles were kept sealed (air-tight) between serial transfers; the gaseous compositions for the days between transfers were not measured.
-Bottles were shakedn at XX RPM and held at XX$^o$C.
+Sediment stored in DMSO on previous sampling trip was thawed from -80$^o$C and distributed into 250 mL bottles containing 100mL of NMS medium \ref{fig:experimental_design}, leaving 150mL of headspace.
+% High: 75% air, low = 75% air.  150 mL headspace, 100 mL liquid.
+All bottles were air-tight, with head spaces containing 25\% methane.
+High oxygen samples' head space was 75\% air.
+Low oxygen samples' head space was 15\% air, with the remainder being nitrogen.
+Atmospheres were created every weekday and once per weekend.
+Bottles were shaken at 250 RPM and held at 18$^o$C.
+The gaseous compositions for the days between transfers were not measured.
+
+Bottles were serially transferred for 14 weeks.
 Metagenomes and metatranscriptomes were obtained for all samples corresponding to weeks 4-14.
 Earlier weeks were omitted due to potential effects of residual DMSO, and interest in prioritizing sequencing of later, more-rarefied samples.
 The oxygen conditions (low/high) were switched for the last 4 bottles in each series (see Figure \ref{fig:experimental_design}).
 
 \subsubsection{Sequencing}
-This large dataset was made possible by a Joint Genome Institute sequencing grant (cite the \#? XX).
+This large dataset was made possible by a Joint Genome Institute sequencing grant. % (cite the \#? XX).
 JGI sequenced all samples on an Illumina platform to produce the 88 metagenomes and 88 metatranscriptomes.
 Ribosomal RNA was removed before sequencing the metatranscriptomes.
 %~ XX (?? Paired ended?) reads per sample, for both metagenomes and metatranscriptomes (??).
@@ -356,34 +368,34 @@ Length of contigs was not normalized out, or the abundance of short contigs woul
 The code checks that the taxas` abundances summed to 1 for each sample.
 
 Tools were written to aggregate (a) based on taxonomy level, or (b) everything below a taxonomy level.
-Contigs with taxonomy not desired to the specified level were grouped into "other".
-This framework was also used to summarize abundances at mixed taxonomy level (e.g. phylum Bacteroidetes, order Burkholderiales, family Methylococcales, and family Methylophilales), and plotted (code: \url{https://github.com/JanetMatsen/elvizAnalysis/blob/master/abundance_plot_utils.py}).
+Contigs with taxonomy not described to the specified level were grouped into "other".
+This framework was also used to summarize abundances at mixed taxonomy level (e.g. phylum Bacteroidetes, order Burkholderiales, family \textit{Methylococcales}, and family \textit{Methylophilales}), and plotted (code: \url{https://github.com/JanetMatsen/elvizAnalysis/blob/master/abundance_plot_utils.py}).
 
 Statistics for the 88 samples were merged with information about the oxygen, replicate, and week values corresponding to each sample using Python and Pandas.
 Plotting was done with Matplotlib, Pandas, and Seaborn.
 
 \subsubsection{Computational resources}
-This computationally-intensive research was supported by research grant, which included \$27k and expert consulting on how to best utilize the vast services offered.
+This computationally-intensive research was supported by an AWS research grant, which included \$27k and expert consulting on how to best utilize the vast services offered.
 AWS allows per-hour rental of machines with different specifications, that the user can choose based on algorithm needs.
 Furthermore, the ability to share machine images with other researchers greatly facilitates the potential reproducibility of research.
-Upon project completion, an AMI encapsulating the entire data analysis pipeline will be provided so others can re-run our analyses.
+Upon project completion, an Amazon Machine Image (AMI) encapsulating the entire data analysis pipeline will be provided so others can re-run our analyses.
 
-The machine ("instance") type used in all methods to follow was an AWS c4.8xlarge instance, which has 36 cores and 60GB memory.
+The machine ("instance") type used in all methods to follow was an AWS EC2 c4.8xlarge instance, which has 36 cores and 60GB memory.
 This was sufficient for all work, other than the memory-intensive assembly step, as noted below.
 Instances could be turned on and off as needed, reducing compute costs.
 This is in contrast to sharing a similar machine with the entire Beck Lab, which would have slowed down analysis and caused conflicts when certain computations used all of the compute resources, sometimes causing computer failure.
 
 Each instance obtained data and wrote results to a shared file system.
 The 9 TB of data, scripts, and results were stored using the AWS Elastic File System (EFS).
-EFS is AWS's most versatile and highest performance (most expensive) file storage, which allows users to have multiple instances reading/writing to the same directory.
-This shared nature of the files allows the user to spin up a second computer instance as needed, and read/write the exact same set of files.
+EFS is currently AWS's most versatile and highest performance (most expensive) file storage, which allows users to have multiple instances reading/writing to the same directory.
+This shared nature of the files allows the user to spin up a second computer instance as needed, and do read/write operations on the exact same set of files.
 
 %---- Computation parallelization
 Parallelization of compute tasks was done by splitting jobs across a single large computer, or across separate EC2 instances.
-When tasks were parallelized across one powerful computer was done with Gnu parallel or Python's \texttt{pool.map}.
+When tasks were parallelized across one powerful computer, Gnu parallel or Python's \texttt{pool.map} were used.
 When parallelizing across more, often weaker, computers, an AMI was made that mounts the EFS-stored data.
 These instances were usually started by hand through the console, though proof of principle studies using the Amazon Command Line Interface (CLI),
-    and an Autoscaling/SQS service pair were explored to set the foundation of future work (see repository XX) for the templates developed.
+    and an Autoscaling/SQS service pair were explored to set the foundation of future work (see repository \url{https://github.com/JanetMatsen/AWS_parallel_Cowsay}) for the templates developed.
 
 \subsubsection{Map to isolate genomes}
 As a preliminary study, the metatranscriptomes were mapped to 55 genomes isolated from Lake Washington by the Lidstrom Lab.
@@ -391,8 +403,7 @@ The sequences were downloaded from NCBI, and concatenated together before mappin
 Mapping to the multi-fasta rather than the individual genomes prevents double-counting of reads that map well to multiple loci.
 BWA-MEM \cite{li2009} with default settings was used to map each transcriptome to the multi-fasta, and htseq-count \cite{anders2014} was used to tabulate expression estimates.
 Samtools \cite{li2009samtools} was used to evaluate mappings by BWA.
-Note: the default of BWA is to flag reads that map equally well to two or more loci as having quality score 0; these reads are then not included in the tabulated results by gene-name.
-This is the best-practice approach when doing differential abundance analysis, but does lead to under-estimation of gene expression levels and lower accountability of the original fastq reads. % TODO: cite
+Note: the default of BWA-MEM is to flag reads that map equally well to two or more loci as having quality score 0; htseq-count by default omits these counts from the table of reads per gene (discussed later).
 
 \subsubsection{Assembly} % (Dave)
 Assembly to produce contigs was done on pooled quality-trimmed metagenome reads via Megahit \cite{li2015}.
@@ -400,19 +411,19 @@ This memory-intensive computation was done on an AWS instance with 1 TB of memor
 Assembly of multiple samples simultaneously provides a shared set of contigs to use when mapping DNA reads or RNA-seq reads from any of the 88 samples.
 This in turn allows for comparison of gene expression across samples.
 The fraction of reads represented by the assembly, in aggregate, were measured to verify assembly efficacy.
-%Tune knobs until …
+%Tune knobs until ...
 %Followed protocol ...
 
 \subsubsection{Gene calls}
-Genes were called on contigs with length greater than or equal to 1.5kb using Prokka \cite{seemann2014}.
-This was cutoff was selected because shorter contigs are not recommended for inclusion by most binning tools documentation.
+Genes were called on contigs with length greater than or equal to 1.5kb using Prokka \cite{seemann2014} (scripts: \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/prokka/prokka.py}{Python script} that calls Prokka, \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/contigs_by_length/select_contigs_by_size.py}{script} that extracts contigs by size).
+This cutoff was selected because shorter contigs are not recommended for inclusion by most binning tools documentation.
 Additionally, shorter contigs are less likely to have genes identified on them, as genes are more likely to be incomplete due to a higher density of contig edges.
-Prokka did not tolerate an input size of the scale, so the input fasta was broken into 5 files of approximately equal size.
+Prokka did not tolerate an input size of the scale, so the input fasta was broken into 5 files of approximately equal size (\href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/prokka/contigs}{scripts}).
 These were processed in parallel, using Python's \texttt{pool.map}.
 A \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/prokka/contigs/glue_together_gffs.py}{script} was written to merge the resulting annotated general feature format files (.gff files) into one representing all contigs $\geq$ 5kb.
 
 \subsubsection{Checking contigs' ability to represent each metagenome}
-The loss of information resulting from omitting short contigs was assessed by counting the number of reads that map to contigs $\geq$ 1.5kb, and comparing that to the total number in the raw metagenome fastq.gz files.
+The loss of information resulting from omitting short contigs was assessed by counting the number of reads that map to contigs $\geq$ 1.5kb, and comparing that to the total number in the raw metagenome fastq.gz files (\href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{fastq read counting script}, \href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/assess_sample_mappings_to_contigs}{analysis}).
 This represents an upper bound in information content for the assembly step.
 Again, this used BWA-MEM \cite{li2009}, and a \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{script} written to count raw fastq reads.
 Pandas (Python) was used to merge results together.
@@ -424,41 +435,40 @@ Metatranscriptomes were mapped to these contigs all at once, rather than to each
 This does result in reads mapping identically well to two places being thrown out, as mentioned earlier.
 Results from each sample were merged using a 60GB RAM AWS instance, rather than SQL.
 The fraction of transcriptome reads was compared to the total number in the input fastq files as a metric of information loss.
+See \href{https://github.com/BeckResearchLab/meta4/tree/master/rnaseq/alignments}{scripts and notebook}.
 
 \subsubsection{Binning}
 
 Binning of contigs into genome-like bins was explored using three different packages.
-MetaBAT was used with default settings on contigs $\geq$ 1.5kb.
-As promised by the documentation, it scaled well to large datasets and completed within about a day.
+MetaBAT was used with default settings on contigs $\geq$ 1.5kb (\href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/2.metabat}{script}).
+As promised by the documentation, it scaled well to this large dataset. % and completed within about a day.
 
 MyCC was used, but did not scale to data of our size well.
 The large memory requirement of the underlying affinity propagation algorithm led to failures on this large dataset, when default settings were used.
-At one time, it wrote so many small files that the machine crashed due to running out of inodes.
-Iteration of settings suggested by the authors was required to get MyCC to complete on our big data.
-Adjustment of the algorithm settings and the minimum contig length cutoff were iteratively tuned until results were obtained.
-In the end, the largest data it could handle was using settings \texttt{56mer, lt 0.4, st 50}, on contigs $\geq 2.5$ kb.
+At one time, MyCC wrote so many small files that the machine crashed due to running out of inodes.
+The authors suggested some alterations to the settings to reduce the computational requirements:  \texttt{56mer, lt 0.4, st 50}.
+Use of their settings worked on the set of contigs longer than 2.5kb, but not the larger set of contigs longer than 1.5kb.
 
 Concoct was tried initially, but bins were never obtained.
 This tool reports multiple potential clusters per conitg.
-The solution for assigning contigs with conflicting information to bins was not developed in the time frame of this project.
+The approach for resolving that conflicting information was not sorted out in the time frame of this project.
 
 \subsubsection{Average Nucleotide Identity}
 Average nucleotide identity (ANI) was used to compare bins.
-The underlying tool used was written by JGI. % TODO: cite.
-Their tool calculates two-way global ANI measures, and reports the fraction of each genome that aligned.
+The underlying tool, provided by JGI  \cite{varghese2015} (\href{https://ani.jgi-psf.org/html/anicalculator.php}{download link}), calculates two-way global ANI measures and reports the fraction of each genome that aligned.
 The authors suggest removal of ribosomal RNA genes, which can have high ANI even for divergent organisms.
 They do not, however, provide options or suggest a tool for this step.
 Given that the ANI calculations intended only to give a rough idea of similarity between bins or bins and isolates, this step was not performed.
-The tool was used to assessed ANI between all pairs of isolate genomes and MetaBAT bins.
+The tool was used to assessed ANI between all pairs of isolate genomes and MetaBAT bins (\href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/ANI/ANIs_of_all_combos.py}{script}).
 
 \subsubsection{Additional bin characterization}
 
-Completeness and contamination were checked with CheckM \cite{parks2015}.
+Completeness and contamination were checked with CheckM \cite{parks2015} (\href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/bin_info}{scripts}).
 CheckM uses marker genes from what it determines to be an evolutionarily similar microbe.
 The tool was benchmarked on isolates, to ensure it performed well on the key methylotrophic taxa under study.
 Custom marker genes specific to methylotrophs were not added, however, this is suggested as a possible future direction to assess bins.
 
-Taxonomy was approximated using PhyloPhlan \cite{segata2013}, and by ANI similarity with isolate genomes.
+Taxonomy was approximated using PhyloPhlan \cite{segata2013}, and by ANI similarity with isolate genomes (\href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/bin_info}{scripts}).
 
 \subsubsection{Code}
 The code described was developed with Git version control, and the full history is available on GitHub:
@@ -480,17 +490,22 @@ The cumulative number of raw and un-filtered reads is shown below.
 This collection of reads was used for all inferences described in this chapter.
 
 \begin{table}[H]
+% /work/misc/170326_compare_raw_fastq_reads.ipynb
 \centering
+\begin{singlespace}
+\caption[Number of un-filtered reads: sample average and total]
+	{Number of un-filtered reads: sample average and total across 88 samples.
+	Also see Figure \ref{fig:fastq_reads} for plots showing sample specific values.}
 \begin{tabular}{l | cc}
  %\toprule
         & mean \# reads per sample & total \# reads \\
 \midrule
-	metagenomes & \texttt{3.28e+07} $\pm$ \texttt{7.24e+06} & \texttt{2.89e+09} \\ % /work/jmatsen/170308_assess_Elviz_read_attraction_frac
-	metatranscriptomes & XX & XX \\
+	metagenomes & \texttt{3.33e+07} $\pm$ \texttt{7.34e+06} & \texttt{2.93e+09} \\ % also from: /work/jmatsen/170308_assess_Elviz_read_attraction_frac
+	metatranscriptomes & \texttt{4.24e+07} $\pm$ \texttt{6.22e+06} &  \texttt{3.73e+09} \\
 %\bottomrule
 \end{tabular}
-\caption{Total number of un-filtered reads.}
 \label{table:sample_read_sizes}
+\end{singlespace}
 \end{table}
 
 
@@ -601,6 +616,12 @@ While this method of describing gene expression was not pursued father, it provi
     \end{singlespace}
 \end{figure}
 
+As noted in the Methods, all computational steps using BWA-MEM and Samtools use default handling of reads that map equally well to multiple places.
+This leads to omission of multiply-mapped reads.
+Such handling is the best-practice approach for differential abundance analysis, which is the most common workflow for the tools used.
+It does, however, lead to under-estimation of gene expression levels and lower accountability of the original fastq reads. % TODO: cite
+
+
 % ----- ASSEMBLY ------
 \subsection{Assembly}
 
@@ -635,6 +656,9 @@ Prokka identified XXX distinct genes, encoding XXX differently named proteins (T
 
 \begin{table}[H]
 \centering
+\begin{singlespace}
+\caption[Annotation of MEGAHIT contigs]
+	{Annotation of MEGAHIT contigs.}
 \begin{tabular}{l | c}
  %\toprule
         & statistic  \\
@@ -643,8 +667,8 @@ Prokka identified XXX distinct genes, encoding XXX differently named proteins (T
 	number of distinctly name genes & XX \\
 %\bottomrule
 \end{tabular}
-\caption[Annotation of MEGAHIT contigs]{Annotation of MEGAHIT contigs.}
 \label{table:annotation}
+\end{singlespace}
 \end{table}
 
 
@@ -713,6 +737,10 @@ As mentioned, MyCC does not scale well to large data, so the full dataset includ
 
 \begin{table}[H]
 \centering
+\begin{singlespace}
+\caption[Binning results: MetaBAT \& MyCC]
+	{Binning results: MetaBAT \& MyCC.}
+\label{table:sample_read_sizes}
 \begin{tabular}{l | cc}
  %\toprule
             & \# bins & \% min contig size \\  % consider fraction of contigs binned?
@@ -721,9 +749,7 @@ As mentioned, MyCC does not scale well to large data, so the full dataset includ
 	MyCC    & XX   & XX \\
 %\bottomrule
 \end{tabular}
-\caption[Binning results: MetaBAT \& MyCC]
-	{Binning results: MetaBAT \& MyCC.}
-\label{table:sample_read_sizes}
+\end{singlespace}
 \end{table}
 
 %MetaBAT suffers from low binning rates, MyCC suffers from too aggressive of binning.
@@ -897,6 +923,7 @@ The Elviz data was aggregated on taxonomic label to illustrate the fractions of 
 These data were not appropriate for comparison across samples, or assembling into contigs, so an assembly was done with nearly all of the metagenomes.
 These contigs were binned into a draft set of bins, which highlighted the challenge of getting enough good bins to illustrate an entire population's dynamics.
 % TODO: suggest quality checks so we know how good the set is.
+% TODO: note dominant taxa
 
 The contigs were annotated and the genetic content was explored.
 In total, XXX genes were identified, encoding XXX different proteins.
