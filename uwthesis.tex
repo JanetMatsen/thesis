@@ -65,6 +65,8 @@
 %----- Janet additions
 \usepackage[colorlinks = true, linkcolor = black, urlcolor  = blue, citecolor = black, anchorcolor = black]{hyperref} % for hyperlinks.
 \usepackage{longtable} % for multi-page tables.  Used for glossary. http://stackoverflow.com/questions/2896833/how-to-stretch-a-table-over-multiple-pages
+\usepackage{caption}
+\captionsetup{width=1.0\textwidth}
 \usepackage{datatool}  % http://tex.stackexchange.com/questions/242315/using-csvreader-to-read-from-csv-giving-invalid-output
 \usepackage{seqsplit} % to wrap AA sequences. See RFP sequence. % http://tex.stackexchange.com/questions/100391/how-to-wrap-a-word-in-line-without-hyphen
 
@@ -102,7 +104,6 @@
 
 \Chair{Mary Lidstrom}{Professor}{Chemical Engineering, Microbiology}
 \Chair{David Beck}{Research Assistant Professor}{Chemical Engineering}
-%\Signature{David Beck}
 \Signature{David Baker}
 \Signature{Fran\c{c}ois Baneyx}
 
@@ -123,6 +124,9 @@
 \abstract{%
 
 Abstract.
+
+Cite \cite{matsenOB3b}, \cite{yangOB3b}
+
 }
 %
 % ----- contents & etc.
@@ -134,7 +138,7 @@ Abstract.
 %
 % ----- glossary
 %
-%\include{./tex/glossary} TODO: turn on
+\include{./tex/glossary}
 %
 % ----- acknowledgments
 %

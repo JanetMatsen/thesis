@@ -725,8 +725,19 @@ The distribution of contigs obtained (Figure \ref{fig:contig_lengths}) do not su
 % ----- ANNOTATION ------
 \subsection{Annotation}
 
-Genes were called on contigs with length $\geq$ 1.5kb, in preparation for metatranscriptome studies.
-Prokka identified XXX distinct genes, encoding XXX differently named proteins (Table XX).
+%[ec2-user@ip-10-0-0-158 map_to_contigs_longer_than_1500bp]$ realpath gene_read_totals.tsv
+%/work/rnaseq/alignments/map_to_contigs_longer_than_1500bp/gene_read_totals.tsv
+%[ec2-user@ip-10-0-0-158 map_to_contigs_longer_than_1500bp]$ cat gene_read_totals.tsv | wc -l
+%107900
+
+%[ec2-user@ip-10-0-0-158 map_to_contigs_longer_than_1500bp]$ realpath map_to_contigs_longer_than_1500bp_genes.tsv
+%/work/rnaseq/alignments/map_to_contigs_longer_than_1500bp/map_to_contigs_longer_than_1500bp_genes.tsv
+%[ec2-user@ip-10-0-0-158 map_to_contigs_longer_than_1500bp]$ cat map_to_contigs_longer_than_1500bp_genes.tsv | wc -l
+%921436  % Includes 5 __ columns, use so 921,431.
+
+Genes were called on contigs with length $\geq$ 1.5kb, in preparation for metatranscriptome studies (Table \ref{table:annotation}).
+See Table \ref{table:gene_calls} for the top genes by number of reads mapped.
+%Prokka identified 921,431 distinct genes, encoding 107,900 differently named proteins (Table XX).
 
 \begin{table}[H]
 \centering
@@ -737,8 +748,8 @@ Prokka identified XXX distinct genes, encoding XXX differently named proteins (T
  %\toprule
         & statistic  \\
 \midrule
-	total \# of genes & \texttt{XXXX} \\ % /work/jmatsen/170308_assess_Elviz_read_attraction_frac
-	number of distinctly name genes & XX \\
+	total \# of genes & \texttt{921,431} \\ % /work/jmatsen/170308_assess_Elviz_read_attraction_frac
+	number of distinctly name genes & \texttt{107,900} \\
 %\bottomrule
 \end{tabular}
 \label{table:annotation}
@@ -747,7 +758,7 @@ Prokka identified XXX distinct genes, encoding XXX differently named proteins (T
 
 
 % ?? Xox?
-Prokka was able to identify the key methanotrophy/methylotrophy genes such as XXX.
+Prokka was able to identify key methanotrophy/methylotrophy genes such as XXX.
 Some proteins were mis-annotated, as is typically observed when using automated annotation tools on methylotrophs.
 For example, many of the glucose dehydrogenases identified are in fact methane monooxygenases, and Xox-MDHs are listed as XXX.
 
