@@ -595,8 +595,8 @@ Figure \ref{fig:4dominant_groups} shows abundances of the four major taxonomic g
 Their dominance is consistent with pervious studies \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW, kalyuzhnaya2008Burkholderiales}.
 Figure \ref{fig:dominant_genera} show the breakdown of the methanotrophic and non-methanotrophic methylotroph taxa in Figure \ref{fig:4dominant_groups}.
 Notably, the path to rarefaction is not particularly consistent across samples.
-Like previous studies, dominance the dominant methanotrophic Order/Genus was Methylococcales/\textit{Methylococcaceae} and the dominant non-methanotrophic methylotrophic Order/Genus was Methylophilales/\textit{Methylophilaceae}.
-Low oxygen was associated with a higher abundance of methanotrophs, and lower proportion of methylotrophs than the high-oxygen samples.
+Like previous studies, the dominant methanotrophic Order/Genus was Methylococcales/\textit{Methylococcaceae} and the dominant non-methanotrophic methylotrophic Order/Genus was Methylophilales/\textit{Methylophilaceae}.
+Low oxygen was associated with a higher abundance of methanotrophs, and a lower proportion of methylotrophs than the high-oxygen samples.
 \textit{Methylosarcina} is often found in high-oxygen samples, but rarely in low-oxygen samples.
 Two high oxygen samples are dominated by \textit{Methylobacter}, but the others are not.
 The last four samples in each series are more similar to the previous samples in the series than samples at the opposite oxygen tension.
@@ -611,6 +611,8 @@ The last four samples in each series are more similar to the previous samples in
         Fractional abundances of DNA from the four major taxonomic groups in Lake Washington sediment incubations:
 	    phylum Bacteroidetes, orders Methylococcales (methylotrophs), Methylophilales (non-methanotrophic methylotrophs), Burkholderiales.
         The vertical gray line indicates the week the oxygen conditions were reversed.
+        These bars only reflect reads that mapped to contigs, according to the Elviz pipeline.
+        For information about the fraction of reads not assigned to contigs, see Figure \ref{fig:frac_elviz_mapped_to_contigs}.
         }
     \label{fig:4dominant_groups}
     \end{singlespace}
@@ -629,6 +631,8 @@ The last four samples in each series are more similar to the previous samples in
             (represents major taxa in yellow bars of Figure \ref{fig:4dominant_groups}).
         See Figure \ref{fig:taxonomy} for hierarchical taxonomy reference.
         Vertical gray line indicates the week the oxygen conditions were reversed.
+        Like Figure \ref{fig:4dominant_groups}, these bars only reflect reads that mapped to contigs, according to the Elviz pipeline.
+        For information about the fraction of reads not assigned to contigs, see Figure \ref{fig:frac_elviz_mapped_to_contigs}.
         }  % Italics are used for bacterial and viral taxa at the level of family and below.  https://wwwnc.cdc.gov/eid/page/scientific-nomenclature
     \label{fig:dominant_genera}
     \end{singlespace}
@@ -639,7 +643,7 @@ The last four samples in each series are more similar to the previous samples in
 %Genomic-scale resolution drove investigation of the potential for sorting these contigs into genome bins.
 The goal of this study is a comprehensive description of the samples, ideally in terms of genome bins.
 The potential for these Elviz contigs to paint a comprehensive picture of the microbial community was measured by summing all reads assigned to contigs long enough to bin, namely contigs $\geq$ 1.5kb.
-Figure \ref{fig:isolate_RNAseq} shows that while the entire set of contigs represents the samples well, the subset of contigs that are candidates for binning explain less than 20\% of the reads obtained for many low oxygen samples.
+Figure \ref{fig:dont_bin_Elviz} shows that while the entire set of contigs represents the samples well, the subset of contigs that are candidates for binning explain less than 20\% of the reads obtained for many low oxygen samples.
 Another complication of binning these Elviz contigs, is that binning the contigs for each sample individually would lead to many redundant bins that need to be thinned.
 This process is prone to human bias, and can lead researchers to over-fit their bins to their quality measures and thus over-state the quality of their bins.
 Nonetheless, if a particular sample is enriched in an organism of interest, use of the contigs from that sample should be conisdered for future binning efforts.
@@ -655,7 +659,7 @@ Nonetheless, if a particular sample is enriched in an organism of interest, use 
         Lines are colored by replicate.
         Solid lines represent the fraction of reads in the raw .fastq file that map to contigs of any length.
         Dashed lines represent the fraction of reads in the raw .fastq file that map to contigs with length $\geq$ 1.5kb.
-        Less than 20\% of the fastq would be explained by aggressive binning of most low oxygen samples.}
+        Less than 20\% of the raw fastq reads would be explained by aggressive binning of most low oxygen samples.}
     \label{fig:dont_bin_Elviz}
     \end{singlespace}
 \end{figure}
@@ -663,11 +667,11 @@ Nonetheless, if a particular sample is enriched in an organism of interest, use 
 % ----- Map to Isolate Genomes ------
 \subsection{Map to Isolate Genomes}
 
-The next simplest approach of identifying which microbes are active in the samples, and what they express is to map the reads to the 55+ isolate genomes at hand (cite XX).
+The next simplest approach of identifying which microbes are active in the samples, and what they express is to map the reads to the 55 isolate genomes (listed in Table \ref{table:55genomes}).
 The potential efficacy of these results can be measured by quantifying the fraction of metagenomic and metatranscriptomic reads that align to these genomes (recall the pipe diagram, Figure \ref{fig:pipe_leaks}).
 Figure \ref{fig:isolate_RNAseq} shows the fraction of the metatranscriptomes that can be explained using these reference genomes.
 The low accountability (mostly $<$15\%) guarantees an incomplete portrait of the activity in these samples, so the data was not pursued further.
-Despite heroic Lidstrom Lab efforts to isolate strains, the set obtained thus far do not cover the complexity seen in real samples.
+Despite heroic Lidstrom Lab efforts to isolate strains, the set obtained thus far does not cover the complexity seen in real samples.
 This indicates missing taxa and/or dissimilarity between the isolated strains and the ones that dominate in nature.
 While this method of describing gene expression was not pursued father, it provides a baseline fraction of RNA mapped for any subsequent metagenomic methods to beat.
 
@@ -689,19 +693,20 @@ As noted in the Methods, all computational steps using BWA-MEM and Samtools use 
 This leads to omission of multiply-mapped reads.
 Such handling is the best-practice approach for differential abundance analysis, which is the most common workflow for the tools used.
 It does, however, lead to under-estimation of gene expression levels and lower accountability of the original fastq reads. % TODO: cite
+Higher mapping fractions could be achieved by randomly assigning reads to one target from the set of best potential targets, but this lowers uncertainty about which genes/organisms are most influential in the samples.
 
 
 % ----- ASSEMBLY ------
 \subsection{Assembly}
 
-Given that the Elviz contigs and isolate genomes were not effective reference DNA for answering the questions of this study, a better set of contigs was sought out.
+Given that the Elviz contigs and isolate genomes were not effective reference DNA for answering the questions of this study, a better set of contigs was sought.
 One approach for explaining a set of metagenomic samples is co-assembly of metagenome reads, calling genes on the resulting contigs, mapping the transcriptomes to these contigs, and tabulating the expression levels.
 Accordingly, the metagenomes from almost every sample were pooled and assembled into one set of contigs shared by all samples.
 
 Assemblies which produce long contigs are desired, as longer contigs are easier to call genes on and cluster by similarity during binning.
-Communities with extremely low complexity (just a few microbes co-existing) can yield long contigs that can be sorted into high-confidence genome bins that are often described by authors as genomes, rather than bins.
-As complexity increases, lessened sequencing depth and homologous regions between organisms inhibit the ability to get long contigs.
-The distribution of contigs obtained (Figure \ref{fig:contig_lengths}) do not indicate a simple community.
+Communities with extremely low complexity (just a few microbes co-existing) can yield long contigs with greater potential for being sorted into high-confidence genome bins which are often described by authors as genomes, rather than bins.
+As complexity increases, reduced sequencing depth and homologous regions between organisms inhibit the ability to get long contigs.
+The distribution of contigs obtained (Figure \ref{fig:contig_lengths}) do not suggest a simple community.
 
 
 \begin{figure}[H]
