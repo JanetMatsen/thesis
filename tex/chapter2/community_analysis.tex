@@ -736,8 +736,9 @@ The distribution of contigs obtained (Figure \ref{fig:contig_lengths}) do not su
 %921436  % Includes 5 __ columns, use so 921,431.
 
 Genes were called on contigs with length $\geq$ 1.5kb, in preparation for metatranscriptome studies (Table \ref{table:annotation}).
-See Table \ref{table:gene_calls} for the top genes by number of reads mapped.
 %Prokka identified 921,431 distinct genes, encoding 107,900 differently named proteins (Table XX).
+
+See supplementary files for the gene \texttt{.fasta} and corresponding \texttt{.gff}. %, and RNA read counts \texttt{.tsv} in each sample.
 
 \begin{table}[H]
 \centering
@@ -758,9 +759,11 @@ See Table \ref{table:gene_calls} for the top genes by number of reads mapped.
 
 
 % ?? Xox?
-Prokka was able to identify key methanotrophy/methylotrophy genes such as XXX.
-Some proteins were mis-annotated, as is typically observed when using automated annotation tools on methylotrophs.
-For example, many of the glucose dehydrogenases identified are in fact methane monooxygenases, and Xox-MDHs are listed as XXX.
+
+%Prokka was able to identify key methanotrophy/methylotrophy genes such as XXX.
+%Some proteins were mis-annotated, as is typically observed when using automated annotation tools on methylotrophs.
+%For example, many of the glucose dehydrogenases identified are in fact methane monooxygenases, and Xox-MDHs are listed as XXX.
+
 
 % ?? TODO: make a plot that shows the gene density is lower on short contigs?
 
@@ -769,14 +772,9 @@ For example, many of the glucose dehydrogenases identified are in fact methane m
 \subsection{Transcriptome Analysis}
 
 % Intro
-Mappings of the 88 transcriptomes to the annotated contigs revealed which of the 0.7XX million genes were strongly expressed.
-Table XX shows the gene names associated with the highest total of reads mapped, and how many copies of these genes contribute to that sum.
-See supplemental file XX for the full set.
-The presence of key methanotrophy and methylotrophy genes agrees with the Elviz portrait of methanotroph/methylotroph dominance in every sample.
-Other highly expressed genes allow speculation for metabolic roles of other microbes.
-%Phage.
-
-%?? Get isolate stats?? We hoped to beat the benchmark of mapping to the isolates:  median XX %.
+Mappings of the 88 transcriptomes to the annotated contigs revealed which of the $\approx$0.9 million genes were strongly expressed.
+Table \ref{table:top_genes} shows the names of the proteins associated with the highest total of reads mapped, and how many copies of these genes contribute to that sum.
+See supplementary files for gene \texttt{.fasta}, \texttt{.gff}, and RNA read counts \texttt{.tsv} in each sample.
 
 Figure \ref{fig:rna_mapping_bars} shows how well the called genes account for the transcripts seen in the raw sequence data.
 The green bars represent a high degree of certainty.
@@ -801,18 +799,40 @@ While this alteration would help with describing holistically which genes are ex
 \subsubsection{Highest Expressed Proteins}
 % TODO: add table of highest expressed proteins, and describe.
 
+The top genes include many methanotrophy genes, especially subunits of methane monooxygenase and methanol dehydrogenase.
+Other highly expressed methylotrophy genes encode products including 3-hexulose-6-phosphate synthase, transketolase, formaldehyde-activating enzyme, and 3-hexulose-6-phosphate isomerase.
+The presence of key methanotrophy and methylotrophy genes agrees with the Elviz portrait of methanotroph/methylotroph dominance in every sample.
+Other highly expressed genes allow speculation for metabolic roles of other organisms.
+
+Two phage proteins are near the top of the list: Capsid protein (F protein), and Microvirus H protein (pilot protein) (Figures \ref{fig:phage_protein_F}, \ref{fig:phage_pilot_protein}). %
+%WTF... Group II intron-encoded protein LtrA ??  http://www.uniprot.org/uniprot/P0A3U0
+Phage blooms could contribute to the apparent stochasticity in community rarefaction.
+%?? Get isolate stats?? We hoped to beat the benchmark of mapping to the isolates:  median XX %.
+
 \subsubsection{Expression of Genes by Locus}
 
 Which copes are expressed, and under which conditions?
 Breaking down the expression of these genes by locus and sample reveals which copies dominate.
-Many of the patterns appear to be oxygen-dependent.
+Many of the patterns appear to be oxygen-dependent, and/or perturbed by the oxygen condition switch for the last four samples.
 % TODO: figure of expression.  Include more in appendix.
 % FIGURE: pmo subunit A.
+For example, the patterns for which \textit{pmoC} locus is expressed in each sample appears to be correlated with the oxygen tension in each sample (Figure \ref{fig:mmo_alpha}).
+Exploration of these patterns and analysis of the genes taxonomy can shed light onto how oxygen influences community composition.
 
-For example, the top \textit{pmoC} copies are strongly correlated to the oxygen tension in each sample.
-Identifying which taxa are associated with these oxygen-dependent patterns in gene expression can shed light onto how oxygen influences community composition.
-For example, this \textit{pmoC} trend was XXXX. %TODO
-
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/thesis/tex/chapter2/figures/170328_loci_read_fracs_Particulate_methane_monooxygenase_alpha_subunit_precursor--portrait--cleaned.pdf
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170328_locus_expression_plots/170328_loci_read_fracs_Particulate_methane_monooxygenase_alpha_subunit_precursor--portrait.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170328_loci_read_fracs_Particulate_methane_monooxygenase_alpha_subunit_precursor--portrait--cleaned.pdf}
+    \begin{singlespace}
+    \caption[Methane monoxygenase alpha subunit locus expression profiles by sample]{
+        Methane monoxygenase alpha subunit locus expression profiles by sample.
+        The legend shows many genes annotated as such, but only the highest expressed loci were plotted with color.
+        The gray series have nearly zero expression and thus do not rise above the x-axis.
+        }
+    \label{fig:mmo_alpha}
+    \end{singlespace}
+\end{figure}
 
 % ----- BINNING ------
 \subsection{Binning of Co-assembled Contigs}
@@ -828,10 +848,20 @@ As mentioned, MyCC does not scale well to large data, so the full dataset includ
 \label{table:sample_read_sizes}
 \begin{tabular}{l | cc}
  %\toprule
-            & \# bins & \% min contig size \\  % consider fraction of contigs binned?
+            & \# bins &  min contig size allowed \\  % consider fraction of contigs binned?
 \midrule
-	MetaBAT & XX   & XX \\
-	MyCC    & XX   & XX \\
+	MetaBAT & 330   & 1.5kb \\
+	MyCC    & 109   & 2.5kb \\
+%[ec2-user@ip-10-0-0-158 metabat]$ realpath .
+%/work/m4b_binning/assembly/metabat
+%[ec2-user@ip-10-0-0-158 metabat]$ ls bin*.fa | wc -l
+%330
+
+%[ec2-user@ip-10-0-0-158 assembly_mycc_2.5kb_56mer_lt_0.4_st_50]$ realpath 20170131_1745_56mer_0.7_cov
+%/work/m4b_binning/assembly_mycc_completed/assembly_mycc_2.5kb_56mer_lt_0.4_st_50/20170131_1745_56mer_0.7_cov
+%[ec2-user@ip-10-0-0-158 assembly_mycc_2.5kb_56mer_lt_0.4_st_50]$ ls 20170131_1745_56mer_0.7_cov/Cluster*.fasta | wc -l
+%109
+
 %\bottomrule
 \end{tabular}
 \end{singlespace}
@@ -841,42 +871,28 @@ As mentioned, MyCC does not scale well to large data, so the full dataset includ
 Figure \ref{fig:binning_frac_reads_mapped} shows this the fraction of the metagenomes that are accounted for by the bins, as a measure of how effectively the bins describe the composition of organisms.
 The two sets of lines for the MetaBAT plots measure how well the bins did in total (dashed lines), and how well they did on contigs longer than 2.5kb (to better compare with the MyCC results).
 
-
 \begin{figure}[H]
 \centering
     % /Users/janet/Dropbox/meta4_bins_data_and_files/170201_MyCC_read_accountability_figures/170201_comparable_read_coverage_for_metabat_and_mycc_3kb.pdf
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170201_comparable_read_coverage_for_metabat_and_mycc_3kb--INKSCAPED.pdf}
     \begin{singlespace}
     \caption[Fraction of reads accounted for by MetaBAT and MyCC bins]{
-        Fraction of reads accounted for by bins generated via MetaBAT (min contig size = 1.5kb) and MyCC (min contig size = 2.5kb).
+        Fraction of reads accounted for by bins generated via MetaBAT (min contig size = 1.5kb, default settings) and MyCC (min contig size = 2.5kb, settings adjusted for memory issues).
         Points represent the fraction of reads binned for each sample.
         The solid MetaBAT lines represent the fraction of reads associated with contigs of length $\geq$ 2.5kb, as an appropriate comparison to the MyCC run.
-        The dashed MetaBAT lines represent the full fraction of reads accounted for by the MetaBAT results including contigs as short as 1.5kb.
-        The arrow after week 10 indicates that all subsequent samples were treated with the opposite oxygen tension as the label indicates.
+        The dashed MetaBAT lines represent the full fraction of reads accounted for by the actual MetaBAT bins, which include contigs as short as 1.5kb.
+        The arrows after week 10 in each plot indicate that all subsequent samples were treated with the opposite oxygen tension as the label indicates.
     }
     \label{fig:binning_frac_reads_mapped}
     \end{singlespace}
 \end{figure}
 
 MetaBAT with default settings produced bins with low sample accountability, whereas the MyCC bins represented a high fraction of the raw sample reads.
-Figure \ref{fig:mycc_binned_more_contigs} shows this the fraction of the metagenomes that are accounted for by the bins, as a measure of how effectively the bins describe the composition of organisms.
-The two sets of lines for the MetaBAT plots measure how well the bins did in total (dashed lines), and how well they did on contigs longer than 2.5kb (to better compare with the MyCC results).
-
-
-\begin{figure}[H]
-\centering
-    % /Users/janet/Dropbox/meta4_bins_data_and_files/170202_comparing_MyCC_to_metabat/170206_improved_fracs_of_contigs_binned_by_MyCC.pdf
-    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170206_improved_fracs_of_contigs_binned_by_MyCC.pdf}
-    \begin{singlespace}
-    \caption[MyCC binned contigs more aggressively than MetaBAT]{
-        MyCC binned contigs more aggressively than MetaBAT.}
-    \label{fig:mycc_binned_more_contigs}
-    \end{singlespace}
-\end{figure}
+This represents a trade-off between precision and recall, a balance inherent to binning regardless of the tool used.
 
 % MetaBAT comments
 One striking trend in the MetaBAT results is the difference in the fraction of reads associated with binned contigs between low oxygen replicates 1/2 and 3/4.
-This is explained by differences in the proportion of high-abundance contigs across replicates (Supplemental Figure \ref{fig:contig_dist}).
+This is associated with differences in the proportion of reads associated with long contigs across replicates (Supplemental Figure \ref{fig:contig_dist}).
 The poorly represented samples are biased more toward short contigs.
 While noting that the last 4 data points in each series have the opposite oxygen condition as the series label, see that the high oxygen samples are better reflected by MetaBAT bins.
 This source of this conundrum has not yet been resolved, but could be due to a smear of organisms for which assembly performed poorly.
@@ -885,10 +901,31 @@ BLAST could be used to identify the taxa for the contigs which are binning well,
 Figure \ref{fig:mycc_binned_more_contigs} also shows MyCC's increased efficacy at representing the raw sequencing reads.
 Upon further investigation, it was revealed that MyCC binned $>$99\% of all contigs supplied, including the shorter ($\approx$ 2.5kb) contigs which carry greater uncertainty. %(Figure \ref{fig:mycc_binned_more_contigs}).
 Aggressive binning is associated with low specificity, binning of contigs that do not belong with the others in the bin.
-Figure \ref{fig:mycc_contamination} reveals the consequence of this: high contamination scores according to CheckM.
+
+Figure \ref{fig:mycc_contamination} reveals the consequence of the aggressive MyCC binning: high contamination scores according to CheckM.
 CheckM's efficacy to analyze methylotrophs was confirmed by applying it to the 55 genomes used in the isolate studies.
-The statistics it returned for these positive controls were nearly perfect, indicating that good bins for these samples should have nearly 100\% completeness and less than a few percent contamination (Appendix XXX).
+The statistics it returned for these positive controls were nearly perfect (Table \ref{tab:checkm_isolate}), indicating that good bins for these samples should have nearly 100\% completeness and less than a few percent contamination.
 % high sensitivity, low specificity.
+
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170202_comparing_MyCC_to_metabat/170206_improved_fracs_of_contigs_binned_by_MyCC.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170206_improved_fracs_of_contigs_binned_by_MyCC.pdf}
+    \begin{singlespace}
+    \caption[MyCC binned contigs more aggressively than MetaBAT]{
+        MyCC binned contigs more aggressively than MetaBAT.
+        With the settings used, MyCC binned %>% 99.9\% of contigs at all lengths, for all lengths.
+        The one dot near y=0.6 had a $>99\%$ binning rate as well, but is lower because the bin includes reads below the 2.5kb cutoff.
+        }
+    \label{fig:mycc_binned_more_contigs}
+    \end{singlespace}
+\end{figure}
+
+
+Given the small fraction of the metagenomes explained by MetaBAT (Figure \ref{fig:mycc_contamination}), and high contamination scores of the MyCC bins (Figure \ref{fig:mycc_contamination}), binning has been placed on hold.
+See Section \ref{chA_future_steps} below for suggested next steps in the binning workflow.
+
 
 \begin{figure}[H]
 \centering
@@ -900,9 +937,6 @@ The statistics it returned for these positive controls were nearly perfect, indi
     \label{fig:mycc_contamination}
     \end{singlespace}
 \end{figure}
-
-Given the small fraction of the metagenomes explained by MetaBAT (Figure \ref{fig:mycc_contamination}), and high contamination scores of the MyCC bins (Figure \ref{fig:mycc_contamination}), binning has been placed on hold.
-See Section \ref{chA_future_steps} below for suggested next steps in the binning workflow.
 
 As a measure of the best-case scenario for binning given the assembly, the fraction of reads attracted to contigs shorter than 1.5kb were quantified (Figure XX).
 If future work with these data aim to explore more than $\approx$ XXX\% of the data, other assembly strategies may be considered.

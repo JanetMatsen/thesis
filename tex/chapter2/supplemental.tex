@@ -30,10 +30,13 @@
 
 \begin{singlespace}
 \begin{longtable}{p{.50\textwidth} cc}
+% /Users/janet/Dropbox/meta4_bins_data_and_files/170326_isolate_genome_names
 \caption[Highest expressed proteins, across samples]{
 	The top 300 proteins when summing reads across the 88 samples.
     Sample size variation and gene length are not controlled for.
-    See Table \ref{fig:frac_elviz_mapped_to_contigs} for sample size variation.} \\  % Need this \\  (http://tex.stackexchange.com/questions/148061/longtable-misplaced-noalign)
+    See Table \ref{fig:frac_elviz_mapped_to_contigs} for sample size variation.
+    For gene sequences, locus tags, and counts in each sample, see supplementary files.  % TODO: describe them?
+    } \\  % Need this \\  (http://tex.stackexchange.com/questions/148061/longtable-misplaced-noalign)
 \label{table:top_genes} \\  % Need this \\  (http://tex.stackexchange.com/questions/148061/longtable-misplaced-noalign)
 \toprule
                                            product & sum(RNA reads) & \# gene copies \\
@@ -355,6 +358,29 @@
 \end{longtable}
 \end{singlespace}
 
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170327_phage_proteins
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170327_loci_read_fracs_Capsid_protein__F_protein_.pdf}
+    \begin{singlespace}
+    \caption[Expression of a highly expressed phage capsid protein across samples]{
+        Expression of a highly expressed phage capsid protein across samples.
+        }
+    \label{fig:phage_protein_F}
+    \end{singlespace}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Dropbox/meta4_bins_data_and_files/170327_phage_proteins
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170327_loci_read_fracs_Microvirus_H_protein__pilot_protein_.pdf}
+    \begin{singlespace}
+    \caption[Expression of a highly expressed phage pilot protein across samples]{
+        Expression of a highly expressed phage pilot protein across samples.
+        }
+    \label{fig:phage_pilot_protein}
+    \end{singlespace}
+\end{figure}
 
 
 \begin{figure}[H]
@@ -368,5 +394,87 @@
     \end{singlespace}
 \end{figure}
 
+\begin{landscape}
+\begin{singlespace}
+\fontsize{8.5}{10}\selectfont
+%\begin{longtable}{llrrr}
+\begin{longtable}{p{.30\textwidth} p{.30\textwidth} ccc}
+\caption[CheckM results for isolates]{
+	CheckM results for isolate genomes, a positive control of CheckM efficacy for methylotrophs.
+	} \\
+\label{tab:checkm_isolate} \\
+\toprule
+                               Bin Id &                    Marker lineage &  Completeness &  Contamination &  Strain heterogeneity \\
+\midrule \endfirsthead
+
+\toprule
+                               Bin Id &                    Marker lineage &  Completeness &  Contamination &  Strain heterogeneity \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+\endlastfoot
+                Ancylobacter\_sp\_FA202 &          o\_\_Rhizobiales (UID3642) &        100.00 &           0.00 &                  0.00 \\
+                  Arthrobacter\_sp\_31Y &       f\_\_Micrococcaceae (UID1631) &         99.71 &           0.00 &                  0.00 \\
+                  Arthrobacter\_sp\_35W &       f\_\_Micrococcaceae (UID1623) &         99.77 &           0.46 &                  0.00 \\
+                Arthrobacter\_sp\_MA-N2 &       f\_\_Micrococcaceae (UID1631) &         99.62 &           0.00 &                  0.00 \\
+                     Bacillus\_sp\_37MA &               c\_\_Bacilli (UID259) &         98.68 &           1.55 &                  0.00 \\
+                       Bacillus\_sp\_72 &               c\_\_Bacilli (UID259) &         98.68 &           2.43 &                 33.33 \\
+                         Bosea\_sp\_117 &          o\_\_Rhizobiales (UID3642) &         99.68 &           0.00 &                  0.00 \\
+                 Flavobacterium\_sp\_83 &    f\_\_Flavobacteriaceae (UID2817) &         99.65 &           0.71 &                  0.00 \\
+                 Flavobacterium\_sp\_Fl &    f\_\_Flavobacteriaceae (UID2817) &         99.65 &           0.42 &                  0.00 \\
+                       Hoeflea\_sp\_108 &          o\_\_Rhizobiales (UID3450) &         99.43 &           0.96 &                  0.00 \\
+                Hyphomicrobium\_sp\_802 &          o\_\_Rhizobiales (UID3447) &        100.00 &           0.20 &                  0.00 \\
+                 Hyphomicrobium\_sp\_99 &          o\_\_Rhizobiales (UID3447) &         99.39 &           0.61 &                 50.00 \\
+            Janthinobacterium\_sp\_RA13 &      o\_\_Burkholderiales (UID4002) &         99.25 &           1.94 &                  0.00 \\
+    Methylobacter\_tundripaludum\_21\_22 &  c\_\_Gammaproteobacteria (UID4274) &         99.37 &           2.82 &                  9.09 \\
+    Methylobacter\_tundripaludum\_31\_32 &  c\_\_Gammaproteobacteria (UID4274) &         99.37 &           3.39 &                  7.14 \\
+               Methylobacterium\_sp\_10 &          o\_\_Rhizobiales (UID3654) &         99.84 &           0.00 &                  0.00 \\
+               Methylobacterium\_sp\_77 &          o\_\_Rhizobiales (UID3654) &        100.00 &           0.31 &                  0.00 \\
+              Methylobacterium\_sp\_88A &          o\_\_Rhizobiales (UID3654) &         99.84 &           0.00 &                  0.00 \\
+                 Methylocystis\_sp\_LW5 &          o\_\_Rhizobiales (UID3654) &        100.00 &           0.31 &                  0.00 \\
+                  Methylomonas\_sp\_11b &  c\_\_Gammaproteobacteria (UID4274) &         99.93 &           0.42 &                  0.00 \\
+                 Methylomonas\_sp\_LW13 &  c\_\_Gammaproteobacteria (UID4274) &         99.91 &           0.41 &                  0.00 \\
+                  Methylomonas\_sp\_MK1 &  c\_\_Gammaproteobacteria (UID4274) &         99.92 &           1.10 &                  0.00 \\
+        Methylophilaceae\_bacterium\_11 &   c\_\_Betaproteobacteria (UID3888) &        100.00 &           0.00 &                  0.00 \\
+                   Methylophilus\_sp\_1 &   c\_\_Betaproteobacteria (UID3888) &        100.00 &           0.00 &                  0.00 \\
+                  Methylophilus\_sp\_42 &   c\_\_Betaproteobacteria (UID3888) &        100.00 &           0.00 &                  0.00 \\
+                   Methylophilus\_sp\_5 &   c\_\_Betaproteobacteria (UID3888) &        100.00 &           0.11 &                  0.00 \\
+                  Methylophilus\_sp\_Q8 &   c\_\_Betaproteobacteria (UID3888) &        100.00 &           0.03 &                  0.00 \\
+                   Methylopila\_sp\_73B &          o\_\_Rhizobiales (UID3642) &        100.00 &           0.16 &                  0.00 \\
+                  Methylopila\_sp\_M107 &          o\_\_Rhizobiales (UID3642) &        100.00 &           0.32 &                  0.00 \\
+            Methylosarcina\_lacus\_LW14 &  c\_\_Gammaproteobacteria (UID4274) &         99.59 &           0.95 &                  0.00 \\
+                  Methylosinus\_sp\_LW3 &          o\_\_Rhizobiales (UID3654) &        100.00 &           0.31 &                  0.00 \\
+                  Methylosinus\_sp\_LW4 &          o\_\_Rhizobiales (UID3654) &         99.69 &           0.00 &                  0.00 \\
+                  Methylosinus\_sp\_PW1 &          o\_\_Rhizobiales (UID3654) &        100.00 &           0.30 &                  0.00 \\
+             Methylotenera\_mobilis\_13 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.00 &                  0.00 \\
+           Methylotenera\_mobilis\_JLW8 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.00 &                  0.00 \\
+                Methylotenera\_sp\_1P\_1 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.00 &                  0.00 \\
+                 Methylotenera\_sp\_73s &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.00 &                  0.00 \\
+                 Methylotenera\_sp\_G11 &   c\_\_Betaproteobacteria (UID3888) &        100.00 &           0.03 &                  0.00 \\
+                Methylotenera\_sp\_L2L1 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.00 &                  0.00 \\
+                 Methylotenera\_sp\_N17 &   c\_\_Betaproteobacteria (UID3888) &        100.00 &           0.00 &                  0.00 \\
+         Methylotenera\_versatilis\_301 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           1.28 &                  0.00 \\
+           Methylotenera\_versatilis\_7 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.43 &                100.00 \\
+          Methylotenera\_versatilis\_79 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.00 &                  0.00 \\
+            Methyloversatilis\_sp\_FAM1 &       f\_\_Rhodocyclaceae (UID3972) &         99.17 &           0.00 &                  0.00 \\
+        Methyloversatilis\_sp\_RZ18-153 &       f\_\_Rhodocyclaceae (UID3972) &         99.59 &           0.00 &                  0.00 \\
+   Methyloversatilis\_universalis\_FAM5 &       f\_\_Rhodocyclaceae (UID3972) &         99.59 &           0.00 &                  0.00 \\
+ Methyloversatilis\_universalis\_Fam500 &       f\_\_Rhodocyclaceae (UID3972) &         99.59 &           0.00 &                  0.00 \\
+   Methylovorus\_glucosetrophus\_SIP3-4 &   c\_\_Betaproteobacteria (UID3888) &         99.57 &           0.00 &                  0.00 \\
+                 Mycobacterium\_sp\_141 &      o\_\_Actinomycetales (UID1815) &         99.95 &           0.09 &                  0.00 \\
+                 Mycobacterium\_sp\_155 &      o\_\_Actinomycetales (UID1815) &        100.00 &           0.00 &                  0.00 \\
+                     Paracoccus\_sp\_N5 &     f\_\_Rhodobacteraceae (UID3340) &         99.39 &           0.15 &                  0.00 \\
+                Pseudomonas\_sp\_11\_12A &          g\_\_Pseudomonas (UID4576) &         99.66 &           0.44 &                  0.00 \\
+                  Xanthobacter\_sp\_126 &          o\_\_Rhizobiales (UID3642) &         99.96 &           0.32 &                  0.00 \\
+                   Xanthobacter\_sp\_91 &          o\_\_Rhizobiales (UID3642) &         99.81 &           0.32 &                100.00 \\
+     Xanthobacteraceae\_bacterium\_501b &          o\_\_Rhizobiales (UID3642) &        100.00 &           0.00 &                  0.00 \\
+\end{longtable}\end{singlespace}
+\end{landscape}
 
 
