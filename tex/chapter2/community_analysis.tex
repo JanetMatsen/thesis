@@ -212,13 +212,13 @@ Flow (read accountability) can be measured at the input and exit of pipes (repre
 For papers where the goal is to describe one or several novel organism(s) with high confidence, the loss of information (reads) along the way may not be a significant concern.
 Often papers in this category do not clearly report an estimate of that organisms abundance in the natural community.
 % Don't trash other papers \cite{evans2015} , or obscure absolute abundances by using relative abundances \cite{daly2016}.
-Other papers try to describe a more holistic description of the community \cite{kantor2017} by describing the diversity of organisms found in bins from the sample.
+Other papers try to describe a more wholistic description of the community \cite{kantor2017} by describing the diversity of organisms found in bins from the sample.
 In this case, it is crucial to quantify what fraction of the original sample is described by the output of your analysis.
 These statistics are usually not stated clearly, allowing readers to over-estimate the importance of the described taxa in the real ecosystem.
 % At this stage, or research is in this camp, and the result section will highlight how this frame of mind guided selection of tools.
 The pipe analysis framework illustrates the approach of this paper: use multiple monitoring methods to determine which pipeline steps are associated with information loss.
 These statistics are reported throughout to prevent misinterpretation of claims about the community compositions and expression patterns.
-%This thesis aims to describe the community holistically, and thus strives to clearly report assembly, binning, and read mapping efficacy so as to not overstate claims or exaggerate community simplicity.
+%This thesis aims to describe the community wholistically, and thus strives to clearly report assembly, binning, and read mapping efficacy so as to not overstate claims or exaggerate community simplicity.
 % Many literature studies report small and incomplete descriptions about efficacy of their assembly and binning, which obfuscates leaks in the analysis pipeline and corresponds to over-simplified descriptions of the environment under study.  % Don't cite: hard to be certain I read carefully enough to call out papers by name.  It's also not nice!
 
 %----- There is no road map!
@@ -328,7 +328,7 @@ A key variable to consider is what you want to happen with reads that map to mul
 If a read maps equally well to two different contigs in a bin, should it be randomly assigned to one locus, or thrown away?
 If the study is aiming for differential expression type analysis, than the latter is better.
 Discarding ambiguous reads is the default of most alignment and counting tools.
-If the study aims instead to describe a holistic picture of expression in a sample, it may be worth guessing the source of the DNA, which will certainly be wrong some of the time.
+If the study aims instead to describe a wholistic picture of expression in a sample, it may be worth guessing the source of the DNA, which will certainly be wrong some of the time.
 
 
 %==========================================================================================================================================
@@ -782,7 +782,7 @@ Gray bars correspond to "no feature", which is likely correlated to short contig
 Pink bars are labeled as having low alignment quality, but recall that BWA-MEM sets the quality score to zero when a read maps equally well to two different spots.
 It may be possible to improve (shrink) the gray bars via re-assembly.
 Similarly, recovery of reads that map equally well to different places can be brought out of the pink bars if htseq-count's parameters are altered to allow low quality reads to be counted.
-While this alteration would help with describing holistically which genes are expressed, it reduces certainty of read mappings and is not desired for Chapter \ref{chapter:C}.
+While this alteration would help with describing wholistically which genes are expressed, it reduces certainty of read mappings and is not desired for Chapter \ref{chapter:C}.
 
 
 \begin{figure}[H]
@@ -986,7 +986,7 @@ Give that the current goals are to describe broad trends of microbial abundance 
 For example, substantial information in the metagenome \texttt{.fastq} files was lost along the path from raw reads to binned contigs.
 Before future binning work is done, measurement of the upper-bound of binning success should be measured.
 Specifically, the upper bound for the fraction of the metagenome and metatranscriptome reads explained by metagenome bins can be calculated by counting all reads that align to contigs longer than 1.5kb, as was done in Figure \ref{fig:frac_elviz_mapped_to_contigs} for the Elviz Contigs.
-If the fraction of reads mapping to these longer contigs is not sufficient for future publication, assembly should be re-visited (see below). 
+If the fraction of reads mapping to these longer contigs is not sufficient for future publication, assembly should be re-visited (see below).
 
 % TODO: insert figure of upper-bound for binning potential of these metagenomes.
 
@@ -995,7 +995,7 @@ If the fraction of reads mapping to these longer contigs is not sufficient for f
 
 Like all steps of metagenomics, assembly in itself is an art.
 Given a single data set, different assemblies could be better depending on the exact question to be asked.
-For this thesis, the goal was a holistic portrait of which organisms are present in natural communities.
+For this thesis, the goal was a wholistic portrait of which organisms are present in natural communities.
 While the assembly used throughout this chapter was appropriate for that question, future explorations of the findings based on these contigs may reveal interesting organisms for which different binning strategies may identify better.
 
 %Re-assemble to find rare ones
@@ -1006,12 +1006,12 @@ If genes thought to be associated with different \textit{Methylobacters} are fou
 Perhaps there are some rare heterotrophs of interest; these too could be identified by gene expression patterns and assemblies could be done with the hope of contigs more amenable to binning those species.
 Sequential binning and read removal.
 Another possibility is to iteratively bin, remove reads that map to those bins, and re-assemble the leftovers.
-This is a computationally expensive and likely laborious path to holistic community descriptions, but is possible.
+This is a computationally expensive and likely laborious path to wholistic community descriptions, but is possible.
 
 % ----- BINNING NEXT STEPS ------
 \subsection{Binning: Next Steps}
 
-The analysis shown in this chapter highlights great opportunity to improve the bins and potentially allow for holistic descriptions of the communities.
+The analysis shown in this chapter highlights great opportunity to improve the bins and potentially allow for wholistic descriptions of the communities.
 The easiest step is to iteratively test MetaBAT's performance with different binning parameters as the authors suggest.
 The resulting bins can be assessed, again by (a) CheckM completeness and contamination scores, (b) fraction of metagenomes that are attracted to bins, and (c) the fraction of transcriptomes that are attracted to them.
 Special care can be taken to isolate different methylobacters.
