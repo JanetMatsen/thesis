@@ -902,12 +902,6 @@ Figure \ref{fig:mycc_binned_more_contigs} also shows MyCC's increased efficacy a
 Upon further investigation, it was revealed that MyCC binned $>$99\% of all contigs supplied, including the shorter ($\approx$ 2.5kb) contigs which carry greater uncertainty. %(Figure \ref{fig:mycc_binned_more_contigs}).
 Aggressive binning is associated with low specificity, binning of contigs that do not belong with the others in the bin.
 
-Figure \ref{fig:mycc_contamination} reveals the consequence of the aggressive MyCC binning: high contamination scores according to CheckM.
-CheckM's efficacy to analyze methylotrophs was confirmed by applying it to the 55 genomes used in the isolate studies.
-The statistics it returned for these positive controls were nearly perfect (Table \ref{tab:checkm_isolate}), indicating that good bins for these samples should have nearly 100\% completeness and less than a few percent contamination.
-% high sensitivity, low specificity.
-
-
 \begin{figure}[H]
 \centering
     % /Users/janet/Dropbox/meta4_bins_data_and_files/170202_comparing_MyCC_to_metabat/170206_improved_fracs_of_contigs_binned_by_MyCC.pdf
@@ -922,45 +916,42 @@ The statistics it returned for these positive controls were nearly perfect (Tabl
     \end{singlespace}
 \end{figure}
 
+Figure \ref{fig:mycc_contamination} reveals the consequence of the aggressive MyCC binning: high contamination scores according to CheckM.
+To test CheckM's predictive accuracy on methylotrophic genome bins, a positive control test was used: CheckM was applied to the 55 genomes used in the isolate studies.
+While the marker lineages used were often surprising (e.g. Rhizobiales, Actinomycetales), the completeness and contamination statistics CheckM returned for these positive controls were nearly perfect (Table \ref{tab:checkm_isolate}).
+Thus future binning efforts should aim for nearly 100\% completeness and less than a few percent contamination, even when CheckM uses the default marker lineages.
+High measures of strain heterogeneity may be tolerated, as some of these isolates were estimated as having 100\% strain heterogeneity  (Table \ref{tab:checkm_isolate}).
+% high sensitivity, low specificity.
 
-Given the small fraction of the metagenomes explained by MetaBAT (Figure \ref{fig:mycc_contamination}), and high contamination scores of the MyCC bins (Figure \ref{fig:mycc_contamination}), binning has been placed on hold.
+Given the small fraction of the metagenome reads explained by MetaBAT (Figure \ref{fig:mycc_contamination}), and high contamination scores of the MyCC bins (Figure \ref{fig:mycc_contamination}), binning has been placed on hold.
 See Section \ref{chA_future_steps} below for suggested next steps in the binning workflow.
 
 
 \begin{figure}[H]
 \centering
     % /Users/janet/Dropbox/meta4_bins_data_and_files/170202_comparing_MyCC_to_metabat/170202_MyCC_has_higher_contamination.pdf
-    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170202_MyCC_has_higher_contamination.pdf}
+    \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170202_MyCC_has_higher_contamination--cleaned.pdf}
     \begin{singlespace}
-    \caption[MyCC has higher contamination than MetaBAT]{
-        MyCC has higher contamination than MetaBAT.}
+    \caption[MyCC bins have higher contamination scores than MetaBAT bins]{
+        MyCC bins have higher contamination scores than MetaBAT bins.}
     \label{fig:mycc_contamination}
     \end{singlespace}
 \end{figure}
-
-As a measure of the best-case scenario for binning given the assembly, the fraction of reads attracted to contigs shorter than 1.5kb were quantified (Figure XX).
-If future work with these data aim to explore more than $\approx$ XXX\% of the data, other assembly strategies may be considered.
-One possibility is to explore more parameters using the same MEGAHIT algorithm.
-If the fraction of reads associated with short contigs does not improve, more laborious strategies can be considered.
-For example, it is possible to take reads associated with long contigs out of the data, and re-assemble the leftovers.
-A similar binning approach could be useful: removal of contigs that are in high-confidence bins, and assembling the leftovers.
-
-% TODO: insert figure of upper-bound for binning potential of these metagenomes.
-
 
 % ----- BIN TAXONOMY ------
 \subsection{Bin Taxonomy}
 
 Once final bins are in hand, taxonomic labels need to be assigned.
-This can be done by aggregating information from several sources: the CheckM marker gene set (coarse label), PhyloPhlAn results (maximally specific), and average nucleotide identity (ANI, below).
-PhyloPhlAn produced taxonomic labels for the MetaBAT bins.
-These did not agree particularly well with the CheckM labels, increasing evidence that the current bins are not sufficient for holistic community descriptions.
+This can be done by aggregating information from several sources, including the CheckM marker gene set (coarse label), PhyloPhlAn results (maximally specific), and average nucleotide identity (ANI, below).
+
+PhyloPhlAn was applied to the MetaBAT bins, producing taxonomic labels that did not agree particularly well with the CheckM labels.
+This adds motivation for revisiting binning before describing the broad community composition in terms of genome bins.
 % TODO: show data on this?  Put in Appendix?
 
 % ----- ANI ------
-\subsection{ANI}
+\subsection{Average Nucleotide Identity (ANI)}
 
-ANI can also support taxonomic labels, especially in cases such as this project when there are many environmental isolates from the exact ecosystem to use as references.
+Average nucleotide identity (ANI) can also contribute evidence for taxonomic assignments, especially in cases such as this project when there are many environmental isolates from the exact ecosystem to use as references.
 The JGI ANI tool was used on all pairs of MetaBAT bins and isolate genomes, producing a large matrix of ANI values, a subset of which is shown in Figure \ref{fig:ANIs}.
 
 \begin{figure}[H]
@@ -972,7 +963,7 @@ The JGI ANI tool was used on all pairs of MetaBAT bins and isolate genomes, prod
         Demo use of ANI to infer taxonomy of genome bins.
         ANIs between all pairs of bins, and all isolate/bin pairs was computed, tabulated, and plotted to identify taxonomy of genome bins.
         This strategy, in conjunction with taxonomy calls by PhyloPhlAn \cite{segata2013} are recommended for taxonomic assignments when the final bins are identified.
-        Plot produced by Seaborn clustermap.}
+        This clustermap was produced from raw ANI statistics via Seaborn (\url{https://github.com/mwaskom/seaborn}).}
     \label{fig:ANIs}
     \end{singlespace}
 \end{figure}
@@ -986,6 +977,18 @@ The JGI ANI tool was used on all pairs of MetaBAT bins and isolate genomes, prod
 The goal of this analysis was to describe a wholistic picture of the microbes in the mixtures, and assess how gene expression supports methane oxidation.
 This thesis identified the key trends, but more certain understanding can be gained by diving deeper into many topics described.
 Insights gained by iterating through this pipeline have revealed possibilities to improving the analysis by modifying each step, as described in the following sections.
+
+% ----- General NEXT STEPS ------
+\subsection{Goal Setting for Future Directions}
+
+This thesis highlights the challenge of information loss at each step of the analysis pipeline.
+Give that the current goals are to describe broad trends of microbial abundance and activity, setting specific goals for information retention in future work is essential.
+For example, substantial information in the metagenome \texttt{.fastq} files was lost along the path from raw reads to binned contigs.
+Before future binning work is done, measurement of the upper-bound of binning success should be measured.
+Specifically, the upper bound for the fraction of the metagenome and metatranscriptome reads explained by metagenome bins can be calculated by counting all reads that align to contigs longer than 1.5kb, as was done in Figure \ref{fig:frac_elviz_mapped_to_contigs} for the Elviz Contigs.
+If the fraction of reads mapping to these longer contigs is not sufficient for future publication, assembly should be re-visited (see below). 
+
+% TODO: insert figure of upper-bound for binning potential of these metagenomes.
 
 % ----- ASSEMBLY NEXT STEPS ------
 \subsection{Assembly: Next Steps}
