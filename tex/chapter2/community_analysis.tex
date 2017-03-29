@@ -180,7 +180,7 @@ These contigs can be annotated to identify genes, and organised into genome bins
 \centering
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170312_metagenomics_metatranscriptomics_overview.pdf}
     \begin{singlespace}
-    \caption[Overview of metagenomics/metatranscriptomics workflow]{
+    \caption[Overview of elements in metagenomics/metatranscriptomics workflows]{
        Graphical introduction to basic vocabulary and inference steps of metagenomics and metatranscriptomics workflows.
 	   Short colored lines = single reads, long colored lines = contigs,
 	   gray arrows on colored lines = gene calls, wiggly lines above contigs depict coverage of alignment.}
@@ -595,7 +595,7 @@ Figure \ref{fig:4dominant_groups} shows abundances of the four major taxonomic g
 Their dominance is consistent with pervious studies \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW, kalyuzhnaya2008Burkholderiales}.
 Figure \ref{fig:dominant_genera} show the breakdown of the methanotrophic and non-methanotrophic methylotroph taxa in Figure \ref{fig:4dominant_groups}.
 Notably, the path to rarefaction is not particularly consistent across samples.
-Like previous studies, the dominant methanotrophic Order/Genus was Methylococcales/\textit{Methylococcaceae} and the dominant non-methanotrophic methylotrophic Order/Genus was Methylophilales/\textit{Methylophilaceae}.
+Like previous studies, the dominant methanotrophic order/genus was Methylococcales/\textit{Methylococcaceae} and the dominant non-methanotrophic methylotrophic order/genus was Methylophilales/\textit{Methylophilaceae}.
 Low oxygen was associated with a higher abundance of methanotrophs, and a lower proportion of methylotrophs than the high-oxygen samples.
 \textit{Methylosarcina} is often found in high-oxygen samples, but rarely in low-oxygen samples.
 Two high oxygen samples are dominated by \textit{Methylobacter}, but the others are not.
@@ -623,11 +623,11 @@ The last four samples in each series are more similar to the previous samples in
     % /Users/janet/elvizAnalysis/ipython_notebooks/plots/170313_methanotroph_methylotroph_taxa--portrait.pdf
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170313_methanotroph_methylotroph_taxa--portrait.pdf}  % ElvizAnalysis
     \begin{singlespace}
-    \caption[Dominant methanotrophic and methylotrophic Genera]{
-        Fractional abundance of DNA from dominant methylotrophic Genera.
-        Purple bars are methanotrophs of Order Methylococcales, Family \textit{Methylococcaceae}
+    \caption[Dominant methanotrophic and methylotrophic genera]{
+        Fractional abundance of DNA from dominant methylotrophic genera.
+        Purple bars are methanotrophs of order Methylococcales, family \textit{Methylococcaceae}
             (represents major taxa in blue bars of Figure \ref{fig:4dominant_groups}).
-        Green bars are non-methanotrophic methylotrophs of Order Methylophilales, Family \textit{Methylophilaceae}
+        Green bars are non-methanotrophic methylotrophs of order Methylophilales, family \textit{Methylophilaceae}
             (represents major taxa in yellow bars of Figure \ref{fig:4dominant_groups}).
         See Figure \ref{fig:taxonomy} for hierarchical taxonomy reference.
         Vertical gray line indicates the week the oxygen conditions were reversed.
@@ -1042,7 +1042,7 @@ There is also potential to explore signatures of phage in the existing contigs.
 % ------ CONCLUSIONS
 \section{Conclusions}
 
-In conclusion, this 88-metagenome, 88-metatranscriptome data set was designed to allow discovery of dominant taxa in a rich microbial community.
+In conclusion, this 88-metagenome, 88-metatranscriptome data set was designed to allow identification of dominant taxa and gene expression in a rich microbial community.
 The Elviz data was aggregated on taxonomic label to illustrate the fractions of the metagenomes attributed to different taxa.
 These data were not appropriate for comparison across samples, or assembling into contigs, so an assembly was done with nearly all of the metagenomes.
 These contigs were binned into a draft set of bins, which highlighted the challenge of getting enough good bins to illustrate an entire population's dynamics.
@@ -1050,11 +1050,11 @@ These contigs were binned into a draft set of bins, which highlighted the challe
 % TODO: note dominant taxa
 
 The contigs were annotated and the genetic content was explored.
-In total, XXX genes were identified, encoding XXX different proteins.
+In total, 921,431 million genes were identified, encoding 107,900 different proteins.
 Oxygen-dependent trends in locus expression were identified, supporting evidence that oxygen is an important and only somewhat understood factor in community composition and function.
 
 The biology inferred in this preliminary round of studies drove new ideas for iterating through the pipeline again, with new goals and refinement strategies in mind.
-While the samples may have too complex of a community structure for current binning tools to explain, targeting particular taxa for binning will allow observation of community dynamics for the major players.
+While the community structure may be too complex for current binning tools to explain without extensive manual labor, targeting particular taxa for binning will allow observation of community dynamics for the major players.
 In addition, the ability to extract more information about community structure and dynamics is explored in Chapter \ref{chapter:B}.
 
 
