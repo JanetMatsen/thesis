@@ -359,7 +359,7 @@ Ribosomal RNA was removed before sequencing the metatranscriptomes.
 %~ XX (?? Paired ended?) reads per sample, for both metagenomes and metatranscriptomes (??).
 
 \subsubsection{Elviz Analysis}
-Along with raw sequencing outputs (fastq.gz files) for each sample, Elviz data was provided \cite{cantor2015} by JGI.
+Along with raw sequencing outputs (\texttt{fastq.gz} files) for each sample, Elviz data was provided \cite{cantor2015} by JGI.
 These data included one assembly per metagenome, corresponding contig statistics, and transcriptome alignment statistics.
 In addition, they provide taxonomy for each contig, to some degree of certainty: some contigs' taxonomy stops at family, while others are specified to the genus level.
 The taxonomy, contig lengths, and number of reads mapped to each contig were used to infer the distribution of taxa in each sample.
@@ -491,9 +491,9 @@ These were processed in parallel, using Python's \texttt{pool.map}.
 A \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/prokka/contigs/glue_together_gffs.py}{script} was written to merge the resulting annotated general feature format files (.gff files) into one representing all contigs $\geq$ 5kb.
 
 \subsubsection{Checking contigs' ability to represent each metagenome}
-The loss of information resulting from omitting short contigs was assessed by counting the number of reads that map to contigs $\geq$ 1.5kb, and comparing that to the total number in the raw metagenome fastq.gz files (\href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{fastq read counting script}, \href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/assess_sample_mappings_to_contigs}{analysis}).
+The loss of information resulting from omitting short contigs was assessed by counting the number of reads that map to contigs $\geq$ 1.5kb, and comparing that to the total number in the raw metagenome \texttt{fastq.gz} files (\href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{\texttt{.fastq} read counting script}, \href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/assess_sample_mappings_to_contigs}{analysis}).
 This represents an upper bound in information content for the assembly step.
-Again, this used BWA-MEM \cite{li2009}, and a \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{script} written to count raw fastq reads.
+Again, this used BWA-MEM \cite{li2009}, and a \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{script} written to count raw \texttt{.fastq} reads.
 Pandas (Python) was used to merge results together.
 
 \subsection{RNA-seq: mapping to contigs $\geq$ 1.5 kb}
@@ -502,7 +502,7 @@ Contigs $\geq$ 1.5kb were used as reference DNA.
 Metatranscriptomes were mapped to these contigs all at once, rather than to each bin individually in order to reduce over-counting.
 This does result in reads mapping identically well to two places being thrown out, as mentioned earlier.
 Results from each sample were merged using a 60GB RAM AWS instance, rather than SQL.
-The fraction of transcriptome reads was compared to the total number in the input fastq files as a metric of information loss.
+The fraction of transcriptome reads was compared to the total number in the input \texttt{.fastq} files as a metric of information loss.
 See \href{https://github.com/BeckResearchLab/meta4/tree/master/rnaseq/alignments}{scripts and notebook}.
 
 \subsubsection{Binning}
@@ -657,8 +657,8 @@ Nonetheless, if a particular sample is enriched in an organism of interest, use 
     \caption[Upper-bound limit on success of binning Elviz contigs]{
         The upper-bound limit on success in binning Elviz contigs, as measured by the fraction of metagenome reads mapped to contigs.
         Lines are colored by replicate.
-        Solid lines represent the fraction of reads in the raw .fastq file that map to contigs of any length.
-        Dashed lines represent the fraction of reads in the raw .fastq file that map to contigs with length $\geq$ 1.5kb.
+        Solid lines represent the fraction of reads in the raw \texttt{.fastq} file that map to contigs of any length.
+        Dashed lines represent the fraction of reads in the raw \texttt{.fastq} file that map to contigs with length $\geq$ 1.5kb.
         Less than 20\% of the raw fastq reads would be explained by aggressive binning of most low oxygen samples.}
     \label{fig:dont_bin_Elviz}
     \end{singlespace}
@@ -974,14 +974,14 @@ The JGI ANI tool was used on all pairs of MetaBAT bins and isolate genomes, prod
 
 
 %Big picture
-The goal of this analysis was to describe a wholistic picture of the microbes in the mixtures, and assess how gene expression supports methane oxidation.
+This analysis aimed to describe a wholistic picture of the microbes in the mixtures, and assess how gene expression supports methane oxidation.
 This thesis identified the key trends, but more certain understanding can be gained by diving deeper into many topics described.
-Insights gained by iterating through this pipeline have revealed possibilities to improving the analysis by modifying each step, as described in the following sections.
+Insights gained by iterating through pipeline steps have revealed possibilities to improving the analysis by modifying each step, as described in the following sections.
 
 % ----- General NEXT STEPS ------
 \subsection{Goal Setting for Future Directions}
 
-This thesis highlights the challenge of information loss at each step of the analysis pipeline.
+This thesis highlights the challenge of information loss at each step of the analysis pipeline (recall the pipeline analogy in Figure \ref{fig:pipe_leaks}).
 Give that the current goals are to describe broad trends of microbial abundance and activity, setting specific goals for information retention in future work is essential.
 For example, substantial information in the metagenome \texttt{.fastq} files was lost along the path from raw reads to binned contigs.
 Before future binning work is done, measurement of the upper-bound of binning success should be measured.
@@ -996,30 +996,32 @@ If the fraction of reads mapping to these longer contigs is not sufficient for f
 Like all steps of metagenomics, assembly in itself is an art.
 Given a single data set, different assemblies could be better depending on the exact question to be asked.
 For this thesis, the goal was a wholistic portrait of which organisms are present in natural communities.
-While the assembly used throughout this chapter was appropriate for that question, future explorations of the findings based on these contigs may reveal interesting organisms for which different binning strategies may identify better.
+While the assembly used throughout this chapter was appropriate for that question, there is potential to do different assemblies that target particular organisms of interest.
 
 %Re-assemble to find rare ones
 New assemblies could be done with the aim of making contigs that bin a particular organism well.
 The enumerations of the taxa present in each sample, and the gene expression profiles and trends will be explored to identify uncultivated taxa to target.
-For example, it is hypothesized that there is a "smear" of similar \textit{Methylobacters} for which we don't have isolates.
-If genes thought to be associated with different \textit{Methylobacters} are found in particular samples, those could be re-assembled separately to get longer \textit{Methylobacter} contigs and thus better bins.
-Perhaps there are some rare heterotrophs of interest; these too could be identified by gene expression patterns and assemblies could be done with the hope of contigs more amenable to binning those species.
-Sequential binning and read removal.
+For example, it is hypothesized that there is a "smear" of similar uncultivated \textit{Methylobacter} strains in these samples.
+If genes thought to be associated with different \textit{Methylobacter} strains are found in particular samples, those could be re-assembled separately to get longer \textit{Methylobacter} contigs and thus better bins.
 Another possibility is to iteratively bin, remove reads that map to those bins, and re-assemble the leftovers.
-This is a computationally expensive and likely laborious path to wholistic community descriptions, but is possible.
+These approaches may also lead to bins of important non-methylotrophs, whose metabolic role is least understood.
+
+%This is a computationally expensive and likely laborious path to wholistic community descriptions, but is possible.
 
 % ----- BINNING NEXT STEPS ------
 \subsection{Binning: Next Steps}
 
 The analysis shown in this chapter highlights great opportunity to improve the bins and potentially allow for wholistic descriptions of the communities.
-The easiest step is to iteratively test MetaBAT's performance with different binning parameters as the authors suggest.
+The easiest first step is to iteratively test MetaBAT's performance with different binning parameters as the authors suggest.
 The resulting bins can be assessed, again by (a) CheckM completeness and contamination scores, (b) fraction of metagenomes that are attracted to bins, and (c) the fraction of transcriptomes that are attracted to them.
-Special care can be taken to isolate different methylobacters.
+Special care can be taken to isolate different \textit{Methylobacter} strains.
 
 In addition, there are many tools which have not yet been tried.
-One promising tool from the Banfield Lab \cite{sieber2017} just appeared on the Biology preprint server, bioRxiv.
-This tool is an ensemble tool that combines multiple binning algorithms (MetaBAT\cite{metabat2015}, MaxBin \cite{wu2015}, CONCOCT \cite{concoct2014} and tetraESOMs \cite{dick2009}), a generally advantageous strategy for machine learning.
+One promising tool from the Banfield Lab \cite{sieber2017}\footnote{\url{http://biorxiv.org/content/early/2017/02/11/107789}} just appeared on the Biology preprint server, bioRxiv.
+This tool uses an ensemble of binning algorithms (MetaBAT\cite{metabat2015}, MaxBin \cite{wu2015}, CONCOCT \cite{concoct2014} and tetraESOMs \cite{dick2009}).
 It counts the number of single-copy marker genes in candidate bins, removes good looking bins, and re-bins the remaining contigs.
+Given the broad efficacy of ensemble methods in machine learning, exploration of this tool is highly recommended.
+
 
 
 % ----- BIOLOGY NEXT STEPS ------
@@ -1027,13 +1029,13 @@ It counts the number of single-copy marker genes in candidate bins, removes good
 
 The dataset prepared in this analysis allows investigation of many biological questions.
 Many of these questions are best answered with genome bins.
-For example, one topic of excitement is understanding of two alternative methanol dehydrogenase systems.
+For example, one topic of excitement in the field of methylotrophy pertains to two alternative methanol dehydrogenase systems.
 Recently it has been discovered that some organisms prefer to use Lanthanum-dependent \textit{xox} methanol dehydrogenases, rather than the classically studied \textit{mdh} methanol dehydrogenases. %TODO: cite
-Though Lanthanum was not intentionally supplied to these organisms, its possible that it was present in trace amounts.
-Identification of expression levels of these two methanol dehydrogenase alternatives in these samples will be done soon.
+Though Lanthanum was not intentionally supplied to the organisms in this study, its possible that it was present in trace amounts.
+Identification of expression levels of these two methanol dehydrogenase alternatives in these samples will be explored soon.
 
 Not all questions, however, require genome bins.
-Building taxonomic trees of the various methane monooxygenase genes, and weighting them by observed abundance can give higher resolution insight into community composition than Figures \ref{fig:4dominant_groups}, \ref{fig:dominant_genera} shows.
+Building taxonomic trees of the various signature genes such as methane monooxygenase can give higher resolution insight into community composition inferred in Figures \ref{fig:4dominant_groups}, \ref{fig:dominant_genera}.
 There is also potential to explore signatures of phage in the existing contigs.
 
 
