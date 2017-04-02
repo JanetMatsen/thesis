@@ -6,7 +6,7 @@
 Methane is one of the most potent and common greenhouse gases.
 In nature, specialized bacteria called methanotrophs are able to consume methane as their only carbon and energy source \cite{murrell2009}.
 Deeper understanding of these microbes sheds light on a significant natural green house gas remediation system.
-Lake Washington's sediment has served as a model ecosystem for methanotrophy studies \cite{auman2002, kalyuzhnaya2004, costello2002, kalyuzhnaya2011isolates, mctaggart2015, kalyuzhnaya2015} for decades.
+The sediment of Lake Washington has served as a model ecosystem for methanotrophy studies \cite{auman2002, kalyuzhnaya2004, costello2002, kalyuzhnaya2011isolates, mctaggart2015, kalyuzhnaya2015} for decades.
 Recent advances in high-throughput sequencing technology provided opportunities to observe the complex communities supported by methanotrophic methane oxidation in a more natural state than has been possible previously.
 This study analyzes serial propagations of Lake Washington sediment incubated with methane as the only carbon and energy source, from both a metagenomics and metatranscriptomics perspective.
 Inference of which microbes dominate the samples, and what metabolic functions are active are discovered.
@@ -63,7 +63,7 @@ Better understanding of the metabolic roles that each of these species play, and
 \end{figure}
 
 \subsubsection{Goals of this study}
-This study aims to identify the major methanotrophic, methylotrophic, and other microbial species that together enable methane consumption in Lake Washington, and deduce each taxa's contribution to the community metabolism.
+This study aims to identify the major methanotrophic, methylotrophic, and other microbial species that together enable methane consumption in Lake Washington, as well as to deduce the contribution of each taxa to the community metabolism.
 Identification of which methanotrophs dominate in natural communities provides insights into how good past isolate studies reflect the true drivers of methane oxidation.
 Identification of which metabolic pathways are expressed by these methanotrophs and the accompanying non-methanotrophs informs the mechanism of methane oxidation in this natural system.
 Understanding the contribution of each microbe to the community metabolism allows hypotheses about genetic factors in methanotroph/methylotroph partnerships.
@@ -104,7 +104,7 @@ Having four replicates for each experimental condition is much greater than typi
 Furthermore, most metagenomics/metatranscriptomics studies are single time point snapshots, rather than time-series.
 Having 11 samples in each series leads to a total of 88 samples.
 For each of the 88 samples, untargeted metagenomes and metatranscriptomes were gathered.
-These pairs allow exploration of the community without the restriction of referencing cultured strains' genomes.
+These pairs allow exploration of the community without the restriction of referencing the genomes of cultured strains.
 Ribosomal RNA was depleted, so the majority of the information in the transcriptomes derives from mRNA.
 In all the dataset totals to 9TB.
 
@@ -154,19 +154,19 @@ Steps to zoom in on particular microbes to tell more detailed stories about a su
 
 \subsection{Introduction to Metagenomics and Metatranscriptomic Inference}
 Metagenomics and metatranscriptomics are umbrella terms for any project that uses sequencing of mixed populations of organisms.
-It implies untargeted sampling of the samples' entire DNA or RNA pool, rather than selecting for specific types of sequences.
+It implies untargeted sampling of the entire DNA or RNA pool, rather than selecting for specific types of sequences.
 This is in contrast to 16S surveys, which amplify DNA from a segment of the conserved bacterial 16S ribosome \cite{kunin2008}.
 16S DNA sequences are used as a molecular clocks for large timescales, and allow for inference of the bacterial taxa present in samples.
 16S studies do not allow the possibility to determine what genes each organism has available.
 Sometimes two organisms are nearly identical at the 16S level, but have substantial metabolic differences due to insertions, deletions, and transposons.  % todo (cite) (tried for 20 min).
 The term "metagenomics" is typically reserved for un-targeted sampling of the entire community DNA pool.
 Metagenomics affords the possibility of identifying the genetic composition of individual microbes, albeit after much greater analysis efforts.
-Prior studies of Lake Washington sediment painted the coarse 16S-based perspective of who is present in Lake Washington's sediment \cite{beck2013LW, hernandez2015LW, oshkin2015LW}, and did preliminary untargeted metagenomics \cite{beck2013LW, oshkin2015LW}.
+Prior studies of Lake Washington sediment painted the coarse 16S-based perspective of who is present \cite{beck2013LW, hernandez2015LW, oshkin2015LW}, and did preliminary untargeted metagenomics \cite{beck2013LW, oshkin2015LW}.
 This work focuses solely on untargeted metagenomics and metatranscriptomics, to address the more challenging questions of microbial genetic composition, and the associated gene expression levels. % to provide a basis for expression analysis.
 
 %---- Isolates vs de-novo reference-free assemblies.
 Once shotgun metagenomic samples are in hand, there are many possible ways to infer which organisms are present and what they express.
-One approach is to assess how the samples relate to isolate organisms, by mapping to the reads to the isolates' genomes.
+One approach is to assess how the samples relate to isolate organisms, by mapping to the reads to the genomes of those isolates.
 High mapping rates to an isolate genome suggests the sample contained a large abundance of a similar organism.
 Given enough similarity, mapping of DNA and RNA reads to these genomes can inform the abundances and expression patterns for organisms in the samples.
 This strategy is only effective if the isolate genomes accurately represent strains in the community.
@@ -211,7 +211,7 @@ Flow (read accountability) can be measured at the input and exit of pipes (repre
 %---- Pipe description
 %A simplified cartoon of the framework used to assess efficacy of each tool in the work flow is illustrated by Figure \ref{fig:pipe_leaks}.
 For papers where the goal is to describe one or several novel organism(s) with high confidence, the loss of information (reads) along the way may not be a significant concern.
-Often papers in this category do not clearly report an estimate of the identified organisms' abundance in the natural community.
+Often papers in this category do not clearly report estimates of the abundance of these organisms in the natural community.
 % Don't trash other papers \cite{evans2015} , or obscure absolute abundances by using relative abundances \cite{daly2016}.
 Other papers try to describe a more wholistic description of the community (e.g. \cite{kantor2017}) by describing the diversity of organisms identified via binning.
 In this case, it is crucial to quantify what fraction of the original sample is described by the output of the computational analysis.
@@ -225,7 +225,7 @@ These statistics are assessed throughout to prevent misinterpretation of claims 
 %----- There is no road map!
 Each computational step can be executed by several or sometimes dozens of competing software packages \cite{sangwan2016,thomas2012}.
 Each tool can report basic statistics about efficacy based on inputs and outputs, but it it up to the researcher with larger-scope understanding of the project goals to write scripts to critically assess efficacy of the tools in aggregate.
-Results from one software package can give you better insight about how to evaluate the other packages' results, so an iterative process with various somewhat-equivalent tools can maximize accuracy.
+Results from one software package can give you better insight about how to evaluate the results of other packages, so an iterative process with various somewhat-equivalent tools can maximize accuracy.
 
 Another challenge of projects of this scope is the size of the data.
 While more data can lead to greater potential for extracting information from uncertain data, many tools are not designed to work on sequencing data as large as these.
@@ -244,13 +244,13 @@ Analysis of metagenomic and metatranscriptomic data usually beings with assembli
 The metagenomes can be aligned to these contigs to infer the abundance of organisms.
 The transcriptomes can be aligned to these same contigs to infer what genes are expressed.
 In principle, metagenomes and metatranscriptomes can be aligned to isolate genomes rather than contigs, however, in practice meta-omics experiments are usually used precisely when the isolates available are known to be incomplete representatives of the microbial community under study.
-Even if a similar organism has been isolated, the investigation may be probing the diversity of similar organisms, or the influence of less abundant microbes on the community's function.
+Even if a similar organism has been isolated, the investigation may be probing the diversity of similar organisms, or the influence of less abundant microbes on the function of the community.
 
 %---- Not all assemblies are created equal
 The challenge of assembly scales with the complexity of the microbial community.
 High species diversity and strain-level heterogeneity add challenge to assembly \cite{kunin2008, thomas2012}.
 Communities with a small number of well-delineated species tend to assemble better, yielding shorter numbers of long contigs.
-In contrast, complex communities' high diversity can lead to fragmented assemblies, having fewer long contigs and more short contigs \cite{kunin2008}.
+In contrast, the high diversity of complex communities can lead to fragmented assemblies that have fewer long contigs and more short contigs \cite{kunin2008}.
 These shorter contigs are more challenging to analyze and can lead to an incomplete portrait of a community.
 Short contigs are more difficult to call genes on, and are also more difficult to bin because measures like GC and differential abundance are noisier for short contigs than long ones \cite{sangwan2016}.
 The most common measures of assembly efficacy are characteristics of the contigs themselves.  How many are there?  What is the length of the contig that divides the length-sorted contigs into a pair of equal lengths (termed "N50")?
@@ -279,7 +279,7 @@ The per-sample nature of the JGI contigs restricted the types of analyses that d
 \subsubsection{Binning}
 %---- Definition & Why
 Desire for understanding at organism-level often leads investigators to approximate genomes as best they can from a set of metagenomic contigs.
-The phrase "genome bin", often called simply "bin", is used to describe a collection of contigs used to approximate a single organism's genome.
+The phrase "genome bin", often called simply "bin", is used to describe a collection of contigs used to approximate the genome of a single organism.
 "Bin" implies the collection is expected to be somewhat incomplete and potentially contaminated by DNA of other strains or species.
 Bins allow inference of which metabolic pathways are available, and can be used as a reference to map RNA to for quantification of how these genes are expressed.
 Higher confidence claims would be possible upon isolation of the organism represented by the genome bin, but laboratory isolates are often not obtainable either due to obligate partnerships with other organisms, or a variety of intolerances to laboratory conditions \cite{stewart2012}.
@@ -344,8 +344,8 @@ The culturing and sample preparation was done by Maria Hernandez, a visiting sch
 Sediment stored in an aqueous DMSO solution on previous sampling trip was thawed from -80$^o$C and distributed into 250 mL bottles containing 100mL of NMS medium \ref{fig:experimental_design}, leaving 150mL of headspace.
 % High: 75% air, low = 75% air.  150 mL headspace, 100 mL liquid.
 All bottles were air-tight, with head spaces containing 25\% methane.
-High oxygen samples' head space was 75\% air.
-Low oxygen samples' head space was 15\% air, with the remainder being nitrogen.
+The high oxygen samples had 75\% air in the head space.
+The low oxygen samples had 15\% air in the head space, with the remainder being nitrogen.
 Atmospheres were created every weekday and once per weekend.
 Bottles were shaken at 250 RPM and held at 18$^o$C.
 The gaseous compositions for the days between transfers were not measured.
@@ -364,7 +364,7 @@ Ribosomal RNA was removed before sequencing the metatranscriptomes.
 \subsubsection{Elviz Analysis}
 Along with raw sequencing outputs (\texttt{fastq.gz} files) for each sample, Elviz data \cite{cantor2015} was provided by JGI.
 These data included one assembly per metagenome, corresponding contig statistics, and transcriptome alignment statistics.
-In addition, they provide taxonomy for each contig, to some degree of certainty: some contigs' taxonomy stops at family, while others are specified to the genus level.
+In addition, they provide taxonomy for each contig, to some degree of certainty: some are only labeled to the kingdom level, whereas others are specified all the way to genus.
 The taxonomy, contig lengths, and number of reads mapped to each contig were used to infer the distribution of taxa in each sample.
 The metric used was the fraction of reads assigned to contigs with the specified taxonomy (code at \url{https://github.com/JanetMatsen/elvizAnalysis/blob/master/abundance_utils.py}).
 Length of contigs was not normalized out, or the abundance of short contigs would dominate the results.
@@ -390,12 +390,12 @@ This is in contrast to sharing a similar machine with an entire research lab, wh
 
 Each instance obtained data and wrote results to a shared file system.
 The 9 TB of data, scripts, and results were stored using the AWS Elastic File System (EFS).
-EFS is currently AWS's most versatile and highest performance (most expensive) file storage, which allows users to have multiple instances reading/writing to the same directory.
+EFS is currently the most versatile and highest performance (most expensive) file storage available within AWS, which allows users to have multiple instances reading/writing to the same directory.
 This shared nature of the files allows the user to spin up a second computer instance as needed, and do read/write operations on the exact same set of files.
 
 %---- Computation parallelization
 Parallelization of compute tasks was done by splitting jobs across a single large computer, or across separate EC2 instances.
-When tasks were parallelized across one powerful computer, Gnu parallel or Python's \texttt{pool.map} were used.
+When tasks were parallelized across one powerful computer, Gnu parallel or Python \texttt{pool.map} was used.
 When parallelizing across more, often weaker, computers, an AMI was made that mounts the EFS-stored data.
 These instances were usually started by hand through the console, though proof of principle studies using the Amazon Command Line Interface (CLI),
     and an Autoscaling/SQS service pair were explored to set the foundation of future work (see repository \url{https://github.com/JanetMatsen/AWS_parallel_Cowsay}) for the templates developed.
@@ -490,10 +490,10 @@ Genes were called on contigs with length greater than or equal to 1.5kb using Pr
 This cutoff was selected because shorter contigs are not recommended for inclusion by most binning tools documentation.
 Additionally, shorter contigs are less likely to have genes identified on them, as genes are more likely to be incomplete due to a higher density of contig edges.
 Prokka did not tolerate an input size of the scale, so the input fasta was broken into 5 files of approximately equal size (\href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/prokka/contigs}{scripts}).
-These were processed in parallel, using Python's \texttt{pool.map}.
+These were processed in parallel, using the \texttt{pool.map} function of Python.
 A \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/prokka/contigs/glue_together_gffs.py}{script} was written to merge the resulting annotated "general feature format" files (\texttt{.gff} files) into one representing all contigs $\geq$ 1.5kb.
 
-\subsubsection{Checking contigs' ability to represent each metagenome}
+\subsubsection{Checking the ability of contigs to represent each metagenome}
 The loss of information resulting from omitting short contigs was assessed by counting the number of reads that map to contigs $\geq$ 1.5kb, and comparing that to the total number in the raw metagenome \texttt{fastq.gz} files (\href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{\texttt{.fastq} read counting script}, \href{https://github.com/BeckResearchLab/meta4/tree/master/m4b_binning/assembly/assess_sample_mappings_to_contigs}{analysis}).
 This represents an upper bound in information content for the assembly step.
 Again, this used BWA-MEM \cite{li2009}, and a \href{https://github.com/BeckResearchLab/meta4/blob/master/m4b_binning/assembly/data/sample_info/count_reads_in_each_sample.sh}{script} written to count reads in \texttt{.fastq} files.
@@ -590,7 +590,7 @@ As described in the Methods section, the abundance measure was the sum of read c
 Traditional metrics like RPKM \cite{mortazavi2008} and TPM \cite{wagner2012} are excellent for comparing coverage or expression across features or samples, but could not be used due to the need to sum values across contigs.
 To illustrate why length of contig could not factor into the abundance measure, consider this:
 a contig with length 10kb should contribute nearly identically to an equally expressed second 10kb stretch of DNA that for technical reasons was assembled into two 5kb stretches rather than one 10kb contig.
-Any scheme that controlled for contig length or was weighted by each contig's statistic would skew the aggregated number down for metagenomic datasets such as this with many short, low-coverage contigs.
+Any scheme that controlled for contig length or was weighted by the statistic of each contig would skew the aggregated number down for metagenomic datasets such as this with many short, low-coverage contigs.
 The fact that these assemblies are dominated by short contigs means that RPKM and TPM would bias the aggregate statistics toward the statistics of the shorter and less reliable contigs.
 Similarly, median coverage was not used or the unreliable coverage numbers associated with short contigs would dominate the measure.
 
@@ -685,8 +685,8 @@ While this method of describing gene expression was not pursued father, it provi
     % /Users/janet/Dropbox/thesis/tex/chapter2/figures/170208_fraction_of_transcriptome_reads_mapped_to_isolates.pdf
     \includegraphics[width=1.0\textwidth]{./tex/chapter2/figures/170208_fraction_of_transcriptome_reads_mapped_to_isolates.pdf}
     \begin{singlespace}
-    \caption[Measure of isolate genomes' ability to account for RNA-seq reads]{
-        Measure of isolate genomes' ability to account for RNA-seq reads.
+    \caption[Measure of RNA-seq read accountability by isolate genomes]{
+        Measure of RNA-seq read accountability by isolate genomes.
         Each dot represents the total fraction of raw reads assigned to genes when mapped to a concatenation of 55 isolate genomes.
         }
     \label{fig:isolate_RNAseq}
@@ -784,7 +784,7 @@ The green bars represent a high degree of certainty.
 Gray bars correspond to "no feature", which is presumably correlated to short contigs for which gene calls are less likely.
 Pink bars are labeled as having low alignment quality, but recall that BWA-MEM sets the quality score to zero when a read maps equally well to two different spots.
 It may be possible to improve (shrink) the gray bars via re-assembly of portions of the data (see Section \ref{sect:assembly_discussion}).
-Similarly, recovery of reads that map equally well to different places can be brought out of the pink bars if htseq-count's parameters are altered to allow low quality reads to be counted (see Section \ref{sect:multiply_mapped_reads}).
+Similarly, recovery of reads that map equally well to different places can be brought out of the pink bars if the parameters for htseq-count were altered to allow low quality reads to be counted (see Section \ref{sect:multiply_mapped_reads}).
 While this alteration would help with describing the big picture of which genes are expressed, it reduces certainty of read mappings and is not appropriate for Chapter \ref{chapter:C}.
 
 
@@ -910,7 +910,7 @@ This source of this conundrum has not yet been resolved, but could be due to a s
 The Elviz data points towards the genus \textit{Methylobacter}, given its dominance in samples at the low-oxygen state.
 BLAST or other computational tools could be used to identify the taxonomy of contigs that are not binning well. %identify the taxa for the contigs which are binning well, though high-throughput techniques would be prudent given the number of contigs.
 
-Figure \ref{fig:mycc_binned_more_contigs} also shows MyCC's increased efficacy at representing the raw sequencing reads.
+Figure \ref{fig:mycc_binned_more_contigs} also shows that MyCC is more effective at representing the raw sequencing reads.
 Upon further investigation, it was revealed that MyCC binned $>$99\% of all contigs supplied, including the shorter ($\approx$ 2.5kb) contigs which carry greater uncertainty. %(Figure \ref{fig:mycc_binned_more_contigs}).
 Aggressive binning is associated with low specificity, meaning inclusion of contigs that do not belong in bins. %binning of contigs that do not belong with the others in the bin.
 
@@ -929,7 +929,7 @@ Aggressive binning is associated with low specificity, meaning inclusion of cont
 \end{figure}
 
 Figure \ref{fig:mycc_contamination} reveals the consequence of the aggressive MyCC binning: high contamination scores according to CheckM.
-To test CheckM's predictive accuracy on methylotrophic genome bins, a positive control test was used: CheckM was applied to the 55 genomes used in the isolate studies.
+To test the predictive accuracy of CheckM on methylotrophic genome bins, a positive control test was used: CheckM was applied to the 55 genomes used in the isolate studies.
 While the marker lineages used were often surprising (e.g. Rhizobiales, Actinomycetales), the completeness and contamination statistics CheckM returned for these positive controls were nearly perfect (Table \ref{tab:checkm_isolate}).
 Thus future binning efforts should aim for nearly 100\% completeness and less than a few percent contamination, even when CheckM uses the default (non-methylotrophic) marker lineages.
 High measures of strain heterogeneity may be tolerated, as some of these isolates were estimated as having 100\% strain heterogeneity  (Table \ref{tab:checkm_isolate}).
@@ -1040,7 +1040,7 @@ These approaches may also lead to bins of important non-methylotrophs, whose met
 \subsection{Binning: Next Steps}
 
 The analysis shown in this chapter highlights great opportunity to improve the bins and potentially allow for wholistic descriptions of the communities.
-The easiest first step is to iteratively test MetaBAT's performance with different binning parameters as the authors suggest.
+The easiest first step is to iteratively test the performance of MetaBAT with different binning parameters as the authors suggest.
 The resulting bins can be assessed, again by (a) CheckM completeness and contamination scores, (b) fraction of metagenomes that are attracted to bins, and (c) the fraction of transcriptomes that are attracted to them.
 Special care can be taken to bin \textit{Methylobacter} strains.
 
@@ -1073,7 +1073,7 @@ There is also potential to explore signatures of phage in the existing contigs.
 In conclusion, this 88-metagenome, 88-metatranscriptome data set was designed to allow identification of dominant taxa and gene expression in a natural methane oxidizing microbial community.
 The Elviz data was aggregated on taxonomic label to illustrate the fractions of the metagenomes attributed to different taxa (see Figures \ref{fig:4dominant_groups}, \ref{fig:dominant_genera}).
 These data were not appropriate for comparison across samples, or assembly into contigs, so an assembly was done with nearly all of the metagenomes.
-These contigs were binned into a draft set of bins, which highlighted the challenge of getting enough good bins to illustrate an entire population's dynamics.
+These contigs were binned into a draft set of bins, which highlighted the challenge of getting enough good bins to illustrate the dynamics of an entire population.
 % TODO: suggest quality checks so we know how good the set is.
 % TODO: note dominant taxa
 
