@@ -10,14 +10,14 @@ The sediment of Lake Washington has served as a model ecosystem for methanotroph
 Recent advances in high-throughput sequencing technology provided opportunities to observe the complex communities supported by methanotrophic methane oxidation in a more natural state than has been possible previously.
 This study analyzes serial propagations of Lake Washington sediment incubated with methane as the only carbon and energy source, from both a metagenomics and metatranscriptomics perspective.
 Inference of which microbes dominate the samples, and what metabolic functions are active are discovered.
-The importance of oxygen as a factor in community composition and function is highlighted.
+The importance of \ce{O_2} as a factor in community composition and function is highlighted.
 
 \section{Introduction}
 \subsection{Lake Washington Methane Cycling Studies}
 
 %The Lidstrom Lab has studied methanotrophic oxidation of methane in Lake Washington sediment for decades.
 Methanotrophs are concentrated at the transition from aerobic to anaerobic soil in lake sediments.
-This interface corresponds to both availability of methane, which rises from below, and oxygen from above \cite{lidstrom1984gradients, kuivilal1988, auman2000gradients}. %, which is required because methane is more reduced than biomass.
+This interface corresponds to both availability of methane, which rises from below, and \ce{O_2} from above \cite{lidstrom1984gradients, kuivilal1988, auman2000gradients}. %, which is required because methane is more reduced than biomass.
 This microenvironment is rich in methanotrophs, methylothrophs, and other species.
 When natural sediment samples are incubated in the lab with methane as the only food source, a high abundance of non-methanotrophs is often supported \cite{oshkin2015LW}.
 Many of the abundant non-methanotrophs are methylotrophs, presumably consuming methanol, an intermediate of methane metabolism.
@@ -44,7 +44,7 @@ Having the paired metagenomic and metatranscriptomic data allows estimation of g
 
 Previous metagenomics and metatranscriptomics studies of Lake Washington sediment have highlighted dominance of the methanotrophic family \textit{Methylococcaceae} \cite{beck2013LW, beck2014LW, oshkin2015LW, hernandez2015LW} (Figure \ref{fig:taxonomy}).
 These methanotrophs provide substrates for non-methanotrophic methylotrophs to grow \cite{beck2013LW}.
-The particular methanotroph species and methylotroph species that dominate the sample are known to be influenced by oxygen availability \cite{hernandez2015LW}.
+The particular methanotroph species and methylotroph species that dominate the sample are known to be influenced by \ce{O_2} availability \cite{hernandez2015LW}.
 In previous studies, it was noted that low \ce{O2} tensions select for \mbox{\textit{Methylotenera/Methylobacter}} partnerships whereas high \ce{O2} tensions select for  \mbox{\textit{Methylophilus/Methylosarcina}} partnerships \cite{hernandez2015LW}.
 There is also a revolving cast of (mostly) non-methylotrops including Burkholderiales and Bacteroidetes \cite{kalyuzhnaya2008Burkholderiales, beck2014LW}.  % Burkholderiales is an order (not italics).  Bacteroidetes is a Phylum.
 Better understanding of the metabolic roles that each of these species play, and why certain partnerships tend to form would provide insight into this greenhouse-gas mitigating microbial community.
@@ -82,9 +82,9 @@ The experimental design chosen to answer these questions is show in in Figure \r
     \caption[Experimental design for the data underlying Chapters \ref{chapter:A} and \ref{chapter:B}]{
 	Experimental design for the data underlying Chapters \ref{chapter:A} and \ref{chapter:B}.
 	Sediment from Lake Washington was thawed from -80$^o$C and cultured in 8 different bottles,
-        half of which were provided with low oxygen, and half of which were provided with high oxygen (see methods).
+        half of which were provided with low \ce{O_2}, and half of which were provided with high \ce{O_2} (see methods).
 	   Bottles were serially transferred for a total of 14 weeks.
-	   The last four bottles in each series are at the opposite oxygen condition of the original experimental design
+	   The last four bottles in each series are at the opposite \ce{O_2} condition of the original experimental design
         (indicated by bottle label color switch).
 	   Metagenomes and metatranscriptomes were obtained for weeks 4-14, resulting in 88 metagenomes and 88 metatranscriptomes.
 	   }
@@ -94,7 +94,7 @@ The experimental design chosen to answer these questions is show in in Figure \r
 
 This relatively simple experimental design, including high degree of replication for studies of this type, was chosen to provide statistical power despite differences across replicates and measurement noise.
 Variation across replicates can arise from stochasticity as communities rarefy, and are compounded by the noise-generating steps of nucleic acid extraction, ribosomal RNA removal (in the case of metatranscriptomics), library prep, and the sequencing process.
-The most important environmental variable identified in previous studies, the oxygen availability, was modulated while holding all other variables constant.
+The most important environmental variable identified in previous studies, the \ce{O_2} availability, was modulated while holding all other variables constant.
 Availability of sequenced isolate strains from the very ecosystem enhance exploration of the dataset by providing some ground-truth.
 Lake Washington isolates can also be integrated into positive controls for many of the computational methods.
 
@@ -344,8 +344,8 @@ The culturing and sample preparation was done by Maria Hernandez, a visiting sch
 Sediment stored in an aqueous DMSO solution on previous sampling trip was thawed from -80$^o$C and distributed into 250 mL bottles containing 100mL of NMS medium \ref{fig:experimental_design}, leaving 150mL of headspace.
 % High: 75% air, low = 75% air.  150 mL headspace, 100 mL liquid.
 All bottles were air-tight, with head spaces containing 25\% methane.
-The high oxygen samples had 75\% air in the head space.
-The low oxygen samples had 15\% air in the head space, with the remainder being nitrogen.
+The high \ce{O_2} samples had 75\% air in the head space.
+The low \ce{O_2} samples had 15\% air in the head space, with the remainder being nitrogen.
 Atmospheres were created every weekday and once per weekend.
 Bottles were shaken at 250 RPM and held at 18$^o$C.
 The gaseous compositions for the days between transfers were not measured.
@@ -353,7 +353,7 @@ The gaseous compositions for the days between transfers were not measured.
 Bottles were serially transferred for 14 weeks.
 Metagenomes and metatranscriptomes were obtained for all samples corresponding to weeks 4-14.
 Earlier weeks were omitted due to potential effects of residual DMSO, and interest in prioritizing sequencing of later, more-rarefied samples.
-The oxygen conditions (low/high) were switched for the last 4 bottles in each series (see Figure \ref{fig:experimental_design}).
+The \ce{O_2} conditions (low/high) were switched for the last 4 bottles in each series (see Figure \ref{fig:experimental_design}).
 
 \subsubsection{Sequencing}
 This large dataset was made possible by a Joint Genome Institute sequencing grant. % (cite the \#? XX).
@@ -374,7 +374,7 @@ Tools were written to aggregate (a) based on taxonomy level, or (b) everything b
 Contigs with taxonomy not described to the specified level were grouped into "unknown \& other".
 This framework was also used to summarize abundances at mixed taxonomy level (e.g. phylum Bacteroidetes, order Burkholderiales, family \textit{Methylococcales}, and family \textit{Methylophilales}), and plotted (code: \url{https://github.com/JanetMatsen/elvizAnalysis/blob/master/abundance_plot_utils.py}).
 
-Statistics for the 88 samples were merged with information about the oxygen, replicate, and week values corresponding to each sample using Python and Pandas.
+Statistics for the 88 samples were merged with information about the \ce{O_2}, replicate, and week values corresponding to each sample using Python and Pandas.
 Plotting was done with Matplotlib, Pandas, and Seaborn.
 
 \subsubsection{Computational resources}
@@ -600,10 +600,10 @@ Their dominance is consistent with pervious studies \cite{beck2013LW, beck2014LW
 Figure \ref{fig:dominant_genera} show the breakdown of the methanotrophic and non-methanotrophic methylotroph taxa in Figure \ref{fig:4dominant_groups}.
 Notably, the path to rarefaction is not particularly consistent across samples.
 Like previous studies, the dominant methanotrophic order/genus was Methylococcales/\textit{Methylococcaceae} and the dominant non-methanotrophic methylotrophic order/genus was Methylophilales/\textit{Methylophilaceae}.
-Low oxygen was associated with a higher abundance of methanotrophs, and a lower proportion of methylotrophs than the high-oxygen samples.
-\textit{Methylosarcina} is often found in high-oxygen samples, but rarely in low-oxygen samples.
-Two high oxygen samples are dominated by \textit{Methylobacter}, but the others are not.
-The last four samples in each series are more similar to the previous samples in the series than samples at the opposite oxygen tension.
+Low \ce{O_2} was associated with a higher abundance of methanotrophs, and a lower proportion of methylotrophs than the high-\ce{O_2} samples.
+\textit{Methylosarcina} is often found in high-\ce{O_2} samples, but rarely in low-\ce{O_2} samples.
+Two high \ce{O_2} samples are dominated by \textit{Methylobacter}, but the others are not.
+The last four samples in each series are more similar to the previous samples in the series than samples at the opposite \ce{O_2} tension.
 
 
 \begin{figure}[H]
@@ -614,7 +614,7 @@ The last four samples in each series are more similar to the previous samples in
     \caption[Four major taxonomic groups in Lake Washington sediment incubations]{
         Fractional abundances of DNA from the four major taxonomic groups in Lake Washington sediment incubations:
 	    phylum Bacteroidetes, orders Methylococcales (methylotrophs), Methylophilales (non-methanotrophic methylotrophs), Burkholderiales.
-        The vertical gray line indicates the week the oxygen conditions were reversed.
+        The vertical gray line indicates the week the \ce{O_2} conditions were reversed.
         These bars only reflect reads that mapped to contigs, according to the Elviz pipeline.
         For information about the fraction of reads not assigned to contigs, see Figure \ref{fig:frac_elviz_mapped_to_contigs}.
         }
@@ -634,7 +634,7 @@ The last four samples in each series are more similar to the previous samples in
         Green bars are non-methanotrophic methylotrophs of order Methylophilales, family \textit{Methylophilaceae}
             (represents major taxa in yellow bars of Figure \ref{fig:4dominant_groups}).
         See Figure \ref{fig:taxonomy} for hierarchical taxonomy reference.
-        Vertical gray line indicates the week the oxygen conditions were reversed.
+        Vertical gray line indicates the week the \ce{O_2} conditions were reversed.
         Like Figure \ref{fig:4dominant_groups}, these bars only reflect reads that mapped to contigs, according to the Elviz pipeline.
         For information about the fraction of reads not assigned to contigs, see Figure \ref{fig:frac_elviz_mapped_to_contigs}.
         }  % Italics are used for bacterial and viral taxa at the level of family and below.  https://wwwnc.cdc.gov/eid/page/scientific-nomenclature
@@ -647,7 +647,7 @@ The last four samples in each series are more similar to the previous samples in
 %Genomic-scale resolution drove investigation of the potential for sorting these contigs into genome bins.
 The goal of this study is a comprehensive description of the samples, ideally in terms of genome bins.
 The potential for these Elviz contigs to paint a comprehensive picture of the microbial community was measured by summing all reads assigned to contigs long enough to bin, namely contigs $\geq$ 1.5kb.
-Figure \ref{fig:dont_bin_Elviz} shows that while the entire set of contigs represents the samples well, the subset of contigs that are candidates for binning explain less than 20\% of the reads obtained for many low oxygen samples.
+Figure \ref{fig:dont_bin_Elviz} shows that while the entire set of contigs represents the samples well, the subset of contigs that are candidates for binning explain less than 20\% of the reads obtained for many low \ce{O_2} samples.
 Another complication of binning these Elviz contigs, is that binning the contigs for each sample individually would lead to many redundant bins that need to be thinned.
 This process is prone to human bias, and can lead researchers to over-fit their bins to their quality measures and thus over-state the quality of their bins.
 Nonetheless, if a particular sample is enriched in an organism of interest, use of the contigs from that sample should be conisdered for future binning efforts.
@@ -663,7 +663,7 @@ Nonetheless, if a particular sample is enriched in an organism of interest, use 
         Lines are colored by replicate.
         Solid lines represent the fraction of reads in the raw \texttt{.fastq} file that map to contigs of any length.
         Dashed lines represent the fraction of reads in the raw \texttt{.fastq} file that map to contigs with length $\geq$ 1.5kb.
-        Less than 20\% of the raw fastq reads would be explained by aggressive binning of most low oxygen samples.}
+        Less than 20\% of the raw fastq reads would be explained by aggressive binning of most low \ce{O_2} samples.}
     \label{fig:dont_bin_Elviz}
     \end{singlespace}
 \end{figure}
@@ -824,11 +824,11 @@ It is possible that genes encoding product of the same name could be of varying 
 
 Which copes are expressed, and under which conditions?
 Breaking down the expression of these genes by locus and sample reveals which copies dominate.
-Many of the patterns appear to be oxygen-dependent, and/or perturbed by the oxygen condition switch for the last four samples.
+Many of the patterns appear to be \ce{O_2}-dependent, and/or perturbed by the \ce{O_2} condition switch for the last four samples.
 % TODO: figure of expression.  Include more in appendix.
 % FIGURE: pmo subunit A.
-For example, the patterns for which \textit{pmoC} locus is expressed in each sample appears to be correlated with the oxygen tension in each sample (Figure \ref{fig:mmo_alpha}).
-Exploration of these patterns and analysis of the genes taxonomy can shed light onto how oxygen influences community composition.
+For example, the patterns for which \textit{pmoC} locus is expressed in each sample appears to be correlated with the \ce{O_2} tension in each sample (Figure \ref{fig:mmo_alpha}).
+Exploration of these patterns and analysis of the genes taxonomy can shed light onto how \ce{O_2} influences community composition.
 
 \begin{figure}[H]
 \centering
@@ -892,7 +892,7 @@ The two sets of lines for the MetaBAT plots measure how well the bins represent 
         Points represent the fraction of reads that are associated with binned contigs for each sample.
         The solid MetaBAT lines represent the fraction of reads associated with contigs of length $\geq$ 2.5kb, as an appropriate comparison to the MyCC run.
         The dashed MetaBAT lines represent the full fraction of reads accounted for by the actual MetaBAT bins, which include contigs as short as 1.5kb.
-        The arrows after week 10 in each plot indicate that all subsequent samples were treated with the opposite oxygen tension as the label indicates.
+        The arrows after week 10 in each plot indicate that all subsequent samples were treated with the opposite \ce{O_2} tension as the label indicates.
     }
     \label{fig:binning_frac_reads_mapped}
     \end{singlespace}
@@ -902,12 +902,12 @@ MetaBAT with default settings produced bins with low sample accountability, wher
 This represents a trade-off between precision and recall, a balance inherent to binning regardless of the tool used.
 
 % MetaBAT comments
-One striking trend in the MetaBAT results is the difference in read accountability between replicates 1/2 and 3/4 at the low oxygen state. %in the fraction of reads associated with binned contigs between low oxygen replicates 1/2 and 3/4.
+One striking trend in the MetaBAT results is the difference in read accountability between replicates 1/2 and 3/4 at the low \ce{O_2} state. %in the fraction of reads associated with binned contigs between low oxygen replicates 1/2 and 3/4.
 The large difference is associated with the proportion of reads associated with long contigs (Supplemental Figure \ref{fig:contig_dist}).
 The poorly represented samples are biased more toward short contigs.
-While noting that the last 4 data points in each series have the opposite oxygen condition as the series label, see that the high oxygen samples in all four subplots are better reflected by MetaBAT bins.
+While noting that the last 4 data points in each series have the opposite \ce{O_2} condition as the series label, see that the high \ce{O_2} samples in all four subplots are better reflected by MetaBAT bins.
 This source of this conundrum has not yet been resolved, but could be due to a smear of organisms for which assembly performed poorly.
-The Elviz data points towards the genus \textit{Methylobacter}, given its dominance in samples at the low-oxygen state.
+The Elviz data points towards the genus \textit{Methylobacter}, given its dominance in samples at the low-\ce{O_2} state.
 BLAST or other computational tools could be used to identify the taxonomy of contigs that are not binning well. %identify the taxa for the contigs which are binning well, though high-throughput techniques would be prudent given the number of contigs.
 
 Figure \ref{fig:mycc_binned_more_contigs} also shows that MyCC is more effective at representing the raw sequencing reads.
@@ -1079,7 +1079,7 @@ These contigs were binned into a draft set of bins, which highlighted the challe
 
 The contigs were annotated and the genetic content was explored.
 In total, 921,431 million genes were identified, encoding 107,900 different proteins.
-Oxygen-dependent trends in locus expression were identified, supporting evidence that oxygen is an important and only somewhat understood factor in community composition and function.
+\ce{O_2}-dependent trends in locus expression were identified, supporting evidence that \ce{O_2} is an important and only somewhat understood factor in community composition and function.
 
 The biology inferred in this preliminary round of studies drove new ideas for iterating through the pipeline again, with new goals and refinement strategies in mind.
 While the community structure may be too complex for current binning tools to explain without extensive manual labor, targeting particular taxa for binning will allow observation of community dynamics for the major players.
