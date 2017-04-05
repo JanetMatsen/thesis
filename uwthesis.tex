@@ -49,6 +49,8 @@
 \usepackage{pdfpages} % necessary for [width=1.0\textwidth] type args (J)
 \usepackage{booktabs} % for table \toprule, \midrule, \bottomrule  (J)
 
+\usepackage{mathtools} % mathtools builds on and extends amsmath package  % allow fraction wrapping.
+
 %
 % The following line would print the thesis in a postscript font
 
@@ -98,7 +100,7 @@
 %
 % ----- copyright and title pages
 %
-\Title{Genomics, Transcriptomics, and Machine Learning to Enhance Understanding of Methanotrophic Metabolism in Isolates and Communities.}
+\Title{Genomics, Transcriptomics, and Statistical/Machine Learning to Enhance Understanding of Methanotrophic Microbial Metabolism in Isolates and Communities.}
 \Author{Janet Matsen}
 \Year{2017}
 \Program{Chemical Engineering}
@@ -198,7 +200,8 @@
 
 % ========== Appendix A
 
-\include{./tex/chapter1/supplemental}
-\include{./tex/chapter2/supplemental}
+\input{./tex/chapter1/supplemental}
+\input{./tex/chapter2/supplemental}
+\input{./tex/chapter3/supplemental}
 
 \end{document}
