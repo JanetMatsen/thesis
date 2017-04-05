@@ -99,7 +99,7 @@ The most important environmental variable identified in previous studies, the \c
 Availability of sequenced isolate strains from the same ecosystem enhances exploration of the dataset by providing some ground-truth.
 Lake Washington isolates can also be integrated into positive controls for many of the computational methods.
 
-% --- Data sets like this are rare and special.
+% --- Datasets like this are rare and special.
 Though sequencing has become routine in most biological domains, this dataset is exceptional for several reasons.
 Having four replicates for each experimental condition is much greater than typical metagenomic studies.
 Furthermore, most metagenomics/metatranscriptomics studies are single time point snapshots, rather than time-series.
@@ -125,10 +125,10 @@ As discussed in the introduction, metagenomics and metatranscriptomics of natura
 %For each step of inference, there are numerous tools to choose from.  % dangling participle
 Numerous tools are available for each inference step.
 Some understanding of the underlying methods is necessary for prudent selections.
-Given that each tool has different efficacy for different data sets, several tools are usually tried and evaluated for each step.
+Given that each tool has different efficacy for different datasets, several tools are usually tried and evaluated for each step.
 For each tool, there are numerous settings the authors encourage users to tune, leading to a combinatorial explosion of potential outcomes for each inference step.
 The nearly complete turnover of tools approximately every 5 years leads to very few benchmarking studies, and review papers that are out date within months of publication.
-Furthermore, benchmark studies comparing tools use a small number of data sets that may not behave like your own data set.
+Furthermore, benchmark studies comparing tools use a small number of datasets that may not behave like your own dataset.
 %Methods and metrics for tool evaluation are not standardized. repeated below
 
 % --- Lack of standards in field
@@ -253,7 +253,7 @@ Each tool can report basic statistics about efficacy based on inputs and outputs
 Results from one software package can give you better insight about how to evaluate the results of other packages, so in this project we chose to follow an iterative process with various somewhat-equivalent tools to maximize accuracy.
 
 Another challenge of projects of this scope is the size of the data.
-As noted above, more data can lead to greater potential for extracting information from uncertain data, however, many tools are not designed to work on sequencing data sets as large as these.
+As noted above, more data can lead to greater potential for extracting information from uncertain data, however, many tools are not designed to work on sequencing datasets as large as these.
 While some tools fail quickly and with informative messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
 For some goals, the data can be broken into subsets, processed separately, and re-joined upon completion.
 However, not every tool can operate on segments of the data, and extra care is required when stitching together results so the next tool downstream will be blind to the upstream manipulations.
@@ -1110,7 +1110,7 @@ There is also potential to explore signatures of phage in the existing contigs.
 % ------ CONCLUSIONS
 \section{Conclusions}
 
-In conclusion, this 88-metagenome, 88-metatranscriptome data set was designed to allow identification of dominant taxa and gene expression in a natural methane oxidizing microbial community.
+In conclusion, this 88-metagenome, 88-metatranscriptome dataset was designed to allow identification of dominant taxa and gene expression in a natural methane oxidizing microbial community.
 The Elviz data were aggregated on taxonomic labels to illustrate the fractions of the metagenomes attributed to different taxa (see Figures \ref{fig:4dominant_groups}, \ref{fig:dominant_genera}).
 These data were not appropriate for comparison across samples, or assembly into contigs, so an assembly was done with nearly all of the metagenomes.
 These contigs were binned into a draft set of bins, which highlighted the challenge of getting enough good bins to illustrate the dynamics of an entire population.
