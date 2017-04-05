@@ -585,7 +585,7 @@ The code described was developed with Git version control, and the full history 
 %-------- Raw Reads:   Results and Discussion --------
 \subsection{Raw Reads}
 
-The cumulative number of raw and un-filtered reads is shown below.
+The cumulative number of raw and un-filtered reads is shown in Table \ref{table:sample_read_sizes}.
 This collection of reads was used for all inferences described in this chapter.
 Also see Figure \ref{fig:fastq_reads} for plots showing specific values for each sample.
 
@@ -881,7 +881,7 @@ Exploration of these patterns and analysis of the genes taxonomy can shed light 
 % ----- BINNING:  Results and Discussion ------
 \subsection{Binning of Co-assembled Contigs}    %\section{Results and Discussion}
 
-Contigs of length $\geq$ 1.5kb were binned by MetaBAT and MyCC, two leading binning tools.
+Contigs of length $\geq$ 1.5kb were binned by MetaBAT and MyCC, two leading binning tools (Table \ref{table:metabat_mycc_binning_stats}).
 As mentioned, MyCC does not scale well to large data, so the full dataset including contigs as short as 1.5kb did not complete, even with a high performance AWS instance.
 
 \begin{table}[H]
@@ -889,7 +889,7 @@ As mentioned, MyCC does not scale well to large data, so the full dataset includ
 \begin{singlespace}
 \caption[Binning results: MetaBAT \& MyCC]
 	{Binning results: MetaBAT \& MyCC.}
-\label{table:sample_read_sizes}
+\label{table:metabat_mycc_binning_stats}
 \begin{tabular}{l | cc}
  %\toprule
             & \# bins &  min contig size allowed \\  % consider fraction of contigs binned?
