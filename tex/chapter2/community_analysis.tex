@@ -62,7 +62,7 @@ Such insights are important for predicting future changes in new methane emissio
     \end{singlespace}
 \end{figure}
 
-\subsubsection{Goals of this study}
+\subsubsection{Goals of this study}  % \section{Introduction}
 This study aims to identify the major methanotrophic, methylotrophic, and other microbial species that together enable methane consumption in Lake Washington, as well as to deduce the contribution of each taxa to the community metabolism.
 Identification of which methanotrophs dominate in natural communities provides insights into how well past isolate studies reflect the true drivers of methane oxidation.
 Identification of which metabolic pathways are expressed by these methanotrophs and the accompanying non-methanotrophs informs the mechanism of methane oxidation in this natural system.
@@ -110,6 +110,8 @@ Ribosomal RNA was depleted, so the majority of the information in the transcript
 In all the dataset totals to 9TB.
 My role was in this study was to analyze these extensive datasets.
 
+\subsection{Challenges and Strategies}  % \section{Introduction}
+
 % --- Insights into what's challenging
 Despite the size and replication of this dataset, answering the questions outlined above proved challenging.
 First, the study aims to answer who is there, without use of reference DNA for read mapping.  % was a dangling participle ("without the luxury of using reference DNA to align sequencing data to. ")
@@ -118,6 +120,7 @@ This DNA then becomes the basis for answering both "who is there", and the refer
 Ideally, the assembly yields a small number of long sequences.
 More often than not, however, under-sampling of DNA or lack of punctuation in well-sampled (highly abundant) strains leads to fragmented reference DNA.
 Such fragmentation causes uncertainty and information loss to propagate through the rest of the analysis pipeline, so care must be taken when interpreting all downstream results (see Figure \ref{fig:pipe_leaks}).
+This thesis addresses these challenges by developing numerous metrics for inference efficacy and propagation of uncertainty (see Section \ref{subsection_pipe_leaks}).
 
 % -- Tool selection & evaluation is challenging.
 Tool selection and evaluation is also challenging.
@@ -130,6 +133,7 @@ For each tool, there are numerous settings the authors encourage users to tune, 
 The nearly complete turnover of tools approximately every 5 years leads to very few benchmarking studies, and review papers that are out date within months of publication.
 Furthermore, benchmark studies comparing tools use a small number of datasets that may not behave like your own dataset.
 %Methods and metrics for tool evaluation are not standardized. repeated below
+The approach for this thesis included consideration, testing, and tuning parameters of multiple software packages for each challenging step.
 
 % --- Lack of standards in field
 The field also lacks standards for assessing the efficacy of each inference step.
@@ -138,19 +142,22 @@ Many tools provide only limited insight into their efficacy on your particular d
 Care must be taken by the investigators to select the right tools, connect them properly, and evaluate results critically.
 Often the trade-offs between tools are not evident until they are tested, and the data are explored with a critical eye.
 Success in this field requires iteration as these insights are developed.
+This thesis advocates for reporting more measures of information loss to shed light on the efficacy of each computational step.
 
 % --- So Big!
 Furthermore, the size of this dataset is both luxurious and challenging.
 Yes, the high degree of replication and number of samples per series is essential for identifying hypotheses in noisy data.
 However, many computational tools are not designed to scale to input data of this size, leading to a variety of failure modes. %and fail when used on larger datasets than they were developed for.
-In this chapter, these challenges are taken on to provide a coarse description of which microbes are present, and what they contribute metabolically.
+This work addressed the size challenge by using large memory AWS instances for memory-intensive steps, and doing analyses on subsets of the data when appropriate.
+
+The following sections describe these challenges in more detail, and approaches we took to provide a coarse description microbial abundances and metabolic contributions.
 Steps to zoom in on particular microbes to tell more detailed stories about a subset of the population are outlined as future directions.
 
 
 %==========================================================================================================================================
 %==========================================================================================================================================
 %==========================================================================================================================================
-\section{Metagenomics and Metatranscriptomics}
+\section{Metagenomics and Metatranscriptomics}  % \section{Metagenomics and Metatranscriptomics}
 
 \subsection{Introduction to Metagenomics and Metatranscriptomic Inference}
 Metagenomics and metatranscriptomics are umbrella terms for any project that uses sequencing of mixed populations of organisms.
@@ -198,6 +205,7 @@ Genes can be called on the contigs, either before or after binning, to reveal th
 % It would be helpful in general if you call out each of the challenges you noted previously, and how you (and Dave) decided to approach them.
 % That makes it clear what is new, based on your work."
 \subsection{Approach to Validation}
+\label{subsection_pipe_leaks}
 The flow of information through metagenomics pipelines can be thought of as liquid flow through piping with leaks (Figure \ref{fig:pipe_leaks}).
 In the process of aggregating information, each software step can lose information ("leak") along the way.
 Flow (read accountability) can be measured at the input and exit of pipes (represented by flow gauges), allowing identification of how well output data reflects the original samples, and at which step(s) information was lost.
@@ -245,26 +253,28 @@ Other papers try to present a more holistic description of the community (e.g. \
 In our case, it is crucial to quantify the fraction of the original sample that is described by the output of the computational analysis, given that we aim to describe the community as a whole.
 Low fractions suggest an incomplete portrait of the true microbial community.
 In most literature, statistics are usually not stated clearly in publications, allowing readers to over-estimate the importance of the described taxa in the ecosystem.
+This thesis advocates for publishing metrics such as those described in Section \ref{subsection_pipe_leaks} in all future metagenomic studies.
 
 %----- There is no road map!
-\subsubsection{Metagenomics/Metatranscriptomics Tool Selection \& Challenges}
+\subsubsection{Metagenomics/Metatranscriptomics Tool Selection \& Challenges}   % \section{Metagenomics and Metatranscriptomics}
 Each computational step can be executed by several or sometimes dozens of competing software packages \cite{sangwan2016,thomas2012}.
 Each tool can report basic statistics about efficacy based on inputs and outputs, but it it up to the researcher with larger-scope understanding of the project goals to write scripts to critically assess efficacy of the tools in aggregate.
-Results from one software package can give you better insight about how to evaluate the results of other packages, so in this project we chose to follow an iterative process with various somewhat-equivalent tools to maximize accuracy.
+Results from one software package can give you better insight about how to evaluate the results of other packages.
+The results in this thesis are the product of such diligent iteration.
 
 Another challenge of projects of this scope is the size of the data.
 As noted above, more data can lead to greater potential for extracting information from uncertain data, however, many tools are not designed to work on sequencing datasets as large as these.
 While some tools fail quickly and with informative messages, other simply fail by running indefinitely without the tool either completing its task or aborting.
-For some goals, the data can be broken into subsets, processed separately, and re-joined upon completion.
-However, not every tool can operate on segments of the data, and extra care is required when stitching together results so the next tool downstream will be blind to the upstream manipulations.
+When possible, the data were broken into subsets, processed separately, and re-joined upon completion.
+Other times (e.g. metagenome assembly), higher memory AWS instances were rented to support algorithm requirements.
 
 %Tools choke.  Just don't complete.
 %Sometimes the parameters can be altered, sometimes you can break up a dataset and feed it to a tool in pieces, but sometimes the size is a deal breaker.
 
-It is the role of the computational biologist to learn enough about the competing tools to select a handful to try, develop metrics and priorities for the trade-offs of each tool, project complex data into summary graphs, and decide which tool is the best fit for the research goals.
+This thesis addressed these challenges by testing multiple tools when appropriate, developing custom metrics to assess trade-offs between competing packages, and using faceted projections of the complex data to aid decision making.
 Our results in this regard are described below.  %Mary: "be sure you describe this"
 
-\subsubsection{Assembly}
+\subsubsection{Assembly}   % \section{Metagenomics and Metatranscriptomics}
 %---- Why assemble
 Analysis of metagenomic and metatranscriptomic data usually begins with assembling metagenome reads into contigs (Fig \ref{fig:meta_workflow}), which are contiguous stretches of genomic sequence in which the order of bases is known to a high confidence level. %(JGI)
 The metagenomes can be aligned to these contigs to infer the abundance of organisms.
@@ -280,17 +290,20 @@ Communities with a small number of well-delineated species tend to assemble bett
 In contrast, the high diversity of complex communities can lead to fragmented assemblies that have fewer long contigs and more short contigs \cite{kunin2008}.
 These shorter contigs are more challenging to analyze and can lead to an incomplete portrait of a community.
 Short contigs are more difficult to call genes on, and are also more difficult to bin because measures like GC and differential abundance are noisier for short contigs than long ones \cite{sangwan2016}.
-The most common measures of assembly efficacy are characteristics of the contigs themselves.  How many are there?  What is the length of the contig that divides the length-sorted contigs into a pair of equal lengths (termed "N50")?
+The most common measures of assembly efficacy are characteristics of the contigs themselves.  How many are there?  %What is the length of the contig that divides the length-sorted contigs into a pair of equal lengths (termed "N50")?
+What is the distribution of contig lengths (e.g. N50)?
 This thesis advocates for additional measures that are rarely reported: the fraction of the total (unfiltered/untrimmed) original reads that map to the assembled contigs, and genome bins.
 These statistics provide readers with understanding of the abundance of the organism in the natural community.
 
-\subsection{Elviz Assemblies}
+\subsection{Elviz Assemblies}   % \section{Metagenomics and Metatranscriptomics}
 %---- JGI assemblies
 The sequencing for many metagenomics projects, including this one, are done by the Joint Genome Institute (JGI).
 JGI provides some bioinformatics processing in addition to providing un-processed reads.
 The software they run assembles contigs for each sample individually, predicts genes, and calls taxonomy for contigs \cite{cantor2015}.
 They also report the number of reads and average coverage for each contig.
-These measures are a great starting point for answering "who's there" in terms of taxa abundance, but does neglect information about reads that did not assemble well and thus must be used with caution.
+These measures are a great starting point for answering "who's there" in terms of taxa abundance.
+They do not include measures of how many reads failed to assemble.
+This chapter measured the fraction of reads that assembled across samples to address this concern (Figure \ref{fig:frac_elviz_mapped_to_contigs}).
 
 %---- Not assembled together
 The contigs JGI provides are assembled for each sample, individually.
@@ -301,9 +314,9 @@ More powerful analyses can be done when the DNA from all metagenomic samples are
 This makes it possible to map DNA and RNA reads back to this shared DNA and thus to tabulate gene expression across samples.
 Such an assembly also leads to more powerful binning (discussed below) by providing extra features to cluster with, specifically, the differential abundances of each contig across the samples \cite{albertsen2013}.
 Since the number of reads originating from a particular organism should be proportional to its abundance, the DNA coverage for a set of contigs originating from an organism should be similar in a particular sample, and correlated across samples.
-The per-sample nature of the JGI contigs restricted the types of analyses that data were used for, and motivated generation of co-assembled contigs to represent the entirety of the dataset as discussed below.
+The per-sample nature of the JGI contigs guided decisions about how the data were used, and motivated generation of co-assembled contigs to represent the entirety of the dataset as discussed below.
 
-\subsubsection{Binning}
+\subsubsection{Binning}   % \section{Metagenomics and Metatranscriptomics}
 %---- Definition & Why
 Desire for gaining understanding at the organism level often leads investigators to approximate genomes as best they can from a set of metagenomic contigs.
 The phrase "genome bin", often called simply "bin", is used to describe a collection of contigs used to approximate the genome of a single organism.
@@ -323,8 +336,7 @@ As noted above, more rarefied samples with low levels of strain heterogeneity ar
 Longer contigs have reduced noise for measurements of GC ratio, tetranucleotide frequency, and differential abundance \cite{sangwan2016}.
 This in turn leads to less ambiguity when sorting contigs into respective bins.
 Notably, most binning tools have been demonstrated on simple communities such as the premature infant gut \cite{sharon2013}.
-Thus, the promising assembly quality statistics noted in binning method papers are not guaranteed to translate for analysis of high-complexity samples such as those in this thesis.
-% In fact, most binning methods were demonstrated using relatively simple communities (e.g., premature infant gut datasets of Sharon et al.
+Despite the added complexity of these samples relative to such classic data sets, draft bins were produced and steps to improve them are outlined.
 
 %---- Bin assessment
 The quality of bins can be determined using metrics of completeness, contamination, and efficacy of representing the sample.
@@ -351,14 +363,15 @@ CONCOCT \cite{concoct2014} uses a Gaussian mixture model fit with a variational 
 % Manual curation
 Almost every high-quality bin published in high-profile papers has used tools such as these, but the resulting bins are subsequently refined by manual curation, with methods only vaguely described.
 
-\subsubsection{Mapping RNA}
+\subsubsection{Mapping RNA}   % \section{Metagenomics and Metatranscriptomics}
 Metatranscriptomes can be mapped to contigs or bins.
 A key variable to consider is how to handle reads that map to multiple places (multilocus mapped reads).
 If a read maps equally well to two different contigs in a bin, should it be randomly assigned to one locus, or thrown away?
 If the study is aiming for differential expression type analysis, than the latter is better.
 Discarding ambiguous reads is the default of most alignment and counting tools.
 If the study aims to describe a holistic picture of expression in a sample, it may be worth guessing the source of such reads.
-Special care must be taken after that step, as the estimates will certainly be wrong some of the time.
+Special care must be taken to account for added uncertainty after including ambiguously mapped reads.
+%after that step, as the estimates will certainly be wrong some of the time.
 
 
 %==========================================================================================================================================
@@ -506,7 +519,7 @@ Note: the default of BWA-MEM is to flag reads that map equally well to two or mo
 
 \subsubsection{Assembly} % \section{Methods} (Dave)
 Dave beck co-assembled the quality trimmed metagenomes with Megahit \cite{li2015}.
-This memory-intensive computation was done on an AWS instance with 1 TB of memory.
+This memory-intensive computation was done on an AWS instance with 1 terabyte of memory.
 Assembly of multiple samples simultaneously provides a shared set of contigs to use when mapping DNA reads or RNA-seq reads from any of the 88 samples.  % Not methodsy?  Take out?  TODO
 This in turn allows for comparison of gene expression across samples.
 The fraction of reads represented by the assembly, in aggregate, was measured to verify assembly efficacy.
@@ -731,7 +744,6 @@ Including these reads that have high mapping uncertainty makes it more difficult
 For example, there may be two genome bins that have very similar monooxygenase (MMO) genes \cite{gilbert2000} but substantial genomic differences.
 If reads map equally well to both sets of MMO genes, it is hard to say which bin was more actively oxidizing methane in the sample.
 
-I
 % ----- ASSEMBLY:   Results and Discussion  ------
 \subsection{Assembly}
 
@@ -774,7 +786,7 @@ The distribution of contigs obtained (Figure \ref{fig:contig_lengths}) does not 
 
 Genes were annotated (called) on contigs with length $\geq$ 1.5kb, in preparation for metatranscriptome studies (Table \ref{table:annotation}).
 %Prokka identified 921,431 distinct genes, encoding 107,900 differently named proteins (Table XX).
-See supplementary files for the gene \texttt{.fasta} and corresponding \texttt{.gff}. %, and RNA read counts \texttt{.tsv} in each sample.
+See the supplementary attachments for the gene \texttt{.fasta} and corresponding \texttt{.gff} files. %, and RNA read counts \texttt{.tsv} in each sample.
 
 \begin{table}[H]
 \centering
@@ -818,7 +830,7 @@ Gray bars correspond to "no feature", which is presumably correlated to short co
 Pink bars are labeled as having low alignment quality, but recall that BWA-MEM sets the quality score to zero when a read maps equally well to two different spots.
 It may be possible to improve (shrink) the gray bars via re-assembly of portions of the data (see Section \ref{sect:assembly_discussion}).
 Similarly, recovery of reads that map equally well to different places can be brought out of the pink bars by adjusting the settings of htseq-count such that low quality reads are used (see Section \ref{sect:multipli_mapped_reads}).
-While this alteration would help with describing the big picture of which genes are expressed, it reduces certainty of read mappings and is not appropriate for Chapter \ref{chapter:C}.
+While this alteration would help with describing the big picture of which genes are expressed, it reduces certainty of read mappings and is not appropriate for the analyses in the next chapter (Chapter \ref{chapter:C}).
 
 
 \begin{figure}[H]
@@ -1026,19 +1038,19 @@ The JGI ANI tool was used on all pairs of MetaBAT bins and isolate genomes, prod
 
 %Big picture
 This analysis aimed to describe a holistic picture of the microbes in the communities, and assess how gene expression indicates metabolic pathways and interactions in the methane-oxidizing community.
-This thesis identified the a starting point.
-As the next set of steps, a more precise understanding can be gained by diving deeper into many of the topics described.
+This chapter identified a starting point.
 Insights gained by iterating through pipeline steps have revealed possibilities to improving the analysis by modifying each step, as described in the following sections.
+%Through these steps, we expect to develop a more precise understanding of this complex community.
 
 % ----- General NEXT STEPS ------
 \subsection{Goal Setting for Future Directions}    %\section{Future Steps}
 
-This thesis highlights the challenge of information loss at each step of the analysis pipeline (recall the pipeline analogy in Figure \ref{fig:pipe_leaks}).
+This chapter highlights the metrics for measuring information loss at each step of the analysis pipeline (recall the pipeline analogy in Figure \ref{fig:pipe_leaks}).
 Given that the current goal is to describe broad trends of microbial abundance and activity, setting specific goals for information retention in future work is essential.
 For example, substantial information in the metagenome \texttt{.fastq} files was lost along the path from raw reads to binned contigs.
-Before future binning work is done, measurement of the upper-bound of binning success should be carried out.
-Specifically, the upper bound for the fraction of the metagenome and metatranscriptome reads that can be explained by metagenome bins can be calculated by counting all reads that align to contigs longer than 1.5kb, as was done in Figure \ref{fig:frac_elviz_mapped_to_contigs} for the Elviz Contigs.
-If the fraction of reads mapping to these longer contigs is not sufficient for future publication, assembly should be revisited.% (see below), or goals should be readjusted.
+Before future binning work is done, the upper bound of binning success given the contigs at hand should be measured.
+Specifically, this upper bound (for metagenomes and metatranscriptomes) can be calculated by counting all reads that align to contigs longer than 1.5kb, as was done in Figure \ref{fig:frac_elviz_mapped_to_contigs} for the Elviz Contigs.
+If the fraction of reads mapping to these longer contigs is not sufficient for future publication, assembly can be revisited.% (see below), or goals should be readjusted.
 
 % TODO: insert figure of upper-bound for binning potential of these metagenomes.
 
@@ -1112,8 +1124,8 @@ There is also potential to explore signatures of phage in the existing contigs.
 
 In conclusion, this 88-metagenome, 88-metatranscriptome dataset was designed to allow identification of dominant taxa and gene expression in a natural methane oxidizing microbial community.
 The Elviz data were aggregated on taxonomic labels to illustrate the fractions of the metagenomes attributed to different taxa (see Figures \ref{fig:4dominant_groups}, \ref{fig:dominant_genera}).
-These data were not appropriate for comparison across samples, or assembly into contigs, so an assembly was done with nearly all of the metagenomes.
-These contigs were binned into a draft set of bins, which highlighted the challenge of getting enough good bins to illustrate the dynamics of an entire population.
+Desire to bin contigs and compare gene expression across samples motivated co-assembly of all the metagenomes.
+These contigs were binned into a draft set of bins, and metrics were developed to assess whether the bins at hand adequately describe the community and its dynamics.
 % TODO: suggest quality checks so we know how good the set is.
 % TODO: note dominant taxa
 
@@ -1121,8 +1133,9 @@ The contigs were annotated and the genetic content was explored.
 In total, 921,431 million genes were identified, encoding 107,900 different proteins.
 \ce{O_2}-dependent trends in locus expression were identified, supporting evidence that \ce{O_2} is an important and only somewhat understood factor in community composition and function.
 
-The biology inferred in this preliminary round of studies drove new ideas for iterating through the pipeline again, with new goals and refinement strategies in mind.
-While the community structure may be too complex for current binning tools to explain without extensive manual labor, targeting particular taxa for binning will allow observation of community dynamics for the major players.
+The biology inferred in this preliminary round of studies drove new ideas for pipeline improvement.
+Specific refinement strategies have been proposed, including targeting particular elusive taxa for binning.
+More high quality bins will shed light on the community dynamics for the major players.
 In addition, the ability to extract more information about community structure and dynamics is explored in Chapter \ref{chapter:C}.
 
 
