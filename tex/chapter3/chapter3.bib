@@ -1,3 +1,11 @@
+@book{friedman2001,
+  title={The elements of statistical learning},
+  author={Friedman, Jerome and Hastie, Trevor and Tibshirani, Robert},
+  volume={1},
+  year={2001},
+  publisher={Springer series in statistics Springer, Berlin}
+}
+
 @article{jordan2015,
   title={Machine learning: Trends, perspectives, and prospects},
   author={Jordan, MI and Mitchell, TM},
@@ -30,6 +38,28 @@
   publisher={JSTOR}
 }
 
+%---- L1 and L2
+
+@article{tibshirani1996,
+  title={Regression shrinkage and selection via the lasso},
+  author={Tibshirani, Robert},
+  journal={Journal of the Royal Statistical Society. Series B (Methodological)},
+  pages={267--288},
+  year={1996},
+  publisher={JSTOR}
+}
+
+@article{hoerl1970,
+  title={Ridge regression: Biased estimation for nonorthogonal problems},
+  author={Hoerl, Arthur E and Kennard, Robert W},
+  journal={Technometrics},
+  volume={12},
+  number={1},
+  pages={55--67},
+  year={1970},
+  publisher={Taylor \& Francis Group}
+}
+
 %---- fdrtool (Strimer)
 @article{strimmer2008,
   title={fdrtool: a versatile {R} package for estimating local and tail area-based false discovery rates},
@@ -43,7 +73,27 @@
 }
 
 %---- Strimmer lab pcor -----
-@article{opgen2007,
+
+@article{schafer2001reverse,
+  title={Reverse engineering genetic networks using the GeneNet package},
+  author={Sch{\"a}fer, Juliane and Opgen-Rhein, Rainer and Strimmer, Korbinian},
+  journal={J Am Stat Assoc},
+  volume={96},
+  pages={1151--1160},
+  year={2007},
+  notes={Google scholar said this is 2001, but it cites things for 2006/2007 so I changed it to 2007}
+}
+
+@article{opgen2007shrinkage,
+  title={Accurate ranking of differentially expressed genes by a distribution-free shrinkage approach},
+  author={Opgen-Rhein, Rainer and Strimmer, Korbinian},
+  journal={Statistical applications in genetics and molecular biology},
+  volume={6},
+  number={1},
+  year={2007}
+}
+
+@article{opgen2007Aradopsis,
   title={From correlation to causation networks: a simple approximate learning algorithm and its application to high-dimensional plant gene expression data},
   author={Opgen-Rhein, Rainer and Strimmer, Korbinian},
   journal={BMC systems biology},
@@ -95,15 +145,6 @@
   year={2005}
 }
 
-@article{opgen2007,
-  title={Accurate ranking of differentially expressed genes by a distribution-free shrinkage approach},
-  author={Opgen-Rhein, Rainer and Strimmer, Korbinian},
-  journal={Statistical applications in genetics and molecular biology},
-  volume={6},
-  number={1},
-  year={2007}
-}
-
 %------ Ledoit-Wolf
 @article{ledoit2003,
   title={Improved estimation of the covariance matrix of stock returns with an application to portfolio selection},
@@ -116,6 +157,19 @@
   publisher={Elsevier}
 }
 
+%------ Ledoit-Wolf assumes Gaussian.  'the Ledoit-Wolf estimator operates on the sample covariance, it is inappropriate for heavy tailed non-Gaussian distributions'
+@article{chen2011,
+  title={Robust shrinkage estimation of high-dimensional covariance matrices},
+  author={Chen, Yilun and Wiesel, Ami and Hero, Alfred O},
+  journal={IEEE Transactions on Signal Processing},
+  volume={59},
+  number={9},
+  pages={4097--4107},
+  year={2011},
+  publisher={IEEE},
+  note={Much effort has been devoted to high-dimensional covariance estimation, which use Steinian shrinkage [1]–[3] or other types of regularized methods such as [4], [5]. However, most of the high-dimensional estimators assume Gaussian distributed samples. This limits their usage in many important applications involving non-Gaussian and heavy-tailed samples. One exception is the Ledoit-Wolf estimator [2], where the authors shrink the sample covariance towards a scaled identity matrix and proposed a shrinkage coefficient which i s asymptotically optimal for any distribution. However, as the Ledoit-Wolf estimator operates on the sample covariance, it is inappropriate for heavy tailed non-Gaussian distributions}
+}
+
 %------ Graphical Lasso
 @article{friedman2008,
   title={Sparse inverse covariance estimation with the graphical lasso},
@@ -126,4 +180,172 @@
   pages={432--441},
   year={2008},
   publisher={Biometrika Trust}
+}
+
+%---- Scikit-learn
+@article{scikit-learn,
+ title={Scikit-learn: {M}achine {L}earning in {P}ython},
+ author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
+         and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
+         and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
+         Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+ journal={Journal of Machine Learning Research},
+ volume={12},
+ pages={2825--2830},
+ year={2011}
+}
+
+%--- Huge
+@article{zhao2012,
+  title={The huge package for high-dimensional undirected graph estimation in {R}},
+  author={Zhao, Tuo and Liu, Han and Roeder, Kathryn and Lafferty, John and Wasserman, Larry},
+  journal={Journal of Machine Learning Research},
+  volume={13},
+  number={Apr},
+  pages={1059--1062},
+  year={2012}
+}
+
+%----
+@book{whittaker2009,
+  title={Graphical models in applied multivariate statistics},
+  author={Whittaker, Joe},
+  year={2009},
+  publisher={Wiley Publishing}
+}
+
+
+%---- NetworkX
+
+@inproceedings{schult2008,
+  title={Exploring network structure, dynamics, and function using {NetworkX}},
+  author={Schult, Daniel A and Swart, P},
+  booktitle={Proceedings of the 7th Python in Science Conferences (SciPy 2008)},
+  volume={2008},
+  pages={11--16},
+  year={2008}
+}
+
+%---- read taxonomy
+@article{menzel2016,
+  title={Fast and sensitive taxonomic classification for metagenomics with Kaiju},
+  author={Menzel, Peter and Ng, Kim Lee and Krogh, Anders},
+  journal={Nature communications},
+  volume={7},
+  year={2016},
+  publisher={Nature Publishing Group}
+}
+
+@misc{huson2015,
+  title={MEGAN6-Microbiome analysis involving hundreds of samples and billions of reads},
+  author={Huson, DH and Beier, Sina and Buchfink, Benjamin and Flade, Isabell and G{\'o}rska, Anna and El-Hadidi, Mohamed and Mitra, Suparna and Ruscheweyh, Hans-Joachim and Tappu, Rewati},
+  year={2015},
+  publisher={preparation}
+}
+
+@article{droge2014,
+  title={Taxator-tk: precise taxonomic assignment of metagenomes by fast approximation of evolutionary neighborhoods},
+  author={Dr{\"o}ge, Johannes and Gregor, Ivan and McHardy, Alice Carolyn},
+  journal={Bioinformatics},
+  pages={btu745},
+  year={2014},
+  publisher={Oxford Univ Press}
+}
+
+@article{segata2012,
+  title={Metagenomic microbial community profiling using unique clade-specific marker genes},
+  author={Segata, Nicola and Waldron, Levi and Ballarini, Annalisa and Narasimhan, Vagheesh and Jousson, Olivier and Huttenhower, Curtis},
+  journal={Nature methods},
+  volume={9},
+  number={8},
+  pages={811--814},
+  year={2012},
+  publisher={Nature Publishing Group},
+  notes={MetaPhlAn}
+}
+
+%---- ANI
+@article{konstantinidis2005,
+  title={Genomic insights that advance the species definition for prokaryotes},
+  author={Konstantinidis, Konstantinos T and Tiedje, James M},
+  journal={Proceedings of the National Academy of Sciences of the United States of America},
+  volume={102},
+  number={7},
+  pages={2567--2572},
+  year={2005},
+  publisher={National Acad Sciences}
+}
+
+%---- CCA
+@article{hotelling1936,
+  title={Relations between two sets of variates},
+  author={Hotelling, Harold},
+  journal={Biometrika},
+  volume={28},
+  number={3/4},
+  pages={321--377},
+  year={1936},
+  publisher={JSTOR}
+}
+
+@article{sherry2005,
+  title={Conducting and interpreting canonical correlation analysis in personality research: A user-friendly primer},
+  author={Sherry, Alissa and Henson, Robin K},
+  journal={Journal of personality assessment},
+  volume={84},
+  number={1},
+  pages={37--48},
+  year={2005},
+  publisher={Taylor \& Francis}
+}
+
+@article{witten2009,
+  title={A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis},
+  author={Witten, Daniela M and Tibshirani, Robert and Hastie, Trevor},
+  journal={Biostatistics},
+  pages={kxp008},
+  year={2009},
+  publisher={Biometrika Trust}
+}
+
+%---- rpy2
+@misc{gautier2008,
+  title={rpy2: A Simple and Efficient Access to {R} from {P}ython},
+  author={Gautier, L},
+  year={2008},
+  url={https://rpy2.readthedocs.io/en/version_2.8.x/}
+}
+
+%---- Co-occurance
+@article{borthagaray2014,
+  title={Inferring species roles in metacommunity structure from species co-occurrence networks},
+  author={Borthagaray, Ana I and Arim, Mat{\'\i}as and Marquet, Pablo A},
+  journal={Proceedings of the Royal Society of London B: Biological Sciences},
+  volume={281},
+  number={1792},
+  pages={20141425},
+  year={2014},
+  publisher={The Royal Society}
+}
+
+@article{hero2012,
+  title={Hub discovery in partial correlation graphs},
+  author={Hero, Alfred and Rajaratnam, Bala},
+  journal={IEEE Transactions on Information Theory},
+  volume={58},
+  number={9},
+  pages={6064--6078},
+  year={2012},
+  publisher={IEEE}
+}
+
+@article{girvan2002,
+  title={Community structure in social and biological networks},
+  author={Girvan, Michelle and Newman, Mark EJ},
+  journal={Proceedings of the national academy of sciences},
+  volume={99},
+  number={12},
+  pages={7821--7826},
+  year={2002},
+  publisher={National Acad Sciences}
 }
