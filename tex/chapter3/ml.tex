@@ -5,9 +5,9 @@
 
 The potential to apply statistical/machine learning for metatranscriptomics data is explored, using the data of Chapter \ref{chapter:B}.
 These data ($N$  = 88 samples, $d$ = 0.9 million measurements per sample) are too large to capture more than simple trends via manual inspections as is done in Chapter \ref{chapter:B}.
-While typical machine learning data sets have much larger sample sizes ($N$), select regularized statistical learning techniques are promising.
+While typical machine learning datasets have much larger sample sizes ($N$), select regularized statistical learning techniques are promising.
 This chapter focuses on two of them: canonical correlation analysis (CCA), and exploration of the approximated gene-expression partial correlation (pcor) matrix.
-Results generated from this chapter are intended for discovery, whereby hypotheses generated will be tested with wet-lab experiments.
+Results generated from this chapter are intended to generate hypotheses that will be tested with wet-lab experiments.
 This chapter is left at an exploratory level; subsequent students will pursue the identified methods.
 
 
@@ -27,9 +27,9 @@ In this experiment, $N$=88 for the 88 bottles that were sequenced.
 A feature could be a raw measurement value (e.g. expression of gene A), or potentially some abstracted version of one or more measurements (e.g. $log$(expression), or (expression of A)*(expression of B).
 The variable $d$ describes the number of features for each sample.
 
-Machine learning is often used to make predictions, so there are terms to describe the different data sets used to train, validate, and test the models.
+Machine learning is often used to make predictions, so there are terms to describe the different datasets used to train, validate, and test the models.
 Ideally a new dataset is split into training data, and test data.
-Training data is usually further split into chunks which can be iterated over to tune model "hyperparameters", a process called "cross-validation". % (discussed in Section XX).
+Training data are usually further split into chunks which can be iterated over to tune model "hyperparameters", a process called "cross-validation".
 One example of a hyperparameter is the "regularization" strength, a measure of the penalty on large coefficients in models. % (discussed in Section XX).
 These techniques allow tuning and evaluation of the model without compromising future predictive accuracy.
 
@@ -44,21 +44,21 @@ Each is described to contextualize model selection and analysis, and to aid in f
 Machine learning techniques are generally applied to large datasets, where each data point is assumed to be independent and sampled from an identical data-generating processes (i.i.d.).
 For example, a die that is more likely to roll a 6 if a 6 was just rolled exemplifies a violation of i.i.d.
 Another violation example is a die that is more likely to roll a 6 when it is warm in the room.
-The time-series nature and differences in oxygen are analogous violations of i.i.d. assumptions for this data set.
+The time-series nature and differences in \ce{O2} are analogous violations of i.i.d. assumptions for this dataset.
 This i.i.d. violation can be beneficial, if perturbations allow more signal in the measurements, but can compromise generalizability.
 Specifically, i.i.d. violations are more likely to produce models that are over-fit to the particular sample set and less likely to generalize to new data.
 The concern about i.i.d. violations is set aside for this chapter given that wet-lab experiments will be designed to verify promising results.
 
 \subsubsection{Sample size}
-Machine learning is typically applied to datasets with a sample sizes in the thousands or millions.
+Machine learning is typically applied to datasets with sample sizes in the thousands or millions.
 Some classic example domains include prediction of housing prices, or recognition of hand-written digits \cite{friedman2001}.
 Access to tens of thousands of sample points allows the underlying structure to be discovered despite noisy measurements.
-The data in this study has small $N$, limiting the number of frameworks that are appropriate.
+The data in this study have small $N$, limiting the number of frameworks that are appropriate.
 In particular, this small $N$ is not suitable for generating predictive models.
 
 In machine learning, predictive accuracy is tested by applying a model to un-seen data, and assessing the quality of the predictions.
-Thus, one must have enough data to set aside test data that is never ever touched until the model is to be published.
-The importance of not touching that test data until the model is published can not be over stated.
+Thus, one must have enough data to set aside test data that is never touched until the model is to be published.
+The importance of not touching these test data until the model is published can not be over stated.
 Assessing model accuracy on the test set before model development is complete often leads to over-fitting to the training data because the researcher will make subsequent modeling choices with those fit statistics in mind.
 Given an $N$ of only 88, predictive models cannot be produced.
 This is again consistent with the intention of this chapter to only use results for hypothesis generation.
@@ -72,7 +72,7 @@ Now consider a second sample where B's expression is doubled but that of A remai
 It thus appears that A's expression level has decreased when in fact only B's expression increased.
 In the two-gene example above, the compositional effect is severe, however, as the number of expressed genes increases, the compositional effect grows less strong.
 
-When multiple organisms are present, an equivalent compositional effects occur across species.
+When multiple organisms are present, equivalent compositional effects occur across species.
 Fluctuations in the abundance of one dominant organism can produce significant correlations for genes belonging to other microbial pairs that would be absent if comparing absolute measures of gene expression levels.
 As with the example above, these cross-species compositional effects diminish as the number of abundant organisms increases.
 In the limit of large community complexity, the compositional nature of metatranscriptomics/metagenomics data can be neglected \cite{tsilimigras2016}.
@@ -83,17 +83,17 @@ Consideration of experimental noise is necessary for analysis of metagenomics/me
 The first source of noise is biological variation.
 Different samples have different population evolution trajectories.
 These are often driven by unknown latent variables, and thus cannot be controlled for.
-There is also noise that is common to all sequencing data sets, such as amplification biases, sequencing biases, etc..
+There is also noise that is common to all sequencing datasets, such as amplification biases, sequencing biases, etc..
 
 Additional layers of noise are added when inferring the origin of these reads.
-The reference DNA used to map reads to is known to be imperfect (see Figures \ref{fig:4dominant_groups}, \ref{fig:rna_mapping_bars}), so the tabulated RNA-seq measurements are also imperfect. %meaning the inferences of DNA and RNA population abundances are imperfect.
-On top of that, there can be ambiguity of where a particular read should be assigned given imperfect reference DNA to map to (section \ref{sect:multipli_mapped_reads}).
+The reference DNA to which reads are mapped is known to be imperfect (see Figures \ref{fig:4dominant_groups}, \ref{fig:rna_mapping_bars}), so the tabulated RNA-seq measurements carry uncertainty.
+On top of that, there is ambiguity in how to count reads that map equally well to two or more places \ref{sect:multipli_mapped_reads}).
 This chapter explores the potential of finding signal in spite of these unavoidable layers of noise.
 
 \subsubsection{High Dimensionality}
 %Example of over-fitting
 High dimensionality relative to the sample size can lead to over-fit models if model complexity is not limited \cite{friedman2001}. % pg 38: bias variance trade-off.
-For example, consider a housing price data set with $N$=100 houses, and $d$=1,000 measurements including some presumably uninformative measurements such as the number of steps to the front door, and the last digit of street address.
+For example, consider a housing price dataset with $N$=100 houses, and $d$=1,000 measurements including some presumably uninformative measurements such as the number of steps to the front door, and the last digit of street address.
 If only ten variables are allowed in the model, fitting is likely to select the most influential variables (e.g. square footage).
 However, if an arbitrarily large model is allowed, the model is likely to include the nonsense features.
 Thus it is essential to limit model complexity when $d$ is larger than N.
@@ -114,7 +114,7 @@ For example, models that use Gaussian (normal) distributions to represent the un
 The distributions of counts are also heavy-tailed: large read counts are less common than small counts.
 Sparsity aside, these tails are problematic for many model classes, including those based on Gaussian distributions.
 %The majority of methods explored in this chapter transform the raw distribution, or statistics derived from them.
-The models selected in this chapter are reasonable choices given the sparsity and heavy tails, though even stronger adaptations of these models for high sparsity are likely available in the statistics literature if subsequent students are open to coding their own algorithms.
+The models selected in this chapter are reasonable choices given the sparsity and heavy tails, though even stronger adaptations of these models for high sparsity are likely available in the statistics literature if subsequent students are open to programming their own algorithms.
 
 
 %\subsection{Canonical Correlation Analysis of Metagenomic Gene Expression}
@@ -144,7 +144,7 @@ Each is described below.
 First, standardization of the data is almost always done.
 Poor fits are often obtained when features/measurements are on different scales (e.g. inches and miles).
 Even if measurements are in comparable units, many algorithms perform better when the features are scaled such that the variances are on a similar scale.
-This chapter always scaled the variances of each feature to 1, but found centering of features (shift so the mean = 0) to be harmful (see Section \ref{sect:centering_sparse}).
+This chapter always scaled the features so each gene had variance = 1, but found centering of features (shift so the mean = 0) to be harmful (see Section \ref{sect:centering_sparse}).
 
 \subsubsection{Model Class Selection \& Limiting Model Complexity}
 Next, an appropriate model class needs to be selected.
@@ -170,10 +170,10 @@ This chapter uses canonical correlation analysis, a classical statistical tool, 
 %Intro
 Canonical correlation analysis (CCA) is a classic method dating back to 1936 \cite{hotelling1936} that highlights relationships between two sets of variables \cite{sherry2005}.
 In particular, CCA identifies linear combinations of variables that maximize the correlations \footnote{Pearson r, thus "Canonical Correlation" \cite{sherry2005}} between measurements in two matrices.
-It can be used as a statistical learning algorithm when the vectors produced predict gene expression of new data that had not been used to fit or assess the model.
+It can be used as a statistical learning algorithm when the vectors produced predict gene expression of new data that have not been used to fit or assess the model.
 In this chapter, if reasonable prediction at the cross-validation step is seen, the genes included in those vectors could highlight interesting biology to target with subsequent experiments.
 The utility of CCA was explored by testing for correlation between a linear combination of a set of methylotroph genes and a linear combination of a set of methanotroph genes.
-The data used was the tabulated RNA-seq reads after alignment to the 55 isolate genomes, allowing for labeling of species category.
+The data used were the tabulated RNA-seq reads after alignment to the 55 isolate genomes, allowing for labeling of species category.
 % TODO: Cartoon of vectors.
 % TODO (?) Similar to PCA.  PCA explains variance, CCA explains correlation
 
@@ -187,7 +187,7 @@ CCA variants that focused on both sparsity and compositional data were not found
 
 %Intro
 The observational studies of Chapter \ref{chapter:B} were not able to answer the pressing question of what drives the changes in community composition and the patterns of organism distribution (see Figures \ref{fig:4dominant_groups}, \ref{fig:dominant_genera}).
-What drives the higher abundance of methylotrophs in the high oxygen samples? % difference in gene expression
+What drives the higher abundance of methylotrophs in the high \ce{O2} samples?
 What makes some samples more likely to have high abundances of Bacteroidetes or Burkholderiales?
 Do certain methylotrophs flourish when certain methanotrophs express particular sets of genes?
 
@@ -206,19 +206,19 @@ A reduced version of the partial correlation matrix is desired.
 For a network of 0.7M genes (7.0E5), there are approximately 0$.7M^2/2$ ($0.7E11$) potential partial correlation values. % really d(d-1)/2
 These partial correlations can be represented in a matrix, or equivalently as edges in a graph.
 Clearly the majority of edges are not expected to have meaningful partial correlations, so the goal is to identify the handful of edges that that highlight meaningful biology.
-Furthermore this $d >> N$ regime, the traditional partial correlation matrix is ill-formed \cite{whittaker2009} such that shrinkage \footnote{similar to regularization} is required.
+Furthermore, in this $d >> N$ regime, the traditional partial correlation matrix is ill-formed \cite{whittaker2009} such that shrinkage \footnote{similar to regularization} is required.
 %In addition, estimation of the partial correlation matrix with this high dimensionality leads to mathematical instability.
 
-There are many potential algorithms that can estimate of the reduced set of partial correlations and highlight interesting biology in $d >> N$ regimes.
+There are many potential algorithms that can estimate the reduced set of partial correlations and highlight interesting biology in $d >> N$ regimes.
 The Strimmer lab has made great advances in this area \cite{schafer2001, schafer2005, opgen2007shrinkage}.
 One Strimmer Lab method uses a shrinkage formula (see the R package \texttt{corpcor}\footnote{\url{http://strimmerlab.org/software/corpcor/index.html}}) and analytic approximations that leads to an estimation of the thinned partial correlation matrix from the gene counts matrix.
 They use a shrinkage parameter that shrinks the empirical correlations towards the identity matrix, while leaving empirical variances intact.
 While promising, their methods have not been applied to larger omics sets.
-The Strimmer group's 2005 paper uses 4,289 genes of \textit{E. Coli} and 8 RNA-seq samples \cite{schafer2005}.
+The Strimmer group's 2005 paper uses 4,289 genes of \textit{E. coli} and 8 RNA-seq samples \cite{schafer2005}.
 The 2007 paper used 800 pre-selected \textit{Aradopsis thaliana} genes \cite{opgen2007Aradopsis}.
 %  4,289 protein coding genes of E. coli 8, 15, 22, 45, 68, 90, 150, and 180 minutes after induction of the recombinant protein SOD http://strimmerlab.org/publications/journals/shrinkcov2005.pdf
 %In fact, many of their demos are not even demonstrated on the whole set of a single organisms' genes (cite).
-This chapter explores the potential of using their methods on larger, and sparser metatranscriptomics data.
+This chapter explores the potential of using their methods on larger and higher-sparsity metatranscriptomics data.
 
 Ledoit-Wolf is another route to that uses an empirical rule (no need for cross-validation) to estimate the inverse correlation matrix \cite{ledoit2003}.
 This inverse correlation matrix is proportional but not equal to partial correlations.
@@ -236,7 +236,7 @@ The graphs can be explored by a variety of methods, including NetworkX\footnote{
 \subsection{Taxonomy of Genes and Contigs}
 Knowledge of the taxonomy of genes and contigs are necessary for finding interesting cross-species interactions.
 For CCA, taxonomy labels allow separation by microbe type (e.g. methanotrophs vs methylotrophs).
-Labels of species in gene-expression partial correlation graphs allows identification of cross-species edges and sub-graphs that include genes from multiple species.
+Labels of species in gene-expression partial correlation graphs allow identification of cross-species edges and sub-graphs that include genes from multiple species.
 These taxonomic labels can be done at contig level, or the gene level.
 Ideally labels at both levels are consistent.
 
@@ -287,12 +287,12 @@ All code is available on GitHub: \href{https://github.com/JanetMatsen/CCA_Omics}
 
 \subsubsection{Prepping Data: Trimming and Normalization}
 Data was trimmed and normalized before partial correlation calculations were performed.
-First, genes with zero reads assigned across all samples were removed, bringing down the number of features from ~0.9 million to ~0.75M genes. % 921435 --> 754836
-Next, variants of the data with with different total numbers of features were prepared by varying a cutoff that accounted for sequencing depth.
+First, genes with zero reads assigned across all samples were removed, bringing down the number of features from ~0.9 million to ~0.75 million genes. % 921435 --> 754836
+Next, variants of these data with different total numbers of features were prepared by varying a cutoff that accounted for sequencing depth.
 The criteria for inclusion was contribution of a specified fraction of reads in at least one sample.
 This measure allowed features that were important in one sample, regardless of sequencing depth, to be included.
 Dividing by the fraction of reads mapped to coding sequences seemed reckless given low fractions of reads mapped to coding sequences (see Figure \ref{fig:rna_mapping_bars}).
-These data sets of varying size were used to test the ability of various algorithms to scale to this large dataset.
+These datasets of varying size were used to test how well various algorithms to scale to this large dataset.
 
 Three approaches were used to approximate the partial correlation matrix: (1) Ledoit-Wolf estimation \cite{ledoit2003}, followed by removing small-magnitude edges, (2) Graphical Lasso \cite{friedman2008} with varying regularization strengths, and (3) the GeneNet \footnote{\url{http://strimmerlab.org/software/genenet/}} package \cite{schafer2001, schafer2005}.
 For all three approaches, the variance of each feature was scaled to 1 prior to training the models.
@@ -344,11 +344,11 @@ A Python API is available, but is more limited than the Java API.
 \label{results:taxonomy}
 Taxonomy calls at the gene and contig level were sought to enable applications of statistical learning that probe interactions between microbes.
 While Kaiju produced usable taxonomy calls for the majority of contigs, exploration of these data raised concerns about extrapolation of taxonomic assignments from small match regions to long contigs. %to small regions of the contig to the length of contigs up to XX kb.  %  XX percent of contigs
-Currently David Beck is developing a tool to do BLAST based taxonomic assignments of individual genes.
+Currently David Beck is developing a tool for BLAST-based taxonomic assignments of individual genes.
 These assignments will be rolled up into contig-level taxonomic predictions.
 The statistical learning technique results described below could not use contig taxonomy predictions, but future directions that use this rich layer of information are proposed.
 
-\subsection{Avoid centering sparse data prior to learning}
+\subsection{Avoid Centering Sparse Data Prior to Learning}
 \label{sect:centering_sparse}
 Early work for this chapter highlighted the importance of not centering scaled features during preprocessing (Figure \ref{fig:standard_scaler}).
 The sparsity of metagenomic data leads to peaks at zero being shifted away from zero during centering. % is not amenable to centering, or the zero peak can is shifted.
@@ -385,7 +385,7 @@ Variants of CCA that are designed to produce sparse results from sparse data wer
 \subsubsection{Graphical Lasso}
 None of the methods for estimating the partial correlation matrix scaled well to the entire 0.75 million gene dataset.
 % TODO: try GeneNet on the whole 0.7M feature data.
-The general strategy for exploring algorithm scalability was to run each pipeline on input data sets of increasing size.
+The general strategy for exploring algorithm scalability was to run each pipeline on input datasets of increasing size.
 The Scikit-learn implementation of Graphical lasso scaled particularly poorly, struggling even with the top 815 features.
 It produced floating point errors. % \texttt{FloatingPointError}s:
 \texttt{FloatingPointError: Non SPD result: the system is too ill-conditioned for this solver.} % The system is too ill-conditioned for this solver}
@@ -440,11 +440,12 @@ The Neo4j query language allows such queries as
 \begin{verbatim}
 MATCH (n)<- [e {cross_species:'True'}] -> (m)
     WHERE n.gene_product =~ '.*transport.*'
-        AND e.pcor_abs > 0.045
+        AND e.pcor_abs > 0.02
     RETURN n, m
 \end{verbatim}
-This query demonstrates restriction to cross-species edges where the first node's gene product contains the substring``transport" and the partial correlation magnitude is above 0.045.
+This query demonstrates restriction to cross-species edges where the first gene product of the first node contains the substring``transport" and the partial correlation magnitude is above 0.02.
 Neo4j may be used more in future analysis, but the short-term goals of probing the basic network structure were better done using NetworkX.
+% gene product of the
 
 %Basics
 The top 1 million partial correlation values (edges) had the following distribution (Figure \ref{fig:pcor_hist}):
@@ -485,7 +486,7 @@ This turned out to be true (Figure \ref{fig:pcor_same_and_cross_contigs}).
     % /Users/janet/Documents/Lidstrom Lab Work/meta4_bins_data_and_files/170406_GeneNet_on_the_largest_ledoit_Wolf_friendly_file--large_instance/170407_same-contig_and_cross-contig_pcor_distributions.pdf
     \caption[Distribution of partial correlations: same-contig versus across-contig gene pairs]{
     	Distribution of partial correlations: same-contig versus across-contig gene pairs, with each distribution normalized to have unit area.
-	The distribution of partial correlations for cross-contig gene pairs (blue bars) show lower values than those of genes found on the same contig (green bars).
+	The distribution of partial correlations for cross-contig gene pairs (blue bars) shows lower values than those of genes found on the same contig (green bars).
         }
     \label{fig:pcor_same_and_cross_contigs}
     \end{singlespace}
@@ -518,7 +519,7 @@ Layering in taxonomic labels for nodes will allow the ability to look at partial
 CCA was run to see if subsets of genes expressed by methanotrophs have expression that is correlated with subsets of non-methanotrophic methylotroph genes.
 The regularization path leading to the optimal objective function had penalties for both vectors equal to 0.026, indicating high regularization.
 The vectors it selected for the methanotrophy and methylotrophy genes each included 5 genes, but a correlation of only 0.656.
-The genes predicted did point toward meaningful biology, either (Tables \ref{table:CCA_methanotroph}, \ref{table:CCA_methylotroph}).
+The genes predicted did not point toward meaningful biology, either (Tables \ref{table:CCA_methanotroph}, \ref{table:CCA_methylotroph}).
 This promising technique did not overcome the noise in these RNA-seq data.
 Looking back to Figure \ref{fig:isolate_RNAseq}, these null results are likely due to low input data quality.
 This method should be revisited when higher-confidence tabulated RNA-seq data becomes available, or used to target other questions.
@@ -566,8 +567,8 @@ This method should be revisited when higher-confidence tabulated RNA-seq data be
 % ==========================
 \section{Conclusions}
 
-This chapter described guidelines for applying statistical learning to metatranscriptomics data sets.
-It warns against the commonly-used centering of features commonly used to standardize training data.
+This chapter described guidelines for applying statistical learning to metatranscriptomics datasets.
+It warns against the common practice of centering features in data preprocessing.
 Opportunities to use CCA and partial correlation graphs were highlighted.
 Given the small $N$ and large $d$ characteristic of metatranscriptomics data, these models are recommended for hypothesis generation rather than predictive modeling.
 
