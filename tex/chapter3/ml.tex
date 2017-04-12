@@ -451,6 +451,7 @@ Neo4j may be used more in future analysis, but the short-term goals of probing t
 The top 1 million partial correlation values (edges) had the following distribution (Figure \ref{fig:pcor_hist}):
 \begin{figure}[H]
 \centering
+   % /Users/janet/Documents/Lidstrom Lab Work/meta4_bins_data_and_files/170412_explore_specific_network_as_done_previously/170412_explore_cutoff_0.01/pcor_hist--1e+06_edges.pdf
     \includegraphics[width=0.6\textwidth]{./tex/chapter3/figures/pcor_hist--1e+06_edges.pdf}
     \begin{singlespace}
     \caption[Distribution of the 1 million partial correlation values with the largest magnitudes]{
@@ -481,20 +482,49 @@ This turned out to be true (Figure \ref{fig:pcor_same_and_cross_contigs}).
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.6\textwidth]{./tex/chapter3/figures/170407_same-contig_and_cross-contig_pcor_distributions.pdf}
+    % /Users/janet/Documents/Lidstrom Lab Work/meta4_bins_data_and_files/170412_explore_specific_network_as_done_previously/170412_explore_cutoff_0.01/same-contig_and_cross-contig_pcor_distributions.pdf
+    \includegraphics[width=0.6\textwidth]{./tex/chapter3/figures/same-contig_and_cross-contig_pcor_distributions.pdf}
     \begin{singlespace}
-    % /Users/janet/Documents/Lidstrom Lab Work/meta4_bins_data_and_files/170406_GeneNet_on_the_largest_ledoit_Wolf_friendly_file--large_instance/170407_same-contig_and_cross-contig_pcor_distributions.pdf
+    % OLD: /Users/janet/Documents/Lidstrom Lab Work/meta4_bins_data_and_files/170406_GeneNet_on_the_largest_ledoit_Wolf_friendly_file--large_instance/170407_same-contig_and_cross-contig_pcor_distributions.pdf
     \caption[Distribution of partial correlations: same-contig versus across-contig gene pairs]{
     	Distribution of partial correlations: same-contig versus across-contig gene pairs, with each distribution normalized to have unit area.
-	The distribution of partial correlations for cross-contig gene pairs (blue bars) shows lower values than those of genes found on the same contig (green bars).
+	    Cross-contig gene pairs (blue bars, 997,276 edges) have lower partial correlations than pairs of genes found on the same contig (green bars, 2,724 edges).
         }
     \label{fig:pcor_same_and_cross_contigs}
     \end{singlespace}
 \end{figure}
 
-%PMO
-%pMMO subunits
-%hps/hpi pairs
+Similarly, higher partial correlations are expected between subunits of the same protein, or enzymes that are under the same regulation.
+This hypothesis was tested by looking at the distribution of partial correlations between subunits of particulate methane monooxygenase \textit{pmo}.
+All edges connecting pairs of \textit{pmo} genes were gathered and split into to sets: edges corresponding to the same \textit{pmo} cluster (sequential gene annotations on the same contig), and edges corresponding to two \textit{pmo} genes that are on different contigs or are not sequential.
+The distributions (Figure \ref{fig:pmo_pcors}) confirm that subunits of the same operon have higher partial correlation values, adding validity to the GeneNet model.
+The same is true for methanol dehydrogenase (\textit{mdh}) subunit pairs (Figure \ref{fig:mdh_pcors}) and hexulose-6-phosphate synthase:hexulose-6-phosphate isomerase gene pairs (Figure \ref{fig:hps_hpi_pcors}).
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Documents/Lidstrom Lab Work/meta4_bins_data_and_files/170412_explore_specific_network_as_done_previously/170412_explore_cutoff_0.01/pmo_subunit_pairs_have_higher_pcor--GeneNet--1e+06_edges--horizontal.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter3/figures/pmo_subunit_pairs_have_higher_pcor--GeneNet--1e+06_edges--horizontal.pdf}
+    \begin{singlespace}
+    \caption[Partial correlation values for \textit{pmo}:\textit{pmo} subunit pairs]{
+    	Partial correlation values for \textit{pmo}:\textit{pmo} subunit pairs in the GeneNet network.
+	Green bars represent pairs that appear to be on the same operon, and gray bars represent all other pairs.
+        }
+    \label{fig:pmo_pcors}
+    \end{singlespace}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    % /Users/janet/Documents/Lidstrom Lab Work/meta4_bins_data_and_files/170412_explore_specific_network_as_done_previously/170412_explore_cutoff_0.01/mdh-mdh_sequential_pairs--GeneNet--1e+06_genes--horizontal.pdf
+    \includegraphics[width=1.0\textwidth]{./tex/chapter3/figures/mdh-mdh_sequential_pairs--GeneNet--1e+06_genes--horizontal.pdf}
+    \begin{singlespace}
+    \caption[Partial correlation values for \textit{mdh} subunit pairs]{
+    	Partial correlation values for \textit{mdh} subunit pairs in the GeneNet network.
+	    Green bars represent pairs that are sequential on a contig, and gray bars represent all other pairs.
+        }
+        \label{fig:mdh_pcors}
+    \end{singlespace}
+\end{figure}
 
 
 
